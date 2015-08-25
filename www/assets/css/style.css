@@ -1,0 +1,108 @@
+/* Empty. Add your own CSS if you like */
+
+/* fonts*/
+@font-face {
+    font-family: 'roboto_condensedlight';
+    src: url('fonts/robotocondensed-light-webfont.eot');
+    src: url('fonts/robotocondensed-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/robotocondensed-light-webfont.woff2') format('woff2'),
+    url('fonts/robotocondensed-light-webfont.woff') format('woff'),
+    url('fonts/robotocondensed-light-webfont.ttf') format('truetype'),
+    url('fonts/robotocondensed-light-webfont.svg#roboto_condensedlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roboto_condensedregular';
+    src: url('fonts/robotocondensed-regular-webfont.eot');
+    src: url('fonts/robotocondensed-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/robotocondensed-regular-webfont.woff2') format('woff2'),
+    url('fonts/robotocondensed-regular-webfont.woff') format('woff'),
+    url('fonts/robotocondensed-regular-webfont.ttf') format('truetype'),
+    url('fonts/robotocondensed-regular-webfont.svg#roboto_condensedlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.no-padding{
+    padding: 0!important;
+}
+.no-margin{
+    margin: 0 !important;
+}
+.no-border{
+    border-width: 0;
+}
+.background-transparent{
+    background-color: transparent;
+}
+.back-text{
+    display: none !important;
+}
+/*view login*/
+.header-login{
+    font-family: 'roboto_condensedregular';
+    font-size: 19.34px !important;
+}
+.fondo-login{
+    background: url('../img/fondo-login.png') no-repeat;
+    background-size: 100% 100%;
+}
+.thumb-login{
+    max-height: 75px;
+}
+.color-facebook,.color-twitter,.color-google,.color-register,.color-normal,
+.color-facebook:hover,.color-twitter:hover,.color-google:hover,.color-register:hover{
+    color: #fff;
+    font-family: "roboto_condensedlight";
+    font-size: 19.64px;
+}
+.color-register,.color-register:hover{
+    font-size: 22.31px;
+}
+
+.color-facebook,.color-facebook.active,.color-facebook.activated{
+    background-color: #336699;
+    border-color: rgba(51, 102, 153,0.85);
+}
+.color-facebook.active,.color-facebook.activated{
+    background-color: rgba(51, 102, 153,0.85);
+}
+
+.color-twitter,.color-twitter.activated,.color-twitter.activated{
+    background-color: #6699cc;
+    border-color: rgba(102, 153, 204,0.85);
+}
+.color-twitter.active,.color-twitter.activated{
+    background-color: rgba(102, 153, 204,0.85);
+}
+
+.color-google,.color-google.activated,.color-google.activated{
+    background-color: #ff3333;
+    border-color: rgba(255, 51, 51,0.85);
+}
+.color-google.active,.color-google.activated{
+    background-color: rgba(255, 51, 51,0.85);
+}
+
+.color-register,.color-register.activated,.color-register.activated{
+    background-color: rgba(0, 0, 0, 0.62);
+    border: solid 1px  rgba(255, 255, 255, 0.62);
+}
+.color-register.active,.color-register.activated{
+    background-color: rgba(0, 0, 0, 0.82);
+}
+
+.input-login{
+    padding-left: 42px;
+    padding-right: 42px;
+}
+.border-input{
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+}
+.border-input input{
+    color: #fff;
+    font-family: "roboto_condensedlight";
+    font-size: 22.31px;
+}
