@@ -2,12 +2,12 @@
 <widget id="com.ionicframework.appmobile958855" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>TennisYA</name>
   <description>
-        Aplicacion mobile para clientesdel club de tennis TennisYA
+        Aplicacion mobile para clientes del club de tennis TennisYA
     </description>
     <author email="riter.cordova@gmail.com" href="http://ionicframework.com/">
       Riter Angel Mamani Cordova
     </author>
-  <content src="content.html"/>
+  <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
