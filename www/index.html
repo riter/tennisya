@@ -1,69 +1,281 @@
-<!DOCTYPE html>
-<html>
-  <head>
+<html ng-app="ionicApp">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <title>Tabs Example</title>
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- your app's js -->
-    <script src="app/app.js"></script>
-  </head>
-  <body ng-app="login">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="app/test.js"></script>
+</head>
 
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title header-login">Iniciar sesión</h1>
-      </ion-header-bar>
-      <ion-content class="fondo-login">
+<body>
 
-          <div class="row ">
-              <div class="col text-center">
-                  <img data-ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
-              </div>
-          </div>
+<ion-nav-bar class="bar-stable">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+</ion-nav-bar>
 
-          <div class="list padding input-login">
-              <label class="item item-input background-transparent border-input">
-                  <input type="text" placeholder="Email">
-              </label>
-              <label class="item item-input background-transparent border-input">
-                  <input type="text" placeholder="Contraseña">
-              </label>
-          </div>
+<ion-nav-view></ion-nav-view>
 
-          <button class="button button-full button-balanced color-normal">
-              Iniciar sesión
-          </button>
+<script id="sign-up.html" type="text/ng-template">
+    <ion-view title="Iniciar sesión" left-buttons="leftButtons" right-buttons="rightButtons">
+        <ion-content has-header="true" class="fondo-login">
+            <div class="row ">
+                <div class="col text-center">
+                    <img data-ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
+                </div>
+            </div>
 
-          <button class="button button-full no-margin no-border color-facebook">
-              <i class="icon ion-settings"></i> Iniciar sesión con Facebook
-          </button>
-          <button class="button button-full no-margin no-border color-twitter">
-              <i class="icon ion-settings"></i> Iniciar sesión con Twitter
-          </button>
-          <button class="button button-full no-margin no-border color-google">
-              <i class="icon ion-settings"></i> Iniciar sesión con Google
-          </button>
-          <button class="button button-full color-register">
-              Registrarse
-          </button>
+            <div class="list padding input-login">
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Nombre" ng-model="user.name">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Estado" ng-model="user.estado">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Celular" ng-model="user.celular">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Cancha" ng-model="user.cancha">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Email" ng-model="user.email">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Contraseña" ng-model="user.password">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd">
+                </label>
 
-      </ion-content>
-    </ion-pane>
+                <a class="item background-transparent no-border item-thumbnail-left">
+                    <img src="assets/img/icon-login.png">
+                </a>
 
-    <script id="templates/login.html" type="text/ng-template"></script>
-  </body>
+            </div>
+
+            <button class="button button-full color-register" ng-click="signUp(user)">
+                Registrar
+            </button>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/sign-in.html" type="text/ng-template">
+    <ion-view title="Iniciar sesión" left-buttons="leftButtons" right-buttons="rightButtons">
+        <ion-content has-header="true" class="fondo-login">
+            <div class="row">
+                <div class="col text-center">
+                    <img data-ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
+                </div>
+            </div>
+
+            <div class="list padding input-login">
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Email" ng-model="user.username">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Contraseña" ng-model="user.password">
+                </label>
+            </div>
+
+            <button class="button button-full button-balanced color-normal" ng-click="signIn(user)">
+                Iniciar sesión
+            </button>
+            <button class="button button-full no-margin no-border color-facebook" ng-click="signInFacebook()">
+                <i class="icon ion-settings"></i> Iniciar sesión con Facebook
+            </button>
+            <button class="button button-full no-margin no-border color-twitter" ng-click="signInTwitter()">
+                <i class="icon ion-settings"></i> Iniciar sesión con Twitter
+            </button>
+            <button class="button button-full no-margin no-border color-google" ng-click="signInGoogle()">
+                <i class="icon ion-settings"></i> Iniciar sesión con Google
+            </button>
+            <button class="button button-full color-register" ng-click="register()">
+                Registrarse
+            </button>
+
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/tabs.html" type="text/ng-template">
+    <ion-tabs class="tabs-icon-top tabs-stable">
+
+        <ion-tab title="Jugadores" icon="ion-home" href="#/tab/player">
+            <ion-nav-view name="player-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Crear partido" icon="ion-ios-information" href="#/tab/new_partido">
+            <ion-nav-view name="newPartido-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Partidos" icon="ion-ios-world" href="#/tab/partidos">
+            <ion-nav-view name="partidos-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Ajustes" icon="ion-ios-world" ui-sref="tabs.setting">
+            <ion-nav-view name="setting-tab"></ion-nav-view>
+        </ion-tab>
+
+    </ion-tabs>
+</script>
+
+<script id="templates/players.html" type="text/ng-template">
+
+    <ion-header-bar class="bar-subheader">
+        <button class="button button-clear button-balanced">
+            Crear Grupo
+        </button>
+    </ion-header-bar>
+
+    <ion-view view-title="Jugadores">
+        <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-search" ng-click="doSomething()"></button>
+        </ion-nav-buttons>
+
+        <ion-content>
+            <div class="list">
+                <a class="item item-avatar" href="#">
+                    <img src="https://cdn.discourse.org/business/user_avatar/forum.ionicframework.com/calendee/45/13656.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/newPartido.html" type="text/ng-template">
+    <ion-view view-title="Crear partido">
+        <ion-content class="padding">
+            En desarrollos(crear partido)
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/partidos.html" type="text/ng-template">
+
+    <ion-view title="Partidos">
+
+        <ion-tabs class="tabs-striped tabs-top tabs-background-light">
+
+            <ion-tab title="Todos" href="#/tab/todos">
+                <ion-nav-view name="todos-tab"></ion-nav-view>
+                <ion-content>
+                    lista de Todos
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab title="Personales">
+                <ion-nav-view name="personal-tab"></ion-nav-view>
+                <ion-content>
+                    lista de Personales
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab title="Confirmados">
+                <ion-nav-view name="confirmados-tab"></ion-nav-view>
+                <ion-content>
+                    lista de Confirmados
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab title="Jugados">
+                <ion-nav-view name="jugados-tab"></ion-nav-view>
+                <ion-content>
+                    lista de Jugados
+                </ion-content>
+            </ion-tab>
+
+        </ion-tabs>
+
+    </ion-view>
+</script>
+
+<script id="templates/setting.html" type="text/ng-template">
+    <ion-view title="Ajustes">
+        <ion-content>
+            <ion-list>
+                <ion-item href="#/detail" class="item-icon-right">
+                    Visibilidad y Disponibilidad
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item item-divider"></ion-item>
+                <ion-item href="#/detail" class="item-icon-right">
+                    Perfil
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item item-divider"></ion-item>
+                <ion-item href="#/detail" class="item-icon-right">
+                    Contarle a un amigo
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item href="#/detail" class="item-icon-right">
+                    Información
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item item-divider"></ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-view>
+</script>
+
+
+
+
+<script id="templates/nav-stack.html" type="text/ng-template">
+    <ion-view view-title="Tab Nav Stack">
+        <ion-content class="padding">
+            <p><img src="http://ionicframework.com/img/diagrams/tabs-nav-stack.png" style="width:100%"></p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/facts.html" type="text/ng-template">
+    <ion-view view-title="Facts">
+        <ion-content class="padding">
+            <p>Banging your head against a wall uses 150 calories an hour.</p>
+            <p>Dogs have four toes on their hind feet, and five on their front feet.</p>
+            <p>The ant can lift 50 times its own weight, can pull 30 times its own weight and always falls over on its right side when intoxicated.</p>
+            <p>A cockroach will live nine days without it's head, before it starves to death.</p>
+            <p>Polar bears are left handed.</p>
+            <p>
+                <a class="button icon ion-home" href="#/tab/home"> Home</a>
+                <a class="button icon icon-right ion-chevron-right" href="#/tab/facts2">More Facts</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="templates/facts2.html" type="text/ng-template">
+    <ion-view view-title="Also Factual">
+        <ion-content class="padding">
+            <p>111,111,111 x 111,111,111 = 12,345,678,987,654,321</p>
+            <p>1 in every 4 Americans has appeared on T.V.</p>
+            <p>11% of the world is left-handed.</p>
+            <p>1 in 8 Americans has worked at a McDonalds restaurant.</p>
+            <p>$283,200 is the absolute highest amount of money you can win on Jeopardy.</p>
+            <p>101 Dalmatians, Peter Pan, Lady and the Tramp, and Mulan are the only Disney cartoons where both parents are present and don't die throughout the movie.</p>
+            <p>
+                <a class="button icon ion-home" href="#/tab/home"> Home</a>
+                <a class="button icon ion-chevron-left" href="#/tab/facts"> Scientific Facts</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+
+
+
+</body>
 </html>
