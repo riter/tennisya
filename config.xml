@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.appmobile958855" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>TennisYA</name>
+<widget id="com.ionicframework.prueba778201" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>prueba</name>
   <description>
-        Aplicacion mobile para clientes del club de tennis TennisYA
+        An Ionic Framework and Cordova project.
     </description>
-    <author email="riter.cordova@gmail.com" href="http://ionicframework.com/">
-      Riter Angel Mamani Cordova
+  <author email="hi@ionicframework" href="http://ionicframework.com/">
+      Ionic Framework Team
     </author>
   <content src="index.html"/>
   <access origin="*"/>
