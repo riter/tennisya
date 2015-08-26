@@ -2,8 +2,21 @@
  * Created by Riter on 24/08/15.
  */
 
-angular.module('ionicApp', ['ionic'])
+angular.module('tennisyaApp', ['ionic','tennisyaApp.controllers','tennisyaApp.services'])
 
+    .run(function($ionicPlatform) {
+        $ionicPlatform.ready(function() {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if(window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
+            if(window.StatusBar) {
+                StatusBar.styleDefault();
+            }
+        });
+    })
 
     .config(function($stateProvider, $urlRouterProvider) {
 
@@ -68,33 +81,4 @@ angular.module('ionicApp', ['ionic'])
 
         $urlRouterProvider.otherwise("/sign-in");
 
-    })
-    .controller('SignInCtrl', function($scope, $state) {
-
-        $scope.signIn = function(user) {
-            console.log('Sign-In', user);
-            $state.go('tabs.player');
-        };
-        $scope.signInFacebook = function() {
-            console.log('signInFacebook');
-        };
-        $scope.signInTwitter = function(user) {
-            console.log('signInTwitter');
-        };
-        $scope.signInGoogle = function(user) {
-            console.log('signInGoogle');
-        };
-        $scope.register = function(user) {
-            $state.go('signup');
-        };
-
-    })
-    .controller('SignUpCtrl', function($scope, $state) {
-        $scope.signUp = function(user) {
-            console.log('Registro de Usuario:', user);
-            $state.go('tabs.player');
-        };
-    })
-    .controller('HomeTabCtrl', function($scope) {
-        console.log('HomeTabCtrl');
     });
