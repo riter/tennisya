@@ -19,12 +19,32 @@
 * */
 //angular.module('tennisyaApp.services',[])
 appTennisya.factory('userService', function($http) {
-        var user = [];
+        var user = null;
 
         return {
             loginJugador: function(data,callback,error){
 
                 $http.post(api+'jugadors/login',data).then(function(response){
+                    user = response.data;
+                    return callback(user);
+                },function(e){
+                    return error(e.data);
+                });
+
+            },
+            saveJugador: function(data,callback,error){
+
+                $http.post(api+'jugadors/save',data).then(function(response){
+                    user = response.data;
+                    return callback(user);
+                },function(e){
+                    return error(e.data);
+                });
+
+            },
+            listJugador: function(callback,error){
+
+                $http.get(api+'group/jugadores').then(function(response){
                     user = response.data;
                     return callback(user);
                 },function(e){

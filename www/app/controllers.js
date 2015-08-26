@@ -4,7 +4,8 @@
 
 //angular.module('tennisyaApp.controllers',[])
 
-appTennisya.controller('SignInCtrl', function($scope, $state, userService) {
+appTennisya
+    .controller('SignInCtrl', function($scope, $state, userService) {
 
         $scope.signIn = function(user) {
             userService.loginJugador(user,function(response){
@@ -27,10 +28,10 @@ appTennisya.controller('SignInCtrl', function($scope, $state, userService) {
         };
 
     })
-    .controller('SignUpCtrl', function($scope, /*$state,*/ $timeout, $cordovaFileTransfer, $cordovaCamera) {
+    .controller('SignUpCtrl', function($scope, $state, userService) {
         $scope.openCamera = function() {
 
-            var options = {
+            /*var options = {
                 destinationType: Camera.DestinationType.FILE_URI,
                 sourceType: Camera.PictureSourceType.CAMERA
             };
@@ -46,12 +47,12 @@ appTennisya.controller('SignInCtrl', function($scope, $state, userService) {
                 alert('cleanup: OK')
             },function(){
                 alert('cleanup: ERROR')
-            }); // only for FILE_URI
+            }); // only for FILE_URI*/
         };
 
         $scope.signUp = function(user) {
-
-            var url = "http://cdn.wall-pix.net/albums/art-space/00030109.jpg";
+            console.log(user);
+            /*var url = "http://cdn.wall-pix.net/albums/art-space/00030109.jpg";
             var targetPath = document.getElementById('photoSignUp').getAttribute('src');
             var trustHosts = true;
             var options = {};
@@ -63,11 +64,22 @@ appTennisya.controller('SignInCtrl', function($scope, $state, userService) {
                     // Error
                 }, function (progress) {
                     // constant progress updates
-                });
-
-            //$state.go('tabs.player');
+                });*/
+            user.type = 'normal';
+            userService.saveJugador(user,function(response){
+                $state.go('tabs.player');
+            },function(error){
+                alert(error.error);
+            });
         };
     })
-    .controller('HomeTabCtrl', function($scope) {
-        console.log('HomeTabCtrl');
+    .controller('ListJugadoresCtrl', function($scope, $state, userService) {
+        console.log('ListJugadoresCtrl');
+
+        $scope.jugadores = [];
+        userService.listJugador(function(response){
+                $scope.jugadores = response;
+            },function(error){
+                alert(error.error);
+            });
     });

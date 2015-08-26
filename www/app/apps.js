@@ -43,7 +43,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider) {
                 views: {
                     'player-tab': {
                         templateUrl: "templates/players.html",
-                        controller: 'HomeTabCtrl'
+                        controller: 'ListJugadoresCtrl'
                     }
                 }
             })
