@@ -78,8 +78,15 @@ appTennisya
 
         $scope.jugadores = [];
         userService.listJugador(function(response){
-                $scope.jugadores = response;
-            },function(error){
-                alert(error.error);
-            });
+            $scope.jugadores = response;
+        },function(error){
+            alert(error.error);
+        });
+        setInterval(function(){
+            userService.listJugador(function(response){
+                    $scope.jugadores = response;
+                },function(error){
+                    alert(error.error);
+                });
+        },15000);
     });
