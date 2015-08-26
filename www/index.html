@@ -9,6 +9,7 @@
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
 
     <link href="assets/css/style.css" rel="stylesheet">
@@ -58,8 +59,8 @@
                     <input type="text" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd">
                 </label>
 
-                <label class="item item-input background-transparent no-border item-thumbnail-left">
-                    <img src="assets/img/icon-login.png" ng-model="user.photo">
+                <label class="item item-input item-thumbnail-left  background-transparent no-border" ng-click="openCamera()">
+                    <img src="assets/img/icon-login.png" id="photoSignUp">
                 </label>
 
             </div>

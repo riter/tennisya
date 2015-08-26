@@ -33,7 +33,7 @@
     border-width: 0;
 }
 .background-transparent{
-    background-color: transparent;
+    background-color: transparent !important;
 }
 .back-text{
     display: none !important;

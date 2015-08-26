@@ -2,9 +2,9 @@
  * Created by Riter on 25/08/15.
  */
 
-angular.module('tennisyaApp.controllers',[])
+//angular.module('tennisyaApp.controllers',[])
 
-    .controller('SignInCtrl', function($scope, $state, userService) {
+appTennisya.controller('SignInCtrl', function($scope, $state, userService) {
 
         $scope.signIn = function(user) {
             userService.loginJugador(user,function(response){
@@ -27,10 +27,45 @@ angular.module('tennisyaApp.controllers',[])
         };
 
     })
-    .controller('SignUpCtrl', function($scope, $state) {
+    .controller('SignUpCtrl', function($scope, /*$state,*/ $timeout, $cordovaFileTransfer, $cordovaCamera) {
+        $scope.openCamera = function() {
+
+            var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.CAMERA
+            };
+
+            $cordovaCamera.getPicture(options).then(function(imageURI) {
+                var image = document.getElementById('photoSignUp');
+                image.src = imageURI;
+            }, function(err) {
+                // error
+            });
+
+            $cordovaCamera.cleanup().then(function(){
+                alert('cleanup: OK')
+            },function(){
+                alert('cleanup: ERROR')
+            }); // only for FILE_URI
+        };
+
         $scope.signUp = function(user) {
-            console.log('Registro de Usuario:', user);
-            $state.go('tabs.player');
+
+            var url = "http://cdn.wall-pix.net/albums/art-space/00030109.jpg";
+            var targetPath = document.getElementById('photoSignUp').getAttribute('src');
+            var trustHosts = true;
+            var options = {};
+
+            $cordovaFileTransfer.upload(api+'/jugadors/save', targetPath, options)
+                .then(function(result) {
+                    // Success!
+                }, function(err) {
+                    // Error
+                }, function (progress) {
+                    // constant progress updates
+                });
+
+            //$state.go('tabs.player');
         };
     })
     .controller('HomeTabCtrl', function($scope) {

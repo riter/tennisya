@@ -1,10 +1,12 @@
 /**
  * Created by Riter on 24/08/15.
  */
+var api = "http://tennisya.apploadapps.com/web/api/";
 
-angular.module('tennisyaApp', ['ionic','tennisyaApp.controllers','tennisyaApp.services'])
+var appTennisya = angular.module('tennisyaApp', ['ionic','ngCordova']);
+//angular.module('tennisyaApp', ['ionic','ngCordova','tennisyaApp.controllers','tennisyaApp.services']);
 
-    .run(function($ionicPlatform) {
+appTennisya.run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -16,9 +18,9 @@ angular.module('tennisyaApp', ['ionic','tennisyaApp.controllers','tennisyaApp.se
                 StatusBar.styleDefault();
             }
         });
-    })
+    });
 
-    .config(function($stateProvider, $urlRouterProvider) {
+appTennisya.config(function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
             .state('signin', {

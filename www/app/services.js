@@ -1,8 +1,6 @@
 /**
  * Created by Riter on 25/08/15.
  */
-//var api = "http://tennisya.apploadapps.com/web/app_dev.php/api/";
-var api = "http://localhost/tennisya/admin/web/app_dev.php/api/";
 /*
  jugadors/login POST
  email: riter.cordova@gmail.com
@@ -19,8 +17,8 @@ var api = "http://localhost/tennisya/admin/web/app_dev.php/api/";
  type: normal/externo
 
 * */
-angular.module('tennisyaApp.services',[])
-    .factory('userService', function($http) {
+//angular.module('tennisyaApp.services',[])
+appTennisya.factory('userService', function($http) {
         var user = [];
 
         return {
