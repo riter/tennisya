@@ -60,8 +60,8 @@
                     <input type="text" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd">
                 </label>-->
 
-                <label class="item item-input item-thumbnail-left  background-transparent no-border" ng-click="openCamera()">
-                    <img src="assets/img/icon-login.png" id="photoSignUp">
+                <label class="item  item-thumbnail-left  background-transparent no-border" style="margin-top: 15px" ng-click="openCamera()">
+                    <img src="assets/img/thumb_profile.png" id="photoSignUp">
                 </label>
 
             </div>
@@ -98,13 +98,13 @@
             </form>
 
             <button class="button button-full no-margin no-border color-facebook" ng-click="signInFacebook()">
-                <i class="icon ion-settings"></i> Iniciar sesión con Facebook
+                Iniciar sesión con Facebook
             </button>
             <button class="button button-full no-margin no-border color-twitter" ng-click="signInTwitter()">
-                <i class="icon ion-settings"></i> Iniciar sesión con Twitter
+                Iniciar sesión con Twitter
             </button>
             <button class="button button-full no-margin no-border color-google" ng-click="signInGoogle()">
-                <i class="icon ion-settings"></i> Iniciar sesión con Google
+                Iniciar sesión con Google
             </button>
             <button class="button button-full color-register" ng-click="register()">
                 Registrarse
@@ -117,7 +117,7 @@
 <script id="templates/tabs.html" type="text/ng-template">
     <ion-tabs class="tabs-icon-top tabs-stable">
 
-        <ion-tab title="Jugadores" icon="ion-home" href="#/tab/player">
+        <ion-tab title="Jugadores" icon="ion-home icon-jugadores" href="#/tab/player">
             <ion-nav-view name="player-tab"></ion-nav-view>
         </ion-tab>
 
@@ -152,7 +152,7 @@
         <ion-content>
             <ion-list>
                 <ion-item class="item item-avatar" ng-repeat="jugador in jugadores" type="item-text-wrap" href="">
-                  <img src="{{jugador.photo}}">
+                    <img src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
                     <h2>{{jugador.name}}</h2>
                     <p>{{jugador.cancha}}</p>
                 </ion-item>
