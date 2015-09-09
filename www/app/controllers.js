@@ -5,14 +5,25 @@
 //angular.module('tennisyaApp.controllers',[])
 
 appTennisya
+    .controller('DisponibilidadCtrl', function($scope, $state, ajustesService) {
+        $scope.data = {
+            showDelete: false
+        };
+
+        $scope.items= ajustesService.getDisponibilidad('id');
+
+        $scope.onDelete = function(item) {
+            $scope.items.splice($scope.items.indexOf(item), 1);
+        };
+    })
     .controller('SignInCtrl', function($scope, $state, userService) {
 
         $scope.signIn = function(user) {
-            userService.loginJugador(user,function(response){
-                $state.go('tabs.player');
-            },function(error){
-                alert(error.error);
-            });
+            //userService.loginJugador(user,function(response){
+            $state.go('tabs.player');
+            /*},function(error){
+             alert(error.error);
+             });*/
         };
         $scope.signInFacebook = function() {
             console.log('signInFacebook');
@@ -32,39 +43,39 @@ appTennisya
         $scope.openCamera = function() {
 
             /*var options = {
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.CAMERA
-            };
+             destinationType: Camera.DestinationType.FILE_URI,
+             sourceType: Camera.PictureSourceType.CAMERA
+             };
 
-            $cordovaCamera.getPicture(options).then(function(imageURI) {
-                var image = document.getElementById('photoSignUp');
-                image.src = imageURI;
-            }, function(err) {
-                // error
-            });
+             $cordovaCamera.getPicture(options).then(function(imageURI) {
+             var image = document.getElementById('photoSignUp');
+             image.src = imageURI;
+             }, function(err) {
+             // error
+             });
 
-            $cordovaCamera.cleanup().then(function(){
-                alert('cleanup: OK')
-            },function(){
-                alert('cleanup: ERROR')
-            }); // only for FILE_URI*/
+             $cordovaCamera.cleanup().then(function(){
+             alert('cleanup: OK')
+             },function(){
+             alert('cleanup: ERROR')
+             }); // only for FILE_URI*/
         };
 
         $scope.signUp = function(user) {
             console.log(user);
             /*var url = "http://cdn.wall-pix.net/albums/art-space/00030109.jpg";
-            var targetPath = document.getElementById('photoSignUp').getAttribute('src');
-            var trustHosts = true;
-            var options = {};
+             var targetPath = document.getElementById('photoSignUp').getAttribute('src');
+             var trustHosts = true;
+             var options = {};
 
-            $cordovaFileTransfer.upload(api+'/jugadors/save', targetPath, options)
-                .then(function(result) {
-                    // Success!
-                }, function(err) {
-                    // Error
-                }, function (progress) {
-                    // constant progress updates
-                });*/
+             $cordovaFileTransfer.upload(api+'/jugadors/save', targetPath, options)
+             .then(function(result) {
+             // Success!
+             }, function(err) {
+             // Error
+             }, function (progress) {
+             // constant progress updates
+             });*/
             user.type = 'normal';
             userService.saveJugador(user,function(response){
                 $state.go('tabs.player');
@@ -84,9 +95,9 @@ appTennisya
         });
         setInterval(function(){
             userService.listJugador(function(response){
-                    $scope.jugadores = response;
-                },function(error){
-                    alert(error.error);
-                });
+                $scope.jugadores = response;
+            },function(error){
+                alert(error.error);
+            });
         },15000);
     });

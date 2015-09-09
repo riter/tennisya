@@ -183,3 +183,6 @@
     font-size: 13px !important;
     font-family: "roboto_condensedregular";
 }
+.ion-remove-list:before{
+    font-size: 25px !important;
+}

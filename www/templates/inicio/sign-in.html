@@ -1,0 +1,37 @@
+<ion-view title="Iniciar sesión" left-buttons="leftButtons" right-buttons="rightButtons" class="fondo-login">
+    <ion-content has-header="true">
+        <div class="row">
+            <div class="col text-center">
+                <img data-ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
+            </div>
+        </div>
+        <form>
+            <div class="list padding input-login">
+                <label class="item item-input background-transparent border-input">
+                    <input type="text" placeholder="Email" ng-model="user.email">
+                </label>
+                <label class="item item-input background-transparent border-input">
+                    <input type="password" placeholder="Contraseña" ng-model="user.password">
+                </label>
+            </div>
+
+            <button class="button button-full button-balanced color-normal" ng-click="signIn(user)">
+                Iniciar sesión
+            </button>
+        </form>
+
+        <button class="button button-full no-margin no-border color-facebook" ng-click="signInFacebook()">
+            Iniciar sesión con Facebook
+        </button>
+        <button class="button button-full no-margin no-border color-twitter" ng-click="signInTwitter()">
+            Iniciar sesión con Twitter
+        </button>
+        <button class="button button-full no-margin no-border color-google" ng-click="signInGoogle()">
+            Iniciar sesión con Google
+        </button>
+        <button class="button button-full color-register" ng-click="register()">
+            Registrarse
+        </button>
+
+    </ion-content>
+</ion-view>

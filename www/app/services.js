@@ -40,7 +40,6 @@ appTennisya.factory('userService', function($http) {
                 },function(e){
                     return error(e.data);
                 });
-
             },
             listJugador: function(callback,error){
 
@@ -56,4 +55,15 @@ appTennisya.factory('userService', function($http) {
                 return user;
             }
         }
+    })
+    .factory('ajustesService', function($http) {
+        return {
+            getDisponibilidad: function(id){
+                return [0,1,2,3,4,5];
+
+                /*$http.post(api+'ajustes/disponibilidad',{id:id}).then(function(response){
+                    return response.data;
+                });*/
+            }
+        };
     });

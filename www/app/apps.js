@@ -20,17 +20,30 @@ appTennisya.run(function($ionicPlatform) {
         });
     });
 
-appTennisya.config(function($stateProvider, $urlRouterProvider) {
+appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+    $ionicConfigProvider.platform.ios.tabs.style('standard');
+    $ionicConfigProvider.platform.ios.tabs.position('bottom');
+    $ionicConfigProvider.platform.android.tabs.style('standard');
+    $ionicConfigProvider.platform.android.tabs.position('standard');
+
+    $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
+    $ionicConfigProvider.platform.android.navBar.alignTitle('center');
+
+    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-back');
+    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-ios-arrow-back');
+
+    $ionicConfigProvider.platform.ios.views.transition('ios');
+    $ionicConfigProvider.platform.android.views.transition('android');
 
         $stateProvider
             .state('signin', {
                 url: "/sign-in",
-                templateUrl: "templates/sign-in.html",
+                templateUrl: "templates/inicio/sign-in.html",
                 controller: 'SignInCtrl'
             })
             .state('signup', {
                 url: "/sign-up",
-                templateUrl: "sign-up.html",
+                templateUrl: "templates/inicio/sign-up.html",
                 controller: 'SignUpCtrl'
             })
             .state('tabs', {
@@ -42,7 +55,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider) {
                 url: "/players",
                 views: {
                     'player-tab': {
-                        templateUrl: "templates/players.html",
+                        templateUrl: "templates/jugadores/players.html",
                         controller: 'ListJugadoresCtrl'
                     }
                 }
@@ -51,7 +64,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider) {
                 url: "/new_partido",
                 views: {
                     'newPartido-tab': {
-                        templateUrl: "templates/newPartido.html"
+                        templateUrl: "templates/partidos/newPartido.html"
                     }
                 }
             })
@@ -59,27 +72,53 @@ appTennisya.config(function($stateProvider, $urlRouterProvider) {
                 url: "/partidos",
                 views: {
                     'partidos-tab': {
-                        templateUrl: "templates/partidos.html"
+                        templateUrl: "templates/partidos/listPartidos.html"
                     }
                 }
             })
+            // ajustes
             .state('tabs.setting', {
                 url: "/setting",
                 views: {
                     'setting-tab': {
-                        templateUrl: "templates/setting.html"
+                        templateUrl: "templates/ajustes/setting.html"
                     }
                 }
             })
-            .state('tabs.todos', {
-                url: "/todos",
+            .state('tabs.disponibilidad', {
+                url: "/disponibilidad",
                 views: {
-                    'todos-tab': {
-                        templateUrl: "templates/players.html",
-                        controller: 'HomeTabCtrl'
+                    'setting-tab': {
+                        templateUrl: "templates/ajustes/disponibilidad.html",
+                        controller: 'DisponibilidadCtrl'
                     }
                 }
-            });
+            })
+            .state('tabs.profile', {
+                url: "/profile",
+                views: {
+                    'setting-tab': {
+                        templateUrl: "templates/ajustes/profile.html"
+                    }
+                }
+            })
+            .state('tabs.share', {
+                url: "/share",
+                views: {
+                    'setting-tab': {
+                        templateUrl: "templates/ajustes/share.html"
+                    }
+                }
+            })
+            .state('tabs.info', {
+                url: "/info",
+                views: {
+                    'setting-tab': {
+                        templateUrl: "templates/ajustes/info.html"
+                    }
+                }
+            })
+        ;
 
         $urlRouterProvider.otherwise("/sign-in");
 

@@ -1,0 +1,21 @@
+<ion-header-bar class="bar-subheader">
+    <button class="button button-clear button-balanced subheader-tittle">
+        Crear grupo
+    </button>
+</ion-header-bar>
+
+<ion-view view-title="Jugadores">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-search" ng-click="doSomething()"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true">
+        <ion-list>
+            <ion-item class="item item-avatar" ng-repeat="jugador in jugadores" type="item-text-wrap" href="">
+                <img src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
+                <h2>{{jugador.name}}</h2>
+                <p>{{jugador.cancha}}</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
