@@ -133,6 +133,6 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
             })
         ;
 
-        $urlRouterProvider.otherwise("/tab/setting");
+        $urlRouterProvider.otherwise("/sign-in");
 
     });
