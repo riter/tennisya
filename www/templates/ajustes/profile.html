@@ -1,5 +1,47 @@
-<ion-view title="Disponibilidad">
+<ion-view title="Perfil" hide-back-button="true">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-balanced" ng-click="onCancelar()"> Cancelar </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-balanced" ng-click="onGuardar(disponibilidad)"> Guardar</button>
+    </ion-nav-buttons>
+
     <ion-content>
-       Profile
+
+        <ion-list >
+
+            <label class="item item-input item-icon-right">
+                <input type="text" placeholder="Nombre Completo" ng-model="profile.name">
+                <i class="icon ion-edit icon-accessory"></i>
+            </label>
+            <label class="item item-input item-icon-right">
+                <input type="text" placeholder="Estado" ng-model="profile.estado">
+                <i class="icon ion-edit icon-accessory"></i>
+            </label>
+            <label class="item item-input item-icon-right">
+                <input type="text" placeholder="Email" ng-model="profile.email">
+                <i class="icon ion-edit icon-accessory"></i>
+            </label>
+            <label class="item item-input item-icon-right">
+                <input type="text" placeholder="Celular" ng-model="profile.celular">
+                <i class="icon ion-edit icon-accessory"></i>
+            </label>
+            <label class="item item-input item-icon-right">
+                <input type="text" placeholder="Cancha de preferencia" ng-model="profile.cancha">
+                <i class="icon ion-edit icon-accessory"></i>
+            </label>
+            <label class="item item-input item-icon-right">
+                <input type="text" placeholder="Rating" ng-model="profile.rating">
+                <i class="icon ion-edit icon-accessory"></i>
+            </label>
+
+            <div class="item item-body">
+                <img class="full-image" src="../../assets/img/thumb_profile.png"  style="width: 45%">
+                <p>Cambiar imagen de perfil</p>
+            </div>
+
+        </ion-list>
     </ion-content>
 </ion-view>

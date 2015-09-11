@@ -35,9 +35,9 @@
 .background-transparent{
     background-color: transparent !important;
 }
-.back-text{
-    display: none !important;
-}
+/*.back-text{*/
+    /*display: none !important;*/
+/*}*/
 /*view login*/
 .header-login{
     font-family: 'roboto_condensedregular';

@@ -5,7 +5,7 @@
 //angular.module('tennisyaApp.controllers',[])
 
 appTennisya
-    .controller('DisponibilidadCtrl', function($scope, $state, ajustesService) {
+    .controller('DisponibilidadCtrl', function($scope, $state, $ionicHistory, ajustesService) {
         $scope.data = {
             showDelete: false
         };
@@ -14,6 +14,26 @@ appTennisya
 
         $scope.onDelete = function(item) {
             $scope.items.splice($scope.items.indexOf(item), 1);
+        };
+
+        $scope.onCancelar = function(){
+            $ionicHistory.goBack();
+        };
+
+        $scope.onGuardar = function(model){
+            //servicio de guardar
+            $ionicHistory.goBack();
+        };
+    })
+    .controller('ProfileCtrl', function($scope, $state, $ionicHistory, ajustesService) {
+
+        $scope.onCancelar = function(){
+            $ionicHistory.goBack();
+        };
+
+        $scope.onGuardar = function(model){
+            //servicio de guardar
+            $ionicHistory.goBack();
         };
     })
     .controller('SignInCtrl', function($scope, $state, userService) {
@@ -85,7 +105,6 @@ appTennisya
         };
     })
     .controller('ListJugadoresCtrl', function($scope, $state, userService) {
-        console.log('ListJugadoresCtrl');
 
         $scope.jugadores = [];
         userService.listJugador(function(response){

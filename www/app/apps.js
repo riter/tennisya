@@ -11,8 +11,8 @@ appTennisya.run(function($ionicPlatform) {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if(window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                cordova.plugins.Keyboard.disableScroll(true);
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+                cordova.plugins.Keyboard.disableScroll(false);
             }
             if(window.StatusBar) {
                 StatusBar.styleDefault();
@@ -85,6 +85,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
                     }
                 }
             })
+            /* start disponibilidad*/
             .state('tabs.disponibilidad', {
                 url: "/disponibilidad",
                 views: {
@@ -94,11 +95,23 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
                     }
                 }
             })
+            .state('tabs.newdisponibilidad', {
+                url: "/newdisponibilidad",
+                views: {
+                    'setting-tab': {
+                        templateUrl: "templates/ajustes/new_disponibilidad.html",
+                        controller: 'DisponibilidadCtrl'
+                    }
+                }
+            })
+            /* end disponibilidad*/
+
             .state('tabs.profile', {
                 url: "/profile",
                 views: {
                     'setting-tab': {
-                        templateUrl: "templates/ajustes/profile.html"
+                        templateUrl: "templates/ajustes/profile.html",
+                        controller: 'ProfileCtrl'
                     }
                 }
             })
@@ -120,6 +133,6 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
             })
         ;
 
-        $urlRouterProvider.otherwise("/sign-in");
+        $urlRouterProvider.otherwise("/tab/setting");
 
     });

@@ -1,0 +1,82 @@
+<ion-view title="Añadir disponibilidad" hide-back-button="true">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-balanced" ng-click="onCancelar()"> Cancelar </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-balanced" ng-click="onGuardar(disponibilidad)"> Guardar</button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <ion-list >
+
+            <label class="item item-input">
+                <input type="text" placeholder="Titulo referencia" ng-model="disponibilidad.title">
+            </label>
+
+            <div class="item item-divider">Zona</div>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Pais
+                </div>
+                <select  ng-model="disponibilidad.pais">
+                    <option>Uruguay</option>
+                    <option selected>Argentina</option>
+                    <option>Brasil</option>
+                </select>
+            </label>
+
+            <label class="item item-input">
+                <input type="text" placeholder="Ciudad"  ng-model="disponibilidad.ciudad">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Localidad"  ng-model="disponibilidad.localidad">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Club / Cancha"  ng-model="disponibilidad.club">
+            </label>
+
+            <div class="item item-divider">Fechas, dias y horarios</div>
+
+            <label class="item item-input">
+                <span class="input-label">Fecha de Comienzo</span>
+                <input type="date"  ng-model="disponibilidad.fechaI">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Fecha de Fin</span>
+                <input type="date" ng-model="disponibilidad.fechaF">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Hora de Comienzo</span>
+                <input type="time" ng-model="disponibilidad.horaI">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Hora de Fin</span>
+                <input type="time" ng-model="disponibilidad.horaF">
+            </label>
+
+            <a class="item " href="#">
+                Repetir
+                <span class="item-note">
+                  Nunca <i class="icon ion-chevron-right icon-accessory"></i>
+                </span>
+            </a>
+
+            <div class="item item-divider"></div>
+
+            <ion-item class="item item-toggle" >
+               CONFIRMACIÓN AUTOMATICA
+                <label class="toggle toggle-balanced">
+                    <input type="checkbox" ng-checked="true" ng-model="disponibilidad.autoConfirm">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-view>
