@@ -1,0 +1,106 @@
+[class^="ic-"], [class*=" ic-"]{
+	&:after{
+		background-image: url('../img/icons.png');
+		background-repeat: no-repeat;
+		background-size: 320px;
+		content: "";
+		vertical-align: middle;
+	}
+}
+.ic-players{
+	&:after{
+	  display: inline-block;
+	  background-position: 0 0;
+	  height: (38px/2);
+	  width: (50px/2);
+	}
+}
+.ic-newmatch{
+	&:after{
+	  display: inline-block;
+	  background-position: (-59px/2) 0;
+	  height: (41px/2);
+	  width: (52px/2);
+	}
+}
+.ic-matches{
+	&:after{
+	  display: inline-block;
+	  background-position: (-118px/2) 0;
+	  height: (49px/2);
+	  width: (49px/2);
+	}
+}
+.ic-settings{
+	&:after{
+	  display: inline-block;
+	  background-position: (-177px/2) 0;
+	  height: (40px/2);
+	  width: (40px/2);
+	}
+}
+.ic-search{
+	&:after{
+	  display: inline-block;
+	  background-position: (-225px/2) 0;
+	  height: (40px/2);
+	  width: (40px/2);
+	}
+}
+.ic-arrow-right{
+	&:after{
+	  display: inline-block;
+	  background-position: (-274px/2) 0;
+	  height: (34px/2);
+	  width: (20px/2);
+	}
+}
+.ic-double-check{
+	&:after{
+	  display: inline-block;
+	  background-position: (-303px/2) 0;
+	  height: (28px/2);
+	  width: (35px/2);
+	}
+}
+
+.ic-star{
+	&:after{
+	  display: inline-block;
+	  background-position: (-389px/2) 0;
+	  height: (26px/2);
+	  width: (28px/2);
+	}
+}
+.ic-plus{
+	&:after{
+	  display: inline-block;
+	  background-position: (-348px/2) 0;
+	  height: (33px/2);
+	  width: (32px/2);
+	}
+}
+.ic-check{
+	&:after{
+	  display: inline-block;
+	  background-position: (-424px/2) 0;
+	  height: (22px/2);
+	  width: (22px/2);
+	}
+}
+.ic-edit{
+	&:after{
+	  display: inline-block;
+	  background-position: (-457px/2) 0;
+	  height: (32px/2);
+	  width: (37px/2);
+	}
+}
+.ic-arrow-left{
+	&:after{
+	  display: inline-block;
+	  background-position: (-503px/2) 0;
+	  height: (33px/2);
+	  width: (18px/2);
+	}
+}

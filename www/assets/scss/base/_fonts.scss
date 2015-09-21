@@ -1,0 +1,23 @@
+$pathFonts: 'fonts/';
+
+$fonts : (
+    rr: 'roboto-regular',
+    rm: 'roboto-medium',
+    rb: 'roboto-bold',
+    ri: 'roboto-italic',
+    rl: 'roboto-light'
+);
+
+// @each $font in $Univers, $UniversBold, $UniversLight, $UniversLightOblique {
+@each $fontKey, $font  in $fonts {
+  @font-face {
+    font-family: $font;
+    src: url($pathFonts + '/' + $font +'.eot');
+    src: url($pathFonts + '/' + $font +'.eot?#iefix') format('embedded-opentype'),
+         url($pathFonts + '/' + $font +'.woff') format('woff'),
+         url($pathFonts + '/' + $font +'.ttf') format('truetype'),
+         url($pathFonts + '/' + $font +'.svg#' + $font) format('svg');
+    font-weight: normal;
+    font-style: normal;
+	}
+}

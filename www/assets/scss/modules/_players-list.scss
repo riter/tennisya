@@ -1,0 +1,31 @@
+.players-list{
+	.item{
+		border-color: #e0e0e0;
+		h2{
+			color: #020202;
+			font-size: 16px;
+			line-height: 1.1;
+			opacity: .8;
+		}
+		p{
+			color: #000000;
+			font-size: 14px;
+			line-height: 1;
+			opacity: .5;
+		}
+		.item-content{
+			&.activated{
+				.icon{
+					color: #fff;
+				}
+			}
+		}
+	}
+	.item-icon-right{
+		.icon{
+			color: #d0d0d0;
+			font-size: 24px;
+			right: 5px;
+		}
+	}
+}
