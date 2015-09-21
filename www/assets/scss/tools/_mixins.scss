@@ -1,0 +1,25 @@
+@mixin font($fontWeight, $size, $color:#fff){
+	@each $fontKey, $font in $fonts{
+		@if $fontKey == $fontWeight {
+			font-family: $font;
+		}
+	}
+	color: $color;
+	@if $size != false{
+		font-size: $size;
+	}
+}
+@mixin center($type){
+	position: absolute;
+	@if $type == v {
+		top: 50%;
+		transform: translateY(-50%);
+	} @else if $type == h {
+		left: 50%;
+		transform: translateX(-50%);
+	} @else if $type == f {
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

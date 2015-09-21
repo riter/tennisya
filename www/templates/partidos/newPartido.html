@@ -1,5 +1,91 @@
-<ion-view view-title="Crear partido">
-    <ion-content class="padding">
-        En desarrollos(crear partido)
-    </ion-content>
+<ion-view view-title="Nuevo partido" class="new-match">
+	<ion-nav-buttons side="left">
+    <button class="button button-clear btn-cgreen" ng-click="onCancelar()"> Cancelar </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list class="new-match-list">
+		  <ion-item>
+		    <div class="row">
+		    	<div class="col-50">Tipo</div>
+		    	<div class="col-50">Dobles</div>
+		    </div>
+		  </ion-item>
+		  <ion-item>
+		    <div class="row">
+		    	<div class="col-50">Lugar</div>
+		    	<div class="col-50">Lawn Tennis Club</div>
+		    </div>
+		  </ion-item>
+
+		  <ion-item class="item-divider">
+		  </ion-item>
+
+		  <ion-item>
+		    <div class="row">
+		    	<div class="col-50">Fecha</div>
+		    	<div class="col-50">Lunes, 23/Feb/2015</div>
+		    </div>
+		  </ion-item>
+		  <ion-item>
+		    <div class="row">
+		    	<div class="col-50">Empieza</div>
+		    	<div class="col-50">18:00</div>
+		    </div>
+		  </ion-item>
+		  <ion-item>
+		    <div class="row">
+		    	<div class="col-50">Termina</div>
+		    	<div class="col-50">19:00</div>
+		    </div>
+		  </ion-item>
+
+		  <ion-item class="item-divider">
+		  </ion-item>
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">Publicar en</div>
+		    <select class="select-custom">
+		    	<option selected>Seleccionar</option>
+		      <option>Todos</option>
+		      <option>Todos mis grupos</option>
+		      <option>Grupo 1</option>
+		      <option>Grupo 2</option>
+		      <option>Grupo 3</option>
+		    </select>
+		  </label>
+
+		  <ion-item class="gamer">
+		    <div class="row">
+		    	<div class="col-50">Jugador 1</div>
+		    	<div class="col-50">Juan Perez</div>
+		    </div>
+		  </ion-item>
+		  <ion-item class="gamer">
+		    <div class="row">
+		    	<div class="col-50">Jugador 2</div>
+		    	<div class="col-50">Invitar* ></div>
+		    </div>
+		  </ion-item>
+		  <ion-item class="gamer">
+		    <div class="row">
+		    	<div class="col-50">Jugador 3</div>
+		    	<div class="col-50">Invitar* ></div>
+		    </div>
+		  </ion-item>
+		</ion-list>
+		
+		<p class="notice">* De no invitar a un jugador específico el partido será publicado en forma abierta para todos los jugadores</p>
+
+		<label for="o1" class="custom-radio">
+			<input type="radio" id="o1" name="o"> Reservar cancha*
+			<span class="ic-radio"></span>
+		</label>
+		<label for="o2" class="custom-radio">
+			<input type="radio" id="o2" name="o" checked> Cancha ya reservada
+			<span class="ic-radio"></span>
+		</label>
+		<div class="btn-submit">
+			<button class="button button-full">Crear partido</button>
+		</div>
+  </ion-content>
 </ion-view>

@@ -1,0 +1,37 @@
+.tabs-menu{
+	> .tabs{
+		border-color: #8d8e8d;
+		background-color: #eaeaea;
+		height: 46px;
+		.tab-item{
+			padding: 5px 0;
+			opacity: 1;
+			.tab-title{
+				font-size: 9px;
+			}
+			.icon{
+				height: 22px;
+			}
+			[class^="ic-"], [class*=" ic-"]{
+				position: relative;
+				&:after{
+					@include center(f);
+				}
+			}
+			&-active{
+				.ic-players,
+				.ic-newmatch,
+				.ic-matches,
+				.ic-settings
+				{
+					&:after{
+					  background-position-y: (-60px/2);
+					}
+				}
+				.tab-title{
+					color: #289735;
+				}
+			}
+		}
+	}
+}

@@ -119,11 +119,24 @@ appTennisya
         },function(error){
             alert(error.error);
         });
-        setInterval(function(){
+        /*setInterval(function(){
             userService.listJugador(function(response){
                 $scope.jugadores = response;
             },function(error){
                 alert(error.error);
             });
-        },15000);
+        },15000);*/
+    })
+    .controller('GamersCtrl', function($scope) {
+
+        $scope.gamers = [
+            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
+            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
+            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
+            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+            {name: 'Mari Shara', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+            {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+        ]
+        
     });

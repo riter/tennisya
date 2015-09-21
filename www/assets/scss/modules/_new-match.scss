@@ -1,0 +1,87 @@
+.new-match{
+	.notice{
+		color: #686a68;
+		font-size: 11px;
+		line-height: 12px;
+		padding: 6px 30px 6px 20px;
+	}
+	.custom-radio{
+		font-size: 13px;
+		display: block;
+		margin: 0 0 10px;
+		padding: 0px 30px 0px 26px;
+		margin-left: 20px;
+		position: relative;
+		.ic-radio{
+			// content: "";
+			background:transparent url('../img/icons.png') right top no-repeat;
+			background-size: 320px auto;
+			display: block;
+			height: 17px;
+			width: 16px;
+			left: 0;
+			@include center(v);
+		}
+		input[type="radio"]{
+			// margin-right: 10px;
+			display: none;
+			&:checked ~ .ic-radio{
+				background-position: right -18px;
+			}
+		}
+	}
+	.btn-submit{
+		padding: 5px 7px;
+		.button{
+			background: #426c3a;
+			border:0;
+			@include font(rl,25px);
+			margin: 0;
+		}
+	}
+}
+.new-match-list{
+	.item{
+		padding: 6px 12px 6px 19px;
+		font-size: 13px;
+		.row{
+			padding: 0;
+			.col-50{
+				&:nth-child(2){
+					text-align: right;
+				}
+			}
+		}
+	}
+	.item-divider{
+		padding: 0;
+		min-height: 23px;
+	}
+	.gamer{
+		.row{
+			padding: 0;
+			.col-50{
+				&:nth-child(2){
+					opacity: .5;
+				}
+			}
+		}
+	}
+	.input-label{
+		font-size: 13px;
+		padding: 0 10px 0 0;
+	}
+	.select-custom{
+		background:transparent url('../img/select.png') left top no-repeat;
+		background-size: (186px/2);
+		font-size: 11px;
+		text-align: left;
+		direction: ltr;
+		width: (186px/2);
+		height: (38px/2);
+		margin-right: 6px;
+		padding: 0 27px 0 5px;
+		@include center(v);
+		z-index: 10;
+	}
+}
