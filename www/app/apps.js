@@ -1,15 +1,12 @@
 /**
  * Created by Riter on 24/08/15.
  */
-var api = "http://tennisya.apploadapps.com/web/api/";
+var api = 'http://localhost/tennisya/admin/web/app_dev.php/api/';//"http://tennisya.apploadapps.com/web/api/";
 
-var appTennisya = angular.module('tennisyaApp', ['ionic','ngCordova']);
-//angular.module('tennisyaApp', ['ionic','ngCordova','tennisyaApp.controllers','tennisyaApp.services']);
+var appTennisya = angular.module('tennisyaApp', ['ionic']);
 
 appTennisya.run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
             if(window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
                 cordova.plugins.Keyboard.disableScroll(false);
@@ -81,13 +78,14 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
                 url: "/setting",
                 views: {
                     'setting-tab': {
-                        templateUrl: "templates/ajustes/setting.html"
+                        templateUrl: "templates/ajustes/setting.html",
+                        controller: 'AjustesCtrl'
                     }
                 }
             })
             /* start disponibilidad*/
             .state('tabs.disponibilidad', {
-                url: "/disponibilidad",
+                url: "/disponibilidad/:id",
                 views: {
                     'setting-tab': {
                         templateUrl: "templates/ajustes/disponibilidad.html",

@@ -2,15 +2,21 @@
  * Created by Riter on 25/08/15.
  */
 
-//angular.module('tennisyaApp.controllers',[])
-
 appTennisya
-    .controller('DisponibilidadCtrl', function($scope, $state, $ionicHistory, ajustesService) {
+    .controller('AjustesCtrl', function($scope, $localstorage) {
+        $scope.id = $localstorage.getObject('user').id;
+    })
+    .controller('DisponibilidadCtrl', function($scope, $stateParams, $ionicHistory, ajustesService, $localstorage) {
         $scope.data = {
             showDelete: false
         };
 
-        $scope.items= ajustesService.getDisponibilidad('id');
+        $scope.items ={};
+        ajustesService.getDisponibilidad($stateParams.id).then(function(response){
+            $scope.items = response.data;
+        },function(e){
+
+        });
 
         $scope.onDelete = function(item) {
             $scope.items.splice($scope.items.indexOf(item), 1);
@@ -39,11 +45,12 @@ appTennisya
     .controller('SignInCtrl', function($scope, $state, userService) {
 
         $scope.signIn = function(user) {
-            //userService.loginJugador(user,function(response){
-            $state.go('tabs.player');
-            /*},function(error){
-             alert(error.error);
-             });*/
+
+            userService.loginJugador(user,function(){
+                $state.go('tabs.player');
+            },function(error){
+                alert(error.error);
+            });
         };
         $scope.signInFacebook = function() {
             console.log('signInFacebook');

@@ -8,8 +8,8 @@
         <ion-list show-delete="data.showDelete">
 
             <ion-item item="item" class="item-remove-animate item item-toggle" ng-repeat="item in items">
-                Principal Semana {{item}}
-                <p>Lun,Mie - 17 a 18 hs-Carrasco,Montevideo,Urugay</p>
+                {{item.title}}
+                <p>Lun,Mie - 17 a 18 hs-{{item.localidad}},{{item.ciudad}},{{item.pais}}</p>
 
                 <label ng-hide="data.showDelete" class="toggle toggle-balanced">
                     <input type="checkbox" ng-checked="true">

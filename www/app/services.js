@@ -18,15 +18,31 @@
 
 * */
 //angular.module('tennisyaApp.services',[])
-appTennisya.factory('userService', function($http) {
+appTennisya
+    .factory('$localstorage', ['$window', function ($window) {
+        return {
+            set: function (key, value) {
+                $window.localStorage[key] = value;
+            },
+            get: function (key, defaultValue) {
+                return $window.localStorage[key] || defaultValue;
+            },
+            setObject: function (key, value) {
+                $window.localStorage[key] = JSON.stringify(value);
+            },
+            getObject: function (key) {
+                return JSON.parse($window.localStorage[key] || '{}');
+            }
+        };
+    }])
+    .factory('userService', function($http, $localstorage) {
         var user = null;
 
         return {
             loginJugador: function(data,callback,error){
-
-                $http.post(api+'jugadors/login',data).then(function(response){
-                    user = response.data;
-                    return callback(user);
+                $http.post(api+'jugador/login',data).then(function(response){
+                    $localstorage.setObject('user',response.data);
+                    return callback();
                 },function(e){
                     return error(e.data);
                 });
@@ -34,7 +50,7 @@ appTennisya.factory('userService', function($http) {
             },
             saveJugador: function(data,callback,error){
 
-                $http.post(api+'jugadors/save',data).then(function(response){
+                $http.post(api+'jugador/save',data).then(function(response){
                     user = response.data;
                     return callback(user);
                 },function(e){
@@ -57,13 +73,10 @@ appTennisya.factory('userService', function($http) {
         }
     })
     .factory('ajustesService', function($http) {
+
         return {
             getDisponibilidad: function(id){
-                return [0,1,2,3,4,5];
-
-                /*$http.post(api+'ajustes/disponibilidad',{id:id}).then(function(response){
-                    return response.data;
-                });*/
+                return $http.get(api+'disponibilidad/list/'+id);
             }
         };
     });
