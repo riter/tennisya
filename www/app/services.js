@@ -32,6 +32,9 @@ appTennisya
             },
             getObject: function (key) {
                 return JSON.parse($window.localStorage[key] || '{}');
+            },
+            clear: function () {
+                $window.localStorage.clear();
             }
         };
     }])

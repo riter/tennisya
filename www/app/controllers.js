@@ -53,8 +53,13 @@ appTennisya
             $scope.inviteModal.hide();
         }
     })
-    .controller('AjustesCtrl', function($scope, $localstorage) {
+    .controller('AjustesCtrl', function($scope, $state, $localstorage) {
         $scope.id = $localstorage.getObject('user').id;
+
+        $scope.onCerrarSesion=function(){
+            $localstorage.clear();
+            $state.go('signin');
+        }
     })
     .controller('DisponibilidadCtrl', function($scope, $stateParams, $ionicModal, disponibilidadService, extrasService) {
         $scope.data = {
@@ -159,8 +164,9 @@ appTennisya
         };
 
     })
-    .controller('ProfileCtrl', function($scope, $state, $ionicHistory) {
+    .controller('ProfileCtrl', function($scope, $state, $ionicHistory, $localstorage) {
 
+        $scope.profile = $localstorage.getObject('user');
         $scope.onCancelar = function(){
             $ionicHistory.goBack();
         };
