@@ -25,22 +25,22 @@
 
             <ion-item class="item-divider"></ion-item>
 
-            <label class="item">
+            <label class="item new-input-date">
                 Fecha
-                <span class="item-note text-right">{{formatLYMD(partido.fecha)}}</span>
-                <input type="date" ng-model="partido.fecha" class="new-input-date">
+                <input type="date" ng-model="partido.fecha">
+                <span class="item-note">{{formatLYMD(partido.fecha)}}</span>
             </label>
 
-            <label class="item">
+            <label class="item new-input-date">
                 Empieza
-                <span class="item-note text-right">{{formatHHMM(partido.horaI)}}</span>
-                <input type="time" ng-model="partido.horaI" class="new-input-date">
+                <input type="time" ng-model="partido.horaI">
+                <span class="item-note">{{formatHHMM(partido.horaI)}}</span>
             </label>
 
-            <label class="item">
+            <label class="item new-input-date">
                 Termina
-                <span class="item-note text-right">{{formatHHMM(partido.horaF)}}</span>
-                <input type="time" ng-model="partido.horaF" class="new-input-date">
+                <input type="time" ng-model="partido.horaF">
+                <span class="item-note">{{formatHHMM(partido.horaF)}}</span>
             </label>
 
             <ion-item class="item-divider"></ion-item>
