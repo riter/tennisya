@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" afterPath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controllers.js" afterPath="$PROJECT_DIR$/www/app/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" afterPath="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tennisya.iws" />
@@ -30,7 +31,7 @@
       <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="240" column="60" selection-start="8125" selection-end="8125" vertical-scroll-proportion="0.0" vertical-offset="3663" max-vertical-offset="4913">
+            <state line="270" column="15" selection-start="9085" selection-end="9085" vertical-scroll-proportion="0.0" vertical-offset="4366" max-vertical-offset="4913">
               <folding />
             </state>
           </provider>
@@ -39,28 +40,37 @@
       <file leaf-file-name="sign-up.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="16" selection-start="955" selection-end="1145" vertical-scroll-proportion="-11.115385" vertical-offset="34" max-vertical-offset="833">
+            <state line="19" column="31" selection-start="966" selection-end="966" vertical-scroll-proportion="-9.153846" vertical-offset="85" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setting.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/setting.html">
+      <file leaf-file-name="listMatches.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/partidos/listMatches.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="82" selection-start="1104" selection-end="1118" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="595">
+            <state line="17" column="45" selection-start="683" selection-end="696" vertical-scroll-proportion="-3.9230769" vertical-offset="187" max-vertical-offset="1496">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mistyle.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="listPartidos.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/partidos/listPartidos.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="30" selection-start="3804" selection-end="3804" vertical-scroll-proportion="-9.423077" vertical-offset="639" max-vertical-offset="1496">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mistyle.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-              <folding>
-                <marker date="1443122596002" expanded="true" signature="72:243" placeholder="{...}" />
-              </folding>
+            <state line="54" column="13" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.87857145" vertical-offset="426" max-vertical-offset="1054">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,16 +78,7 @@
       <file leaf-file-name="apps.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/apps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="29" selection-start="2760" selection-end="2760" vertical-scroll-proportion="0.0" vertical-offset="1021" max-vertical-offset="2431">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/app/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="41" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.45357144" vertical-offset="664" max-vertical-offset="2431">
+            <state line="13" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2431">
               <folding />
             </state>
           </provider>
@@ -106,22 +107,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/templates/jugadores/invite.html" />
         <option value="$PROJECT_DIR$/www/templates/search/invite.html" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-in.html" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/templates/tabs.html" />
-        <option value="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/share.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/newPartido.html" />
-        <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
-        <option value="$PROJECT_DIR$/www/app/apps.js" />
-        <option value="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
-        <option value="$PROJECT_DIR$/www/app/controllers.js" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
+        <option value="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
+        <option value="$PROJECT_DIR$/www/templates/partidos/listMatches.html" />
+        <option value="$PROJECT_DIR$/www/app/apps.js" />
+        <option value="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
+        <option value="$PROJECT_DIR$/www/app/controllers.js" />
+        <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
       </list>
     </option>
   </component>
@@ -377,20 +378,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tennisya" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tennisya" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="AndroidView" />
@@ -445,7 +432,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -485,13 +472,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/platforms/android/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="526">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/res/xml/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="19" selection-start="924" selection-end="924" vertical-scroll-proportion="0.36501902" vertical-offset="114" max-vertical-offset="1224">
@@ -520,16 +500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/partidos/listPartidos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="23" selection-start="1920" selection-end="1920" vertical-scroll-proportion="-2.2307692" vertical-offset="656" max-vertical-offset="1190">
-          <folding>
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#ion-item#1;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#ion-item#3;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/share.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="52" selection-start="284" selection-end="284" vertical-scroll-proportion="0.2651072" vertical-offset="0" max-vertical-offset="612">
@@ -551,55 +521,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+        <state line="37" column="20" selection-start="1809" selection-end="1809" vertical-scroll-proportion="1.1142322" vertical-offset="34" max-vertical-offset="884">
           <folding>
-            <marker date="1443122596002" expanded="true" signature="72:243" placeholder="{...}" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="35" selection-start="1589" selection-end="1589" vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="2431">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/setting.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="82" selection-start="1104" selection-end="1118" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="595">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="20" selection-start="1809" selection-end="1809" vertical-scroll-proportion="1.1142322" vertical-offset="34" max-vertical-offset="884">
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/apps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="29" selection-start="2760" selection-end="2760" vertical-scroll-proportion="0.0" vertical-offset="1021" max-vertical-offset="2431">
+        <state line="7" column="59" selection-start="347" selection-end="347" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="595">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="16" selection-start="955" selection-end="1145" vertical-scroll-proportion="-11.115385" vertical-offset="34" max-vertical-offset="833">
+        <state line="19" column="31" selection-start="966" selection-end="966" vertical-scroll-proportion="-9.153846" vertical-offset="85" max-vertical-offset="833">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/partidos/listMatches.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="45" selection-start="683" selection-end="696" vertical-scroll-proportion="-3.9230769" vertical-offset="187" max-vertical-offset="1496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/apps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2431">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/partidos/listPartidos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="30" selection-start="3804" selection-end="3804" vertical-scroll-proportion="-9.423077" vertical-offset="639" max-vertical-offset="1496">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="240" column="60" selection-start="8125" selection-end="8125" vertical-scroll-proportion="0.0" vertical-offset="3663" max-vertical-offset="4913">
+        <state line="270" column="15" selection-start="9085" selection-end="9085" vertical-scroll-proportion="0.0" vertical-offset="4366" max-vertical-offset="4913">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/services.js">
+    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="41" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.45357144" vertical-offset="664" max-vertical-offset="2431">
+        <state line="54" column="13" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.87857145" vertical-offset="426" max-vertical-offset="1054">
           <folding />
         </state>
       </provider>

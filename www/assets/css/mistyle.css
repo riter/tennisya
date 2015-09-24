@@ -48,9 +48,10 @@
     background-position: 0 center !important;
 }
 
-.divider-partidos{
-    padding: 5px;
-    font-size: 14px;
-    padding-left: 10px;
-    font-weight: bold;
+.match_detail {
+    padding-right: 6px;
+}
+.match-players_link{
+    width: 37px;
+    height: 37px;
 }
