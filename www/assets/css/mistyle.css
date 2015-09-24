@@ -1,7 +1,5 @@
 .new-input-date{
-    visibility: hidden;
-    position: absolute;
-    right: -1000px;
+   color: transparent !important;
 }
 
 .fondo-info {

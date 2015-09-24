@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\app\app.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/android.json" afterPath="$PROJECT_DIR$/plugins/android.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/apps.js" afterPath="$PROJECT_DIR$/www/app/apps.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controllers.js" afterPath="$PROJECT_DIR$/www/app/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/fetch.json" afterPath="$PROJECT_DIR$/plugins/fetch.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/info.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" afterPath="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/newPartido.html" afterPath="$PROJECT_DIR$/www/templates/partidos/newPartido.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/players.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/players.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/profile.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/setting.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/setting.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/share.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/share.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/inicio/sign-in.html" afterPath="$PROJECT_DIR$/www/templates/inicio/sign-in.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" afterPath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/tabs.html" afterPath="$PROJECT_DIR$/www/templates/tabs.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tennisya.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,33 +37,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apps.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/app/apps.js">
+      <file leaf-file-name="new_disponibilidad.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="51" selection-start="129" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
+            <state line="49" column="20" selection-start="2070" selection-end="2070" vertical-scroll-proportion="-1.7307693" vertical-offset="788" max-vertical-offset="1598">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="43" selection-start="2539" selection-end="2539" vertical-scroll-proportion="1.7285714" vertical-offset="460" max-vertical-offset="2363">
+            <state line="86" column="43" selection-start="2539" selection-end="2539" vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="2363">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listPartidos.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/partidos/listPartidos.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="23" selection-start="1920" selection-end="1920" vertical-scroll-proportion="-2.2307692" vertical-offset="656" max-vertical-offset="1190">
-              <folding>
-                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#ion-item#1;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#ion-item#3;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-view#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -90,7 +58,16 @@
       <file leaf-file-name="mistyle.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="23" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+            <state line="0" column="16" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apps.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/app/apps.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.09107143" vertical-offset="17" max-vertical-offset="2431">
               <folding />
             </state>
           </provider>
@@ -131,18 +108,18 @@
         <option value="$PROJECT_DIR$/www/templates/jugadores/invite.html" />
         <option value="$PROJECT_DIR$/www/templates/search/invite.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
-        <option value="$PROJECT_DIR$/www/templates/ajustes/share.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/newPartido.html" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-in.html" />
         <option value="$PROJECT_DIR$/config.xml" />
-        <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/app/controllers.js" />
         <option value="$PROJECT_DIR$/www/templates/tabs.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
+        <option value="$PROJECT_DIR$/www/templates/ajustes/share.html" />
         <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
+        <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
         <option value="$PROJECT_DIR$/www/app/apps.js" />
       </list>
     </option>
@@ -507,13 +484,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/platforms/android/assets/www/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="12" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.3320965" vertical-offset="1198" max-vertical-offset="2380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/newPartido.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="88" column="59" selection-start="3587" selection-end="3596" vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="1734">
@@ -570,13 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="17" selection-start="391" selection-end="404" vertical-scroll-proportion="0.31835207" vertical-offset="0" max-vertical-offset="884">
@@ -602,23 +565,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="43" selection-start="2539" selection-end="2539" vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="2363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/share.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="52" selection-start="284" selection-end="284" vertical-scroll-proportion="0.2651072" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="20" selection-start="2070" selection-end="2070" vertical-scroll-proportion="-1.7307693" vertical-offset="788" max-vertical-offset="1598">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="23" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+        <state line="0" column="16" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/apps.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="51" selection-start="129" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="43" selection-start="2539" selection-end="2539" vertical-scroll-proportion="1.7285714" vertical-offset="460" max-vertical-offset="2363">
+        <state line="4" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.09107143" vertical-offset="17" max-vertical-offset="2431">
           <folding />
         </state>
       </provider>
