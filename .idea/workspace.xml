@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controllers.js" afterPath="$PROJECT_DIR$/www/app/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" afterPath="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/apps.js" afterPath="$PROJECT_DIR$/www/app/apps.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tennisya.iws" />
@@ -40,7 +38,7 @@
       <file leaf-file-name="sign-up.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="31" selection-start="966" selection-end="966" vertical-scroll-proportion="-9.153846" vertical-offset="85" max-vertical-offset="833">
+            <state line="19" column="31" selection-start="966" selection-end="966" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -49,7 +47,7 @@
       <file leaf-file-name="listMatches.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/partidos/listMatches.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="45" selection-start="683" selection-end="696" vertical-scroll-proportion="-3.9230769" vertical-offset="187" max-vertical-offset="1496">
+            <state line="17" column="45" selection-start="683" selection-end="696" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1496">
               <folding />
             </state>
           </provider>
@@ -58,27 +56,25 @@
       <file leaf-file-name="listPartidos.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/partidos/listPartidos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="30" selection-start="3804" selection-end="3804" vertical-scroll-proportion="-9.423077" vertical-offset="639" max-vertical-offset="1496">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mistyle.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="13" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.87857145" vertical-offset="426" max-vertical-offset="1054">
+            <state line="52" column="30" selection-start="3804" selection-end="3804" vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="1496">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apps.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="mistyle.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="12" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="426" max-vertical-offset="1054">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apps.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/apps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2431">
+            <state line="3" column="2" selection-start="43" selection-end="43" vertical-scroll-proportion="0.090747334" vertical-offset="0" max-vertical-offset="2431">
               <folding />
             </state>
           </provider>
@@ -119,10 +115,10 @@
         <option value="$PROJECT_DIR$/www/app/services.js" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/listMatches.html" />
-        <option value="$PROJECT_DIR$/www/app/apps.js" />
         <option value="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
         <option value="$PROJECT_DIR$/www/app/controllers.js" />
         <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
+        <option value="$PROJECT_DIR$/www/app/apps.js" />
       </list>
     </option>
   </component>
@@ -387,7 +383,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../app_html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
@@ -440,7 +436,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32348484" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287879" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -474,9 +470,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/platforms/android/res/xml/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="19" selection-start="924" selection-end="924" vertical-scroll-proportion="0.36501902" vertical-offset="114" max-vertical-offset="1224">
-          <folding />
-        </state>
+        <state line="18" column="19" selection-start="924" selection-end="924" vertical-scroll-proportion="0.36501902" vertical-offset="114" max-vertical-offset="1224" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
@@ -488,89 +482,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="165" selection-end="165" vertical-scroll-proportion="0.09746589" vertical-offset="35" max-vertical-offset="731">
-          <folding />
-        </state>
+        <state line="5" column="0" selection-start="165" selection-end="165" vertical-scroll-proportion="0.09746589" vertical-offset="35" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="28" selection-start="380" selection-end="388" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
+        <state line="10" column="28" selection-start="380" selection-end="388" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="408" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/share.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="52" selection-start="284" selection-end="284" vertical-scroll-proportion="0.2651072" vertical-offset="0" max-vertical-offset="612">
-          <folding />
-        </state>
+        <state line="8" column="52" selection-start="284" selection-end="284" vertical-scroll-proportion="0.2651072" vertical-offset="0" max-vertical-offset="612" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/newPartido.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="20" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.15163147" vertical-offset="550" max-vertical-offset="1734">
-          <folding />
-        </state>
+        <state line="37" column="20" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.15163147" vertical-offset="550" max-vertical-offset="1734" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="68" selection-start="2267" selection-end="2267" vertical-scroll-proportion="-3.0384614" vertical-offset="839" max-vertical-offset="1598">
-          <folding />
-        </state>
+        <state line="54" column="68" selection-start="2267" selection-end="2267" vertical-scroll-proportion="-3.0384614" vertical-offset="839" max-vertical-offset="1598" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="20" selection-start="1809" selection-end="1809" vertical-scroll-proportion="1.1142322" vertical-offset="34" max-vertical-offset="884">
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
+        <state line="37" column="20" selection-start="1809" selection-end="1809" vertical-scroll-proportion="1.1142322" vertical-offset="34" max-vertical-offset="884" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="35" selection-start="1589" selection-end="1589" vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="2431">
-          <folding />
-        </state>
+        <state line="56" column="35" selection-start="1589" selection-end="1589" vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="2431" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/setting.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="59" selection-start="347" selection-end="347" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="595">
-          <folding />
-        </state>
+        <state line="7" column="59" selection-start="347" selection-end="347" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="595" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="31" selection-start="966" selection-end="966" vertical-scroll-proportion="-9.153846" vertical-offset="85" max-vertical-offset="833">
+        <state line="19" column="31" selection-start="966" selection-end="966" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/listMatches.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="45" selection-start="683" selection-end="696" vertical-scroll-proportion="-3.9230769" vertical-offset="187" max-vertical-offset="1496">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/apps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2431">
+        <state line="17" column="45" selection-start="683" selection-end="696" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1496">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/listPartidos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="30" selection-start="3804" selection-end="3804" vertical-scroll-proportion="-9.423077" vertical-offset="639" max-vertical-offset="1496">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="52" column="30" selection-start="3804" selection-end="3804" vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="1496">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -583,7 +550,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="13" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.87857145" vertical-offset="426" max-vertical-offset="1054">
+        <state line="43" column="12" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="426" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/apps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="2" selection-start="43" selection-end="43" vertical-scroll-proportion="0.090747334" vertical-offset="0" max-vertical-offset="2431">
           <folding />
         </state>
       </provider>
