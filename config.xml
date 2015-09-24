@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.appmobile958855" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.appmobile958855" version="0.0.1"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:gap="http://phonegap.com/ns/1.0">
   <name>TennisYA</name>
   <description>&#xD;
         Aplicacion mobile para clientes del club de tennis TennisYA&#xD;
     </description>
-  <author email="riter.cordova@gmail.com" href="http://ionicframework.com/">&#xD;
+  <author email="riter.cordova@gmail.com" href="https://bo.linkedin.com/pub/riter-cordova/96/a76/92">&#xD;
       Riter Angel Mamani Cordova&#xD;
     </author>
   <content src="index.html"/>
@@ -16,6 +19,16 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+
+    <!--plugins-->
+    <gap:plugin name="org.apache.cordova.device"/>
+    <gap:plugin name="org.apache.cordova.splashscreen"/>
+    <gap:plugin name="nl.x-services.plugins.socialsharing"/>
+    <gap:plugin name="org.apache.cordova.camera"/>
+    <gap:plugin name="org.apache.cordova.file"/>
+    <gap:plugin name="org.apache.cordova.file-transfer"/>
+    <gap:plugin name="org.apache.cordova.dialogs"/>
+
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
@@ -67,5 +80,4 @@
     <splash src="resources/ios/splash/Default@2x~iphone.png" height="960" width="640"/>
     <splash src="resources/ios/splash/Default~iphone.png" height="480" width="320"/>
   </platform>
-  
 </widget>

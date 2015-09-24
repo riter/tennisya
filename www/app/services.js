@@ -18,15 +18,34 @@
 
 * */
 //angular.module('tennisyaApp.services',[])
-appTennisya.factory('userService', function($http) {
+appTennisya
+    .factory('$localstorage', ['$window', function ($window) {
+        return {
+            set: function (key, value) {
+                $window.localStorage[key] = value;
+            },
+            get: function (key, defaultValue) {
+                return $window.localStorage[key] || defaultValue;
+            },
+            setObject: function (key, value) {
+                $window.localStorage[key] = JSON.stringify(value);
+            },
+            getObject: function (key) {
+                return JSON.parse($window.localStorage[key] || '{}');
+            },
+            clear: function () {
+                $window.localStorage.clear();
+            }
+        };
+    }])
+    .factory('userService', function($http, $localstorage) {
         var user = null;
 
         return {
             loginJugador: function(data,callback,error){
-
-                $http.post(api+'jugadors/login',data).then(function(response){
-                    user = response.data;
-                    return callback(user);
+                $http.post(api+'jugador/login',data).then(function(response){
+                    $localstorage.setObject('user',response.data);
+                    return callback();
                 },function(e){
                     return error(e.data);
                 });
@@ -34,8 +53,9 @@ appTennisya.factory('userService', function($http) {
             },
             saveJugador: function(data,callback,error){
 
-                $http.post(api+'jugadors/save',data).then(function(response){
+                $http.post(api+'jugador/save',data).then(function(response){
                     user = response.data;
+                    $localstorage.setObject('user',user);//por confirma si manda a jugadores
                     return callback(user);
                 },function(e){
                     return error(e.data);
@@ -56,14 +76,65 @@ appTennisya.factory('userService', function($http) {
             }
         }
     })
-    .factory('ajustesService', function($http) {
+    .factory('partidoService', function($http) {
+
+        return {
+            getPartidosT: function(){
+                return $http.get(api+'partidos/list_abiertos');
+            },
+            getPartidosP: function(id){
+                return $http.get(api+'partidos/list_creados/'+id);
+            },
+            newPartido: function(model){
+                var newModel = {
+                    club : model.club.id,
+                    tipo : model.tipo.name,
+                    fechaI : moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaI).format('H:mm:ss'),
+                    fechaF : moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaF).format('H:mm:ss'),
+                    reservada:model.reservada,
+                    jugadores:[]
+                };
+                if(model.jugador1)newModel.jugadores.push(model.jugador1.id);
+                if(model.jugador2)newModel.jugadores.push(model.jugador2.id);
+                if(model.jugador3)newModel.jugadores.push(model.jugador3.id);
+                if(model.jugador4)newModel.jugadores.push(model.jugador4.id);
+
+                return $http.post(api+'partidos/new',newModel);
+            }
+        };
+    })
+    .factory('disponibilidadService', function($http) {
+
         return {
             getDisponibilidad: function(id){
-                return [0,1,2,3,4,5];
-
-                /*$http.post(api+'ajustes/disponibilidad',{id:id}).then(function(response){
-                    return response.data;
-                });*/
+                return $http.get(api+'disponibilidad/list/'+id);
+            },
+            newDisponibilidad: function(id, model){
+                return $http.post(api+'disponibilidad/new/'+id,model);
+            },
+            deleteDisponibilidad: function(id){
+                return $http.get(api+'disponibilidad/delete/'+id);
+            }
+        };
+    })
+    .factory('extrasService', function($http) {
+        return {
+            getClub: function(){
+                return $http.get(api+'club/list',{cache:true});
             }
         };
     });
+
+appTennisya.directive('divContent', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var twoElements = element[0].children;
+            element[0].style.position = 'relative';
+            element[0].style.height = '100%';
+            var hT = twoElements[0].clientHeight - 2;
+            twoElements[1].style.height = 'calc(100% - '+hT+'px)' ;
+
+        }
+    };
+});
