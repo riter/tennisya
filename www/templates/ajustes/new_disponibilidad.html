@@ -43,25 +43,25 @@
 
             <div class="item item-divider">Fechas, dias y horarios</div>
 
-            <label class="item item-input">
+            <label class="item new-input-date">
                 Fecha de Comienzo
-                <input type="date" ng-model="disponibilidad.fechaI" class="new-input-date">
+                <input type="date" ng-model="disponibilidad.fechaI">
                 <span class="item-note">{{formatYMD(disponibilidad.fechaI)}}</span>
             </label>
 
-            <label class="item item-input">
+            <label class="item new-input-date">
                 Fecha de Fin
-                <input type="date" ng-model="disponibilidad.fechaF" class="new-input-date">
+                <input type="date" ng-model="disponibilidad.fechaF">
                 <span class="item-note">{{formatYMD(disponibilidad.fechaF)}}</span>
             </label>
-            <label class="item item-input">
+            <label class="item new-input-date">
                 Hora de Comienzo
-                <input type="time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" ng-model="disponibilidad.horaI" class="new-input-date">
+                <input type="time" ng-model="disponibilidad.horaI" >
                 <span class="item-note">{{formatHHMM(disponibilidad.horaI)}}</span>
             </label>
-            <label class="item item-input">
+            <label class="item new-input-date">
                 Hora de Fin
-                <input type="time" ng-model="disponibilidad.horaF" class="new-input-date">
+                <input type="time" ng-model="disponibilidad.horaF">
                 <span class="item-note">{{formatHHMM(disponibilidad.horaF)}}</span>
             </label>
 
