@@ -55,6 +55,7 @@ appTennisya
 
                 $http.post(api+'jugador/save',data).then(function(response){
                     user = response.data;
+                    $localstorage.setObject('user',user);//por confirma si manda a jugadores
                     return callback(user);
                 },function(e){
                     return error(e.data);
