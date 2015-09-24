@@ -254,20 +254,22 @@ appTennisya
             //alert(error.error);
         });
 
-//        setInterval(function(){
-//            userService.listJugador(function(response){
-//                $scope.jugadores = response;
-//            },function(error){
-//                //alert(error.error);
-//            });
-//        },15000);
+        setInterval(function(){
+            userService.listJugador(function(response){
+                $scope.jugadores = response;
+            },function(error){
+                //alert(error.error);
+            });
+        },15000);
     })
     .controller('ListPartidosCtrl', function($scope, partidoService) {
 
-        partidoService.getPartidosT().then(function(response){
-            $scope.doubles = response.data.doubles;
-            $scope.singles = response.data.singles;
-        });
+        var load = function(){
+            partidoService.getPartidosT().then(function(response){
+                $scope.doubles = response.data.doubles;
+                $scope.singles = response.data.singles;
+            });
+        };
 
         $scope.formatPartidos = function(date){
             return moment(date).format('dddd DD/MM, HH')+' hs';
@@ -275,12 +277,8 @@ appTennisya
         $scope.formatFromNow = function(date){
             return moment(date).fromNow();
         };
-//        setInterval(function(){
-//            userService.listJugador(function(response){
-//                $scope.jugadores = response;
-//            },function(error){
-//                //alert(error.error);
-//            });
-//        },15000);
+
+        load();
+        setInterval(load,15000);
     })
     ;
