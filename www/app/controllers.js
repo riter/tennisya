@@ -3,35 +3,163 @@
  */
 
 appTennisya
+    .controller('TabsCtrl', function($scope, $ionicModal, $localstorage, partidoService, userService, extrasService) {
+        $scope.openPatido = function() {
+            $scope.partido = {reservada:true, jugador1:$localstorage.getObject('user')};
+            $scope.modal.show();
+        };
+
+        extrasService.getClub().then(function(response){
+            $scope.clubs = response.data;
+        });
+
+        $ionicModal.fromTemplateUrl('templates/partidos/newPartido.html', {
+            animation: 'slide-in-up',
+            scope: $scope
+        }).then(function (modal) {
+                $scope.modal = modal;
+            });
+
+        $scope.formatLYMD = function(date){
+            return moment(date).format('YYYY/MM/DD');
+        };
+        $scope.formatHHMM = function(time){
+            return moment(time).format('h:mm a');
+        };
+
+        $scope.onCreate = function(model){
+            partidoService.newPartido(model).then(function(response){
+                $scope.modal.hide();
+            });
+        };
+
+        $scope.onInvitar = function(invitar){
+            userService.listJugador(function(response){
+                $scope.invitados = response;
+            });
+
+            $scope.tmp = invitar;
+            $ionicModal.fromTemplateUrl('templates/search/invite.html', {
+                animation: 'slide-in-up',
+                scope: $scope
+            }).then(function (modal) {
+                    $scope.inviteModal = modal;
+                    $scope.inviteModal.show();
+                });
+        }
+
+        $scope.onJugador = function(jugador){
+            $scope.partido[$scope.tmp] = jugador;
+            $scope.inviteModal.hide();
+        }
+    })
     .controller('AjustesCtrl', function($scope, $localstorage) {
         $scope.id = $localstorage.getObject('user').id;
     })
-    .controller('DisponibilidadCtrl', function($scope, $stateParams, $ionicHistory, ajustesService, $localstorage) {
+    .controller('DisponibilidadCtrl', function($scope, $stateParams, $ionicModal, disponibilidadService, extrasService) {
         $scope.data = {
             showDelete: false
         };
 
         $scope.items ={};
-        ajustesService.getDisponibilidad($stateParams.id).then(function(response){
+        disponibilidadService.getDisponibilidad($stateParams.id).then(function(response){
             $scope.items = response.data;
-        },function(e){
+        });
 
+        extrasService.getClub().then(function(response){
+            $scope.clubs = response.data;
         });
 
         $scope.onDelete = function(item) {
-            $scope.items.splice($scope.items.indexOf(item), 1);
+            disponibilidadService.deleteDisponibilidad(item.id).then(function(response){
+                $scope.items.splice($scope.items.indexOf(item), 1);
+            });
         };
 
-        $scope.onCancelar = function(){
-            $ionicHistory.goBack();
+        /* new Disponibilidad*/
+        $ionicModal.fromTemplateUrl('templates/ajustes/new_disponibilidad.html', {
+            animation: 'slide-in-up',
+            scope: $scope
+        }).then(function (modal) {
+                $scope.modal = modal;
+            });
+
+        $scope.formatYMD = function(date){
+            return moment(date).format('YYYY/MM/DD');
+        };
+        $scope.formatHHMM = function(date){
+            return moment(date).format('h:mm a');
         };
 
-        $scope.onGuardar = function(model){
-            //servicio de guardar
-            $ionicHistory.goBack();
+        $scope.onGuardar = function(){
+            disponibilidadService.newDisponibilidad($stateParams.id, $scope.disponibilidad).then(function(response){
+                $scope.items.push(response.data);
+                $scope.closeModal();
+            });
         };
+
+        $scope.openModal = function() {
+            $scope.disponibilidad = {autoConfirm:true};
+            $scope.modal.show();
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+
+
     })
-    .controller('ProfileCtrl', function($scope, $state, $ionicHistory, ajustesService) {
+    .controller('ShareCtrl', function($scope, $cordovaSocialSharing) {
+        var message = '';
+        var image = '';
+        var link = '';
+
+        var subject='';
+        var toArr='';
+
+        $scope.onShare = function(red){
+            switch (red){
+                case 'message':
+                    $cordovaSocialSharing
+                        .shareViaSMS(message, number)
+                        .then(function(result) {
+                            // Success!
+                        }, function(err) {
+                            // An error occurred. Show a message to the user
+                        });
+                    break;
+                case 'mail':
+                    $cordovaSocialSharing
+                        .shareViaEmail(message, subject, toArr, null, null, null)
+                        .then(function(result) {
+                            // Success!
+                        }, function(err) {
+                            // An error occurred. Show a message to the user
+                        });
+                    break;
+                case 'twitter':
+                    $cordovaSocialSharing
+                        .shareViaTwitter(message, image, link)
+                        .then(function(result) {
+                            // Success!
+                        }, function(err) {
+                            // An error occurred. Show a message to the user
+                        });
+                    break;
+                case 'facebook':
+                    $cordovaSocialSharing
+                        .shareViaFacebook(message, image, link)
+                        .then(function(result) {
+                            // Success!
+                        }, function(err) {
+                            // An error occurred. Show a message to the user
+                        });
+                    break;
+            }
+            console.log(red);
+        };
+
+    })
+    .controller('ProfileCtrl', function($scope, $state, $ionicHistory) {
 
         $scope.onCancelar = function(){
             $ionicHistory.goBack();
@@ -61,9 +189,9 @@ appTennisya
         $scope.signInGoogle = function(user) {
             console.log('signInGoogle');
         };
-        $scope.register = function(user) {
+        /*$scope.register = function(user) {
             $state.go('signup');
-        };
+        };*/
 
     })
     .controller('SignUpCtrl', function($scope, $state, userService) {
@@ -117,26 +245,36 @@ appTennisya
         userService.listJugador(function(response){
             $scope.jugadores = response;
         },function(error){
-            alert(error.error);
+            //alert(error.error);
         });
-        /*setInterval(function(){
-            userService.listJugador(function(response){
-                $scope.jugadores = response;
-            },function(error){
-                alert(error.error);
-            });
-        },15000);*/
-    })
-    .controller('GamersCtrl', function($scope) {
 
-        $scope.gamers = [
-            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
-            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
-            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
-            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Mari Shara', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-        ]
-        
-    });
+//        setInterval(function(){
+//            userService.listJugador(function(response){
+//                $scope.jugadores = response;
+//            },function(error){
+//                //alert(error.error);
+//            });
+//        },15000);
+    })
+    .controller('ListPartidosCtrl', function($scope, partidoService) {
+
+        partidoService.getPartidosT().then(function(response){
+            $scope.doubles = response.data.doubles;
+            $scope.singles = response.data.singles;
+        });
+
+        $scope.formatPartidos = function(date){
+            return moment(date).format('dddd DD/MM, HH')+' hs';
+        };
+        $scope.formatFromNow = function(date){
+            return moment(date).fromNow();
+        };
+//        setInterval(function(){
+//            userService.listJugador(function(response){
+//                $scope.jugadores = response;
+//            },function(error){
+//                //alert(error.error);
+//            });
+//        },15000);
+    })
+    ;

@@ -1,9 +1,10 @@
 /**
  * Created by Riter on 24/08/15.
  */
-var api = 'http://localhost/tennisya/admin/web/app_dev.php/api/';//"http://tennisya.apploadapps.com/web/api/";
+//var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+var api = 'http://tennisya.apploadapps.com/web/api/';
 
-var appTennisya = angular.module('tennisyaApp', ['ionic']);
+var appTennisya = angular.module('tennisyaApp', ['ionic','ngCordova']);
 
 appTennisya.run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
@@ -14,10 +15,11 @@ appTennisya.run(function($ionicPlatform) {
             if(window.StatusBar) {
                 StatusBar.styleDefault();
             }
+
         });
     });
 
-appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.platform.ios.tabs.style('standard');
     $ionicConfigProvider.platform.ios.tabs.position('bottom');
     $ionicConfigProvider.platform.android.tabs.style('standard');
@@ -46,7 +48,8 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
             .state('tabs', {
                 url: "/tab",
                 abstract: true,
-                templateUrl: "templates/tabs.html"
+                templateUrl: "templates/tabs.html",
+                controller: 'TabsCtrl'
             })
             .state('tabs.player', {
                 url: "/players",
@@ -57,19 +60,12 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
                     }
                 }
             })
-            .state('tabs.newPartido', {
-                url: "/new_partido",
-                views: {
-                    'newPartido-tab': {
-                        templateUrl: "templates/partidos/newPartido.html"
-                    }
-                }
-            })
             .state('tabs.partidos', {
                 url: "/partidos",
                 views: {
                     'partidos-tab': {
-                        templateUrl: "templates/partidos/listPartidos.html"
+                        templateUrl: "templates/partidos/listPartidos.html",
+                        controller: 'ListPartidosCtrl'
                     }
                 }
             })
@@ -117,7 +113,8 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
                 url: "/share",
                 views: {
                     'setting-tab': {
-                        templateUrl: "templates/ajustes/share.html"
+                        templateUrl: "templates/ajustes/share.html",
+                        controller: 'ShareCtrl'
                     }
                 }
             })
@@ -131,6 +128,10 @@ appTennisya.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvi
             })
         ;
 
-        $urlRouterProvider.otherwise("/sign-in");
+        if(window.localStorage['user']){
+            $urlRouterProvider.otherwise("tab/players");
+        }else{
+            $urlRouterProvider.otherwise("/sign-in");
+        }
 
     });

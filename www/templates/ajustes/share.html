@@ -1,5 +1,31 @@
-<ion-view title="Disponibilidad">
-    <ion-content>
-       Pantalla de Contarle a un amigo en desarrollo
+<ion-view title="Información" >
+    <ion-content scroll="false">
+
+        <div class="list" div-content>
+            <div class="item item-text-wrap">
+
+                <div class="row">
+                    <div class="col">
+                        <p> Contarle a un amigo via</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="button button-clear share share-message" ng-click="onShare('message')"> </button>
+                        <button class="button button-clear share share-mail" ng-click="onShare('mail')"> </button>
+                        <button class="button button-clear share share-twitter" ng-click="onShare('twitter')"> </button>
+                        <button class="button button-clear share share-facebook" ng-click="onShare('facebook')"> </button>
+                    </div>
+
+                </div>
+
+                <!--<button class="button button-clear share-facebook" ng-click="onShareFacebook()"></button>-->
+                <br/><br/><br/>
+            </div>
+            <div class="item item-image fondo-info" >
+
+            </div>
+        </div>
+
     </ion-content>
 </ion-view>

@@ -72,11 +72,65 @@ appTennisya
             }
         }
     })
-    .factory('ajustesService', function($http) {
+    .factory('partidoService', function($http) {
+
+        return {
+            getPartidosT: function(){
+                return $http.get(api+'partidos/list_abiertos');
+            },
+            getPartidosP: function(id){
+                return $http.get(api+'partidos/list_creados/'+id);
+            },
+            newPartido: function(model){
+                var newModel = {
+                    club : model.club.id,
+                    tipo : model.tipo.name,
+                    fechaI : moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaI).format('H:mm:ss'),
+                    fechaF : moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaF).format('H:mm:ss'),
+                    reservada:model.reservada,
+                    jugadores:[]
+                };
+                if(model.jugador1)newModel.jugadores.push(model.jugador1.id);
+                if(model.jugador2)newModel.jugadores.push(model.jugador2.id);
+                if(model.jugador3)newModel.jugadores.push(model.jugador3.id);
+                if(model.jugador4)newModel.jugadores.push(model.jugador4.id);
+
+                return $http.post(api+'partidos/new',newModel);
+            }
+        };
+    })
+    .factory('disponibilidadService', function($http) {
 
         return {
             getDisponibilidad: function(id){
                 return $http.get(api+'disponibilidad/list/'+id);
+            },
+            newDisponibilidad: function(id, model){
+                return $http.post(api+'disponibilidad/new/'+id,model);
+            },
+            deleteDisponibilidad: function(id){
+                return $http.get(api+'disponibilidad/delete/'+id);
+            }
+        };
+    })
+    .factory('extrasService', function($http) {
+        return {
+            getClub: function(){
+                return $http.get(api+'club/list',{cache:true});
             }
         };
     });
+
+appTennisya.directive('divContent', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var twoElements = element[0].children;
+            element[0].style.position = 'relative';
+            element[0].style.height = '100%';
+            var hT = twoElements[0].clientHeight - 2;
+            twoElements[1].style.height = 'calc(100% - '+hT+'px)' ;
+
+        }
+    };
+});

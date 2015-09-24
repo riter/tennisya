@@ -1,31 +1,65 @@
-<ion-tabs class="tabs-striped tabs-top tabs-background-light">
+<ion-view title="Partidos" hide-back-button="true">
 
-    <ion-tab title="Todos" ui-sref="tabs.todos">
-        <ion-nav-view name="todos-tab"></ion-nav-view>
-        <ion-content>
-            lista de Todos
-        </ion-content>
-    </ion-tab>
+    <ion-tabs class="tabs-striped tabs-top tabs-background-light">
 
-    <ion-tab title="Personales">
-        <ion-nav-view name="personal-tab"></ion-nav-view>
-        <ion-content>
-            lista de Personales
-        </ion-content>
-    </ion-tab>
+        <ion-tab title="Todos">
+            <ion-view>
+                <ion-content>
+                    <ion-list class="players-list">
+                        <ion-item class="divider-partidos">
+                            Partidos dobles
+                        </ion-item>
+                        <ion-item ng-repeat="double in doubles" class="no-padding">
+                            <div class="row">
+                                <div class="col">
+                                    <p>{{formatPartidos(double.fechai)}}</p>
+                                    <p>{{double.clubCancha.nombre}}</p>
+                                    <p style="color: #33cd5f;font-size: 10px;">{{formatFromNow(double.createdAt)}}</p>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </ion-item>
 
-    <ion-tab title="Confirmados">
-        <ion-nav-view name="confirmados-tab"></ion-nav-view>
-        <ion-content>
-            lista de Confirmados
-        </ion-content>
-    </ion-tab>
+                        <ion-item class="divider-partidos">
+                            Partidos singles
+                        </ion-item>
 
-    <ion-tab title="Jugados">
-        <ion-nav-view name="jugados-tab"></ion-nav-view>
-        <ion-content>
-            lista de Jugados
-        </ion-content>
-    </ion-tab>
+                        <ion-item  ng-repeat="single in singles" class="no-padding">
+                            <div class="row">
+                                <div class="col">
+                                    <p>{{formatPartidos(single.fechai)}}</p>
+                                    <p>{{single.clubCancha.nombre}}</p>
+                                    <p style="color: #33cd5f;font-size: 10px;">{{formatFromNow(single.createdAt)}}</p>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </ion-item>
 
-</ion-tabs>
+                    </ion-list>
+
+                    <div style="padding-bottom: 46px"></div>
+
+                </ion-content>
+            </ion-view>
+        </ion-tab>
+
+        <ion-tab title="Personales">
+            <ion-content>
+                lista de Personales
+            </ion-content>
+        </ion-tab>
+
+        <ion-tab title="Confirmados">
+            <ion-content>
+                lista de Confirmados
+            </ion-content>
+        </ion-tab>
+
+        <ion-tab title="Jugados">
+            <ion-content>
+                lista de Jugados
+            </ion-content>
+        </ion-tab>
+
+    </ion-tabs>
+</ion-view>
