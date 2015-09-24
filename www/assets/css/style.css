@@ -402,4 +402,107 @@ button, input, select, textarea {
   transform: translateY(-50%);
   z-index: 10; }
 
+.tabs-striped.tabs-background-light .tabs {
+  border-bottom: 1px solid #e0e0e0; }
+
+.tabs-top.tabs-striped .tab-item {
+  font-family: "roboto-regular";
+  color: #1a1a1a;
+  font-size: 12px;
+  background-color: #e0e0e0; }
+  .tabs-top.tabs-striped .tab-item.tab-item-active {
+    background-color: #fff;
+    margin-top: 0;
+    border-top: 1px solid #e0e0e0 !important;
+    border-bottom: 0 !important; }
+
+.game .tabs {
+  height: 35px;
+  line-height: 35px; }
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.has-tabs-top {
+  top: 98px; }
+
+.match {
+  min-height: 40px;
+  position: relative;
+  padding-right: 185px; }
+  .match_detail {
+    padding-right: 10px; }
+  .match_date, .match_place {
+    font-family: "roboto-regular";
+    color: #020202;
+    font-size: 12px;
+    line-height: 14px;
+    display: block;
+    opacity: .8;
+    white-space: pre-wrap; }
+    .match_date-confirm:after, .match_place-confirm:after {
+      content: "";
+      background-image: url("../img/icons.png");
+      background-repeat: no-repeat;
+      background-size: 320px;
+      display: inline-block;
+      background-position: -151.5px 0;
+      height: 14px;
+      width: 19px;
+      vertical-align: middle;
+      margin-left: 2px; }
+  .match_time {
+    font-family: "roboto-regular";
+    color: #408337;
+    font-size: 11px;
+    display: block;
+    line-height: 13px; }
+  .match_players {
+    right: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+
+.list-matches .item .item-content {
+  padding: 10px; }
+.list-matches .item-divider {
+  background-color: #fff;
+  font-family: "roboto-bold";
+  color: #403f3f;
+  font-size: 12px;
+  padding: 0px 10px;
+  min-height: 23px; }
+
+.match-players {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: left; }
+  .match-players_item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px; }
+    .match-players_item:last-child {
+      margin-right: 0; }
+  .match-players_img {
+    height: auto;
+    width: 100%;
+    position: relative;
+    z-index: 2; }
+    .match-players_img-grayscale {
+      filter: grayscale(100%); }
+  .match-players_link {
+    background-color: #858383;
+    border-radius: 100%;
+    display: block;
+    height: 40px;
+    overflow: hidden;
+    width: 40px;
+    position: relative; }
+  .match-players_icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+    .match-players_icon:after {
+      display: block; }
+
 /*# sourceMappingURL=style.css.map */

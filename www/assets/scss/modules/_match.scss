@@ -1,0 +1,54 @@
+.match{
+	min-height: 40px;
+	position: relative;
+	padding-right: 185px;
+	&_detail{
+		// float: left;
+		padding-right: 10px;
+	}
+	&_date,
+	&_place{
+		@include font(rr, 12px, #020202);
+		line-height: 14px;
+		display: block;
+		opacity: .8;
+		white-space: pre-wrap;
+		&-confirm{
+			&:after{
+				content: "";
+				@include getSprite();
+			  display: inline-block;
+			  background-position: (-303px/2) 0;
+			  height: (28px/2);
+			  width: 19px;
+			  vertical-align: middle;
+			  margin-left: 2px;
+			}
+		}
+	}
+	&_time{
+		@include font(rr, 11px, #408337);
+		display: block;
+		line-height: 13px;
+	}
+	&_players{
+		// position: absolute;
+		right: 0;
+		// top: 0;
+		@include center(v);
+	}
+}
+
+.list-matches{
+	.item{
+		.item-content{
+			padding: 10px;
+		}
+		&-divider{
+			background-color: #fff;
+			@include font(rb,12px,#403f3f);
+			padding: 0px 10px;
+			min-height: 23px;
+		}
+	}
+}

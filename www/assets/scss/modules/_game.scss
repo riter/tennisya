@@ -1,0 +1,32 @@
+// .game{
+	.tabs-striped.tabs-background-light{
+		.tabs{
+			border-bottom: 1px solid #e0e0e0;
+		}
+	} 
+	.tabs-top.tabs-striped{
+		.tab-item{
+			@include font(rr,12px,#1a1a1a);
+			background-color: #e0e0e0;
+			&.tab-item-active{
+				// border-width: 0 !important;
+				// border-bottom: 1px solid #e0e0e0 !important;
+				background-color: #fff;
+				margin-top: 0;
+				border-top:1px solid #e0e0e0 !important;
+				border-bottom: 0 !important;
+			}
+		}
+	}
+// }
+
+.game{
+	.tabs{
+		height: 35px;
+		line-height: 35px;
+	}
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.has-tabs-top{
+	top: 98px;
+}

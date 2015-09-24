@@ -1,0 +1,43 @@
+.match-players{
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	// min-width: 174px;
+	// display: inline-block;
+	display: block;
+	text-align: left;
+	&_item{
+		// display: block;
+		// float: left;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 4px;
+		&:last-child{
+			margin-right: 0;
+		}
+	}
+	&_img{
+		height: auto;
+		width: 100%;
+		position: relative;
+		z-index: 2;
+		&-grayscale{
+			filter: grayscale(100%);
+		}
+	}
+	&_link{
+		background-color:#858383;
+		border-radius: 100%;
+		display: block;
+		height: 40px;
+		overflow: hidden;
+		width: 40px;
+		position: relative;
+	}
+	&_icon{
+		@include center(f);
+		&:after{
+			display: block;
+		}
+	}
+}

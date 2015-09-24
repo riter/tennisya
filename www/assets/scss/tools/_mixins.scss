@@ -23,3 +23,10 @@
 		transform: translate(-50%, -50%);
 	}
 }
+
+
+@mixin getSprite(){
+	background-image: url('../img/icons.png');
+  background-repeat: no-repeat;
+  background-size: 320px;
+}
