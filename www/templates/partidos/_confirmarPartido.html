@@ -1,0 +1,98 @@
+<ion-modal-view class=" new-match">
+    <ion-header-bar class="bar-stable">
+        <!-- <button class="button button-clear btn-cgreen" ng-click="modal.hide()"> Cancelar </button> -->
+        <h1 class="title">Confirmar o Cancelar partido</h1>
+    </ion-header-bar>
+
+    <ion-content>
+        <ion-list class="new-match-list">
+
+            <label class="item item-input item-select">
+                <div class="input-label">Tipo</div>
+                <select ng-model="partido.tipo" ng-options="tipo.name for tipo in [{name:'Singles'},{name:'Dobles'}] track by tipo.name">
+                    <option value=""></option>
+                </select>
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Lugar
+                </div>
+                <select ng-model="partido.club" ng-options="club.nombre for club in clubs track by club.id">
+                    <option value=""></option>
+                </select>
+            </label>
+
+            <ion-item class="item-divider"></ion-item>
+
+            <label class="item new-input-date">
+                Fecha
+                <input type="date" ng-model="partido.fecha">
+                <span class="item-note">{{formatLYMD(partido.fecha)}}</span>
+            </label>
+
+            <label class="item new-input-date">
+                Empieza
+                <input type="time" ng-model="partido.horaI">
+                <span class="item-note">{{formatHHMM(partido.horaI)}}</span>
+            </label>
+
+            <label class="item new-input-date">
+                Termina
+                <input type="time" ng-model="partido.horaF">
+                <span class="item-note">{{formatHHMM(partido.horaF)}}</span>
+            </label>
+
+            <ion-item class="item-divider"></ion-item>
+
+            <a class="item gamer" href="#">
+                Jugador 1
+                <span class="item-note">
+                   {{partido.jugador1?partido.jugador1.name:'Invitar*>'}}
+                   <input type="hidden" ng-model="partido.jugador1" />
+                </span>
+            </a>
+
+            <a class="item gamer" href="#" ng-click="onInvitar('jugador2')">
+                Jugador 2
+                <span class="item-note">
+                 {{partido.jugador2?partido.jugador2.name:'Invitar*>'}}
+                    <input type="hidden" ng-model="partido.jugador2" />
+                </span>
+            </a>
+
+            <a class="item gamer" href="#" ng-click="onInvitar('jugador3')">
+                Jugador 3
+                <span class="item-note">
+                  {{partido.jugador3?partido.jugador3.name:'Invitar*>'}}
+                    <input type="hidden" ng-model="partido.jugador3"/>
+                </span>
+            </a>
+
+            <a class="item gamer" href="#" ng-click="onInvitar('jugador4')">
+                Jugador 4
+                <span class="item-note">
+                  {{partido.jugador4?partido.jugador4.name:'Invitar*>'}}
+                    <input type="hidden" ng-model="partido.jugador4"/>
+                </span>
+            </a>
+
+        </ion-list>
+
+        <p class="notice">* De no invitar a un jugador específico el partido será publicado en forma abierta para todos los jugadores</p>
+
+        <label class="custom-radio">
+            <input type="radio" ng-model="partido.reservada" ng-value="false"> Reservar cancha*
+            <span class="ic-radio"></span>
+        </label>
+        <label class="custom-radio">
+            <input type="radio" ng-model="partido.reservada" ng-value="true" checked> Cancha ya reservada
+            <span class="ic-radio"></span>
+        </label>
+        <div class="buttons">
+            <button class="button btn-cancel" ng-click="modalConfirm.hide()">Cancelar</button>
+            <button class="button btn-confirm">Confirmar</button>
+        </div>
+
+    </ion-content>
+</ion-modal-view>

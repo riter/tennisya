@@ -85,3 +85,52 @@
 		z-index: 10;
 	}
 }
+.buttons{
+	overflow: hidden;
+	padding: 5px;
+	.button{
+		@include font(rl,23px);
+		border:0;
+		border-radius: 0;
+		float: left;
+		width: 50%;
+		&:first-child{
+			box-shadow: inset -1px 0px 0px 0px rgba(#fff, 1);
+		}
+	}
+	.btn-confirm{
+		background:#426c3a;
+	}
+	.btn-cancel{
+		background:#909390;
+	}
+}
+.match-buttons{
+	overflow: hidden;
+	padding: 5px 0 0;
+	margin-right: -5px;
+	margin-left: -5px;
+	.button{
+		@include font(rr,12px);
+		border:0;
+		border-radius: 0;
+		float: left;
+		text-transform: uppercase;
+		width: 49%;
+		min-height: 27px;
+		line-height: 27px;
+		&:first-child{
+			box-shadow: inset -1px 0px 0px 0px rgba(#fff, 1);
+		}
+		&:last-child{
+			float: right;	
+		}
+	}
+	.btn-confirm{
+		background:#426c3a;
+	}
+	.btn-cancel{
+		background:#909390;
+		
+	}
+}

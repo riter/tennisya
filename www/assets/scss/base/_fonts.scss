@@ -5,7 +5,8 @@ $fonts : (
     rm: 'roboto-medium',
     rb: 'roboto-bold',
     ri: 'roboto-italic',
-    rl: 'roboto-light'
+    rl: 'roboto-light',
+    rc: 'roboto-condensed-light',
 );
 
 // @each $font in $Univers, $UniversBold, $UniversLight, $UniversLightOblique {

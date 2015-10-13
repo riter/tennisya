@@ -3,5 +3,5 @@
 
 node_modules/
 platforms/
-www/assets/scss/.sass-cache/
+.sass-cache
 #plugins/

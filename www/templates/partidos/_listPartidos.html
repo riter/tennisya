@@ -1,0 +1,159 @@
+
+<ion-view view-title="Partidos">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon" ng-click="doSomething()">
+            <i class="ic-search"></i>
+        </button>
+    </ion-nav-buttons>
+    <!-- <ion-content> -->
+        <ion-tabs class="tabs-striped tabs-top tabs-background-light game">
+
+            <ion-tab title="Todos">
+                <ion-nav-view name="todos-tab"></ion-nav-view>
+                <ion-content>
+                    <ion-list class="list-matches">
+                        <ion-item class="item-divider">
+                            Partidos dobles
+                        </ion-item>
+                        <ion-item ng-repeat="i in getNumber(numberDobles) track by $index" type="" href="">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">Martes 23/3, 18 hs</span>
+                                    <span class="match_place match_place-confirm">Lawn Tennis</span>
+                                    <span class="match_time">2 horas</span>
+                                </div>
+                                <div class="match_players">
+                                    <ul class="match-players">
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ion-item>
+
+                        <ion-item class="item-divider">
+                            Partidos singles
+                        </ion-item>
+                        <ion-item ng-repeat="i in getNumber(numberSingles) track by $index" type="" href="">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">Martes 23/3, 18 hs</span>
+                                    <span class="match_place match_place-pending">Lawn Tennis</span>
+                                    <span class="match_time">2 horas</span>
+                                </div>
+                                <div class="match_players">
+                                    <ul class="match-players">
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab title="Personales">
+                <ion-nav-view name="personal-tab"></ion-nav-view>
+                <ion-content>
+                    <ion-list class="list-matches">
+                        <ion-item class="item-divider">Esperando Cancha</ion-item>
+                        <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="" ng-click="confirmarPartido()">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">Martes 23/3, 18 hs</span>
+                                    <span class="match_place match_place-confirm">Lawn Tennis</span>
+                                </div>
+                                <div class="match_players">
+                                    <ul class="match-players">
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ion-item>
+
+                        <ion-item class="item-divider">Esperando Confirmación</ion-item>
+                        <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">Martes 23/3, 18 hs</span>
+                                    <span class="match_place match_place-pending">Lawn Tennis</span>
+                                    <span class="match_time">2 horas</span>
+                                </div>
+                                <div class="match_players">
+                                    <ul class="match-players">
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/4.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-divider">Esperando Respuesta</ion-item>
+                        <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">Martes 23/3, 18 hs</span>
+                                    <span class="match_place match_place-pending">Lawn Tennis</span>
+                                    <span class="match_time">2 horas</span>
+                                </div>
+                                <div class="match_players">
+                                    <ul class="match-players">
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img class="grayscale" src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/4.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab title="Confirmados">
+                <ion-nav-view name="confirmados-tab"></ion-nav-view>
+                <ion-content>
+                    <ion-list class="list-matches">
+                        <ion-item class="item-divider">Esperando Cancha</ion-item>
+                        <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="" ng-click="confirmarPartido()">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">Martes 23/3, 18 hs</span>
+                                    <span class="match_place">Lawn Tennis</span>
+                                </div>
+                                <div class="match_players">
+                                    <ul class="match-players">
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>
+                                        <li class="match-players_item"><a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="match-buttons">
+                                <button class="button btn-confirm">Confirmar</button>
+                                <button class="button btn-cancel" ng-click="modalConfirm.hide()">No disponible</button>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab title="Jugados">
+                <ion-nav-view name="jugados-tab"></ion-nav-view>
+                <ion-content>
+                    lista de Jugados
+                </ion-content>
+            </ion-tab>
+
+        </ion-tabs>
+    <!-- </ion-content> -->
+</ion-view>
+ No newline at end of file

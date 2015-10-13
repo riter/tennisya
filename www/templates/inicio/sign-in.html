@@ -1,4 +1,4 @@
-<ion-view title="Iniciar sesión"  class="fondo-login">
+<ion-view title="Iniciar sesión"  class="fondo-login sign-in">
     <ion-content >
         <div class="row">
             <div class="col text-center">
@@ -6,30 +6,32 @@
             </div>
         </div>
         <form>
-            <div class="list padding input-login">
-                <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Email" ng-model="user.email">
+            <div class="list login-fields">
+                <label class="item item-input background-transparent login-fields_label">
+                    <input type="text" placeholder="Email" ng-model="user.email" class="login-fields_field">
                 </label>
-                <label class="item item-input background-transparent border-input">
-                    <input type="password" placeholder="Contraseña" ng-model="user.password">
+                <label class="item item-input background-transparent login-fields_label">
+                    <input type="password" placeholder="Contraseña" ng-model="user.password" class="login-fields_field">
                 </label>
             </div>
-
-            <button class="button button-full button-balanced color-normal" ng-click="signIn(user)">
+            <div class="sign-in_cright">
+                <a href="#" class="sign-in_forget">¿Olvidó contraseña?</a>
+            </div>
+            <button class="button button-full sign-in_submit" ng-click="signIn(user)">
                 Iniciar sesión
             </button>
         </form>
 
-        <button class="button button-full no-margin no-border color-facebook" ng-click="signInFacebook()">
+        <button class="button button-full no-margin no-border btn-social btn-social-facebook" ng-click="signInFacebook()">
             Iniciar sesión con Facebook
         </button>
-        <button class="button button-full no-margin no-border color-twitter" ng-click="signInTwitter()">
+        <button class="button button-full no-margin no-border btn-social btn-social-twitter" ng-click="signInTwitter()">
             Iniciar sesión con Twitter
         </button>
-        <button class="button button-full no-margin no-border color-google" ng-click="signInGoogle()">
+        <button class="button button-full no-margin no-border btn-social btn-social-google" ng-click="signInGoogle()">
             Iniciar sesión con Google
         </button>
-        <a class="button button-full color-register" href="#/sign-up">
+        <a class="button button-full btn-register" href="#/sign-up">
             Registrarse
         </a>
 
