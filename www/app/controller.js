@@ -188,16 +188,17 @@ appTennisya
             //servicio de guardar
             $ionicHistory.goBack();
         };
+
     })
     .controller('SignInCtrl', function($scope, $state, userService) {
 
         $scope.signIn = function(user) {
 
-            /*userService.loginJugador(user,function(){
+            userService.loginJugador(user,function(){
                 $state.go('tabs.player');
             },function(error){
                 alert(error.error);
-            });*/
+            });
         };
         $scope.signInFacebook = function() {
             console.log('signInFacebook');
@@ -208,12 +209,9 @@ appTennisya
         $scope.signInGoogle = function(user) {
             console.log('signInGoogle');
         };
-        /*$scope.register = function(user) {
-            $state.go('signup');
-        };*/
 
     })
-    .controller('SignUpCtrl', function($scope, $state, userService) {
+    .controller('SignUpCtrl', function($scope, $state, userService, extrasService) {
         $scope.openCamera = function() {
 
             /*var options = {
@@ -257,6 +255,10 @@ appTennisya
                 alert(error.error);
             });
         };
+
+        extrasService.getClub().then(function(response){
+            $scope.clubs = response.data;
+        });
     })
     .controller('ListJugadoresCtrl', function($scope, $state, userService) {
 
@@ -292,7 +294,20 @@ appTennisya
         };
 
         load();
-        setInterval(load,15000);
+        //setInterval(load,15000);
+
+        $scope.numberDobles = 20;
+        $scope.numberSingles = 15;
+        $scope.getNumber = function(num) {
+            return new Array(num);
+        };
+        $scope.gamers = [
+            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
+            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
+            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
+            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'}
+        ]
     })
     .controller('GamersCtrl', function($scope) {
         $scope.gamers = [
@@ -302,23 +317,21 @@ appTennisya
             {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
             {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
             {name: 'Mari Shara', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+            {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'}
         ]
     })
-    .controller('MatchesCtrl', function($scope) {
-        $scope.numberDobles = 2;
-        $scope.numberSingles = 1;
-        $scope.getNumber = function(num) {
-            return new Array(num);   
-        }
-        $scope.gamers = [
-            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
-            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
-            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
-            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Mari Shara', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-        ]
-    })
-    ;
+//    .controller('MatchesCtrl', function($scope) {
+//        $scope.numberDobles = 20;
+//        $scope.numberSingles = 15;
+//        $scope.getNumber = function(num) {
+//            return new Array(num);
+//        }
+//        $scope.gamers = [
+//            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
+//            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
+//            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
+//            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+//            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+//        ]
+//    })
+   

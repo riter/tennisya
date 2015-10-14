@@ -1,9 +1,9 @@
 /**
  * Created by Riter on 24/08/15.
  */
-// var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+ var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
 // var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
-var api = 'http://tennisya.apploadapps.com/web/api/';
+//var api = 'http://tennisya.apploadapps.com/web/api/';
 
 var appTennisya = angular.module('tennisyaApp', ['ionic','ngCordova']);
 
@@ -63,10 +63,9 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
             })
             .state('tabs.groups', {
                 url: '/groups',
-                // templateUrl: "templates/jugadores/groups.html",
                 views:{
                     'player-tab':{
-                       templateUrl: "templates/jugadores/groups.html", 
+                       templateUrl: "templates/jugadores/groups.html"
                     }
                 }
             })
@@ -75,7 +74,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                 views: {
                     'partidos-tab': {
                         templateUrl: "templates/partidos/_listPartidos.html",
-                        controller: 'MatchesCtrl'
+                        controller: 'ListPartidosCtrl'
                     }
                 }
             })
@@ -138,10 +137,10 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
             })
         ;
 
-        /*if(window.localStorage['user']){
+        if(window.localStorage['user']){
             $urlRouterProvider.otherwise("tab/players");
         }else{
             $urlRouterProvider.otherwise("/sign-in");
-        }*/
+        }
 
     });

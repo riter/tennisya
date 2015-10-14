@@ -15,20 +15,24 @@
                     <input type="text" placeholder="Estado" ng-model="user.estado">
                 </label>
                 <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Celular" ng-model="user.celular">
+                    <input type="tel" placeholder="Celular" ng-model="user.celular">
                 </label>
-                <!--<label class="item item-input background-transparent border-input">-->
-                    <!--<input type="text" placeholder="Cancha" ng-model="user.cancha">-->
-                <!--</label>-->
+
                 <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Email" ng-model="user.email">
+                    <select ng-model="user.cancha" ng-options="club.nombre for club in clubs track by club.id">
+                        <option value="">Cancha de preferencia</option>
+                    </select>
+                </label>
+
+                <label class="item item-input background-transparent border-input">
+                    <input type="email" placeholder="Email" ng-model="user.email">
                 </label>
                 <label class="item item-input background-transparent border-input">
                     <input type="password" placeholder="Contraseña" ng-model="user.password">
                 </label>
-                <!--<label class="item item-input background-transparent border-input">
+                <label class="item item-input background-transparent border-input">
                     <input type="text" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd">
-                </label>-->
+                </label>
 
                 <label class="item  item-thumbnail-left  background-transparent no-border" style="margin-top: 15px" ng-click="openCamera()">
                     <img src="../www/assets/img/thumb_profile.png" id="photoSignUp">
@@ -36,9 +40,7 @@
 
             </div>
 
-            <button class="button button-full color-register" ng-click="signUp(user)">
-                Registrar
-            </button>
+            <button class="button button-full color-register" ng-click="signUp(user)"> Registrar </button>
         </form>
     </ion-content>
 </ion-view>

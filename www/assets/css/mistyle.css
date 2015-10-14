@@ -1,3 +1,4 @@
+/* inicio Input para fecha y hora newPartido*/
 .new-input-date{
     padding: 6px 16px 5px 16px;
 }
@@ -7,25 +8,21 @@
     height: 100%;
     color: transparent !important;
     top: 0;
+    left: 0;
     padding: 0 !important;
     background-color: transparent;
 }
+/* fin Input para fecha y hora newPartido*/
 
+/* inicio imagen inferior con logo*/
 .fondo-info {
     background: url("../img/info.png") no-repeat;
     background-size: 55%;
     background-position: center;
 }
+/* fin imagen inferior con logo*/
 
-.bar .buttons-right span .button, .bar button.button-clear.button-small-header{
-    font-size: 12px;
-}
-
-.bar.bar-stable .title.title-header{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
+/* inicio pantalla contarle a un amigo botones redes sociales*/
 .share{
     width: 61px;
     height: 65px;
@@ -47,11 +44,4 @@
 .share-message{
     background-position: 0 center !important;
 }
-
-.match_detail {
-    padding-right: 6px;
-}
-.match-players_link{
-    width: 37px;
-    height: 37px;
-}
+/* fin pantalla contarle a un amigo botones redes sociales*/

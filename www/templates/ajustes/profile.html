@@ -29,11 +29,24 @@
                 <i class="icon ion-edit icon-accessory"></i>
             </label>
             <label class="item item-input item-icon-right">
-                <input type="text" placeholder="Cancha de preferencia" ng-model="profile.clubCancha.nombre">
+                <select ng-model="profile.clubCancha" ng-options="club.id as club.nombre for club in clubs track by club.id">
+                    <option value="">Cancha de preferencia</option>
+                </select>
                 <i class="icon ion-edit icon-accessory"></i>
             </label>
+            <!--<label class="item item-input item-select">-->
+                <!--<div class="input-label">-->
+                    <!--Pais-->
+                <!--</div>-->
+                <!--<select ng-model="disponibilidad.pais" ng-options="pais for pais in ['Uruguay','Argentina','Brazil']">-->
+                    <!--<option value=""> Seleccionar </option>-->
+                <!--</select>-->
+            <!--</label>-->
+
+
             <label class="item item-input item-icon-right">
-                <input type="text" placeholder="Rating" ng-model="profile.rating">
+                <span class="input-label">Rating</span>
+                <input type="text" ng-model="profile.rating">
                 <i class="icon ion-edit icon-accessory"></i>
             </label>
 

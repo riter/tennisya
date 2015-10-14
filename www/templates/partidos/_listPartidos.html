@@ -9,50 +9,65 @@
         <ion-tabs class="tabs-striped tabs-top tabs-background-light game">
 
             <ion-tab title="Todos">
-                <ion-nav-view name="todos-tab"></ion-nav-view>
-                <ion-content>
-                    <ion-list class="list-matches">
-                        <ion-item class="item-divider">
-                            Partidos dobles
-                        </ion-item>
-                        <ion-item ng-repeat="i in getNumber(numberDobles) track by $index" type="" href="">
-                            <div class="match">
-                                <div class="match_detail">
-                                    <span class="match_date">Martes 23/3, 18 hs</span>
-                                    <span class="match_place match_place-confirm">Lawn Tennis</span>
-                                    <span class="match_time">2 horas</span>
-                                </div>
-                                <div class="match_players">
-                                    <ul class="match-players">
-                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
-                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>
-                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>
-                                        <li class="match-players_item"><a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ion-item>
+                <ion-nav-view name="todos-tab">
+                    <ion-content>
+                        <ion-list class="list-matches">
+                            <ion-item class="item-divider">
+                                Partidos dobles
+                            </ion-item>
+                            <ion-item ng-repeat="double in doubles" href="">
+                                <div class="match">
+                                    <div class="match_detail">
+                                        <span class="match_date">{{formatPartidos(double.fechai)}}</span>
+                                        <span ng-class="{'match_place-confirm':double.confirmCancha, 'match_place-pending':!double.confirmCancha}" class="match_place">{{double.clubCancha.nombre}}</span>
+                                        <span class="match_time">{{formatFromNow(double.createdAt)}}</span>
+                                    </div>
+                                    <div class="match_players">
+                                        <ul class="match-players" ng-if="double.jugadorpartido">
+                                            <li class="match-players_item" ng-repeat="jugadorpartido in double.jugadorpartido">
+                                                <a href="#" class="match-players_link">
+                                                    <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" class="match-players_img">
+                                                </a>
+                                            </li>
 
-                        <ion-item class="item-divider">
-                            Partidos singles
-                        </ion-item>
-                        <ion-item ng-repeat="i in getNumber(numberSingles) track by $index" type="" href="">
-                            <div class="match">
-                                <div class="match_detail">
-                                    <span class="match_date">Martes 23/3, 18 hs</span>
-                                    <span class="match_place match_place-pending">Lawn Tennis</span>
-                                    <span class="match_time">2 horas</span>
+                                            <li class="match-players_item">
+                                                <a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
+                                            </li>
+                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>-->
+                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>-->
+                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>-->
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="match_players">
-                                    <ul class="match-players">
-                                        <li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>
-                                        <li class="match-players_item"><a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a></li>
-                                    </ul>
+                            </ion-item>
+
+                            <ion-item class="item-divider">
+                                Partidos singles
+                            </ion-item>
+                            <ion-item ng-repeat="single in singles" href="">
+                                <div class="match">
+                                    <div class="match_detail">
+                                        <span class="match_date">{{formatPartidos(single.fechai)}}</span>
+                                        <span ng-class="{'match_place-confirm':single.confirmCancha, 'match_place-pending':!single.confirmCancha}" class="match_place">{{single.clubCancha.nombre}}</span>
+                                        <span class="match_time">{{formatFromNow(single.createdAt)}}</span>
+                                    </div>
+                                    <div class="match_players">
+                                        <ul class="match-players" ng-if="single.jugadorpartido">
+                                            <li class="match-players_item" ng-repeat="jugadorpartido in single.jugadorpartido">
+                                                <a href="#" class="match-players_link">
+                                                    <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" class="match-players_img">
+                                                </a>
+                                            </li>
+                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>-->
+                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a></li>-->
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </ion-item>
-                    </ion-list>
-                </ion-content>
+                            </ion-item>
+                            <div style="height: 46px"></div>
+                        </ion-list>
+                    </ion-content>
+                </ion-nav-view>
             </ion-tab>
 
             <ion-tab title="Personales">
@@ -60,7 +75,7 @@
                 <ion-content>
                     <ion-list class="list-matches">
                         <ion-item class="item-divider">Esperando Cancha</ion-item>
-                        <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="" ng-click="confirmarPartido()">
+                        <ion-item ng-repeat="i in getNumber(5) track by $index" type="" href="" ng-click="confirmarPartido()">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">Martes 23/3, 18 hs</span>
@@ -78,7 +93,7 @@
                         </ion-item>
 
                         <ion-item class="item-divider">Esperando Confirmación</ion-item>
-                        <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="">
+                        <ion-item ng-repeat="i in getNumber(5) track by $index" type="" href="">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">Martes 23/3, 18 hs</span>
@@ -96,7 +111,7 @@
                             </div>
                         </ion-item>
                         <ion-item class="item-divider">Esperando Respuesta</ion-item>
-                        <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="">
+                        <ion-item ng-repeat="i in getNumber(5) track by $index" type="" href="">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">Martes 23/3, 18 hs</span>
@@ -114,6 +129,7 @@
                             </div>
                         </ion-item>
                     </ion-list>
+                    <div style="height: 46px"></div>
                 </ion-content>
             </ion-tab>
 
@@ -143,6 +159,7 @@
                             </div>
                         </ion-item>
                     </ion-list>
+                    <div style="height: 46px"></div>
                 </ion-content>
             </ion-tab>
 
@@ -150,6 +167,7 @@
                 <ion-nav-view name="jugados-tab"></ion-nav-view>
                 <ion-content>
                     lista de Jugados
+                    <div style="height: 46px"></div>
                 </ion-content>
             </ion-tab>
 
