@@ -2,17 +2,308 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\app\apps.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\app\controllers.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\templates\partidos\listPartidos.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\templates\partidos\newPartidoEdgar.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" afterPath="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\.editorconfig" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\.jshintrc" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\CHANGELOG.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\Gruntfile.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\angular-moment.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\angular-moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\angular-moment.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\angular-moment.nuspec" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\bower.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\karma.conf.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\angular-moment\tests.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\CHANGELOG.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\bower.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\af.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ar-ma.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ar-sa.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ar-tn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\az.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\be.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\bg.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\bn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\bo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\br.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\bs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\cs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\cv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\cy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\da.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\de-at.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\de.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\el.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\en-au.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\en-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\eo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\es.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\et.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\eu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\fa.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\fi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\fo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\fr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\fy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\gl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\he.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\hi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\hr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\hu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\hy-am.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\id.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\is.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\it.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ja.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\jv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ka.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\km.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ko.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\lb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\lt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\lv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\me.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\mk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ml.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\mr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ms-my.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ms.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\my.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\nb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ne.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\nl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\nn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\pl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\pt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ro.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ru.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\si.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\sk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\sl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\sq.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\sr-cyrl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\sr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\sv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\ta.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\th.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\tl-ph.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\tr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\tzl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\tzm-latn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\tzm.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\uk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\uz.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\vi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\locale\zh-tw.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\min\locales.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\min\locales.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\min\moment-with-locales.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\min\moment-with-locales.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\min\moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\min\tests.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\moment.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\check-overflow.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\date-from-array.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\from-anything.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\from-array.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\from-object.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\from-string-and-array.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\from-string-and-format.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\from-string.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\local.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\parsing-flags.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\utc.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\create\valid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\abs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\add-subtract.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\as.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\bubble.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\constructor.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\create.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\duration.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\get.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\humanize.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\iso-string.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\duration\prototype.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\format\format.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\calendar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\constructor.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\en.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\formats.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\invalid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\lists.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\locale.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\locales.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\ordinal.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\pre-post-format.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\prototype.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\relative.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\locale\set.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\add-subtract.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\calendar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\clone.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\compare.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\constructor.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\diff.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\format.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\from.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\get-set.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\locale.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\min-max.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\moment.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\prototype.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\start-end-of.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\to-type.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\to.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\moment\valid.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\parse\regex.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\parse\token.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\aliases.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\constants.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\day-of-month.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\day-of-week.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\day-of-year.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\hour.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\millisecond.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\minute.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\month.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\offset.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\quarter.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\second.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\timestamp.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\timezone.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\units.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\week-year.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\week.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\units\year.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\abs-ceil.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\abs-floor.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\compare-arrays.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\defaults.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\deprecate.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\extend.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\has-own-prop.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\hooks.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\is-array.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\is-date.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\map.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\to-int.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\lib\utils\zero-fill.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\af.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ar-ma.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ar-sa.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ar-tn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\az.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\be.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\bg.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\bn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\bo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\br.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\bs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\cs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\cv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\cy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\da.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\de-at.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\de.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\el.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\en-au.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\en-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\eo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\es.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\et.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\eu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\fa.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\fi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\fo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\fr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\fy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\gl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\he.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\hi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\hr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\hu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\hy-am.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\id.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\is.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\it.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ja.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\jv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ka.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\km.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ko.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\lb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\lt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\lv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\me.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\mk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ml.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\mr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ms-my.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ms.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\my.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\nb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ne.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\nl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\nn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\pl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\pt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ro.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ru.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\si.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\sk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\sl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\sq.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\sr-cyrl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\sr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\sv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\ta.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\th.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\tl-ph.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\tr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\tzl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\tzm-latn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\tzm.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\uk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\uz.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\vi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\locale\zh-tw.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\src\moment.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\templates\amd-named.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\templates\amd.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\templates\globals.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\templates\locale-header.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\tennisya\tennisya\www\lib\moment\templates\test-header.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/android.json" afterPath="$PROJECT_DIR$/plugins/android.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/profile.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/inicio/sign-in.html" afterPath="$PROJECT_DIR$/www/templates/inicio/sign-in.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" afterPath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -40,19 +331,17 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="26" selection-start="805" selection-end="805" vertical-scroll-proportion="-14.346154" vertical-offset="1" max-vertical-offset="731">
+            <state line="10" column="0" selection-start="320" selection-end="320" vertical-scroll-proportion="-2.6153846" vertical-offset="102" max-vertical-offset="697">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sign-up.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
+      <file leaf-file-name="new_disponibilidad.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="80" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.13465346" vertical-offset="272" max-vertical-offset="867">
-              <folding>
-                <element signature="n#style#0;n#label#7;n#div#1;n#form#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="40" column="109" selection-start="1679" selection-end="1679" vertical-scroll-proportion="0.37029704" vertical-offset="493" max-vertical-offset="1921">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,10 +349,17 @@
       <file leaf-file-name="profile.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="16" selection-start="1410" selection-end="1410" vertical-scroll-proportion="-9.807693" vertical-offset="272" max-vertical-offset="1105">
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="33" column="25" selection-start="1410" selection-end="1613" vertical-scroll-proportion="-11.115385" vertical-offset="272" max-vertical-offset="1105">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="disponibilidad.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="-6.3461537" vertical-offset="39" max-vertical-offset="629">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,25 +367,8 @@
       <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="213" column="81" selection-start="7114" selection-end="7114" vertical-scroll-proportion="0.0" vertical-offset="2459" max-vertical-offset="4267">
-              <folding>
-                <element signature="e#2554#4119#0" expanded="false" />
-                <element signature="e#4351#6045#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_listPartidos.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="95" selection-start="2139" selection-end="2139" vertical-scroll-proportion="-10.923077" vertical-offset="277" max-vertical-offset="3111">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-nav-view#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#1;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#2;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#3;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="119" column="12" selection-start="3944" selection-end="3962" vertical-scroll-proportion="0.0" vertical-offset="1711" max-vertical-offset="5678">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,22 +396,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/templates/ajustes/share.html" />
-        <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
-        <option value="$PROJECT_DIR$/www/templates/partidos/newPartido.html" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
         <option value="$PROJECT_DIR$/www/templates/partidos/listMatches.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
         <option value="$PROJECT_DIR$/www/app/apps.js" />
         <option value="$PROJECT_DIR$/www/app/controllers.js" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-in.html" />
-        <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
-        <option value="$PROJECT_DIR$/www/app/controller.js" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
+        <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
+        <option value="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
+        <option value="$PROJECT_DIR$/www/app/controller.js" />
+        <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
       </list>
     </option>
   </component>
@@ -342,6 +621,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -395,12 +692,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tennisya_admin" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\tennisya\tennisya\www\app\lib" />
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\assets\img" />
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\jugadores" />
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\partidos" />
@@ -446,10 +744,9 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22699386" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23082823" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -460,6 +757,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -480,55 +778,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="98" selection-start="664" selection-end="741" vertical-scroll-proportion="0.5907336" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-in.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="38" selection-start="471" selection-end="471" vertical-scroll-proportion="0.1969112" vertical-offset="68" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="35" selection-start="1589" selection-end="1589" vertical-scroll-proportion="0.46691176" vertical-offset="664" max-vertical-offset="2431">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="20" selection-start="665" selection-end="1024" vertical-scroll-proportion="0.6841046" vertical-offset="85" max-vertical-offset="1598">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/web-forms.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="572" column="23" selection-start="13047" selection-end="13047" vertical-scroll-proportion="0.332696" vertical-offset="9550" max-vertical-offset="10132">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="26" selection-start="805" selection-end="805" vertical-scroll-proportion="-14.346154" vertical-offset="1" max-vertical-offset="731">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="558" column="32" selection-start="15634" selection-end="15634" vertical-scroll-proportion="0.3647059" vertical-offset="9300" max-vertical-offset="9928">
@@ -536,71 +785,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="52" selection-start="1273" selection-end="1273" vertical-scroll-proportion="0.40625" vertical-offset="306" max-vertical-offset="2584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/newPartido.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="31" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.36633664" vertical-offset="274" max-vertical-offset="1734">
-          <folding />
-        </state>
+        <state line="27" column="31" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.36633664" vertical-offset="274" max-vertical-offset="1734" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="40" selection-start="638" selection-end="638" vertical-scroll-proportion="0.42664093" vertical-offset="0" max-vertical-offset="518">
+        <state line="13" column="40" selection-start="638" selection-end="638" vertical-scroll-proportion="0.42664093" vertical-offset="0" max-vertical-offset="518" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="24" selection-start="616" selection-end="616" vertical-scroll-proportion="0.39005736" vertical-offset="17" max-vertical-offset="1547">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+    <entry file="file://$PROJECT_DIR$/www/app/lib/angular-messages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="60" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.8125" vertical-offset="340" max-vertical-offset="884">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11628">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="68" selection-start="311" selection-end="311" vertical-scroll-proportion="0.21875" vertical-offset="0" max-vertical-offset="2584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-in.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="15" selection-start="1113" selection-end="1113" vertical-scroll-proportion="-9.538462" vertical-offset="126" max-vertical-offset="748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="43" selection-start="834" selection-end="834" vertical-scroll-proportion="0.6891892" vertical-offset="0" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="95" selection-start="2139" selection-end="2139" vertical-scroll-proportion="-10.923077" vertical-offset="277" max-vertical-offset="3111">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-nav-view#0;n#ion-tab#0;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#1;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#2;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-tab#3;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="21" column="57" selection-start="998" selection-end="998" vertical-scroll-proportion="-6.3461537" vertical-offset="192" max-vertical-offset="3111">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="60" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0" vertical-offset="644" max-vertical-offset="1326">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="81" selection-start="7114" selection-end="7114" vertical-scroll-proportion="0.0" vertical-offset="2459" max-vertical-offset="4267">
-          <folding>
-            <element signature="e#2554#4119#0" expanded="false" />
-            <element signature="e#4351#6045#0" expanded="false" />
-          </folding>
+        <state line="119" column="12" selection-start="3944" selection-end="3962" vertical-scroll-proportion="0.0" vertical-offset="1711" max-vertical-offset="5678">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="16" selection-start="1410" selection-end="1410" vertical-scroll-proportion="-9.807693" vertical-offset="272" max-vertical-offset="1105">
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="12" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="-6.3461537" vertical-offset="39" max-vertical-offset="629">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="80" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.13465346" vertical-offset="272" max-vertical-offset="867">
-          <folding>
-            <element signature="n#style#0;n#label#7;n#div#1;n#form#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="21" column="66" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.2857143" vertical-offset="209" max-vertical-offset="867">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="320" selection-end="320" vertical-scroll-proportion="-2.6153846" vertical-offset="102" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="25" selection-start="1410" selection-end="1613" vertical-scroll-proportion="-11.115385" vertical-offset="272" max-vertical-offset="1105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="109" selection-start="1679" selection-end="1679" vertical-scroll-proportion="0.37029704" vertical-offset="493" max-vertical-offset="1921">
+          <folding />
         </state>
       </provider>
     </entry>

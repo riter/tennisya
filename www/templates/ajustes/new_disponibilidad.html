@@ -25,18 +25,36 @@
                 </select>
             </label>
 
-            <label class="item item-input">
-                <input type="text" placeholder="Ciudad"  ng-model="disponibilidad.ciudad">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Ciudad
+                </div>
+                <select ng-model="disponibilidad.ciudad" ng-options="ciudad for ciudad in ['Montevideo','MaldonadoN','Rivera','Minas']">
+                    <option value=""> Seleccionar </option>
+                </select>
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Localidad"  ng-model="disponibilidad.localidad">
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Localidad
+                </div>
+                <select ng-model="disponibilidad.localidad" ng-options="localidad for localidad in ['Carrasco','Canelones‎','Cerros Azules','Arenas de José Ignacio']">
+                    <option value=""> Seleccionar </option>
+                </select>
             </label>
+
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="Ciudad"  ng-model="disponibilidad.ciudad">-->
+            <!--</label>-->
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="Localidad"  ng-model="disponibilidad.localidad">-->
+            <!--</label>-->
 
             <label class="item item-input item-select">
                 <div class="input-label">
                     Club/Cancha
                 </div>
-                <select ng-model="disponibilidad.club" ng-options="club.nombre for club in clubs track by club.id">
+                <select ng-model="disponibilidad.clubCancha" ng-options="club.id as club.nombre for club in clubs track by club.id">
                     <option value=""> Seleccionar </option>
                 </select>
             </label>
@@ -49,11 +67,12 @@
                 <span class="item-note">{{formatYMD(disponibilidad.fechaI)}}</span>
             </label>
 
-            <label class="item new-input-date">
-                Fecha de Fin
-                <input type="date" ng-model="disponibilidad.fechaF">
-                <span class="item-note">{{formatYMD(disponibilidad.fechaF)}}</span>
-            </label>
+            <!--<label class="item new-input-date">-->
+                <!--Fecha de Fin-->
+                <!--<input type="date" ng-model="disponibilidad.fechaF">-->
+                <!--<span class="item-note">{{formatYMD(disponibilidad.fechaF)}}</span>-->
+            <!--</label>-->
+
             <label class="item new-input-date">
                 Hora de Comienzo
                 <input type="time" ng-model="disponibilidad.horaI" >

@@ -5,12 +5,12 @@
     </ion-nav-buttons>
 
     <ion-content>
-        <ion-list show-delete="data.showDelete">
+        <ion-list show-delete="data.showDelete" ng-class="{'enable-pointer-events':data.showDelete}">
             <ion-item  ng-hide="data.showDelete" class="item balanced" ng-click="openModal()">
                 Añadir disponibilidad...
             </ion-item>
 
-            <ion-item item="item" class="item-remove-animate item item-toggle" ng-repeat="item in items">
+            <ion-item item="item" ng-class="{'item-toggle':!data.showDelete}" class="item item-remove-animate" ng-repeat="item in items" ng-click="openModal(item)">
                 {{item.title}}
                 <p>Lun,Mie - 17 a 18 hs-{{item.localidad}},{{item.ciudad}},{{item.pais}}</p>
 

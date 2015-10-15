@@ -3,38 +3,38 @@
         <form>
             <div class="row ">
                 <div class="col text-center">
-                    <img data-ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
+                    <img ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
                 </div>
             </div>
 
             <div class="list padding input-login">
                 <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Nombre" ng-model="user.name">
+                    <input type="text" placeholder="Nombre" ng-model="user.name" required>
                 </label>
                 <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Estado" ng-model="user.estado">
+                    <input type="text" placeholder="Estado" ng-model="user.estado" required>
                 </label>
                 <label class="item item-input background-transparent border-input">
-                    <input type="tel" placeholder="Celular" ng-model="user.celular">
+                    <input type="tel" placeholder="Celular" ng-model="user.celular" required>
                 </label>
 
                 <label class="item item-input background-transparent border-input">
-                    <select ng-model="user.cancha" ng-options="club.nombre for club in clubs track by club.id">
+                    <select ng-model="user.cancha" ng-options="club.nombre for club in clubs track by club.id" required>
                         <option value="">Cancha de preferencia</option>
                     </select>
                 </label>
 
                 <label class="item item-input background-transparent border-input">
-                    <input type="email" placeholder="Email" ng-model="user.email">
+                    <input type="email" placeholder="Email" ng-model="user.email" required>
                 </label>
                 <label class="item item-input background-transparent border-input">
-                    <input type="password" placeholder="Contraseña" ng-model="user.password">
+                    <input type="password" placeholder="Contraseña" ng-model="user.password" required>
                 </label>
                 <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd">
+                    <input type="password" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd" required>
                 </label>
 
-                <label class="item  item-thumbnail-left  background-transparent no-border" style="margin-top: 15px" ng-click="openCamera()">
+                <label class="item  item-thumbnail-left  background-transparent no-border" ng-click="openCamera()">
                     <img src="../www/assets/img/thumb_profile.png" id="photoSignUp">
                 </label>
 
