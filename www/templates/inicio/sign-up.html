@@ -7,40 +7,38 @@
                 </div>
             </div>
 
-            <div class="list padding input-login">
-                <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Nombre" ng-model="user.name" required>
+            <div class="list login-fields">
+                <label class="item item-input background-transparent login-fields_label">
+                    <input class="login-fields_field" type="text" placeholder="Nombre" ng-model="user.name" required>
                 </label>
-                <label class="item item-input background-transparent border-input">
-                    <input type="text" placeholder="Estado" ng-model="user.estado" required>
+                <label class="item item-input background-transparent login-fields_label">
+                    <input class="login-fields_field" type="text" placeholder="Estado" ng-model="user.estado" required>
                 </label>
-                <label class="item item-input background-transparent border-input">
-                    <input type="tel" placeholder="Celular" ng-model="user.celular" required>
+                <label class="item item-input background-transparent login-fields_label">
+                    <input class="login-fields_field" type="tel" placeholder="Celular" ng-model="user.celular" required>
                 </label>
-
-                <label class="item item-input background-transparent border-input">
-                    <select ng-model="user.cancha" ng-options="club.nombre for club in clubs track by club.id" required>
+                <label class="item item-input background-transparent login-fields_label">
+                    <select class="login-fields_select" ng-model="user.cancha" ng-options="club.nombre for club in clubs track by club.id" required>
                         <option value="">Cancha de preferencia</option>
                     </select>
                 </label>
-
-                <label class="item item-input background-transparent border-input">
-                    <input type="email" placeholder="Email" ng-model="user.email" required>
+                <label class="item item-input background-transparent login-fields_label">
+                    <input class="login-fields_field" type="email" placeholder="Email" ng-model="user.email" required>
                 </label>
-                <label class="item item-input background-transparent border-input">
-                    <input type="password" placeholder="Contraseña" ng-model="user.password" required>
+                <label class="item item-input background-transparent login-fields_label">
+                    <input class="login-fields_field" type="password" placeholder="Contraseña" ng-model="user.password" required>
                 </label>
-                <label class="item item-input background-transparent border-input">
-                    <input type="password" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd" required>
+                <label class="item item-input background-transparent login-fields_label">
+                    <input class="login-fields_field" type="password" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd" required>
                 </label>
 
                 <label class="item  item-thumbnail-left  background-transparent no-border" ng-click="openCamera()">
-                    <img src="../www/assets/img/thumb_profile.png" id="photoSignUp">
+                    <img src="assets/img/thumb_profile.png" id="photoSignUp">
                 </label>
 
             </div>
 
-            <button class="button button-full color-register" ng-click="signUp(user)"> Registrar </button>
+            <button class="button button-full btn-register" ng-click="signUp(user)"> Registrar </button>
         </form>
     </ion-content>
 </ion-view>

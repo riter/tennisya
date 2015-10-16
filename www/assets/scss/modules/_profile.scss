@@ -1,0 +1,36 @@
+.profile{
+	padding: 0 15px;
+	.list{
+		.item{
+			// border-top: 0;
+			border-right: 0;
+			border-left: 0;
+			border-bottom: 0;
+			&:first-child{
+				border-top: 0;
+			}
+		}
+	}
+	&_select{
+		@include font(rr,14px,#000);
+		@include clearSelect();
+		height: 34px;
+	}
+	&_field{
+		@include font(rr, 14px, #000); //25
+    line-height: 1;
+    @include placeholder(#000);
+	}
+	&_avatar{
+		border:1px solid #8e8e8e;
+		overflow: hidden;
+		height: 150px;
+		width: 150px;
+		img{
+			width: 100%;
+		}
+	}
+	&_txt{
+		@include font(rr, 12px, #020202); //25
+	}
+}

@@ -123,13 +123,15 @@ button, input, select, textarea {
   height: 16.5px;
   width: 9px; }
 
+.clear-select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  background-color: transparent; }
+
 .btn-cgreen {
   color: #289735 !important; }
-
-.bar.bar-stable .title {
-  font-family: "roboto-medium";
-  color: #000;
-  font-size: 19px; }
 
 .bar .buttons-left span .button {
   font-size: 12px; }
@@ -146,9 +148,6 @@ button, input, select, textarea {
 .background-transparent {
   background-color: transparent !important; }
 
-/*.back-text{*/
-/*display: none !important;*/
-/*}*/
 /*view login*/
 .header-login {
   font-family: 'roboto_condensedregular';
@@ -168,6 +167,80 @@ button, input, select, textarea {
 
 .ion-remove-list:before {
   font-size: 25px !important; }
+
+.share {
+  width: 61px;
+  height: 65px;
+  max-height: 65px;
+  background-image: url("../img/share.png") !important;
+  background-size: auto 100% !important;
+  background-repeat: no-repeat !important; }
+  .share-facebook {
+    background-position: -180px center !important; }
+  .share-mail {
+    background-position: -60px center !important; }
+  .share-whatsapp {
+    background-position: 0 center !important; }
+
+.bar.bar-stable .title {
+  font-family: "roboto-regular";
+  color: rgba(63, 64, 63, 0.87);
+  font-size: 17px; }
+
+.bar.bar-stable .btn-left {
+  font-family: "roboto-regular";
+  color: #289735;
+  font-size: 12px; }
+.bar.bar-stable .btn-right {
+  font-family: "roboto-regular";
+  color: #289735;
+  font-size: 12px; }
+
+.availability-form .item-toggle {
+  font-family: "roboto-regular";
+  color: #000;
+  font-size: 14px; }
+
+.profile {
+  padding: 0 15px; }
+  .profile .list .item {
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0; }
+    .profile .list .item:first-child {
+      border-top: 0; }
+  .profile_select {
+    font-family: "roboto-regular";
+    color: #000;
+    font-size: 14px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0;
+    background-color: transparent;
+    height: 34px; }
+  .profile_field {
+    font-family: "roboto-regular";
+    color: #000;
+    font-size: 14px;
+    line-height: 1; }
+    .profile_field::-webkit-input-placeholder {
+      color: #000; }
+    .profile_field:-moz-placeholder {
+      color: #000; }
+    .profile_field:-ms-input-placeholder {
+      color: #000; }
+  .profile_avatar {
+    border: 1px solid #8e8e8e;
+    overflow: hidden;
+    height: 150px;
+    width: 150px; }
+    .profile_avatar img {
+      width: 100%; }
+  .profile_txt {
+    font-family: "roboto-regular";
+    color: #020202;
+    font-size: 12px; }
 
 .tabs-menu > .tabs {
   border-color: #8d8e8d;
@@ -270,6 +343,15 @@ button, input, select, textarea {
       color: #fff; }
     .login-fields .login-fields_field:-ms-input-placeholder {
       color: #fff; }
+  .login-fields .login-fields_select {
+    font-family: "roboto-condensed-light";
+    color: #fff;
+    font-size: 21px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0;
+    background-color: transparent; }
 
 .btn-social {
   font-family: "roboto-condensed-light";
@@ -413,10 +495,10 @@ button, input, select, textarea {
           transform: translateY(-50%);
   z-index: 10; }
 
-.buttons {
+.btns-submit {
   overflow: hidden;
   padding: 5px; }
-  .buttons .button {
+  .btns-submit .button {
     font-family: "roboto-light";
     color: #fff;
     font-size: 23px;
@@ -424,11 +506,11 @@ button, input, select, textarea {
     border-radius: 0;
     float: left;
     width: 50%; }
-    .buttons .button:first-child {
+    .btns-submit .button:first-child {
       box-shadow: inset -1px 0px 0px 0px white; }
-  .buttons .btn-confirm {
+  .btns-submit .btn-confirm {
     background: #426c3a; }
-  .buttons .btn-cancel {
+  .btns-submit .btn-cancel {
     background: #909390; }
 
 .match-buttons {

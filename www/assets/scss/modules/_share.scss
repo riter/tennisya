@@ -1,0 +1,19 @@
+.share{
+    width: 61px;
+    height: 65px;
+    max-height: 65px;
+    background-image: url('../img/share.png') !important;
+    background-size: auto 100% !important;
+    background-repeat: no-repeat !important;
+    &-facebook{
+        background-position: -180px center !important;
+    }
+    &-mail{
+        background-position: -60px center !important;
+    }
+    &-whatsapp{
+        background-position: 0 center !important;
+    }
+}
+
+

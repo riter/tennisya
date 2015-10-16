@@ -42,3 +42,8 @@
   background-repeat: no-repeat;
   background-size: 320px;
 }
+@mixin clearSelect(){
+	appearance : none;
+	border:0;
+	background-color: transparent;
+}

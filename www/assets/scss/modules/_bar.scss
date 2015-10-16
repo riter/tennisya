@@ -1,0 +1,18 @@
+.bar.bar-stable .title{
+	@include font(rr, 17px, rgba(#3f403f,.87));
+}
+.bar.bar-stable{
+	.btn-left{
+		@include font(rr, 12px, #289735);
+	}
+	.btn-right{
+		@include font(rr, 12px, #289735);
+	}
+
+}
+
+.availability-form{
+	.item-toggle{
+		@include font(rr, 14px, #000);
+	}
+}

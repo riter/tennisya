@@ -64,6 +64,12 @@
     @include placeholder(#fff);
     padding-right: 0;
 	}
+	& &_select{
+		@include font(rc, 21px);
+		appearance : none;
+		border:0;
+		background-color: transparent;
+	}
 }
 .btn-social{
 	@include font(rc, 19px);

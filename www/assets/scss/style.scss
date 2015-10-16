@@ -4,12 +4,10 @@
 @import "base/fonts";
 @import "base/base";
 @import "base/icons";
+@import "tools/helpers";
 
 .btn-cgreen{
     color: #289735 !important;
-}
-.bar.bar-stable .title{
-    @include font(rm, 19px, #000);
 }
 .bar .buttons-left span .button{
     font-size: 12px;
@@ -27,9 +25,6 @@
 .background-transparent{
     background-color: transparent !important;
 }
-/*.back-text{*/
-    /*display: none !important;*/
-/*}*/
 /*view login*/
 .header-login{
     font-family: 'roboto_condensedregular';
@@ -50,6 +45,9 @@
 .ion-remove-list:before{
     font-size: 25px !important;
 }
+@import "modules/share";
+@import "modules/bar";
+@import "modules/profile";
 @import "modules/menu";
 @import "modules/subheader";
 @import "modules/sign-in";

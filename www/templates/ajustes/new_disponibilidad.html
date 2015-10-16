@@ -1,14 +1,14 @@
 <ion-modal-view>
 
     <ion-header-bar class="bar-stable">
-        <button class="button button-clear button-balanced button-small-header" ng-click="closeModal()"> Cancelar </button>
+        <button class="button button-clear btn-left" ng-click="closeModal()"> Cancelar </button>
         <h1 class="title title-header">Añadir disponibilidad</h1>
-        <button class="button button-clear button-balanced button-small-header" ng-click="onGuardar()"> Guardar</button>
+        <button class="button button-clear btn-left" ng-click="onGuardar()"> Guardar</button>
     </ion-header-bar>
 
     <ion-content>
 
-        <ion-list >
+        <ion-list class="availability-form">
 
             <label class="item item-input">
                 <input type="text" placeholder="Titulo referencia" ng-model="disponibilidad.title">
@@ -21,7 +21,7 @@
                     Pais
                 </div>
                 <select ng-model="disponibilidad.pais" ng-options="pais for pais in ['Uruguay','Argentina','Brazil']">
-                    <option value=""> Seleccionar </option>
+                    <option value=""> </option>
                 </select>
             </label>
 
@@ -30,7 +30,7 @@
                     Ciudad
                 </div>
                 <select ng-model="disponibilidad.ciudad" ng-options="ciudad for ciudad in ['Montevideo','MaldonadoN','Rivera','Minas']">
-                    <option value=""> Seleccionar </option>
+                    <option value=""> </option>
                 </select>
             </label>
 
@@ -39,7 +39,7 @@
                     Localidad
                 </div>
                 <select ng-model="disponibilidad.localidad" ng-options="localidad for localidad in ['Carrasco','Canelones‎','Cerros Azules','Arenas de José Ignacio']">
-                    <option value=""> Seleccionar </option>
+                    <option value=""> </option>
                 </select>
             </label>
 
@@ -55,7 +55,7 @@
                     Club/Cancha
                 </div>
                 <select ng-model="disponibilidad.clubCancha" ng-options="club.id as club.nombre for club in clubs track by club.id">
-                    <option value=""> Seleccionar </option>
+                    <option value=""> </option>
                 </select>
             </label>
 

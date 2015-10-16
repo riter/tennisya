@@ -22,31 +22,6 @@
 }
 /* fin imagen inferior con logo*/
 
-/* inicio pantalla contarle a un amigo botones redes sociales*/
-.share{
-    width: 61px;
-    height: 65px;
-    max-height: 65px;
-    background-image: url('../img/share.png') !important;
-    background-size: auto 100% !important;
-    background-repeat: no-repeat !important;
-}
-
-.share-facebook{
-    background-position: -180px center !important;
-}
-.share-twitter{
-    background-position: -120px center !important;
-}
-.share-mail{
-    background-position: -60px center !important;
-}
-.share-message{
-    background-position: 0 center !important;
-}
-/* fin pantalla contarle a un amigo botones redes sociales*/
-
-
 /* inicio validacion*/
 label.item.has-error {
     border-bottom: 2px solid red;
