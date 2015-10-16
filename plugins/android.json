@@ -39,6 +39,10 @@
                         {
                             "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -78,6 +82,9 @@
             "PACKAGE_NAME": "com.ionicframework.appmobile958855"
         },
         "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+        },
+        "cordova-plugin-actionsheet": {
             "PACKAGE_NAME": "com.ionicframework.appmobile958855"
         }
     },

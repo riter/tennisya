@@ -51,13 +51,27 @@ appTennisya
                 });
 
             },
-            saveJugador: function(data,callback,error){
-                if(data.photo && data.photo.indexOf('http')>-1){
-                    $cordovaFileTransfer.upload(api+'jugador/save', data.photo, {})
+            saveJugador: function(model,callback,error){
+                var data = angular.copy(model);
+
+                if(typeof (data.clubCancha) === 'object')
+                    data.clubCancha = data.clubCancha.id;
+
+                if(data.photo && data.photo.indexOf('http')<0){
+                    var option = {
+                        fileKey:'files',
+                        fileName:'image.jpg',
+                        mimeType: "image/png",
+                        chunkedMode: false,
+                        params:data
+                    };
+                    $cordovaFileTransfer.upload(api+'jugador/save', data.photo, option)
                         .then(function(result) {
-                            return callback(result);
+                            $localstorage.setObject('user',JSON.parse(result.response));
+                            return callback({data: JSON.parse(result.response)});
                         }, function(err) {
-                            alert(JSON.stringify(err));
+                            //alert(JSON.stringify(err));
+                            return error(err);
                         }, function (progress) {
                             // constant progress updates
                         });
@@ -71,13 +85,27 @@ appTennisya
                     });
                 }
             },
-            updateJugador: function(data,callback,error){
-                if(data.photo && data.photo.indexOf('http')>-1){
-                    $cordovaFileTransfer.upload(api+'jugador/update/'+data.id, data.photo, {})
+            updateJugador: function(model,callback,error){
+                var data = angular.copy(model);
+
+                if(typeof (data.clubCancha) === 'object')
+                    data.clubCancha = data.clubCancha.id;
+
+                if(data.photo && data.photo.indexOf('http')<0){
+                    var option = {
+                        fileKey:'files',
+                        fileName:'image.jpg',
+                        mimeType: "image/png",
+                        chunkedMode: false,
+                        params:data
+                    };
+                    $cordovaFileTransfer.upload(api+'jugador/update/'+data.id, data.photo, option)
                         .then(function(result) {
-                            return callback(result);
+                            $localstorage.setObject('user', JSON.parse(result.response));
+                            return callback({data: JSON.parse(result.response)});
                         }, function(err) {
-                            alert(JSON.stringify(err));
+                            //alert(JSON.stringify(err));
+                            return error(err);
                         }, function (progress) {
                             // constant progress updates
                         });

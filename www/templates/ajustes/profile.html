@@ -5,7 +5,7 @@
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
-        <button class="button button-clear btn-right" ng-click="onGuardar(disponibilidad)"> Guardar</button>
+        <button class="button button-clear btn-right" ng-click="onGuardar(profile)"> Guardar</button>
     </ion-nav-buttons>
 
     <ion-content>
@@ -48,8 +48,8 @@
                 </label>
 
                 <div class="item item-body">
-                    <figure class="profile_avatar">
-                        <img class="full-image" src="assets/img/thumb_profile.png">
+                    <figure class="profile_avatar" ng-click="loadPhoto()">
+                        <img ng-src="{{profile.photo?profile.photo:'../www/assets/img/thumb_profile.png'}}">
                     </figure>
                     <p class="no-margin profile_txt">Cambiar imagen de perfil</p>
                 </div>

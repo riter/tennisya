@@ -31,6 +31,7 @@
     <gap:plugin name="org.apache.cordova.file"/>
     <gap:plugin name="org.apache.cordova.file-transfer"/>
     <gap:plugin name="org.apache.cordova.dialogs"/>
+    <gap:plugin name="cordova-plugin-actionsheet" source="npm" />
 
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
