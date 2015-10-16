@@ -38,7 +38,7 @@ appTennisya
             }
         };
     }])
-    .factory('userService', function($http, $localstorage) {
+    .factory('userService', function($http, $localstorage, $cordovaFileTransfer) {
         var user = null;
 
         return {
@@ -52,14 +52,44 @@ appTennisya
 
             },
             saveJugador: function(data,callback,error){
-
-                $http.post(api+'jugador/save',data).then(function(response){
-                    user = response.data;
-                    $localstorage.setObject('user',user);//por confirma si manda a jugadores
-                    return callback(user);
-                },function(e){
-                    return error(e.data);
-                });
+                if(data.photo && data.photo.indexOf('http')>-1){
+                    $cordovaFileTransfer.upload(api+'jugador/save', data.photo, {})
+                        .then(function(result) {
+                            return callback(result);
+                        }, function(err) {
+                            alert(JSON.stringify(err));
+                        }, function (progress) {
+                            // constant progress updates
+                        });
+                }else{
+                    $http.post(api+'jugador/save',data).then(function(response){
+                        user = response.data;
+                        $localstorage.setObject('user',user);//por confirma si manda a jugadores
+                        return callback(user);
+                    },function(e){
+                        return error(e.data);
+                    });
+                }
+            },
+            updateJugador: function(data,callback,error){
+                if(data.photo && data.photo.indexOf('http')>-1){
+                    $cordovaFileTransfer.upload(api+'jugador/update/'+data.id, data.photo, {})
+                        .then(function(result) {
+                            return callback(result);
+                        }, function(err) {
+                            alert(JSON.stringify(err));
+                        }, function (progress) {
+                            // constant progress updates
+                        });
+                }else{
+                    $http.post(api+'jugador/update/'+data.id,data).then(function(response){
+                        user = response.data;
+                        $localstorage.setObject('user',user);
+                        return callback(user);
+                    },function(e){
+                        return error(e.data);
+                    });
+                }
             },
             listJugador: function(callback,error){
 
@@ -110,10 +140,13 @@ appTennisya
                 return $http.get(api+'disponibilidad/list/'+id);
             },
             newDisponibilidad: function(idJugador, model){
-                return $http.post(api+'disponibilidad/new/'+id,model);
+                return $http.post(api+'disponibilidad/new/'+idJugador,model);
             },
-            updateDisponibilidad: function(id, model){
-                return $http.post(api+'disponibilidad/update/'+id,model);
+            updateDisponibilidad: function(model){
+                if(typeof (model.clubCancha) === 'object')
+                    model.clubCancha = model.clubCancha.id;
+
+                return $http.post(api+'disponibilidad/update/'+model.id,model);
             },
             deleteDisponibilidad: function(id){
                 return $http.get(api+'disponibilidad/delete/'+id);

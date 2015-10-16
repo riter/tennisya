@@ -47,7 +47,7 @@
 /* fin pantalla contarle a un amigo botones redes sociales*/
 
 /* inicio modal tipo ActionSheet*/
-.actionSheet{
+.action-sheet{
     width: 100%;
     height: 200px;
     top: calc(100% - 200px); /* 250px + altura del header */
@@ -55,7 +55,7 @@
     right: 0;
     bottom: 0;
 }
-.actionSheet .scroll-content{
+.action-sheet .scroll-content{
     height: inherit;
 }
 /* fin modal tipo ActionSheet*/

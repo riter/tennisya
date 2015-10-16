@@ -93,13 +93,13 @@ appTennisya
             showDelete: false
         };
         $scope.chageActivo =function(item){
-            disponibilidadService.updateDisponibilidad(item.id, item);
+            disponibilidadService.updateDisponibilidad(item);
         };
         $scope.onDelete = function(item) {
             disponibilidadService.deleteDisponibilidad(item.id);
             $scope.items.splice($scope.items.indexOf(item), 1);
         };
-        //$scope.items ={};
+
         disponibilidadService.getDisponibilidad($stateParams.id).then(function(response){
             $scope.items = response.data;
         });
@@ -112,6 +112,9 @@ appTennisya
                 $scope.modal = modal;
             });
 
+        $scope.formatFecha = function(date,format){
+            return moment(date).format(format);
+        };
         $scope.formatYMD = function(date){
             return moment(date).format('YYYY/MM/DD');
         };
@@ -120,17 +123,38 @@ appTennisya
         };
 
         $scope.onGuardar = function(){
-            disponibilidadService.newDisponibilidad($stateParams.id, $scope.disponibilidad).then(function(response){
-                $scope.items.push(response.data);
-            });
+            if(typeof ($scope.disponibilidad.id) !== 'undefined'){
+                disponibilidadService.updateDisponibilidad($scope.disponibilidad).then(function(response){
+                    $scope.items.forEach(function(disp){
+                       if(disp.id == response.data.id)
+                           disp = response.data;
+                    });
+                });
+            }else{
+                disponibilidadService.newDisponibilidad($stateParams.id, $scope.disponibilidad).then(function(response){
+                    $scope.items.push(response.data);
+                });
+            }
             $scope.closeModal();
         };
 
+        $scope.dias = [];
         $scope.openModal = function(item) {
-            if(item)
+            $scope.dias = [
+                {id:'Lu',txt:'Los lunes',checked:false},
+                {id:'Ma',txt:'Los martes',checked:false},
+                {id:'Mi',txt:'Los miércoles',checked:false},
+                {id:'Ju',txt:'Los jueves',checked:false},
+                {id:'Vi',txt:'Los viernes',checked:false},
+                {id:'Sa',txt:'Los sábados',checked:false},
+                {id:'Do',txt:'Los domingos',checked:false}
+            ];
+
+            if(item){
                 $scope.disponibilidad = item;
-            else
-                $scope.disponibilidad = {autoConfirm:true};
+                $scope.parseDias(item.repetir);
+            }else
+                $scope.disponibilidad = {autoConfirm:true,fechaI: moment().format('YYYY-MM-DD h:mm:ss'),fechaF:moment().format('YYYY-MM-DD h:mm:ss')};
 
             $scope.modal.show();
         };
@@ -145,26 +169,23 @@ appTennisya
                 $scope.modalRepetir = modal;
             });
 
-        $scope.dias = [
-            {id:'Lu',txt:'Los lunes',checked:false},
-            {id:'Ma',txt:'Los martes',checked:false},
-            {id:'Mi',txt:'Los miércoles',checked:false},
-            {id:'Ju',txt:'Los jueves',checked:false},
-            {id:'Vi',txt:'Los viernes',checked:false},
-            {id:'Sa',txt:'Los sábados',checked:false},
-            {id:'Do',txt:'Los domingos',checked:false}
-        ];
+        $scope.parseDias = function(json){
+            $scope.disponibilidad.repetir = '';
+            $scope.dias.forEach(function(item){
+                if(json && json.indexOf(item.id) > -1)
+                    item.checked = true;
+
+                if(item.checked)
+                    $scope.disponibilidad.repetir += item.id +'.';
+            });
+        };
 
         $scope.actionSheet = function(){
             $scope.modalRepetir.show();
         };
 
         $scope.$on('modal.hidden', function(ev) {
-            $scope.disponibilidad.repetir = '';
-            $scope.dias.forEach(function(item){
-                if(item.checked)
-                    $scope.disponibilidad.repetir += item.id +'.';
-            });
+            $scope.parseDias();
         });
     })
     .controller('ShareCtrl', function($scope, $cordovaSocialSharing) {
@@ -209,29 +230,33 @@ appTennisya
         };
 
     })
-    .controller('ProfileCtrl', function($scope, $state, $ionicHistory, $localstorage, $cordovaCamera,$ionicActionSheet) {
+    .controller('ProfileCtrl', function($scope, $state, $ionicHistory, $localstorage, $cordovaCamera, $cordovaFileTransfer, $ionicActionSheet, userService) {
         $scope.profile = $localstorage.getObject('user');
         $scope.onCancelar = function(){
             $ionicHistory.goBack();
         };
 
-        $scope.onGuardar = function(model){
-            //servicio de guardar
-            $ionicHistory.goBack();
+        $scope.onGuardar = function(user){
+            userService.updateJugador(user,function(response){
+                alert(JSON.stringify(response));
+                $ionicHistory.goBack();
+            },function(error){
+                alert(error.error);
+            });
         };
 
         $scope.loadPhoto = function() {
             $ionicActionSheet.show({
-                destructiveText: 'Eliminar foto',
+                //destructiveText: 'Eliminar foto',
                 buttons: [
                     { text: 'Hacer foto' },
                     { text: 'Seleccionar foto' }
                 ],
                 cancelText: 'Cancelar',
-                destructiveButtonClicked: function() {
-                    $scope.profile.photo = null;
-                    return true;
-                },
+//                destructiveButtonClicked: function() {
+//                    $scope.profile.photo = null;
+//                    return true;
+//                },
                 buttonClicked: function(index) {
                     if(index == 0)
                         $scope.getPhoto();

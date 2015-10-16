@@ -6,9 +6,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/profile.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/repetir.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/repetir.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" afterPath="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tennisya.iws" />
@@ -35,36 +34,52 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="-11.769231" vertical-offset="102" max-vertical-offset="697">
+            <state line="24" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="-12.076923" vertical-offset="94" max-vertical-offset="697">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="222" column="39" selection-start="7700" selection-end="7700" vertical-scroll-proportion="0.48775893" vertical-offset="3515" max-vertical-offset="7412">
+            <state line="114" column="43" selection-start="3970" selection-end="3970" vertical-scroll-proportion="0.0" vertical-offset="1643" max-vertical-offset="7837">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="38" selection-start="2425" selection-end="2425" vertical-scroll-proportion="-11.423077" vertical-offset="587" max-vertical-offset="1105">
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="141" column="46" selection-start="5245" selection-end="5245" vertical-scroll-proportion="0.0" vertical-offset="2125" max-vertical-offset="3060">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sign-up.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
+      <file leaf-file-name="disponibilidad.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="97" selection-start="2071" selection-end="2143" vertical-scroll-proportion="-11.423077" vertical-offset="332" max-vertical-offset="850">
+            <state line="14" column="80" selection-start="853" selection-end="853" vertical-scroll-proportion="0.26930693" vertical-offset="102" max-vertical-offset="646">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_disponibilidad.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="50" selection-start="2724" selection-end="2724" vertical-scroll-proportion="-3.2692308" vertical-offset="986" max-vertical-offset="1921">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="repetir.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/ajustes/repetir.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="30" selection-start="503" selection-end="503" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="340">
               <folding />
             </state>
           </provider>
@@ -93,22 +108,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/templates/partidos/listPartidos.html" />
         <option value="$PROJECT_DIR$/www/app/apps.js" />
         <option value="$PROJECT_DIR$/www/app/controllers.js" />
         <option value="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-in.html" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/config.xml" />
-        <option value="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
-        <option value="$PROJECT_DIR$/www/app/services.js" />
-        <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
-        <option value="$PROJECT_DIR$/www/templates/ajustes/repetir.html" />
-        <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
         <option value="$PROJECT_DIR$/www/templates/inicio/sign-up.html" />
-        <option value="$PROJECT_DIR$/www/app/controller.js" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
+        <option value="$PROJECT_DIR$/www/templates/ajustes/repetir.html" />
+        <option value="$PROJECT_DIR$/platforms/android/assets/www/app/services.js" />
+        <option value="$PROJECT_DIR$/www/app/services.js" />
+        <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
+        <option value="$PROJECT_DIR$/www/app/controller.js" />
+        <option value="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
       </list>
     </option>
   </component>
@@ -417,7 +432,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="728" extended-state="1" />
+    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -425,7 +440,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23466258" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23849693" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -459,72 +474,17 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-in.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="66" selection-start="1706" selection-end="1715" vertical-scroll-proportion="-21.576923" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="32" selection-start="3821" selection-end="3841" vertical-scroll-proportion="0.0" vertical-offset="1679" max-vertical-offset="2482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/assets/www/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="12" selection-start="4026" selection-end="4026" vertical-scroll-proportion="0.332696" vertical-offset="1849" max-vertical-offset="2431">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="158" selection-start="669" selection-end="694" vertical-scroll-proportion="0.27066115" vertical-offset="73" max-vertical-offset="629">
-          <folding />
-        </state>
+        <state line="33" column="66" selection-start="1706" selection-end="1715" vertical-scroll-proportion="-21.576923" vertical-offset="0" max-vertical-offset="748" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="57" selection-start="998" selection-end="998" vertical-scroll-proportion="0.7069307" vertical-offset="0" max-vertical-offset="3111">
-          <folding />
-        </state>
+        <state line="21" column="57" selection-start="998" selection-end="998" vertical-scroll-proportion="0.7069307" vertical-offset="0" max-vertical-offset="3111" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="295" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="21" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1547">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/repetir.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="18" selection-start="275" selection-end="275" vertical-scroll-proportion="0.22972973" vertical-offset="0" max-vertical-offset="518">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="42" selection-start="3893" selection-end="3893" vertical-scroll-proportion="0.43366337" vertical-offset="1294" max-vertical-offset="1921">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="-11.769231" vertical-offset="102" max-vertical-offset="697">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="295" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
@@ -541,6 +501,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="38" selection-start="2425" selection-end="2425" vertical-scroll-proportion="-11.423077" vertical-offset="587" max-vertical-offset="1105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="20" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="95" selection-start="1298" selection-end="1316" vertical-scroll-proportion="0.53125" vertical-offset="238" max-vertical-offset="2584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/inicio/sign-up.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="97" selection-start="2071" selection-end="2143" vertical-scroll-proportion="-11.423077" vertical-offset="332" max-vertical-offset="850">
@@ -548,25 +529,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/repetir.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="38" selection-start="2425" selection-end="2425" vertical-scroll-proportion="-11.423077" vertical-offset="587" max-vertical-offset="1105">
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#ion-list#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="10" column="30" selection-start="503" selection-end="503" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="340">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+    <entry file="file://$PROJECT_DIR$/platforms/android/assets/www/app/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="1" selection-start="42" selection-end="42" vertical-scroll-proportion="0.09375" vertical-offset="0" max-vertical-offset="2584">
+        <state line="115" column="65" selection-start="3929" selection-end="3929" vertical-scroll-proportion="0.45772058" vertical-offset="1672" max-vertical-offset="2482">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="-12.076923" vertical-offset="94" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="46" selection-start="5245" selection-end="5245" vertical-scroll-proportion="0.0" vertical-offset="2125" max-vertical-offset="3060">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="222" column="39" selection-start="7700" selection-end="7700" vertical-scroll-proportion="0.48775893" vertical-offset="3515" max-vertical-offset="7412">
+        <state line="114" column="43" selection-start="3970" selection-end="3970" vertical-scroll-proportion="0.0" vertical-offset="1643" max-vertical-offset="7837">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="50" selection-start="2724" selection-end="2724" vertical-scroll-proportion="-3.2692308" vertical-offset="986" max-vertical-offset="1921">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="80" selection-start="853" selection-end="853" vertical-scroll-proportion="0.26930693" vertical-offset="102" max-vertical-offset="646">
           <folding />
         </state>
       </provider>

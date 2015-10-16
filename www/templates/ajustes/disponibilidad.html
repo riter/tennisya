@@ -12,7 +12,8 @@
 
             <ion-item item="item" ng-class="{'item-toggle':!data.showDelete,'active':!item.activo}" class="item item-remove-animate" ng-repeat="item in items" ng-click="data.showDelete?openModal(item):''">
                 {{item.title}}
-                <p>Lun,Mie - 17 a 18 hs-{{item.localidad}},{{item.ciudad}},{{item.pais}}</p>
+                <p>{{item.repetir}} - {{formatFecha(item.fechaI,'h:mm')}} a {{formatFecha(item.fechaF,'h:mm')}} hs</p>
+                <p>{{item.localidad}}, {{item.ciudad}}, {{item.pais}}</p>
 
                 <label ng-hide="data.showDelete" class="toggle toggle-balanced">
                     <input type="checkbox" ng-model="item.activo" ng-change="chageActivo(item)">
