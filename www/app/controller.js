@@ -66,33 +66,43 @@ appTennisya
             $scope.inviteModal.hide();
         }
     })
-    .controller('AjustesCtrl', function($scope, $state, $localstorage) {
+    .controller('AjustesCtrl', function($scope, $state, $localstorage, $ionicHistory, $ionicActionSheet) {
         $scope.id = $localstorage.getObject('user').id;
 
         $scope.onCerrarSesion=function(){
-            $localstorage.clear();
-            $state.go('signin');
+            $ionicActionSheet.show({
+                buttons: [],
+                destructiveText: 'Cerrar sesión',
+                titleText: '¿Seguro que quieres cerrar sesión?',
+                cancelText: 'Cancelar',
+                destructiveButtonClicked : function() {
+                    $localstorage.clear();
+                    $ionicHistory.clearHistory();
+                    $ionicHistory.clearCache();
+                    $state.go('signin');
+                }
+            });
         }
     })
-    .controller('DisponibilidadCtrl', function($scope, $stateParams, $ionicModal, disponibilidadService, extrasService ) {
-        $scope.data = {
-            showDelete: false
-        };
-
-        $scope.items ={};
-        disponibilidadService.getDisponibilidad($stateParams.id).then(function(response){
-            $scope.items = response.data;
-        });
-
+    .controller('DisponibilidadCtrl', function($scope, $stateParams, $ionicModal, $ionicActionSheet, disponibilidadService, extrasService ) {
         extrasService.getClub().then(function(response){
             $scope.clubs = response.data;
         });
 
-        $scope.onDelete = function(item) {
-            disponibilidadService.deleteDisponibilidad(item.id).then(function(response){
-                $scope.items.splice($scope.items.indexOf(item), 1);
-            });
+        $scope.data = {
+            showDelete: false
         };
+        $scope.chageActivo =function(item){
+            disponibilidadService.updateDisponibilidad(item.id, item);
+        };
+        $scope.onDelete = function(item) {
+            disponibilidadService.deleteDisponibilidad(item.id);
+            $scope.items.splice($scope.items.indexOf(item), 1);
+        };
+        //$scope.items ={};
+        disponibilidadService.getDisponibilidad($stateParams.id).then(function(response){
+            $scope.items = response.data;
+        });
 
         /* new Disponibilidad*/
         $ionicModal.fromTemplateUrl('templates/ajustes/new_disponibilidad.html', {
@@ -112,22 +122,50 @@ appTennisya
         $scope.onGuardar = function(){
             disponibilidadService.newDisponibilidad($stateParams.id, $scope.disponibilidad).then(function(response){
                 $scope.items.push(response.data);
-                $scope.closeModal();
             });
+            $scope.closeModal();
         };
 
         $scope.openModal = function(item) {
-            console.log(item);
             if(item)
                 $scope.disponibilidad = item;
             else
                 $scope.disponibilidad = {autoConfirm:true};
+
             $scope.modal.show();
         };
         $scope.closeModal = function() {
             $scope.modal.hide();
         };
 
+        $ionicModal.fromTemplateUrl('templates/ajustes/repetir.html', {
+            animation: 'slide-in-up',
+            scope: $scope
+        }).then(function (modal) {
+                $scope.modalRepetir = modal;
+            });
+
+        $scope.dias = [
+            {id:'Lu',txt:'Los lunes',checked:false},
+            {id:'Ma',txt:'Los martes',checked:false},
+            {id:'Mi',txt:'Los miércoles',checked:false},
+            {id:'Ju',txt:'Los jueves',checked:false},
+            {id:'Vi',txt:'Los viernes',checked:false},
+            {id:'Sa',txt:'Los sábados',checked:false},
+            {id:'Do',txt:'Los domingos',checked:false}
+        ];
+
+        $scope.actionSheet = function(){
+            $scope.modalRepetir.show();
+        };
+
+        $scope.$on('modal.hidden', function(ev) {
+            $scope.disponibilidad.repetir = '';
+            $scope.dias.forEach(function(item){
+                if(item.checked)
+                    $scope.disponibilidad.repetir += item.id +'.';
+            });
+        });
     })
     .controller('ShareCtrl', function($scope, $cordovaSocialSharing) {
         var message = '';
@@ -139,13 +177,13 @@ appTennisya
 
         $scope.onShare = function(red){
             switch (red){
-                case 'message':
+                case 'wassap':
                     $cordovaSocialSharing
-                        .shareViaSMS(message, number)
+                        .shareViaWhatsApp(message, image, link)
                         .then(function(result) {
                             // Success!
                         }, function(err) {
-                            // An error occurred. Show a message to the user
+                           alert(JSON.stringify(err));
                         });
                     break;
                 case 'mail':
@@ -154,16 +192,7 @@ appTennisya
                         .then(function(result) {
                             // Success!
                         }, function(err) {
-                            // An error occurred. Show a message to the user
-                        });
-                    break;
-                case 'twitter':
-                    $cordovaSocialSharing
-                        .shareViaTwitter(message, image, link)
-                        .then(function(result) {
-                            // Success!
-                        }, function(err) {
-                            // An error occurred. Show a message to the user
+                            alert(JSON.stringify(err));
                         });
                     break;
                 case 'facebook':
@@ -172,7 +201,7 @@ appTennisya
                         .then(function(result) {
                             // Success!
                         }, function(err) {
-                            // An error occurred. Show a message to the user
+                            alert(JSON.stringify(err));
                         });
                     break;
             }
@@ -180,8 +209,7 @@ appTennisya
         };
 
     })
-    .controller('ProfileCtrl', function($scope, $state, $ionicHistory, $localstorage) {
-
+    .controller('ProfileCtrl', function($scope, $state, $ionicHistory, $localstorage, $cordovaCamera,$ionicActionSheet) {
         $scope.profile = $localstorage.getObject('user');
         $scope.onCancelar = function(){
             $ionicHistory.goBack();
@@ -190,6 +218,56 @@ appTennisya
         $scope.onGuardar = function(model){
             //servicio de guardar
             $ionicHistory.goBack();
+        };
+
+        $scope.loadPhoto = function() {
+            $ionicActionSheet.show({
+                destructiveText: 'Eliminar foto',
+                buttons: [
+                    { text: 'Hacer foto' },
+                    { text: 'Seleccionar foto' }
+                ],
+                cancelText: 'Cancelar',
+                destructiveButtonClicked: function() {
+                    $scope.profile.photo = null;
+                    return true;
+                },
+                buttonClicked: function(index) {
+                    if(index == 0)
+                        $scope.getPhoto();
+                    else if(index == 1)
+                        $scope.selectPhoto();
+                    return true;
+                }
+            });
+        };
+        $scope.getPhoto = function(){
+            var options = {
+                quality: 50,
+                allowEdit: true,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.CAMERA
+            };
+            $scope.openCamera(options);
+            $cordovaCamera.cleanup();
+        };
+
+        $scope.selectPhoto = function(){
+            var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG
+            };
+            $scope.openCamera(options);
+
+        };
+        $scope.openCamera = function(options){
+            $cordovaCamera.getPicture(options).then(function(imageURI) {
+                $scope.profile.photo = imageURI;
+            }, function(err) {
+                alert(JSON.stringify(err));
+            });
         };
 
     })
@@ -214,29 +292,53 @@ appTennisya
         };
 
     })
-    .controller('SignUpCtrl', function($scope, $state, userService, extrasService, $cordovaCamera) {
-        $scope.openCamera = function() {
-            alert('Camara Activar');
+    .controller('SignUpCtrl', function($scope, $state, userService, extrasService, $cordovaCamera, $ionicActionSheet) {
+        $scope.user = {name:'riter angel',estado:'carrasco',email:'xxx@gmail.com',password:'123456',confir_passowrd:'654231'};
 
+        $scope.loadPhoto = function() {
+            $ionicActionSheet.show({
+                buttons: [
+                    { text: 'Hacer foto' },
+                    { text: 'Seleccionar foto' }
+                ],
+                cancelText: 'Cancelar',
+                buttonClicked: function(index) {
+                    if(index == 0)
+                        $scope.getPhoto();
+                    else if(index == 1)
+                        $scope.selectPhoto();
+                    return true;
+                }
+            });
+        };
+        $scope.getPhoto = function(){
             var options = {
+                quality: 50,
+                allowEdit: true,
                 destinationType: Camera.DestinationType.FILE_URI,
                 sourceType: Camera.PictureSourceType.CAMERA
             };
-
-            $cordovaCamera.getPicture(options).then(function(imageURI) {
-                var image = document.getElementById('photoSignUp');
-                image.src = imageURI;
-            }, function(err) {
-               alert(JSON.stringify(err));
-            });
-
-
-            $cordovaCamera.cleanup().then(function(){
-                alert('cleanup Camera');
-            }); // only for FILE_URI
+            $scope.openCamera(options);
+            $cordovaCamera.cleanup();
         };
 
-        $scope.user = {name:'riter angel',estado:'carrasco',email:'xxx@gmail.com',password:'123456',confir_passowrd:'654231'};
+        $scope.selectPhoto = function(){
+            var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG
+            };
+            $scope.openCamera(options);
+
+        };
+        $scope.openCamera = function(options){
+            $cordovaCamera.getPicture(options).then(function(imageURI) {
+                $scope.user.photo = imageURI;
+            }, function(err) {
+                alert(JSON.stringify(err));
+            });
+        };
         $scope.signUp = function(user) {
 //            console.log(user);
 //            user.type = 'normal';
@@ -261,13 +363,13 @@ appTennisya
             //alert(error.error);
         });
 
-        setInterval(function(){
-            userService.listJugador(function(response){
-                $scope.jugadores = response;
-            },function(error){
-                //alert(error.error);
-            });
-        },15000);
+//        setInterval(function(){
+//            userService.listJugador(function(response){
+//                $scope.jugadores = response;
+//            },function(error){
+//                //alert(error.error);
+//            });
+//        },15000);
     })
     .controller('ListPartidosCtrl', function($scope, partidoService) {
 

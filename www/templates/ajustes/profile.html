@@ -50,8 +50,8 @@
                 <i class="icon ion-edit icon-accessory"></i>
             </label>
 
-            <div class="item item-body">
-                <img class="full-image" src="../www/assets/img/thumb_profile.png"  style="width: 48%">
+            <div class="item item-body" ng-click="loadPhoto()">
+                <img class="full-image" ng-src="{{profile.photo?profile.photo:'../www/assets/img/thumb_profile.png'}}" style="width: 48%">
                 <p class="no-margin">Cambiar imagen de perfil</p>
             </div>
 

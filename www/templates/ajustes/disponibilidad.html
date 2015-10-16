@@ -10,12 +10,12 @@
                 Añadir disponibilidad...
             </ion-item>
 
-            <ion-item item="item" ng-class="{'item-toggle':!data.showDelete}" class="item item-remove-animate" ng-repeat="item in items" ng-click="openModal(item)">
+            <ion-item item="item" ng-class="{'item-toggle':!data.showDelete,'active':!item.activo}" class="item item-remove-animate" ng-repeat="item in items" ng-click="data.showDelete?openModal(item):''">
                 {{item.title}}
                 <p>Lun,Mie - 17 a 18 hs-{{item.localidad}},{{item.ciudad}},{{item.pais}}</p>
 
                 <label ng-hide="data.showDelete" class="toggle toggle-balanced">
-                    <input type="checkbox" ng-checked="true">
+                    <input type="checkbox" ng-model="item.activo" ng-change="chageActivo(item)">
                     <div class="track">
                         <div class="handle"></div>
                     </div>

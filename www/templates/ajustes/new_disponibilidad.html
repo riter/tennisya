@@ -29,7 +29,7 @@
                 <div class="input-label">
                     Ciudad
                 </div>
-                <select ng-model="disponibilidad.ciudad" ng-options="ciudad for ciudad in ['Montevideo','MaldonadoN','Rivera','Minas']">
+                <select ng-model="disponibilidad.ciudad" ng-options="ciudad for ciudad in ['Montevideo','Maldonado','Rivera','Minas']">
                     <option value=""> Seleccionar </option>
                 </select>
             </label>
@@ -84,10 +84,10 @@
                 <span class="item-note">{{formatHHMM(disponibilidad.horaF)}}</span>
             </label>
 
-            <a class="item" href="#">
+            <a class="item" href="#" ng-click="actionSheet()">
                 Repetir
                 <span class="item-note">
-                  Nunca <i class="icon ion-chevron-right icon-accessory"></i>
+                  {{disponibilidad.repetir}} <i class="icon ion-chevron-right icon-accessory"></i>
                 </span>
             </a>
 

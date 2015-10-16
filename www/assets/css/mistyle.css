@@ -46,6 +46,19 @@
 }
 /* fin pantalla contarle a un amigo botones redes sociales*/
 
+/* inicio modal tipo ActionSheet*/
+.actionSheet{
+    width: 100%;
+    height: 200px;
+    top: calc(100% - 200px); /* 250px + altura del header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.actionSheet .scroll-content{
+    height: inherit;
+}
+/* fin modal tipo ActionSheet*/
 
 /* inicio validacion*/
 label.item.has-error {

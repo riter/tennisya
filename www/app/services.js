@@ -109,8 +109,11 @@ appTennisya
             getDisponibilidad: function(id){
                 return $http.get(api+'disponibilidad/list/'+id);
             },
-            newDisponibilidad: function(id, model){
+            newDisponibilidad: function(idJugador, model){
                 return $http.post(api+'disponibilidad/new/'+id,model);
+            },
+            updateDisponibilidad: function(id, model){
+                return $http.post(api+'disponibilidad/update/'+id,model);
             },
             deleteDisponibilidad: function(id){
                 return $http.get(api+'disponibilidad/delete/'+id);
