@@ -45,6 +45,8 @@
 .ion-remove-list:before{
     font-size: 25px !important;
 }
+@import "modules/list";
+@import "modules/select";
 @import "modules/share";
 @import "modules/bar";
 @import "modules/profile";
@@ -56,3 +58,4 @@
 @import "modules/game";
 @import "modules/match";
 @import "modules/match-players";
+@import "modules/info";

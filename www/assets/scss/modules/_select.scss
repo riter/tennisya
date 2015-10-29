@@ -1,0 +1,10 @@
+.ty-orderby{
+	@include clearSelect();
+	background-color: #e0e0e0;
+	@include font(rb, 12px, #403f3f);
+	position: absolute;
+	padding: 1px 9px 2px;
+	border-radius: 0;
+	right: 0;
+	bottom: 0;
+}

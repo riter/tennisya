@@ -197,7 +197,7 @@ appTennisya.directive('divContent', function() {
             element[0].style.position = 'relative';
             element[0].style.height = '100%';
             var hT = twoElements[0].clientHeight - 2;
-            twoElements[1].style.height = 'calc(100% - '+hT+'px)' ;
+            // twoElements[1].style.height = 'calc(100% - '+hT+'px)' ;
 
         }
     };

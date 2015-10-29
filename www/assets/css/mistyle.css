@@ -17,14 +17,6 @@
 }
 /* fin Input para fecha y hora newPartido*/
 
-/* inicio imagen inferior con logo*/
-.fondo-info {
-    background: url("../img/info.png") no-repeat;
-    background-size: 55%;
-    background-position: center;
-}
-/* fin imagen inferior con logo*/
-
 /* inicio modal tipo ActionSheet*/
 .action-sheet{
     width: 100%;

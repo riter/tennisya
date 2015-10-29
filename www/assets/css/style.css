@@ -168,6 +168,49 @@ button, input, select, textarea {
 .ion-remove-list:before {
   font-size: 25px !important; }
 
+.ty-list .item {
+  font-size: 14px;
+  font-family: "roboto-regular";
+  color: #020202;
+  font-size: 14px;
+  padding: 10px 12px 10px 33px; }
+.ty-list .item-input {
+  padding: 7px 0 7px 33px; }
+.ty-list .item-complex .item-content,
+.ty-list .item-radio .item-content {
+  padding: 12px 12px 12px 33px; }
+.ty-list .item-divider {
+  font-family: "roboto-bold";
+  color: #0f0f0f;
+  font-size: 11px;
+  padding: 0 12px;
+  min-height: 23px; }
+.ty-list .input-label {
+  font-family: "roboto-regular";
+  color: #020202;
+  font-size: 14px;
+  padding: 3px 10px 3px 0px; }
+.ty-list .item-complex,
+.ty-list a.item.item-complex,
+.ty-list button.item.item-complex {
+  padding: 0; }
+
+.ty-orderby {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  background-color: transparent;
+  background-color: #e0e0e0;
+  font-family: "roboto-bold";
+  color: #403f3f;
+  font-size: 12px;
+  position: absolute;
+  padding: 1px 9px 2px;
+  border-radius: 0;
+  right: 0;
+  bottom: 0; }
+
 .share {
   width: 61px;
   height: 65px;
@@ -657,5 +700,18 @@ button, input, select, textarea {
             transform: translate(-50%, -50%); }
     .match-players_icon:after {
       display: block; }
+
+.info_logo {
+  background: url("../img/info.png") no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 212px;
+  width: 200px;
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 30px;
+  left: 50%;
+  margin-left: -100px; }
 
 /*# sourceMappingURL=style.css.map */

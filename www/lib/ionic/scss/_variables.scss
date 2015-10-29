@@ -288,9 +288,11 @@ $tabs-striped-border-width:       2px !default;
 // Items
 // -------------------------------
 
-$item-font-size:                  16px !default;
+// $item-font-size:                  16px !default;
+$item-font-size:                  14px !default;
 $item-border-width:               1px !default;
-$item-padding:                    16px !default;
+// $item-padding:                    16px !default;
+$item-padding:                    12px !default;
 
 $item-button-font-size:           18px !default;
 $item-button-line-height:         32px !default;
@@ -446,9 +448,13 @@ $progress-margin:                 15px auto !default;
 // Toggle
 // -------------------------------
 
-$toggle-width:                    51px !default;
+/* $toggle-width:                    51px !default;
 $toggle-height:                   31px !default;
 $toggle-border-width:             2px !default;
+$toggle-border-radius:            20px !default; */
+$toggle-width:                    33px !default;
+$toggle-height:                   20px !default;
+$toggle-border-width:             1px !default;
 $toggle-border-radius:            20px !default;
 
 $toggle-handle-width:             $toggle-height - ($toggle-border-width * 2) !default;

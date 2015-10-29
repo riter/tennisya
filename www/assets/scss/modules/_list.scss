@@ -1,0 +1,30 @@
+.ty-list{
+	.item{
+    font-size: 14px;
+    @include font(rr, 14px, #020202);
+    // padding: 12px 12px 12px 33px;
+    padding: 10px 12px 10px 33px;
+	}
+	.item-input{
+		// padding: 7px 0 7px 16px;
+		padding: 7px 0 7px 33px;
+	}
+	.item-complex .item-content,
+	.item-radio .item-content{
+		padding: 12px 12px 12px 33px;
+	}
+	.item-divider{
+		@include font(rb, 11px, #0f0f0f);
+		padding: 0 12px;
+    min-height: 23px;
+	}
+	.input-label{
+		@include font(rr, 14px, #020202);
+		padding: 3px 10px 3px 0px;
+	}
+	.item-complex,
+	a.item.item-complex,
+	button.item.item-complex{
+		padding: 0;
+	}
+}

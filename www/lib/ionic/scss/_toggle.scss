@@ -15,7 +15,7 @@
   position: relative;
   display: inline-block;
   pointer-events: auto;
-  margin: -$toggle-hit-area-expansion;
+  // margin: -$toggle-hit-area-expansion;
   padding: $toggle-hit-area-expansion;
 
   &.dragging {

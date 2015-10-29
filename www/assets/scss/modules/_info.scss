@@ -1,0 +1,15 @@
+.info{
+	&_logo{
+		background: url("../img/info.png") no-repeat;
+    background-size: 100%;
+    background-position: center;
+    height: 212px;
+    width: 200px;
+    max-width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 30px;
+    left: 50%;
+    margin-left: -100px;
+	}
+}

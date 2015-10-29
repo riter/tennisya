@@ -137,7 +137,17 @@
                 <ion-nav-view name="confirmados-tab"></ion-nav-view>
                 <ion-content>
                     <ion-list class="list-matches">
-                        <ion-item class="item-divider">Esperando Cancha</ion-item>
+                        <ion-item class="item-divider">Esperando Cancha
+                            <!-- <select ng-model="app.shows" ng-options="show for shows in ['Mostrar','Todos','Esperando cancha','Esperando confirmación','Esperando respuesta']">
+                            <option value=""> </option> -->
+                            <select class="ty-orderby">
+                                <option value="">Mostrar</option>
+                                <option value="1">Todos</option>
+                                <option value="2">Esperando cancha</option>
+                                <option value="3">Esperando confirmación</option>
+                                <option value="4">Esperando respuesta</option>
+                            </select>
+                        </ion-item>
                         <ion-item ng-repeat="i in getNumber(2) track by $index" type="" href="" ng-click="confirmarPartido()">
                             <div class="match">
                                 <div class="match_detail">
