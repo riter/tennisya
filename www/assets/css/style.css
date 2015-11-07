@@ -195,6 +195,18 @@ button, input, select, textarea {
 .ty-list button.item.item-complex {
   padding: 0; }
 
+.ty-list-group {
+  padding-left: 28px; }
+  .ty-list-group .item {
+    border-left: 0;
+    padding: 12px 12px 12px 6px; }
+  .ty-list-group .item-input {
+    padding: 7px 0 7px 6px; }
+  .ty-list-group .item-complex .item-content,
+  .ty-list-group .item-radio .item-content {
+    padding: 12px 12px 12px 6px;
+    padding: 0; }
+
 .ty-orderby {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -249,7 +261,8 @@ button, input, select, textarea {
   .profile .list .item {
     border-right: 0;
     border-left: 0;
-    border-bottom: 0; }
+    border-bottom: 0;
+    padding: 6px 0 5px 10px; }
     .profile .list .item:first-child {
       border-top: 0; }
   .profile_select {
@@ -457,7 +470,7 @@ button, input, select, textarea {
   .players-list .item p {
     color: #000000;
     font-size: 14px;
-    line-height: 1;
+    line-height: 1.2;
     opacity: .5; }
   .players-list .item .item-content.activated .icon {
     color: #fff; }
@@ -605,9 +618,9 @@ button, input, select, textarea {
 .match {
   min-height: 40px;
   position: relative;
-  padding-right: 173px; }
+  padding-right: 175px; }
   .match_detail {
-    padding-right: 10px; }
+    padding-right: 5px; }
   .match_date, .match_place {
     font-family: "roboto-regular";
     color: #020202;
@@ -641,8 +654,9 @@ button, input, select, textarea {
     display: block;
     line-height: 13px; }
   .match_players {
+    overflow: hidden;
     right: 0;
-    min-width: 173px;
+    width: 175px;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -667,10 +681,10 @@ button, input, select, textarea {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  display: block;
+  display: table;
   text-align: left; }
   .match-players_item {
-    display: inline-block;
+    display: table-cell;
     vertical-align: middle;
     margin-right: 4px; }
     .match-players_item:last-child {
@@ -690,7 +704,8 @@ button, input, select, textarea {
     height: 40px;
     overflow: hidden;
     width: 40px;
-    position: relative; }
+    position: relative;
+    margin-right: 6px; }
   .match-players_icon {
     position: absolute;
     left: 50%;

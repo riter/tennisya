@@ -1,10 +1,10 @@
 .match{
 	min-height: 40px;
 	position: relative;
-	padding-right: 173px;
+	padding-right: 175px;
 	&_detail{
 		// float: left;
-		padding-right: 10px;
+		padding-right: 5px;
 	}
 	&_date,
 	&_place{
@@ -41,9 +41,11 @@
 	}
 	&_players{
 		// position: absolute;
+		overflow: hidden;
 		right: 0;
 		// top: 0;
-		min-width: 173px;
+		// min-width: 173px;
+		width: 175px;
 		@include center(v);
 	}
 }

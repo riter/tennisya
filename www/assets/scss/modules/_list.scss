@@ -28,3 +28,18 @@
 		padding: 0;
 	}
 }
+.ty-list-group{
+	padding-left: 28px;
+	.item{
+		border-left: 0;
+		padding: 12px 12px 12px 6px;
+	}
+	.item-input{
+		padding: 7px 0 7px 6px;
+	}
+	.item-complex .item-content,
+	.item-radio .item-content{
+		padding: 12px 12px 12px 6px;
+		padding: 0
+	}
+}

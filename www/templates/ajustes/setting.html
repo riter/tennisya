@@ -1,34 +1,42 @@
 <ion-view title="Ajustes">
     <ion-content>
-        <ion-list class="ty-list">
-            <ion-item ng-href="#/tab/disponibilidad/{{id}}" class="item-icon-right">
+        <div class="list ty-list">
+            <a href="#/tab/disponibilidad/{{id}}" class="item item-icon-right">
                 Visibilidad y Disponibilidad
                 <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
+            </a>
             <ion-item class="item item-divider"></ion-item>
-            <ion-item href="#/tab/profile" class="item-icon-right">
-                Perfil
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-            <ion-item href="#/tab/profile" class="item-icon-right">
-                Notificaciones
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-            <ion-item class="item item-divider"></ion-item>
-            <ion-item href="#/tab/share" class="item-icon-right">
-                Contarle a un amigo
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-            <ion-item href="#/tab/info" class="item-icon-right">
-                Información
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-            <ion-item class="item item-divider"></ion-item>
-            <ion-item  class="item assertive text-center" ng-click="onCerrarSesion()">
+            
+            <div class="ty-list-group">
+              <a href="#/tab/profile" class="item item-icon-right">
+                  Perfil
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+              </a>
+              <a href="#/tab/profile" class="item item-icon-right">
+                  Notificaciones
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+              </a>
+            </div>
+            
+            <div class="item item-divider"></div>
+            
+            <div class="ty-list-group">
+              <a href="#/tab/share" class="item item-icon-right">
+                  Contarle a un amigo
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+              </a>
+              <a href="#/tab/info" class="item item-icon-right">
+                  Información
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+              </a>
+            </div>
+            
+            <div class="item item-divider"></div>
+            <a class="item assertive text-center" ng-click="onCerrarSesion()">
                 Salir
-            </ion-item>
-            <ion-item class="item item-divider"></ion-item>
+            </a>
+            <div class="item item-divider"></div>
 
-        </ion-list>
+        </div>
     </ion-content>
 </ion-view>
