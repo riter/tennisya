@@ -122,8 +122,7 @@ appTennisya
             listJugador: function(callback,error){
 
                 $http.get(api+'group/jugadores').then(function(response){
-                    user = response.data;
-                    return callback(user);
+                    return callback(response.data);
                 },function(e){
                     return error(e.data);
                 });
@@ -202,3 +201,75 @@ appTennisya.directive('divContent', function() {
         }
     };
 });
+
+appTennisya.directive('autoFocus', function($timeout) {
+    return {
+        link: function(scope, element, attrs) {
+            $timeout(function() {
+                element[0].focus();
+            }, 150);
+        }
+    };
+});
+appTennisya
+    .directive('ionSearch', function($timeout) {
+        return {
+            restrict: 'E',
+            replace: true,
+            scope: {
+                getData: '&source',
+                model: '=?',
+                search: '=?filter',
+                changeFocus:'&focus'
+            },
+            link: function(scope, element, attrs) {
+                attrs.minLength = attrs.minLength || 0;
+                scope.placeholder = attrs.placeholder || '';
+                scope.search = {value: ''};
+                var inputElement = element.find('input')[0];
+
+                if (attrs.class)
+                    element.addClass(attrs.class);
+
+                if (attrs.source) {
+//                    scope.$watch('search.value', function (newValue, oldValue) {
+//                        if (newValue.length > attrs.minLength) {
+//                            scope.getData({str: newValue}).then(function (results) {
+//                                scope.model = results;
+//                            });
+//                        } else {
+//                            scope.model = [];
+//                        }
+//                    });
+                }
+
+                if (attrs.focus) {
+                    $timeout(function() {
+                        inputElement.focus();
+                    }, 300);
+                }
+
+                scope.clearSearch = function() {
+                    // Manually trigger blur
+                    inputElement.blur();
+                    scope.search.value = '';
+                };
+
+                angular.element(inputElement).bind('focus', function () {
+                    scope.changeFocus({value: true});
+                    // We need to call `$digest()` because we manually changed the model
+                    scope.$digest();
+                });
+                // When the user leaves the search bar
+                angular.element(inputElement).bind('blur', function() {
+                    scope.changeFocus({value: false});
+                    scope.$digest();
+                });
+            },
+            template: '<div class="item-input-wrapper">' +
+                '<i class="icon ion-search placeholder-icon"></i>' +
+                '<input type="search" placeholder="{{placeholder}}" ng-model="search.value">' +
+                '<i ng-if="search.value.length > 0" ng-click="clearSearch()" class="icon ion-close"></i>' +
+                '</div>'
+        };
+    });

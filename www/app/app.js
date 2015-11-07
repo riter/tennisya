@@ -1,9 +1,9 @@
 /**
  * Created by Riter on 24/08/15.
  */
-// var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+ var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
 // var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
-var api = 'http://tennisya.apploadapps.com/web/api/';
+//var api = 'http://tennisya.apploadapps.com/web/api/';
 
 var appTennisya = angular.module('tennisyaApp', ['ionic','ngCordova']);
 
@@ -58,6 +58,9 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     'player-tab': {
                         templateUrl: "templates/jugadores/players.html",
                         controller: 'ListJugadoresCtrl'
+                    },
+                    'navable-modal@': {
+                        templateUrl: 'templates/grupo/create-group.html'
                     }
                 }
             })
@@ -132,6 +135,16 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                 views: {
                     'setting-tab': {
                         templateUrl: "templates/ajustes/info.html"
+                    }
+                }
+            })
+            //create grupos
+            .state('tabs.player.add_jugador', {
+                url: '/players/modal/item',
+                views: {
+                    'navable-modal@': {
+                        templateUrl: 'templates/grupo/add-jugador.html',
+                        controller: 'JugadoresSearchCtrl'
                     }
                 }
             })

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.appmobile958855" version="0.0.1"
+<widget id="com.appload.tennisya" version="0.0.1"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:gap="http://phonegap.com/ns/1.0">
@@ -31,6 +31,11 @@
     <gap:plugin name="org.apache.cordova.file"/>
     <gap:plugin name="org.apache.cordova.file-transfer"/>
     <gap:plugin name="org.apache.cordova.dialogs"/>
+
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+        <param name="APP_ID" value="1644064545847703" />
+        <param name="APP_NAME" value="tennisya" />
+    </gap:plugin>
 
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>

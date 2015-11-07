@@ -297,7 +297,7 @@ appTennisya
         });
 
     })
-    .controller('SignInCtrl', function($scope, $state, userService) {
+    .controller('SignInCtrl', function($scope, $state, $cordovaFacebook, $cordovaOauth, userService) {
 
         $scope.signIn = function(user) {
 
@@ -309,9 +309,26 @@ appTennisya
         };
         $scope.signInFacebook = function() {
             console.log('signInFacebook');
+            $cordovaFacebook.login(["email"])
+                .then(function(success) {
+                    $cordovaFacebook.api("me?fields=id,name,email", ["email"])
+                        .then(function(success) {
+                            alert(JSON.stringify(success));
+                        }, function (error) {
+                            alert(JSON.stringify(error));
+                        });
+                }, function (error) {
+                    alert(JSON.stringify(error));
+                });
         };
         $scope.signInTwitter = function(user) {
             console.log('signInTwitter');
+//            $cordovaOauth.linkedin('77pysieyuk50ks', 'y1Rzh4FLej8mJko0', ['r_basicprofile'], 'mistate123456')
+//                .then(function(result) {
+//                    alert(JSON.stringify(result));
+//                }, function(error) {
+//                    alert(JSON.stringify(error));
+//                });
         };
         $scope.signInGoogle = function(user) {
             console.log('signInGoogle');
@@ -376,11 +393,30 @@ appTennisya
             $scope.clubs = response.data;
         });
     })
-    .controller('ListJugadoresCtrl', function($scope, $state, userService) {
+    .controller('JugadoresSearchCtrl', function($scope, $state, $ionicModal, userService) {
+        $scope.data = {
+            focus:true
+        };
 
-        $scope.jugadores = [];
+        $scope.changeFocus = function(value){
+            $scope.data.focus = value;
+            $scope.$apply();
+        }
+    })
+    .controller('ListJugadoresCtrl', function($scope, $state, $ionicModal, userService) {
+
+        $scope.data = {
+            showGrupos:false,
+            jugadores:[],
+            grupos:[],
+            grupo:{
+                title:'prueba'
+            }
+        };
+
         userService.listJugador(function(response){
-            $scope.jugadores = response;
+            $scope.data.jugadores = response.jugadores;
+            $scope.data.grupos = response.grupos;
         },function(error){
             //alert(error.error);
         });
@@ -392,6 +428,17 @@ appTennisya
 //                //alert(error.error);
 //            });
 //        },15000);
+
+        $ionicModal.fromTemplateUrl('templates/grupo/navable-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+                $scope.modal = modal;
+            });
+
+        $scope.onSig = function (state) {
+            $state.go(state);
+        }
     })
     .controller('ListPartidosCtrl', function($scope, partidoService) {
 
