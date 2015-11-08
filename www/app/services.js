@@ -186,6 +186,34 @@ appTennisya
                 return $http.get(api+'club/list',{cache:true});
             }
         };
+    })
+    .factory('searchService', function($http) {
+        return {
+            searchJugador: function(query){
+                return $http.get(api+'group/search',{ cache:true, params:{query: query}});
+            }
+        };
+    })
+    .factory('grupoService', function($http) {
+        return {
+            data:{
+                title: '',
+                jugadores: [],
+                img: null
+            },
+            setTitle: function (title) {
+                this.data.title = title;
+            },
+            setThumb: function (url) {
+                this.data.img = url;
+            },
+            setJugadores: function (listJugadores) {
+                this.data.jugadores = listJugadores;
+            },
+            save: function () {
+                return $http.post(api+'group/save/',this.data);
+            }
+        };
     });
 
 appTennisya.directive('divContent', function() {
@@ -202,15 +230,15 @@ appTennisya.directive('divContent', function() {
     };
 });
 
-appTennisya.directive('autoFocus', function($timeout) {
-    return {
-        link: function(scope, element, attrs) {
-            $timeout(function() {
-                element[0].focus();
-            }, 150);
-        }
-    };
-});
+//appTennisya.directive('autoFocus', function($timeout) {
+//    return {
+//        link: function(scope, element, attrs) {
+//            $timeout(function() {
+//                element[0].focus();
+//            }, 150);
+//        }
+//    };
+//});
 appTennisya
     .directive('ionSearch', function($timeout) {
         return {
@@ -232,15 +260,15 @@ appTennisya
                     element.addClass(attrs.class);
 
                 if (attrs.source) {
-//                    scope.$watch('search.value', function (newValue, oldValue) {
-//                        if (newValue.length > attrs.minLength) {
-//                            scope.getData({str: newValue}).then(function (results) {
-//                                scope.model = results;
-//                            });
-//                        } else {
-//                            scope.model = [];
-//                        }
-//                    });
+                    scope.$watch('search.value', function (newValue, oldValue) {
+                        if (newValue.length > attrs.minLength) {
+                            scope.getData({str: newValue}).then(function (results) {
+                                scope.model = results.data;
+                            });
+                        } else {
+                            scope.model = [];
+                        }
+                    });
                 }
 
                 if (attrs.focus) {

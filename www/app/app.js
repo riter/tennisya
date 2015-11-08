@@ -60,7 +60,8 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                         controller: 'ListJugadoresCtrl'
                     },
                     'navable-modal@': {
-                        templateUrl: 'templates/grupo/create-group.html'
+                        templateUrl: 'templates/grupo/create-group.html',
+                        controller: 'JugadoresSearchCtrl'
                     }
                 }
             })

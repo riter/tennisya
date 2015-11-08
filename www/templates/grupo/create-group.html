@@ -3,20 +3,20 @@
     <ion-header-bar class="bar-stable">
         <button class="button button-clear btn-left" ng-click="modal.hide()"> Cancelar </button>
         <h1 class="title title-header">Crear grupo</h1>
-        <button class="button button-clear btn-left" ui-sref="tabs.player.add_jugador" ng-disabled="data.grupo.title.length == 0"> Sig. </button>
+        <button class="button button-clear btn-left" ng-click="onSig('tabs.player.add_jugador')" ng-disabled="data.title.length == 0"> Sig. </button>
     </ion-header-bar>
 
     <ion-content class="has-header">
         <ion-list class="players-list">
 
             <ion-item class="item item-avatar" type="item-text-wrap" href="">
-                <img ng-src="{{ 'assets/img/groups/1.png' }}">
+                <img ng-src="{{data.img?data.img:'assets/img/groups/1.png'}}" ng-click="loadPhoto()" >
                 <p>Ingresa un asunto del grupo y un icono del grupo opcional</p>
             </ion-item>
 
             <label class="item item-input">
-                <input type="text" ng-model="data.grupo.title" placeholder="Asunto del grupo">
-                <span class="item-note">{{25 - data.grupo.title.length}}</span>
+                <input type="text" ng-model="data.title" placeholder="Asunto del grupo" autofocus>
+                <span class="item-note">{{25 - data.title.length}}</span>
             </label>
 
         </ion-list>
