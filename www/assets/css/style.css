@@ -79,7 +79,8 @@ button, input, select, textarea {
   display: inline-block;
   background-position: -112.5px 0;
   height: 20px;
-  width: 20px; }
+  width: 20px;
+  vertical-align: top; }
 
 .ic-arrow-right:after {
   display: inline-block;
@@ -168,6 +169,9 @@ button, input, select, textarea {
 .ion-remove-list:before {
   font-size: 25px !important; }
 
+.button-green {
+  color: #0d8a1b !important; }
+
 .ty-list .item {
   font-size: 14px;
   font-family: "roboto-regular";
@@ -202,10 +206,23 @@ button, input, select, textarea {
     padding: 12px 12px 12px 6px; }
   .ty-list-group .item-input {
     padding: 7px 0 7px 6px; }
+  .ty-list-group .input-label {
+    padding: 1px 10px 1px 0px; }
   .ty-list-group .item-complex .item-content,
   .ty-list-group .item-radio .item-content {
     padding: 12px 12px 12px 6px;
     padding: 0; }
+
+.item-text {
+  white-space: inherit; }
+.item-cont {
+  padding: 6px 15px 5px 16px; }
+
+.item-divider {
+  min-height: 22px; }
+
+.placeholder-icon:first-child {
+  font-size: 24px; }
 
 .ty-orderby {
   -webkit-appearance: none;
@@ -329,9 +346,8 @@ button, input, select, textarea {
 .bar-subheader .title {
   /* height: 28px;
   line-height: 29px; */ }
-.bar-subheader .buttons .button-green {
-  color: #0d8a1b;
-  font-size: 16px;
+.bar-subheader .button {
+  font-size: 16px !important;
   /* min-height: 28px;
   line-height: 29px; */ }
 
@@ -483,13 +499,12 @@ button, input, select, textarea {
   color: #686a68;
   font-size: 11px;
   line-height: 12px;
-  padding: 6px 30px 6px 20px; }
+  padding: 6px 30px 6px 0; }
 .new-match .custom-radio {
   font-size: 13px;
   display: block;
   margin: 0 0 10px;
   padding: 0px 30px 0px 26px;
-  margin-left: 20px;
   position: relative; }
   .new-match .custom-radio .ic-radio {
     background: transparent url("../img/icons.png") right top no-repeat;

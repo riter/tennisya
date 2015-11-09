@@ -9,12 +9,12 @@
     <ion-content class="has-header">
         <ion-list class="players-list">
 
-            <ion-item class="item item-avatar" type="item-text-wrap" href="">
-                <img ng-src="{{ 'assets/img/groups/1.png' }}">
-                <p>Ingresa un asunto del grupo y un icono del grupo opcional</p>
+            <ion-item class="item item-avatar item-text" type="item-text-wrap">
+                <img ng-src="{{ 'assets/img/group.png' }}">
+                <span>Ingresa un asunto del grupo y un icono del grupo opcional</span>
             </ion-item>
 
-            <label class="item item-input">
+            <label class="item item-input item-cont">
                 <input type="text" ng-model="data.grupo.title" placeholder="Asunto del grupo">
                 <span class="item-note">{{25 - data.grupo.title.length}}</span>
             </label>
