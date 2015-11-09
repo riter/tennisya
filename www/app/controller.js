@@ -192,6 +192,47 @@ appTennisya
             $scope.parseDias();
         });
     })
+    .controller('JugadoresGroupCtrl', function($scope, $stateParams, $ionicModal, grupoService ) {
+
+        $scope.data = {
+            showDelete: false,
+            title:$stateParams.title,
+            jugadores:[]
+        };
+
+        $scope.onDelete = function(item) {
+            grupoService.deleteJugador(item.id);
+            $scope.data.jugadores.splice($scope.data.jugadores.indexOf(item), 1);
+        };
+
+        grupoService.list($stateParams.id).then(function(response){
+            $scope.data.jugadores = response.data;
+        });
+
+        /* new Disponibilidad*/
+//        $ionicModal.fromTemplateUrl('templates/ajustes/new_disponibilidad.html', {
+//            animation: 'slide-in-up',
+//            scope: $scope
+//        }).then(function (modal) {
+//                $scope.modal = modal;
+//            });
+//
+//        $scope.onGuardar = function(){
+//            if(typeof ($scope.disponibilidad.id) !== 'undefined'){
+//                disponibilidadService.updateDisponibilidad($scope.disponibilidad).then(function(response){
+//                    $scope.items.forEach(function(disp){
+//                        if(disp.id == response.data.id)
+//                            disp = response.data;
+//                    });
+//                });
+//            }else{
+//                disponibilidadService.newDisponibilidad($stateParams.id, $scope.disponibilidad).then(function(response){
+//                    $scope.items.push(response.data);
+//                });
+//            }
+//            $scope.closeModal();
+//        };
+    })
     .controller('ShareCtrl', function($scope, $cordovaSocialSharing) {
         var message = '';
         var image = '';
@@ -393,7 +434,7 @@ appTennisya
             $scope.clubs = response.data;
         });
     })
-    .controller('JugadoresSearchCtrl', function($scope, $state, $cordovaActionSheet, $cordovaCamera, grupoService, searchService) {
+    .controller('JugadoresSearchCtrl', function($scope, $state, $ionicHistory, $cordovaActionSheet, $cordovaCamera, grupoService, searchService) {
         $scope.onSig = function (state) {
             grupoService.setTitle($scope.data.title);
             grupoService.setThumb($scope.data.img);
@@ -417,9 +458,13 @@ appTennisya
             grupoService.setJugadores($scope.data.jugadores);
         };
         $scope.onCrearGrupo = function() {
+            var parent = $scope.$parent.$parent;
             grupoService.save().then(function(response){
-                console.log('Guardo grupo');
+                if(response.data.id)
+                    parent.data.grupos.unshift(response.data);
             });
+            parent.modal.hide();
+            $ionicHistory.goBack();
         };
 
         $scope.loadPhoto = function() {

@@ -211,7 +211,13 @@ appTennisya
                 this.data.jugadores = listJugadores;
             },
             save: function () {
-                return $http.post(api+'group/save/',this.data);
+                return $http.post(api+'group/save',this.data);
+            },
+            list: function (id) {
+                return $http.get(api+'group/list_jugadores/'+id);
+            },
+            deleteJugador: function(id_grupo_jugador){
+                return $http.get(api+'group/delete_jugador/'+id_grupo_jugador);
             }
         };
     });

@@ -9,13 +9,13 @@
     <ion-content class="has-header">
         <ion-list class="players-list">
 
-            <ion-item class="item item-avatar" type="item-text-wrap" href="">
-                <img ng-src="{{data.img?data.img:'assets/img/groups/1.png'}}" ng-click="loadPhoto()" >
+            <ion-item class="item item-avatar" type="item-text-wrap">
+                <img ng-src="{{data.img?data.img:'assets/img/profile.png'}}" ng-click="loadPhoto()" >
                 <p>Ingresa un asunto del grupo y un icono del grupo opcional</p>
             </ion-item>
 
             <label class="item item-input">
-                <input type="text" ng-model="data.title" placeholder="Asunto del grupo" autofocus>
+                <input type="text" ng-model="data.title" placeholder="Asunto del grupo" autofocus maxlength="25">
                 <span class="item-note">{{25 - data.title.length}}</span>
             </label>
 
