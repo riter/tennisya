@@ -393,25 +393,97 @@ appTennisya
             $scope.clubs = response.data;
         });
     })
-    .controller('JugadoresSearchCtrl', function($scope, $state, $ionicModal, userService) {
-        $scope.data = {
-            focus:true
+    .controller('JugadoresSearchCtrl', function($scope, $state, $cordovaActionSheet, $cordovaCamera, grupoService, searchService) {
+        $scope.onSig = function (state) {
+            grupoService.setTitle($scope.data.title);
+            grupoService.setThumb($scope.data.img);
+            $state.go(state);
         };
 
         $scope.changeFocus = function(value){
             $scope.data.focus = value;
             $scope.$apply();
-        }
+        };
+
+        $scope.searchJugador = function(query){
+            return searchService.searchJugador(query);
+        };
+        $scope.addJugador = function(item){
+            $scope.data.jugadores.push(item);
+            grupoService.setJugadores($scope.data.jugadores);
+        };
+        $scope.onDelete = function(item) {
+            $scope.data.jugadores.splice($scope.data.jugadores.indexOf(item), 1);
+            grupoService.setJugadores($scope.data.jugadores);
+        };
+        $scope.onCrearGrupo = function() {
+            grupoService.save().then(function(response){
+                console.log('Guardo grupo');
+            });
+        };
+
+        $scope.loadPhoto = function() {
+            var options = {
+                buttonLabels: ['Hacer foto', 'Seleccionar foto'],
+                addCancelButtonWithLabel: 'Cancelar',
+                androidEnableCancelButton : true
+            };
+            $cordovaActionSheet.show(options)
+                .then(function(btnIndex) {
+                    if(btnIndex == 1)
+                        $scope.getPhoto();
+                    else if(btnIndex == 2)
+                        $scope.selectPhoto();
+                });
+        };
+        $scope.getPhoto = function(){
+            var options = {
+                quality: 50,
+                allowEdit: true,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.CAMERA
+            };
+            $scope.openCamera(options);
+            $cordovaCamera.cleanup();
+        };
+
+        $scope.selectPhoto = function(){
+            var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG
+            };
+            $scope.openCamera(options);
+
+        };
+        $scope.openCamera = function(options){
+            $cordovaCamera.getPicture(options).then(function(imageURI) {
+                $scope.data.img = imageURI;
+            }, function(err) {
+                alert(JSON.stringify(err));
+            });
+        };
+
+        $scope.resetData = function(){
+            $scope.data = {
+                focus:true,
+                title:'',
+                img:null,
+                jugadores:[],
+
+                search:[]
+            };
+        };
+        $scope.$on('resetModalGroup', $scope.resetData);
+        $scope.resetData();
     })
-    .controller('ListJugadoresCtrl', function($scope, $state, $ionicModal, userService) {
+    .controller('ListJugadoresCtrl', function($scope, $state, $ionicModal, $rootScope, userService) {
 
         $scope.data = {
             showGrupos:false,
             jugadores:[],
-            grupos:[],
-            grupo:{
-                title:'prueba'
-            }
+            grupos:[]
         };
 
         userService.listJugador(function(response){
@@ -421,14 +493,6 @@ appTennisya
             //alert(error.error);
         });
 
-//        setInterval(function(){
-//            userService.listJugador(function(response){
-//                $scope.jugadores = response;
-//            },function(error){
-//                //alert(error.error);
-//            });
-//        },15000);
-
         $ionicModal.fromTemplateUrl('templates/grupo/navable-modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -436,8 +500,9 @@ appTennisya
                 $scope.modal = modal;
             });
 
-        $scope.onSig = function (state) {
-            $state.go(state);
+        $scope.openCreateGrupo = function (){
+            $rootScope.$broadcast('resetModalGroup', {});
+            $scope.modal.show();
         }
     })
     .controller('ListPartidosCtrl', function($scope, partidoService) {
