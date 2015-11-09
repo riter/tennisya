@@ -37,9 +37,26 @@
 	.item-input{
 		padding: 7px 0 7px 6px;
 	}
+	.input-label{
+		padding: 1px 10px 1px 0px;
+	}
 	.item-complex .item-content,
 	.item-radio .item-content{
 		padding: 12px 12px 12px 6px;
 		padding: 0
 	}
+}
+.item{
+	&-text{
+		white-space: inherit;
+	}
+	&-cont{
+		padding: 6px 15px 5px 16px;
+	}
+}
+.item-divider{
+	min-height: 22px;
+}
+.placeholder-icon:first-child{
+	font-size: 24px;
 }

@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/img/group.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/scss/modules/_button.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/scss/base/_icons.scss" afterPath="$PROJECT_DIR$/www/assets/scss/base/_icons.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/scss/modules/_list.scss" afterPath="$PROJECT_DIR$/www/assets/scss/modules/_list.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/scss/modules/_new-match.scss" afterPath="$PROJECT_DIR$/www/assets/scss/modules/_new-match.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/scss/modules/_subheader.scss" afterPath="$PROJECT_DIR$/www/assets/scss/modules/_subheader.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/scss/_variables.scss" afterPath="$PROJECT_DIR$/www/lib/ionic/scss/_variables.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/config.codekit" afterPath="$PROJECT_DIR$/www/assets/config.codekit" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/grupo/create-group.html" afterPath="$PROJECT_DIR$/www/templates/grupo/create-group.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/groups.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/groups.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css.map" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css" afterPath="$PROJECT_DIR$/www/lib/ionic/css/ionic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/newPartido.html" afterPath="$PROJECT_DIR$/www/templates/partidos/newPartido.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/players.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/players.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/style.css.map" afterPath="$PROJECT_DIR$/www/assets/css/style.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/style.css" afterPath="$PROJECT_DIR$/www/assets/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/scss/style.scss" afterPath="$PROJECT_DIR$/www/assets/scss/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tennisya.iws" />
@@ -40,6 +50,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="create-group.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/grupo/create-group.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="39" selection-start="474" selection-end="474" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="510">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="groups.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/jugadores/groups.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,10 +70,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.84375" vertical-offset="0" max-vertical-offset="2873">
+            <state line="11" column="34" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="players.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="17" selection-start="895" selection-end="895" vertical-scroll-proportion="0.47128713" vertical-offset="0" max-vertical-offset="884">
               <folding />
             </state>
           </provider>
@@ -101,13 +129,13 @@
         <option value="$PROJECT_DIR$/www/templates/grupo/navable-modal.html" />
         <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
         <option value="$PROJECT_DIR$/www/templates/grupo/add-jugador.html" />
-        <option value="$PROJECT_DIR$/www/templates/grupo/create-group.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
-        <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
         <option value="$PROJECT_DIR$/www/app/controller.js" />
         <option value="$PROJECT_DIR$/www/templates/jugadores/groups.html" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/templates/grupo/create-group.html" />
+        <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
       </list>
     </option>
   </component>
@@ -439,14 +467,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25383437" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25383437" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -518,13 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/grupo/create-group.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="233" selection-end="374" vertical-scroll-proportion="0.16831683" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="39" selection-start="1193" selection-end="1193" vertical-scroll-proportion="-11.115385" vertical-offset="34" max-vertical-offset="646">
@@ -542,13 +563,6 @@
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/setting.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="48" selection-start="101" selection-end="128" vertical-scroll-proportion="0.06563707" vertical-offset="17" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="23" selection-start="1152" selection-end="1596" vertical-scroll-proportion="0.8079208" vertical-offset="153" max-vertical-offset="731">
           <folding />
         </state>
       </provider>
@@ -578,7 +592,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.84375" vertical-offset="0" max-vertical-offset="2873">
+        <state line="11" column="34" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/grupo/create-group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="39" selection-start="474" selection-end="474" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="17" selection-start="895" selection-end="895" vertical-scroll-proportion="0.47128713" vertical-offset="0" max-vertical-offset="884">
           <folding />
         </state>
       </provider>
