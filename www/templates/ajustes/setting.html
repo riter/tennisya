@@ -1,31 +1,31 @@
 <ion-view title="Ajustes">
-    <ion-content>
+    <ion-content scroll="false">
         <div class="list ty-list">
-            <a href="#/tab/disponibilidad/{{id}}" class="item item-icon-right">
+            <a ui-sref="tabs.disponibilidad" class="item item-icon-right">
                 Visibilidad y Disponibilidad
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </a>
             <ion-item class="item item-divider"></ion-item>
             
             <div class="ty-list-group">
-              <a href="#/tab/profile" class="item item-icon-right">
+              <a ui-sref="tabs.profile()" class="item item-icon-right">
                   Perfil
                   <i class="icon ion-chevron-right icon-accessory"></i>
               </a>
-              <a href="#/tab/profile" class="item item-icon-right">
-                  Notificaciones
-                  <i class="icon ion-chevron-right icon-accessory"></i>
-              </a>
+              <!--<a href="#/tab/profile" class="item item-icon-right">-->
+                  <!--Notificaciones-->
+                  <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+              <!--</a>-->
             </div>
             
             <div class="item item-divider"></div>
             
             <div class="ty-list-group">
-              <a href="#/tab/share" class="item item-icon-right">
+              <a ui-sref="tabs.share()" class="item item-icon-right">
                   Contarle a un amigo
                   <i class="icon ion-chevron-right icon-accessory"></i>
               </a>
-              <a href="#/tab/info" class="item item-icon-right">
+              <a ui-sref="tabs.info()" class="item item-icon-right">
                   Información
                   <i class="icon ion-chevron-right icon-accessory"></i>
               </a>
