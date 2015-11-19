@@ -43,9 +43,7 @@ appTennisya
 
         return {
             loginJugador: function(data,callback,error){
-                $http.post(api+'jugador/login',data,{
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-                }).then(function(response){
+                $http.post(api+'jugador/login',data).then(function(response){
                     $localstorage.setObject('user',response.data);
                     return callback();
                 },function(e){
@@ -54,9 +52,7 @@ appTennisya
 
             },
             facebookJugador: function(data,callback,error){
-                $http.post(api+'jugador/login_social',data,{
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-                }).then(function(response){
+                $http.post(api+'jugador/login_social',data).then(function(response){
                     $localstorage.setObject('user',response.data);
                     return callback();
                 },function(e){
