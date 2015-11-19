@@ -13,10 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
@@ -71,6 +67,10 @@
                         {
                             "xml": "<access origin=\"https://*.akamaihd.net\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -115,9 +115,6 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.appload.tennisya"
         },
-        "cordova-plugin-actionsheet": {
-            "PACKAGE_NAME": "com.appload.tennisya"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.appload.tennisya"
         },
@@ -148,6 +145,9 @@
         "phonegap-facebook-plugin": {
             "APP_ID": "1644064545847703",
             "APP_NAME": "tennisya",
+            "PACKAGE_NAME": "com.appload.tennisya"
+        },
+        "cordova-plugin-actionsheet": {
             "PACKAGE_NAME": "com.appload.tennisya"
         }
     },
