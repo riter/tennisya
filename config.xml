@@ -35,6 +35,7 @@
     <gap:plugin name="org.apache.cordova.file"/>
     <gap:plugin name="org.apache.cordova.file-transfer"/>
     <gap:plugin name="org.apache.cordova.dialogs"/>
+    <gap:plugin name="nl.x-services.plugins.actionsheet"/>
 
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
         <param name="APP_ID" value="1644064545847703" />
