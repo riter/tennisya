@@ -345,7 +345,6 @@ appTennisya
                         });
                     break;
             }
-            console.log(red);
         };
 
     })
