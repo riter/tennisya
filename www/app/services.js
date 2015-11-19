@@ -214,6 +214,13 @@ appTennisya
 
         };
         return {
+            setModel: function(model){
+                if(typeof (model.jugadorgrupo) === 'undefined')
+                    model.jugadorgrupo = [];
+
+                data = model;
+                //angular.merge(data,model);
+            },
             getModel: function(){
               return data;
             },

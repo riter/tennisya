@@ -15,7 +15,7 @@
 
     <ion-content class="has-subheader">
         <ion-list ng-hide="!data.showGrupos" class="players-list">
-            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos" type="item-text-wrap" href="#/tab/groups/{{grupo.id}}/{{grupo.title}}">
+            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos" type="item-text-wrap" ng-click="nextGrupo(grupo)">
                 <img ng-src="{{grupo.image != null ? grupo.image : 'assets/img/group.png'}}">
                 <h2>{{grupo.title}}</h2>
                 <p>{{grupo.ciudad}}, {{grupo.pais}}</p>

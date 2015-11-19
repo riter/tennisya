@@ -23,6 +23,10 @@
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
 
+    <preference name="HideKeyboardFormAccessoryBar" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="KeyboardShrinksView" value="false" />
+
     <!--plugins-->
     <gap:plugin name="org.apache.cordova.device"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>

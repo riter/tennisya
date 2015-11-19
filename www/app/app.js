@@ -1,7 +1,7 @@
 /**
  * Created by Riter on 24/08/15.
  */
- //var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+// var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
 // var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
 var api = 'http://tennisya.apploadapps.com/web/api/';
 
@@ -68,7 +68,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                 }
             })
             .state('tabs.groups', {
-                url: '/groups/:id/:title',
+                url: '/groups/:id',
                 views:{
                     'player-tab':{
                         templateUrl: "templates/grupo/groups.html",

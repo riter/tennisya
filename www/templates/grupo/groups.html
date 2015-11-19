@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-nav-title class="button button-clear" ui-sref="tabs.info-groups({id:grupo.id})"> {{grupo.title}} </ion-nav-title>
+    <ion-nav-title class="button button-clear" ng-click="nextGrupo(grupo)"> {{grupo.title}} </ion-nav-title>
 
     <ion-nav-buttons side="right" class="button button-clear">
         <img ng-src="{{grupo.image != null ? grupo.image : 'assets/img/group.png'}}" class="match-players_img" style="width: 32px; border-radius: 50%;"  ui-sref="tabs.info-groups({id:grupo.id})">

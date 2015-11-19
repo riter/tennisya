@@ -18,10 +18,14 @@
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
-  <preference name="android-minSdkVersion" value="16"/>
+  <preference name="android-minSdkVersion" value="14"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+
+    <!--<preference name="HideKeyboardFormAccessoryBar" value="false" />-->
+    <!--<preference name="KeyboardDisplayRequiresUserAction" value="true" />-->
+    <!--<preference name="KeyboardShrinksView" value="false" />-->
 
     <!--plugins-->
     <gap:plugin name="org.apache.cordova.device"/>
