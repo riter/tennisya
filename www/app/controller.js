@@ -602,6 +602,7 @@ appTennisya
 
         $scope.openCreateGrupo = function (){
             $rootScope.$broadcast('resetModalGroup', {});
+            grupoService.resetModel();
             $scope.modal.show();
         };
 

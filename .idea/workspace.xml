@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
     </list>
     <ignored path="tennisya.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,8 +30,17 @@
       <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="42" selection-start="2684" selection-end="2684" vertical-scroll-proportion="0.0" vertical-offset="1093" max-vertical-offset="11781">
-              <folding />
+            <state line="594" column="0" selection-start="21907" selection-end="21907" vertical-scroll-proportion="0.0" vertical-offset="3277" max-vertical-offset="5168">
+              <folding>
+                <element signature="e#171#2173#0" expanded="false" />
+                <element signature="e#2282#3062#0" expanded="false" />
+                <element signature="e#3204#6759#0" expanded="false" />
+                <element signature="e#11640#13017#0" expanded="false" />
+                <element signature="e#13192#15310#0" expanded="false" />
+                <element signature="e#15413#17030#0" expanded="false" />
+                <element signature="e#17167#19190#0" expanded="false" />
+                <element signature="e#21982#22057#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,7 +57,7 @@
       <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="46" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0" vertical-offset="502" max-vertical-offset="7871">
+            <state line="225" column="28" selection-start="8483" selection-end="8483" vertical-scroll-proportion="0.0" vertical-offset="3435" max-vertical-offset="8024">
               <folding />
             </state>
           </provider>
@@ -55,34 +66,25 @@
       <file leaf-file-name="players.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="39" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="765">
+            <state line="13" column="22" selection-start="582" selection-end="582" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="765">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="42" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3026">
+            <state line="3" column="3" selection-start="44" selection-end="44" vertical-scroll-proportion="0.09107143" vertical-offset="0" max-vertical-offset="3026">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="config.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="63" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.60714287" vertical-offset="238" max-vertical-offset="1666">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="714">
+            <state line="16" column="0" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1666">
               <folding />
             </state>
           </provider>
@@ -121,12 +123,12 @@
         <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
         <option value="$PROJECT_DIR$/www/templates/grupo/groups.html" />
         <option value="$PROJECT_DIR$/www/config.xml" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/platforms/android/res/xml/config.xml" />
-        <option value="$PROJECT_DIR$/www/app/controller.js" />
-        <option value="$PROJECT_DIR$/www/app/services.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/app/services.js" />
+        <option value="$PROJECT_DIR$/www/app/controller.js" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
       </list>
     </option>
   </component>
@@ -196,6 +198,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jugadores" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inicio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="AndroidView" />
@@ -205,7 +269,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../media-soft-admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tennisya_admin" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
@@ -320,13 +384,6 @@
         <state line="15" column="50" selection-start="596" selection-end="601" vertical-scroll-proportion="0.4894434" vertical-offset="0" max-vertical-offset="1020" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="39" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="765">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/grupo/groups.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="49" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="510">
@@ -355,20 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="46" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0" vertical-offset="502" max-vertical-offset="7871">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="42" selection-start="2684" selection-end="2684" vertical-scroll-proportion="0.0" vertical-offset="1093" max-vertical-offset="11781">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/res/xml/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="77" selection-start="996" selection-end="996" vertical-scroll-proportion="0.08555133" vertical-offset="261" max-vertical-offset="1768">
@@ -383,16 +426,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+    <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="42" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3026">
+        <state line="16" column="0" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1666">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="63" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.60714287" vertical-offset="238" max-vertical-offset="1666">
+        <state line="13" column="22" selection-start="582" selection-end="582" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="594" column="0" selection-start="21907" selection-end="21907" vertical-scroll-proportion="0.0" vertical-offset="3277" max-vertical-offset="5168">
+          <folding>
+            <element signature="e#171#2173#0" expanded="false" />
+            <element signature="e#2282#3062#0" expanded="false" />
+            <element signature="e#3204#6759#0" expanded="false" />
+            <element signature="e#11640#13017#0" expanded="false" />
+            <element signature="e#13192#15310#0" expanded="false" />
+            <element signature="e#15413#17030#0" expanded="false" />
+            <element signature="e#17167#19190#0" expanded="false" />
+            <element signature="e#21982#22057#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="225" column="28" selection-start="8483" selection-end="8483" vertical-scroll-proportion="0.0" vertical-offset="3486" max-vertical-offset="8024">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="3" selection-start="44" selection-end="44" vertical-scroll-proportion="0.09107143" vertical-offset="0" max-vertical-offset="3026">
           <folding />
         </state>
       </provider>

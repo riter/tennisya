@@ -217,12 +217,21 @@ appTennisya
             setModel: function(model){
                 if(typeof (model.jugadorgrupo) === 'undefined')
                     model.jugadorgrupo = [];
-
                 data = model;
-                //angular.merge(data,model);
             },
             getModel: function(){
               return data;
+            },
+            resetModel: function(){
+               this.setModel({
+                   id:null,
+                   title: '',
+                   image: null,
+                   pais: '',
+                   ciudad: '',
+                   jugadorgrupo: []
+
+               });
             },
             setTitle: function (title) {
                 data.title = title;
