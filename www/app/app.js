@@ -65,6 +65,15 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     }
                 }
             })
+            .state('tabs.player-info', {
+                url: "/players-info",
+                views: {
+                    'player-tab': {
+                        templateUrl: "templates/jugadores/info.html",
+                        // controller: 'ListJugadoresCtrl'
+                    }
+                }
+            })
             .state('tabs.groups', {
                 url: '/groups',
                 views:{

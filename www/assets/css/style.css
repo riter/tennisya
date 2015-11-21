@@ -744,4 +744,18 @@ button, input, select, textarea {
   left: 50%;
   margin-left: -100px; }
 
+.item-playerinfo {
+  min-height: 95px;
+  padding-left: 95px; }
+  .item-playerinfo img:first-child {
+    max-height: 71px;
+    max-width: 71px; }
+  .item-playerinfo p {
+    line-height: 1.1;
+    margin-bottom: 0; }
+  .item-playerinfo strong {
+    font-family: "roboto-bold";
+    color: #020202;
+    font-size: 13px; }
+
 /*# sourceMappingURL=style.css.map */

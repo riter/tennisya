@@ -1,0 +1,15 @@
+.item-playerinfo{
+	min-height:95px;
+	padding-left: 95px;
+	img:first-child{
+		max-height: 71px;
+		max-width: 71px;
+	}
+	p{
+		line-height: 1.1;
+		margin-bottom: 0;
+	}
+	strong{
+		@include font(rb,13px,#020202);
+	}
+}
