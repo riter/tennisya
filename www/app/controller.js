@@ -31,8 +31,6 @@ appTennisya
                 $scope.modalConfirm = modal;
             });
 
-
-
         $scope.formatLYMD = function(date){
             return moment(date).format('YYYY/MM/DD');
         };
@@ -67,7 +65,7 @@ appTennisya
         }
     })
     .controller('AjustesCtrl', function($scope, $state, $localstorage, $ionicHistory, $cordovaActionSheet) {
-        $scope.id = $localstorage.getObject('user').id;
+        //$scope.id = $localstorage.getObject('user').id;
 
         $scope.onCerrarSesion=function(){
             var options = {
@@ -104,7 +102,7 @@ appTennisya
             $scope.items.splice($scope.items.indexOf(item), 1);
         };
 
-        disponibilidadService.getDisponibilidad($stateParams.id).then(function(response){
+        disponibilidadService.getDisponibilidad().then(function(response){
             $scope.items = response.data;
         });
 
@@ -135,7 +133,7 @@ appTennisya
                     });
                 });
             }else{
-                disponibilidadService.newDisponibilidad($stateParams.id, $scope.disponibilidad).then(function(response){
+                disponibilidadService.newDisponibilidad($scope.disponibilidad).then(function(response){
                     $scope.items.push(response.data);
                 });
             }
@@ -192,6 +190,123 @@ appTennisya
             $scope.parseDias();
         });
     })
+    .controller('groupsCtrl', function($scope, $state, $stateParams,$rootScope, $ionicModal, $localstorage, grupoService ) {
+
+        $scope.grupo = grupoService.getModel();
+        //$scope.grupo.jugadorgrupo.splice(0, $scope.grupo.jugadorgrupo.length);
+
+        //$scope.grupo.title = $stateParams.title;
+        $scope.grupo.id = $stateParams.id;
+
+        grupoService.list($stateParams.id).then(function(data){
+            $scope.grupo = data;
+        });
+        $scope.isAdmin = function(){
+            if($scope.grupo.jugadorgrupo.length > 0)
+                return $localstorage.getObject('user').id === $scope.grupo.jugadorgrupo[0].jugador.id;
+            return false;
+        };
+        $scope.isYo = function(jugador){
+            return $localstorage.getObject('user').id === jugador.id;
+        };
+        $scope.nextGrupo = function(grupo){
+            grupoService.setModel(grupo);
+            $state.go('tabs.info-groups',{id:grupo.id});
+        };
+    })
+    .controller('infoGroupCtrl', function($scope, $stateParams, $ionicHistory, $ionicModal, $localstorage, grupoService, searchService, cameraAction ) {
+        var idYo = $localstorage.getObject('user').id;
+        $scope.data = {
+            showDelete: false,
+            changeTitle:false,
+            search:[]
+        };
+
+        $scope.grupo = grupoService.getModel();
+
+        $scope.onDelete = function(item) {
+            grupoService.deleteJugador(item.id);
+            $scope.grupo.jugadorgrupo.splice($scope.grupo.jugadorgrupo.indexOf(item), 1);
+            grupoService.setJugadores($scope.grupo.jugadorgrupo);
+        };
+        $scope.onUpdateTitle = function() {
+            if($scope.data.changeTitle){
+                grupoService.updateTitle($scope.grupo.id).then(function(response) {
+                    $scope.$emit('updategroup', {grupo:response.data,action:'update'});
+                }, function(err) {
+                });
+                $scope.data.changeTitle=false;
+            }
+        };
+        $scope.onSalirEliminar = function() {
+            if($scope.isAdmin()){
+                grupoService.delete($scope.grupo.id).then(function() {
+                    $scope.$emit('updategroup', {grupo:$scope.grupo,action:'remove'});
+                    $ionicHistory.goBack(-2);
+                }, function(err) {
+                });
+            }else{
+                var idUser = $localstorage.getObject('user').id;
+                angular.forEach($scope.grupo.jugadorgrupo, function(value, key) {
+                     if(value.jugador.id == idUser){
+                         grupoService.deleteJugador(value.id).then(function() {
+                             $scope.$emit('updategroup', {grupo:$scope.grupo,action:'remove'});
+                             $ionicHistory.goBack(-2);
+                         }, function(err) {
+                         });
+                     }
+                });
+            }
+        };
+
+        $ionicModal.fromTemplateUrl('templates/grupo/add-jugador.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+                $scope.modalAddJugador = modal;
+            });
+
+        $scope.searchJugador = function(query){
+            var ids = [];
+            angular.forEach($scope.grupo.jugadorgrupo, function(value, key) {
+                ids.push(value.jugador.id);
+            });
+            return searchService.searchJugador(query,ids);
+        };
+
+        $scope.addJugador = function(item){
+            if(!$scope.isYo(item) && $scope.grupo.jugadorgrupo.indexOf(item)<0){
+                grupoService.updateJugador($scope.grupo.id,item).then(function(response) {
+                    $scope.grupo.jugadorgrupo.push(response.data);
+                    grupoService.setJugadores($scope.grupo.jugadorgrupo);
+                    $scope.data.search.splice($scope.data.search.indexOf(item), 1);
+                }, function(err) {
+                    //alert(JSON.stringify(err));
+                });
+                $scope.modalAddJugador.hide();
+            }
+        };
+
+        $scope.isAdmin = function(){
+            if($scope.grupo.jugadorgrupo.length > 0)
+                return $localstorage.getObject('user').id === $scope.grupo.jugadorgrupo[0].jugador.id;
+            return false;
+        };
+        $scope.isYo = function(jugador){
+            return  idYo === jugador.id;
+        };
+        $scope.openCamera = function(){
+            cameraAction.showAction(function(imageURI){
+                $scope.grupo.image = imageURI;
+                grupoService.updateImage($scope.grupo.id).then(function(response) {
+                    $scope.grupo.image = response.image;
+                    $scope.$emit('updategroup', {grupo:response,action:'update'});
+                });
+
+            });
+        };
+
+    })
     .controller('ShareCtrl', function($scope, $cordovaSocialSharing) {
         var message = '';
         var image = '';
@@ -230,7 +345,6 @@ appTennisya
                         });
                     break;
             }
-            console.log(red);
         };
 
     })
@@ -242,11 +356,12 @@ appTennisya
 
         $scope.onGuardar = function(user){
             userService.updateJugador(user,function(response){
-                $ionicHistory.goBack();
+                $localstorage.setObject('user',response);
+                $scope.profile = response;
             },function(error){
-                //alert(error.error);
-                alert('Ha ocurrido un error. Faltan datos por completar.')
+                alert('Ha ocurrido un error al guardar. Por favor intetelo más tarde.')
             });
+            $ionicHistory.goBack();
         };
 
         $scope.loadPhoto = function() {
@@ -307,13 +422,20 @@ appTennisya
                 alert(error.error);
             });
         };
+
         $scope.signInFacebook = function() {
-            console.log('signInFacebook');
             $cordovaFacebook.login(["email"])
                 .then(function(success) {
                     $cordovaFacebook.api("me?fields=id,name,email", ["email"])
                         .then(function(success) {
                             alert(JSON.stringify(success));
+
+                            userService.facebookJugador({email:success.email},function(){
+                                $state.go('tabs.player');
+                            },function(error){
+                                alert(error.error);
+                            });
+
                         }, function (error) {
                             alert(JSON.stringify(error));
                         });
@@ -393,10 +515,12 @@ appTennisya
             $scope.clubs = response.data;
         });
     })
-    .controller('JugadoresSearchCtrl', function($scope, $state, $cordovaActionSheet, $cordovaCamera, grupoService, searchService) {
+    .controller('JugadoresSearchCtrl', function($scope, $state, $ionicHistory, $localstorage, grupoService, searchService, cameraAction) {
+        var idYo = $localstorage.getObject('user').id;
+
         $scope.onSig = function (state) {
             grupoService.setTitle($scope.data.title);
-            grupoService.setThumb($scope.data.img);
+            grupoService.setThumb($scope.data.image);
             $state.go(state);
         };
 
@@ -404,64 +528,41 @@ appTennisya
             $scope.data.focus = value;
             $scope.$apply();
         };
+        $scope.isYo = function(jugador){
+            return idYo === jugador.id;
+        };
 
         $scope.searchJugador = function(query){
-            return searchService.searchJugador(query);
+            var ids = [idYo];
+            angular.forEach($scope.data.jugadores, function(value, key) {
+                ids.push(value.id);
+            });
+            return searchService.searchJugador(query,ids);
         };
         $scope.addJugador = function(item){
-            $scope.data.jugadores.push(item);
-            grupoService.setJugadores($scope.data.jugadores);
+            if(!$scope.isYo(item) && $scope.data.jugadores.indexOf(item)<0){
+                $scope.data.jugadores.push(item);
+                grupoService.setJugadores($scope.data.jugadores);
+                $scope.data.search.splice($scope.data.search.indexOf(item), 1);
+            }
         };
         $scope.onDelete = function(item) {
             $scope.data.jugadores.splice($scope.data.jugadores.indexOf(item), 1);
             grupoService.setJugadores($scope.data.jugadores);
         };
         $scope.onCrearGrupo = function() {
-            grupoService.save().then(function(response){
-                console.log('Guardo grupo');
+            var parent = $scope.$parent.$parent;
+            grupoService.save(idYo).then(function(response){
+                if(response.id)
+                    parent.data.grupos.unshift(response);
             });
+            parent.modal.hide();
+            $ionicHistory.goBack();
         };
 
-        $scope.loadPhoto = function() {
-            var options = {
-                buttonLabels: ['Hacer foto', 'Seleccionar foto'],
-                addCancelButtonWithLabel: 'Cancelar',
-                androidEnableCancelButton : true
-            };
-            $cordovaActionSheet.show(options)
-                .then(function(btnIndex) {
-                    if(btnIndex == 1)
-                        $scope.getPhoto();
-                    else if(btnIndex == 2)
-                        $scope.selectPhoto();
-                });
-        };
-        $scope.getPhoto = function(){
-            var options = {
-                quality: 50,
-                allowEdit: true,
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.CAMERA
-            };
-            $scope.openCamera(options);
-            $cordovaCamera.cleanup();
-        };
-
-        $scope.selectPhoto = function(){
-            var options = {
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
-                allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG
-            };
-            $scope.openCamera(options);
-
-        };
-        $scope.openCamera = function(options){
-            $cordovaCamera.getPicture(options).then(function(imageURI) {
-                $scope.data.img = imageURI;
-            }, function(err) {
-                alert(JSON.stringify(err));
+        $scope.openCamera = function(){
+            cameraAction.showAction(function(imageURI){
+                $scope.data.image = imageURI;
             });
         };
 
@@ -469,7 +570,7 @@ appTennisya
             $scope.data = {
                 focus:true,
                 title:'',
-                img:null,
+                image:null,
                 jugadores:[],
 
                 search:[]
@@ -478,7 +579,7 @@ appTennisya
         $scope.$on('resetModalGroup', $scope.resetData);
         $scope.resetData();
     })
-    .controller('ListJugadoresCtrl', function($scope, $state, $ionicModal, $rootScope, userService) {
+    .controller('ListJugadoresCtrl', function($scope, $state, $ionicModal, $rootScope, userService, grupoService) {
 
         $scope.data = {
             showGrupos:false,
@@ -502,8 +603,32 @@ appTennisya
 
         $scope.openCreateGrupo = function (){
             $rootScope.$broadcast('resetModalGroup', {});
+            grupoService.resetModel();
             $scope.modal.show();
-        }
+        };
+
+        $rootScope.$on('updategroup', function(event, args){
+            var index = -1;
+            angular.forEach($scope.data.grupos, function(value, key) {
+                if(args.grupo.id == value.id){
+                    index = key;
+                    //$scope.data.grupos.splice($scope.data.grupos.indexOf(value), 1);
+                }
+            });
+
+            switch (args.action){
+                case 'new': $scope.data.grupos.unshift(args.grupo); break;
+                case 'update': if(index >- 1)  angular.merge($scope.data.grupos[index],args.grupo); break;
+                case 'remove': if(index >- 1) $scope.data.grupos.splice(index, 1); break;
+            }
+
+        });
+
+        $scope.nextGrupo = function(grupo){
+            grupoService.setModel(grupo);
+            //console.log(grupo);
+            $state.go('tabs.groups',{id:grupo.id});
+        };
     })
     .controller('ListPartidosCtrl', function($scope, partidoService) {
 

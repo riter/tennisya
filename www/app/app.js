@@ -1,17 +1,17 @@
 /**
  * Created by Riter on 24/08/15.
  */
- var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+//var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
 // var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
-//var api = 'http://tennisya.apploadapps.com/web/api/';
+var api = 'http://tennisya.apploadapps.com/web/api/';
 
 var appTennisya = angular.module('tennisyaApp', ['ionic','ngCordova']);
 
 appTennisya.run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
             if(window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
-                cordova.plugins.Keyboard.disableScroll(false);
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
             }
             if(window.StatusBar) {
                 StatusBar.styleDefault();
@@ -29,11 +29,13 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
     $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
     $ionicConfigProvider.platform.android.navBar.alignTitle('center');
 
-    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-back');
-    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-ios-arrow-back');
+//    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-back');
+//    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-ios-arrow-back');
 
-    $ionicConfigProvider.platform.ios.views.transition('ios');
-    $ionicConfigProvider.platform.android.views.transition('android');
+//    $ionicConfigProvider.platform.ios.views.transition('ios');
+//    $ionicConfigProvider.platform.android.views.transition('android');
+
+    $ionicConfigProvider.backButton.previousTitleText(false);
 
         $stateProvider
             .state('signin', {
@@ -75,10 +77,20 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                 }
             })
             .state('tabs.groups', {
-                url: '/groups',
+                url: '/groups/:id',
                 views:{
                     'player-tab':{
-                       templateUrl: "templates/jugadores/groups.html"
+                        templateUrl: "templates/grupo/groups.html",
+                        controller: 'groupsCtrl'
+                    }
+                }
+            })
+            .state('tabs.info-groups', {
+                url: '/infoGroups/:id',
+                views:{
+                    'player-tab':{
+                        templateUrl: "templates/grupo/info-groups.html",
+                        controller: 'infoGroupCtrl'
                     }
                 }
             })
@@ -150,10 +162,10 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
             })
             //create grupos
             .state('tabs.player.add_jugador', {
-                url: '/players/modal/item',
+                url: '/players/modal/group',
                 views: {
                     'navable-modal@': {
-                        templateUrl: 'templates/grupo/add-jugador.html',
+                        templateUrl: 'templates/grupo/add-list-jugador.html',
                         controller: 'JugadoresSearchCtrl'
                     }
                 }

@@ -51,6 +51,15 @@ appTennisya
                 });
 
             },
+            facebookJugador: function(data,callback,error){
+                $http.post(api+'jugador/login_social',data).then(function(response){
+                    $localstorage.setObject('user',response.data);
+                    return callback();
+                },function(e){
+                    return error(e.data);
+                });
+
+            },
             saveJugador: function(model,callback,error){
                 var data = angular.copy(model);
 
@@ -120,8 +129,8 @@ appTennisya
                 }
             },
             listJugador: function(callback,error){
-
-                $http.get(api+'group/jugadores').then(function(response){
+                var user = $localstorage.getObject('user');
+                $http.get(api+'group/jugadores/'+user.id).then(function(response){
                     return callback(response.data);
                 },function(e){
                     return error(e.data);
@@ -160,14 +169,14 @@ appTennisya
             }
         };
     })
-    .factory('disponibilidadService', function($http) {
+    .factory('disponibilidadService', function($http,$localstorage) {
 
         return {
             getDisponibilidad: function(id){
-                return $http.get(api+'disponibilidad/list/'+id);
+                return $http.get(api+'disponibilidad/list/'+$localstorage.getObject('user').id);
             },
-            newDisponibilidad: function(idJugador, model){
-                return $http.post(api+'disponibilidad/new/'+idJugador,model);
+            newDisponibilidad: function(model){
+                return $http.post(api+'disponibilidad/new/'+$localstorage.getObject('user').id, model);
             },
             updateDisponibilidad: function(model){
                 if(typeof (model.clubCancha) === 'object')
@@ -189,32 +198,188 @@ appTennisya
     })
     .factory('searchService', function($http) {
         return {
-            searchJugador: function(query){
-                return $http.get(api+'group/search',{ cache:true, params:{query: query}});
+            searchJugador: function(query,ids){
+                return $http.get(api+'group/search',{ cache:true, params:{query: query, 'ids[]': ids}});
             }
         };
     })
-    .factory('grupoService', function($http) {
+    .factory('grupoService', function($q, $http, $cordovaFileTransfer) {
+        var data = {
+            id:null,
+            title: '',
+            image: null,
+            pais: '',
+            ciudad: '',
+            jugadorgrupo: []
+
+        };
         return {
-            data:{
-                title: '',
-                jugadores: [],
-                img: null
+            setModel: function(model){
+                if(typeof (model.jugadorgrupo) === 'undefined')
+                    model.jugadorgrupo = [];
+                data = model;
+            },
+            getModel: function(){
+              return data;
+            },
+            resetModel: function(){
+               this.setModel({
+                   id:null,
+                   title: '',
+                   image: null,
+                   pais: '',
+                   ciudad: '',
+                   jugadorgrupo: []
+
+               });
             },
             setTitle: function (title) {
-                this.data.title = title;
+                data.title = title;
             },
             setThumb: function (url) {
-                this.data.img = url;
+                data.image = url;
             },
             setJugadores: function (listJugadores) {
-                this.data.jugadores = listJugadores;
+                data.jugadorgrupo = listJugadores;
             },
-            save: function () {
-                return $http.post(api+'group/save/',this.data);
+            save: function (idAdmin) {
+                var deferred = $q.defer();
+                var param = {
+                    title:data.title,
+                    jugadorgrupo:[]
+                };
+                angular.forEach(data.jugadorgrupo, function(value, key) {
+                    param.jugadorgrupo.push({id:value.id});
+                });
+
+                if(data.image === null){
+                    $http.post(api+'group/save/'+idAdmin,param).then(function(response){
+//                        data = response.data;
+//                        data.jugadorgrupo = [];
+                        deferred.resolve(response.data);
+                    });
+                }else{
+                    var option = {
+                        fileKey:'files',
+                        fileName:'image.jpg',
+                        mimeType: "image/png",
+                        chunkedMode: false,
+                        params: param
+                    };
+                    $cordovaFileTransfer.upload(api+'group/save/'+idAdmin, data.image, option)
+                        .then(function(result) {
+//                            data = JSON.parse(result.response);
+//                            data.jugadorgrupo = [];
+                            deferred.resolve(JSON.parse(result.response));
+                        }, function(err) {
+                            deferred.reject(err);
+                        }, function (progress) {
+                            // constant progress updates
+                        });
+                }
+
+                return deferred.promise;
+            },
+            updateJugador: function (id,jugador) {
+                return $http.post(api+'group/update/'+id,{campo:'jugador',jugador:jugador.id});
+            },
+            updateTitle: function (id) {
+                return $http.post(api+'group/update/'+id,{campo:'title',title:data.title});
+            },
+            updateImage: function (id) {
+                var deferred = $q.defer();
+
+                var option = {
+                    fileKey:'files',
+                    fileName:'image.jpg',
+                    mimeType: "image/png",
+                    chunkedMode: false,
+                    params:{campo:'image'}
+                };
+                $cordovaFileTransfer.upload(api+'group/update/'+id, data.image, option)
+                    .then(function(result) {
+                        deferred.resolve(JSON.parse(result.response));
+                        //return callback({data: JSON.parse(result.response)});
+                    }, function(err) {
+                        deferred.reject(err);
+                        //return error(err);
+                    }, function (progress) {
+                        // constant progress updates
+                    });
+
+                return deferred.promise;
+            },
+            list: function (id) {
+                return $http.get(api+'group/list_jugadores/'+id).then(function(response){
+                    data = response.data;
+                    return data;
+                });
+            },
+            deleteJugador: function(id_grupo_jugador){
+                return $http.get(api+'group/delete_jugador/'+id_grupo_jugador);
+            },
+            delete: function(id){
+                return $http.get(api+'group/delete/'+id);
             }
         };
     });
+
+appTennisya.factory('cameraAction', function($cordovaActionSheet, $cordovaCamera) {
+
+    var cameraAction = {
+        callback:null,
+        options : {
+            buttonLabels: ['Hacer foto', 'Seleccionar foto'],
+            //addDestructiveButtonWithLabel : 'Eliminar foto',
+            addCancelButtonWithLabel: 'Cancelar',
+            androidEnableCancelButton : true
+        },
+        showAction:function(callback){
+            this.callback = callback;
+
+            var self = this;
+            $cordovaActionSheet.show(this.options)
+                .then(function(btnIndex) {
+                    switch (btnIndex){
+                        case 1: self.getPhoto();
+                            break;
+                        case 2: self.selectPhoto();
+                            break;
+                        case 3:
+                            break;
+                    }
+                });
+        },
+        getPhoto: function(){
+            var options = {
+                quality: 50,
+                allowEdit: true,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.CAMERA
+            };
+            this.openCamera(options);
+            $cordovaCamera.cleanup();
+        },
+        selectPhoto:function(){
+            var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG
+            };
+            this.openCamera(options);
+        },
+        openCamera:function(options){
+            var self = this;
+            $cordovaCamera.getPicture(options).then(function(imageURI) {
+                if(typeof (self.callback) === 'function') self.callback(imageURI);
+            }, function(err) {
+                alert(JSON.stringify(err));
+            });
+        }
+    };
+    return cameraAction;
+});
 
 appTennisya.directive('divContent', function() {
     return {

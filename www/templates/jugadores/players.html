@@ -1,11 +1,10 @@
 <div align-title="left" class="bar bar-subheader">
 	<!-- <h2 class="title">Mis grupos</h2> -->
-	<a  ng-click="data.showGrupos = !data.showGrupos" class="button button-clear">{{ data.showGrupos?'Jugadores':'Mis grupos' }}</a>
+    <button  class="button button-clear" ng-click="data.showGrupos = !data.showGrupos">{{ data.showGrupos?'Jugadores':'Mis grupos' }}</button>
 	<!-- <div class="buttons"> -->
 		<button class="button button-clear button-green" ng-click="openCreateGrupo()">Crear grupo</button>
 	<!-- </div> -->
 </div>
-
 
 <ion-view view-title="Jugadores">
 	<ion-nav-buttons side="right">
@@ -14,18 +13,20 @@
 		</button>
 	</ion-nav-buttons>
 
-    <ion-content>
-		<ion-list class="players-list">
-
-            <ion-item ng-show="data.showGrupos" class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos" type="item-text-wrap" href="">
-                <img ng-src="{{grupo.image != null ? grupo.image : 'assets/img/groups/1.png'}}">
+    <ion-content class="has-subheader">
+        <ion-list ng-hide="!data.showGrupos" class="players-list">
+            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos" type="item-text-wrap" ng-click="nextGrupo(grupo)">
+                <img ng-src="{{grupo.image != null ? grupo.image : 'assets/img/group.png'}}">
                 <h2>{{grupo.title}}</h2>
                 <p>{{grupo.ciudad}}, {{grupo.pais}}</p>
                 <!--<p>Lawn Tenis, Nautilus</p>-->
                 <i class="icon ion-chevron-right"></i>
             </ion-item>
+        </ion-list>
 
-			<ion-item ng-show="!data.showGrupos" class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores" type="item-text-wrap" href="">
+		<ion-list ng-hide="data.showGrupos" class="players-list">
+
+			<ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores" type="item-text-wrap" href="">
 				<img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
 				<h2>{{jugador.name}}</h2>
 				<p>{{jugador.estado}}</p>

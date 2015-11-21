@@ -1,19 +1,19 @@
-<ion-view title="Añadir jugador">
+<ion-modal-view>
 
     <ion-header-bar class="bar-stable">
-        <a class="button  button-clear button-dark" ng-click="$ionicGoBack()"><i class="icon ion-ios-arrow-back"></i></a>
+        <button class="button button-clear btn-left" ng-click="modalAddJugador.hide()"> Cancelar </button>
 
-        <h1 class="title title-header">Añadir jugador</h1>
-        <button class="button button-clear btn-left" ng-click="onCrearGrupo()" ng-disabled="data.jugadores == 0"> Crear </button>
+        <h1 class="title title-header">Selecciona un jugador</h1>
+
     </ion-header-bar>
 
     <ion-content class="has-header">
 
         <div class="bar item-input-inset">
-            <ion-search class="search-wrapper-light" placeholder="Nombre del jugador" min-length="1" model="data.search" focus="changeFocus(value)" source="searchJugador(str)"></ion-search>
+            <ion-search class="search-wrapper-light" placeholder="Nombre del jugador" min-length="1" model="data.search" source="searchJugador(str)"></ion-search>
         </div>
 
-        <ion-list class="players-list" ng-hide="!data.focus && data.search.length > 0">
+        <ion-list class="players-list">
             <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="jugador in data.search" ng-click="addJugador(jugador)">
                 <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
                 <h2>{{jugador.name}}</h2>
@@ -22,15 +22,5 @@
             </ion-item>
         </ion-list>
 
-        <ion-list class="players-list" ng-hide="data.focus && data.search.length > 0">
-            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="jugador in data.jugadores">
-                <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
-                <h2>{{jugador.name}}</h2>
-                <p>{{jugador.estado}}</p>
-                <p>{{jugador.clubCancha.nombre}}</p>
-                <i class="icon ion-ios-minus-outline" style="color: #289735;" ng-click="onDelete(item)"></i>
-            </ion-item>
-        </ion-list>
-
     </ion-content>
-</ion-view>
+</ion-modal-view>

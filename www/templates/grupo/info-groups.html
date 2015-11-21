@@ -1,0 +1,55 @@
+<ion-view>
+    <ion-nav-title>Información</ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-balanced btn-left" ng-click="data.showDelete = !data.showDelete; onUpdateTitle();" > {{ data.showDelete?'hecho':'Editar' }} </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <ion-list>
+
+        <ion-item class="item item-avatar item-text" type="item-text-wrap">
+            <img ng-src="{{grupo.image?grupo.image:'assets/img/group.png' }}">
+
+            <label class="item item-input item-cont">
+                <input type="text" ng-model="grupo.title" ng-change="data.changeTitle = true" placeholder="Asunto del grupo" maxlength="25" ng-disabled="!data.showDelete">
+                <span class="item-note">{{25 - grupo.title.length}}</span>
+            </label>
+        </ion-item>
+
+        <ion-item class="item balanced" type="item-text-wrap"  ng-click="openCamera()">
+            Poner foto al grupo
+        </ion-item>
+
+        <div class="item item-divider">{{grupo.jugadorgrupo.length}} jugadores</div>
+
+        <ion-item  ng-show="isAdmin()" class="item balanced" ng-click="modalAddJugador.show()">
+            Añadir jugador...
+        </ion-item>
+
+        <ion-list show-delete="data.showDelete && isAdmin()" class="players-list">
+
+			<ion-item item="item" class="item item-avatar item-icon-right item-remove-animate" ng-repeat="jugador in grupo.jugadorgrupo" type="item-text-wrap" href="">
+                <img ng-src="{{jugador.jugador.photo != null ? jugador.jugador.photo : 'assets/img/profile.png'}}">
+                <h2>{{isYo(jugador.jugador)?'Yo':jugador.jugador.name}}</h2>
+                <p>{{jugador.jugador.estado}}</p>
+                <p>{{jugador.jugador.clubCancha.nombre}}</p>
+                <!--<p>Lawn Tenis, Nautilus</p>-->
+                <i class="icon ion-chevron-right"></i>
+
+                <ion-delete-button style="color: #ef473a;" ng-if="!isYo(jugador.jugador)" class="ion-minus-circled ion-remove-list item-remove-animate assertive" ng-click="onDelete(jugador)"></ion-delete-button>
+			</ion-item>
+
+		</ion-list>
+
+        <div class="item item-divider"></div>
+
+        <ion-item  class="item assertive text-center" type="item-text-wrap" ng-click="onSalirEliminar()">{{isAdmin()?'Eliminar y salir':'Salir'}}</ion-item>
+
+        <div class="item item-divider"></div>
+
+        </ion-list>
+
+	</ion-content>
+</ion-view>
