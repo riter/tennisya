@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/profile.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tennisya.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="controller.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="363" column="35" selection-start="13717" selection-end="13717" vertical-scroll-proportion="0.488117" vertical-offset="5904" max-vertical-offset="11815">
+            <state line="358" column="57" selection-start="13503" selection-end="13503" vertical-scroll-proportion="0.0" vertical-offset="5904" max-vertical-offset="11815">
               <folding />
             </state>
           </provider>
@@ -73,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3026">
+            <state line="5" column="1" selection-start="188" selection-end="188" vertical-scroll-proportion="0.15178572" vertical-offset="0" max-vertical-offset="3026">
               <folding />
             </state>
           </provider>
@@ -127,9 +124,9 @@
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/profile.html" />
         <option value="$PROJECT_DIR$/www/app/controller.js" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
       </list>
     </option>
   </component>
@@ -455,13 +452,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3026">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="36" selection-start="1534" selection-end="1534" vertical-scroll-proportion="-5.730769" vertical-offset="344" max-vertical-offset="1105">
@@ -471,7 +461,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="363" column="35" selection-start="13717" selection-end="13717" vertical-scroll-proportion="0.488117" vertical-offset="5904" max-vertical-offset="11815">
+        <state line="358" column="57" selection-start="13503" selection-end="13503" vertical-scroll-proportion="0.0" vertical-offset="5904" max-vertical-offset="11815">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="1" selection-start="188" selection-end="188" vertical-scroll-proportion="0.15178572" vertical-offset="0" max-vertical-offset="3026">
           <folding />
         </state>
       </provider>
