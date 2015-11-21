@@ -356,11 +356,12 @@ appTennisya
 
         $scope.onGuardar = function(user){
             userService.updateJugador(user,function(response){
-                $ionicHistory.goBack();
+                $localstorage.setObject('user',response);
+                $scope.profile = response;
             },function(error){
-                //alert(error.error);
-                alert('Ha ocurrido un error. Faltan datos por completar.')
+                alert('Ha ocurrido un error al guardar. Por favor intetelo más tarde.')
             });
+            $ionicHistory.goBack();
         };
 
         $scope.loadPhoto = function() {
