@@ -26,7 +26,7 @@
 
 		<ion-list ng-hide="data.showGrupos" class="players-list">
 
-			<ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores" type="item-text-wrap" href="">
+			<ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores" type="item-text-wrap" ng-click="nextInfoJugador(jugador)">
 				<img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
 				<h2>{{jugador.name}}</h2>
 				<p>{{jugador.estado}}</p>

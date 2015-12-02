@@ -1,16 +1,20 @@
 <ion-modal-view class=" new-match">
+
     <ion-header-bar class="bar-stable">
-        <button class="button button-clear btn-cgreen" ng-click="modal.hide()"> Cancelar </button>
+        <button class="button button-clear btn-cgreen" ng-click="onCancelar()"> Cancelar </button>
         <h1 class="title">Nuevo partido</h1>
     </ion-header-bar>
 
     <ion-content>
         <ion-list >
+            <ion-item class="item-divider text-center" ng-show="grupoPartido.id !== null">Grupo: {{grupoPartido.title}}</ion-item>
+
             <div class="ty-list-group">
                 <label class="item item-input item-select">
                     <div class="input-label">Tipo</div>
-                    <select ng-model="partido.tipo" ng-options="tipo.name for tipo in [{name:'Singles'},{name:'Dobles'}] track by tipo.name">
-                        <option value=""></option>
+                    <select ng-model="partido.tipo" ng-change="changeTipo(partido.tipo)">
+                        <option value="Singles">Singles</option>
+                        <option value="Dobles">Dobles</option>
                     </select>
                 </label>
 
@@ -50,15 +54,15 @@
 
             <div class="ty-list-group">
 
-                <a class="item gamer" href="#">
+                <a class="item gamer">
                     Jugador 1
                     <span class="item-note">
                        {{partido.jugador1?partido.jugador1.name:'Invitar*>'}}
-                       <input type="hidden" ng-model="partido.jugador1" />
+                       <input type="hidden" ng-model="partido.jugador1"/>
                     </span>
                 </a>
 
-                <a class="item gamer" href="#" ng-click="onInvitar('jugador2')">
+                <a class="item gamer" ng-click="search('jugador2')">
                     Jugador 2
                     <span class="item-note">
                      {{partido.jugador2?partido.jugador2.name:'Invitar*>'}}
@@ -66,7 +70,7 @@
                     </span>
                 </a>
 
-                <a class="item gamer" href="#" ng-click="onInvitar('jugador3')">
+                <a class="item gamer" ng-click="search('jugador3')" ng-show="partido.tipo == 'Dobles' ">
                     Jugador 3
                     <span class="item-note">
                       {{partido.jugador3?partido.jugador3.name:'Invitar*>'}}
@@ -74,7 +78,7 @@
                     </span>
                 </a>
 
-                <a class="item gamer" href="#" ng-click="onInvitar('jugador4')">
+                <a class="item gamer" ng-click="search('jugador4')" ng-show="partido.tipo == 'Dobles' ">
                     Jugador 4
                     <span class="item-note">
                       {{partido.jugador4?partido.jugador4.name:'Invitar*>'}}

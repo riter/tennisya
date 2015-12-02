@@ -35,6 +35,9 @@ appTennisya
             },
             clear: function () {
                 $window.localStorage.clear();
+            },
+            exist:function(key){
+                return $window.localStorage[key]?true:false;
             }
         };
     }])
@@ -128,16 +131,18 @@ appTennisya
                     });
                 }
             },
-            listJugador: function(callback,error){
-                var user = $localstorage.getObject('user');
-                $http.get(api+'group/jugadores/'+user.id).then(function(response){
-                    return callback(response.data);
+            listJugador: function(){
+                return $http.get(api+'jugador/list').then(function(response){
+                    return response.data;
                 },function(e){
-                    return error(e.data);
+                    return [];
                 });
 
             },
-            getJugador: function(index){
+            setJugador: function(jugador){
+                user = jugador;
+            },
+            getJugador: function(){
                 return user;
             }
         }
@@ -151,10 +156,11 @@ appTennisya
             getPartidosP: function(id){
                 return $http.get(api+'partidos/list_creados/'+id);
             },
-            newPartido: function(model){
+            newPartido: function(model){// adicionar en la URL el id del grupo si es en ese caso
                 var newModel = {
+                    grupo: model.grupo,
                     club : model.club.id,
-                    tipo : model.tipo.name,
+                    tipo : model.tipo,
                     fechaI : moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaI).format('H:mm:ss'),
                     fechaF : moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaF).format('H:mm:ss'),
                     reservada:model.reservada,
@@ -169,14 +175,43 @@ appTennisya
             }
         };
     })
-    .factory('disponibilidadService', function($http,$localstorage) {
-
+    .factory('disponibilidadService', function($q, $http, $localstorage) {
+        var data = [];
         return {
-            getDisponibilidad: function(id){
-                return $http.get(api+'disponibilidad/list/'+$localstorage.getObject('user').id);
+            list: function(){
+                var deferred = $q.defer();
+
+                if($localstorage.exist('disponibilidad')){
+                    deferred.resolve($localstorage.getObject('disponibilidad'));
+                    return deferred.promise;
+                }else
+                    return this.load();
+            },
+            saveStorage: function (data){
+                $localstorage.setObject('disponibilidad',data);
+            },
+            load: function(){
+                var self = this;
+                return $http.get(api+'disponibilidad/list/'+$localstorage.getObject('user').id).then(function(response){
+                    data = response.data;
+                    self.saveStorage(data);
+                    return data;
+                },function(){
+                    if($localstorage.exist('disponibilidad'))
+                        data = $localstorage.getObject('disponibilidad');
+                    return data;
+                });
             },
             newDisponibilidad: function(model){
-                return $http.post(api+'disponibilidad/new/'+$localstorage.getObject('user').id, model);
+                var deferred = $q.defer();
+                $http.post(api+'disponibilidad/new/'+$localstorage.getObject('user').id, model).then(function(response){
+                    var lista = $localstorage.getObject('disponibilidad');
+                    lista.push(response.data);
+                    $localstorage.getObject('disponibilidad', lista);
+
+                    deferred.resolve(response.data);
+                });
+                return deferred.promise;
             },
             updateDisponibilidad: function(model){
                 if(typeof (model.clubCancha) === 'object')
@@ -189,21 +224,63 @@ appTennisya
             }
         };
     })
-    .factory('extrasService', function($http) {
+    .factory('extrasService', function($q, $http, $localstorage) {
         return {
             getClub: function(){
-                return $http.get(api+'club/list',{cache:true});
+                var deferred = $q.defer();
+
+                if($localstorage.exist('clubs')){
+                    deferred.resolve($localstorage.getObject('clubs'));
+                    return deferred.promise;
+                }else
+                    return this.loadClubs();
+            },
+            loadClubs: function(){
+                return $http.get(api+'club/list').then(function(response){
+                    $localstorage.setObject('clubs',response.data);
+                    return response.data;
+                });
             }
         };
     })
     .factory('searchService', function($http) {
         return {
             searchJugador: function(query,ids){
-                return $http.get(api+'group/search',{ cache:true, params:{query: query, 'ids[]': ids}});
+                return $http.get(api+'jugador/search',{ cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
+                    return response.data;
+                });
             }
         };
     })
-    .factory('grupoService', function($q, $http, $cordovaFileTransfer) {
+    .factory('searchJugador', function($http, $q) {
+        var SearchClass = {
+            data:[],
+            cancelHttp:$q.defer(),
+            selected:null,
+            setSelected:function(item){
+              this.selected = angular.copy(item);
+            },
+            getSelected:function(){
+                return this.selected;
+            },
+            getJugadores:function(){
+                return this.data;
+            },
+            searchJugador: function(query, ids){
+                var self = this;
+                self.cancelHttp.resolve(self.data);
+                self.cancelHttp = $q.defer();
+                return $http.get(api+'jugador/search',{ timeout: self.cancelHttp.promise, cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
+                    angular.merge(self.data,response.data);
+                    return angular.copy(self.data);
+                },function(){
+                    return angular.copy(self.data);
+                });
+            }
+        };
+        return SearchClass;
+    })
+    .factory('grupoService', function($q, $localstorage, $http, $cordovaFileTransfer) {
         var data = {
             id:null,
             title: '',
@@ -214,6 +291,12 @@ appTennisya
 
         };
         return {
+            list: function () {
+                var user = $localstorage.getObject('user');
+                return $http.get(api+'group/jugadores/'+user.id).then(function(response){
+                    return response.data;
+                });
+            },
             setModel: function(model){
                 if(typeof (model.jugadorgrupo) === 'undefined')
                     model.jugadorgrupo = [];
@@ -309,7 +392,7 @@ appTennisya
 
                 return deferred.promise;
             },
-            list: function (id) {
+            getJugadores: function (id) {
                 return $http.get(api+'group/list_jugadores/'+id).then(function(response){
                     data = response.data;
                     return data;
@@ -428,10 +511,10 @@ appTennisya
                     scope.$watch('search.value', function (newValue, oldValue) {
                         if (newValue.length > attrs.minLength) {
                             scope.getData({str: newValue}).then(function (results) {
-                                scope.model = results.data;
+                                scope.model = results;
                             });
                         } else {
-                            scope.model = [];
+                            //scope.model = [];
                         }
                     });
                 }

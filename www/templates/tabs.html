@@ -1,18 +1,18 @@
 <ion-tabs class="tabs-icon-top tabs-stable tabs-menu">
 
-    <ion-tab title="Jugadores" icon="ic-players" href="#/tab/player">
+    <ion-tab title="Jugadores" icon="ic-players" href="#/tab/players">
         <ion-nav-view name="player-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="Crear partido" icon="ic-newmatch" ng-click="openPatido()">
-        <!--<ion-nav-view name="newPartido-tab"></ion-nav-view>-->
+    <ion-tab title="Crear partido" icon="ic-newmatch"  href="#/tab/crearPartidos">
+        <ion-nav-view name="newPartido-tab"></ion-nav-view>
     </ion-tab>
 
     <ion-tab title="Partidos" icon="ic-matches" href="#/tab/partidos">
         <ion-nav-view name="partidos-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="Ajustes" icon="ic-settings" ui-sref="tabs.setting">
+    <ion-tab title="Ajustes" icon="ic-settings" href="#/tab/settings">
         <ion-nav-view name="setting-tab"></ion-nav-view>
     </ion-tab>
 

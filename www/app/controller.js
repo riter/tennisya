@@ -3,33 +3,63 @@
  */
 
 appTennisya
-    .controller('TabsCtrl', function($scope, $ionicModal, $localstorage, partidoService, userService, extrasService) {
-        $scope.openPatido = function() {
-            $scope.partido = {reservada:true, jugador1:$localstorage.getObject('user')};
-            $scope.modal.show();
+    .controller('infoJugadorCtrl', function($scope, userService) {
+        $scope.$on('$ionicView.beforeEnter', function() {
+            $scope.jugador = userService.getJugador();
+        });
+    })
+    .controller('TabsCtrl', function($scope, $state, $ionicModal, extrasService, disponibilidadService, userService) {
+        extrasService.loadClubs();
+        disponibilidadService.load();
+
+        $scope.nextInfoJugador = function(jugador){
+            userService.setJugador(jugador);
+            $state.go('tabs.player-info');
         };
-        $scope.confirmarPartido = function() {
-            $scope.partido = {reservada:true, jugador1:$localstorage.getObject('user')};
-            $scope.modalConfirm.show();
+    })
+    .controller('searchJugadorCtrl', function($scope, $ionicHistory, searchJugador) {
+        $scope.data={
+            search: searchJugador.getJugadores()
+        };
+
+        $scope.searchJugador = function(query){
+            var ids = [];
+            angular.forEach($scope.data.search, function(value, key) {
+                ids.push(value.id);
+            });
+            return searchJugador.searchJugador(query,ids);
+        };
+
+        $scope.selected = function(jugador){
+            searchJugador.setSelected(jugador);
+        }
+    })
+    .controller('crearPartidoCtrl', function($rootScope, $state, $scope, $ionicHistory, $ionicModal, $localstorage, partidoService, userService, extrasService, searchJugador) {
+
+        $ionicModal.fromTemplateUrl('templates/crearPartido/navable-partido.html', {
+            animation: 'slide-in-up',
+            scope: $scope
+        }).then(function (modal) {
+                $scope.modalNewPartido = modal;
+
+            });
+        $scope.openPatido = function() {
+            if(!$scope.modalNewPartido._isShown){
+                $scope.invitar = null;
+                $scope.partido = {reservada:true, tipo:'Singles', jugador1:$localstorage.getObject('user'), grupo: $rootScope.grupoPartido.id};
+                $scope.modalNewPartido.show();
+            }
+        };
+        $scope.onCreate = function(model){
+            partidoService.newPartido(model).then(function(response){
+                $scope.modalNewPartido.hide();
+                $ionicHistory.goBack();
+            });
         };
 
         extrasService.getClub().then(function(response){
-            $scope.clubs = response.data;
+            $scope.clubs = response;
         });
-
-        $ionicModal.fromTemplateUrl('templates/partidos/newPartido.html', {
-            animation: 'slide-in-up',
-            scope: $scope
-        }).then(function (modal) {
-                $scope.modal = modal;
-            });
-
-        $ionicModal.fromTemplateUrl('templates/partidos/_confirmarPartido.html', {
-            animation: 'slide-in-up',
-            scope: $scope
-        }).then(function (modal) {
-                $scope.modalConfirm = modal;
-            });
 
         $scope.formatLYMD = function(date){
             return moment(date).format('YYYY/MM/DD');
@@ -37,35 +67,33 @@ appTennisya
         $scope.formatHHMM = function(time){
             return moment(time).format('h:mm a');
         };
+        $scope.changeTipo = function(value){
+            if(value=='Singles'){
+                $scope.partido.jugador3 = null;
+                $scope.partido.jugador4 = null;
+            }
+        };
+        $scope.$on('$ionicView.enter', function() {
+            $scope.openPatido();
 
-        $scope.onCreate = function(model){
-            partidoService.newPartido(model).then(function(response){
-                $scope.modal.hide();
-            });
+            if($scope.invitar != null && searchJugador.getSelected() != null){
+                $scope.partido[$scope.invitar] = searchJugador.getSelected();
+                $scope.invitar = null;
+                searchJugador.setSelected(null);
+            }
+        });
+
+        $scope.onCancelar = function(){
+            $ionicHistory.goBack();
+            $scope.modalNewPartido.hide();
         };
 
-        $scope.onInvitar = function(invitar){
-            userService.listJugador(function(response){
-                $scope.invitados = response;
-            });
-
-            $scope.tmp = invitar;
-            $ionicModal.fromTemplateUrl('templates/search/invite.html', {
-                animation: 'slide-in-up',
-                scope: $scope
-            }).then(function (modal) {
-                    $scope.inviteModal = modal;
-                    $scope.inviteModal.show();
-                });
-        }
-
-        $scope.onJugador = function(jugador){
-            $scope.partido[$scope.tmp] = jugador;
-            $scope.inviteModal.hide();
-        }
+        $scope.search = function(jugador){
+            $scope.invitar = jugador;
+            $state.go('tabs.crear-partidos.search');
+        };
     })
     .controller('AjustesCtrl', function($scope, $state, $localstorage, $ionicHistory, $cordovaActionSheet) {
-        //$scope.id = $localstorage.getObject('user').id;
 
         $scope.onCerrarSesion=function(){
             var options = {
@@ -86,7 +114,8 @@ appTennisya
                 });
         }
     })
-    .controller('DisponibilidadCtrl', function($scope, $stateParams, $ionicModal, $ionicActionSheet, disponibilidadService, extrasService ) {
+    .controller('DisponibilidadCtrl', function($scope,  $ionicModal, disponibilidadService, extrasService ) {
+
         extrasService.getClub().then(function(response){
             $scope.clubs = response.data;
         });
@@ -102,8 +131,8 @@ appTennisya
             $scope.items.splice($scope.items.indexOf(item), 1);
         };
 
-        disponibilidadService.getDisponibilidad().then(function(response){
-            $scope.items = response.data;
+        disponibilidadService.list().then(function(data){
+            $scope.items  = data;
         });
 
         /* new Disponibilidad*/
@@ -190,15 +219,17 @@ appTennisya
             $scope.parseDias();
         });
     })
-    .controller('groupsCtrl', function($scope, $state, $stateParams,$rootScope, $ionicModal, $localstorage, grupoService ) {
+    .controller('groupsCtrl', function($scope, $state, $stateParams, $rootScope, $ionicModal, $localstorage, grupoService ) {
+
+        $scope.$on('$ionicView.enter', function() {
+            $rootScope.grupoPartido = {id: parseInt($stateParams.id), title:$scope.grupo.title};
+        });
 
         $scope.grupo = grupoService.getModel();
-        //$scope.grupo.jugadorgrupo.splice(0, $scope.grupo.jugadorgrupo.length);
 
-        //$scope.grupo.title = $stateParams.title;
         $scope.grupo.id = $stateParams.id;
 
-        grupoService.list($stateParams.id).then(function(data){
+        grupoService.getJugadores($stateParams.id).then(function(data){
             $scope.grupo = data;
         });
         $scope.isAdmin = function(){
@@ -457,7 +488,7 @@ appTennisya
         };
 
     })
-    .controller('SignUpCtrl', function($scope, $state, userService, extrasService, $cordovaCamera, $cordovaActionSheet, $localstorage) {
+    .controller('SignUpCtrl', function($scope, $state, userService, extrasService, $cordovaCamera, $cordovaActionSheet) {
         $scope.user = {};
         $scope.loadPhoto = function() {
             var options = {
@@ -581,17 +612,21 @@ appTennisya
     })
     .controller('ListJugadoresCtrl', function($scope, $state, $ionicModal, $rootScope, userService, grupoService) {
 
+        $scope.$on('$ionicView.enter', function() {
+            $rootScope.grupoPartido = {id:null};
+        });
+
         $scope.data = {
             showGrupos:false,
             jugadores:[],
             grupos:[]
         };
 
-        userService.listJugador(function(response){
-            $scope.data.jugadores = response.jugadores;
-            $scope.data.grupos = response.grupos;
-        },function(error){
-            //alert(error.error);
+        grupoService.list().then(function(response){
+            $scope.data.grupos = response;
+        });
+        userService.listJugador().then(function(response){
+            $scope.data.jugadores = response;
         });
 
         $ionicModal.fromTemplateUrl('templates/grupo/navable-modal.html', {
@@ -621,16 +656,23 @@ appTennisya
                 case 'update': if(index >- 1)  angular.merge($scope.data.grupos[index],args.grupo); break;
                 case 'remove': if(index >- 1) $scope.data.grupos.splice(index, 1); break;
             }
-
         });
 
         $scope.nextGrupo = function(grupo){
             grupoService.setModel(grupo);
-            //console.log(grupo);
             $state.go('tabs.groups',{id:grupo.id});
         };
+
+//        $scope.nextInfoJugador = function(jugador){
+//            userService.setJugador(jugador);
+//            $state.go('tabs.player-info');
+//        };
     })
-    .controller('ListPartidosCtrl', function($scope, partidoService) {
+    .controller('ListPartidosCtrl', function($rootScope, $scope, partidoService) {
+
+        $scope.$on('$ionicView.enter', function() {
+         //   console.log($rootScope.grupoPartido);
+        });
 
         var load = function(){
             partidoService.getPartidosT().then(function(response){
@@ -672,19 +714,5 @@ appTennisya
             {name: 'Mari Shara', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
             {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'}
         ]
-    })
-//    .controller('MatchesCtrl', function($scope) {
-//        $scope.numberDobles = 20;
-//        $scope.numberSingles = 15;
-//        $scope.getNumber = function(num) {
-//            return new Array(num);
-//        }
-//        $scope.gamers = [
-//            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
-//            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
-//            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
-//            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-//            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-//        ]
-//    })
+    });
    

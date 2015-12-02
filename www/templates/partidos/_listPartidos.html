@@ -15,7 +15,7 @@
                             <ion-item class="item-divider">
                                 Partidos dobles
                             </ion-item>
-                            <ion-item ng-repeat="double in doubles" href="">
+                            <ion-item ng-repeat="double in doubles">
                                 <div class="match">
                                     <div class="match_detail">
                                         <span class="match_date">{{formatPartidos(double.fechai)}}</span>
@@ -25,17 +25,15 @@
                                     <div class="match_players">
                                         <ul class="match-players" ng-if="double.jugadorpartido">
                                             <li class="match-players_item" ng-repeat="jugadorpartido in double.jugadorpartido">
-                                                <a href="#" class="match-players_link">
+                                                <a class="match-players_link">
                                                     <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" class="match-players_img">
                                                 </a>
                                             </li>
 
                                             <li class="match-players_item">
-                                                <a href="#" class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
+                                                <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
                                             </li>
-                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/1.jpg" widht="36" height="36" class="match-players_img"></a></li>-->
-                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/2.jpg" widht="36" height="36" class="match-players_img"></a></li>-->
-                                            <!--<li class="match-players_item"><a href="#" class="match-players_link"><img src="assets/img/gamers/3.jpg" widht="36" height="36" class="match-players_img"></a></li>-->
+
                                         </ul>
                                     </div>
                                 </div>

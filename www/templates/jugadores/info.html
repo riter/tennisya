@@ -1,29 +1,21 @@
 <ion-view view-title="Info del jugador">
-	<ion-nav-buttons side="right">
-		<button class="button button-icon" ng-click="onSearch()">
-			<i class="ic-search"></i>
-		</button>
-	</ion-nav-buttons>
 
-  <ion-content>
-  <div class="list">
+    <ion-content>
+        <div class="list">
+            <div class="item item-avatar item-playerinfo" >
+                <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
+                <h2>{{jugador.name}}</h2>
+                <p>{{jugador.estado}}</p>
+                <p>{{jugador.clubCancha.nombre}}</p>
+                <p>Rating {{jugador.rating}}</p>
+            </div>
+            <div class="item">
+                <strong>Información de contacto: </strong>
+                    <p>Email:  {{jugador.email}}</p>
+            </div>
+            <div class="item">
 
-    <div class="item item-avatar item-playerinfo" >
-      <img src="assets/img/gamers/1.jpg">
-      <h2>Novak Djokovic</h2>
-      <p>Montevideo, Uruguay</p>
-      <p>Lawn Tennis</p>
-      <p>Rating 3</p>
-    </div>
-    <div class="item">
-    	<strong>Información de contacto: </strong>
-			<p>Email:  ndjokovic@gmail.com</p>
-    </div>
-    <div class="item">
-    	
-    </div>
-
-	</div>
-            
-	</ion-content>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

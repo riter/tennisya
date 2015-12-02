@@ -72,7 +72,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                 views: {
                     'player-tab': {
                         templateUrl: "templates/jugadores/info.html",
-                        // controller: 'ListJugadoresCtrl'
+                        controller: 'infoJugadorCtrl'
                     }
                 }
             })
@@ -94,6 +94,28 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     }
                 }
             })
+            .state('tabs.crear-partidos', {
+                url: "/crearPartidos",
+                views: {
+                    'newPartido-tab': {
+                        template:'<ion-view title=""></ion-view>',
+                        controller: 'crearPartidoCtrl'
+                    },
+                    'navable-partido@': {
+                        templateUrl: 'templates/crearPartido/newPartido.html'
+                    }
+                }
+            })
+            .state('tabs.crear-partidos.search', {
+                url: '/crearPartidos/search',
+                views: {
+                    'navable-partido@': {
+                        templateUrl: 'templates/crearPartido/search.html',
+                        controller: 'searchJugadorCtrl'
+                    }
+                }
+            })
+
             .state('tabs.partidos', {
                 url: "/partidos",
                 views: {
@@ -105,7 +127,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
             })
             // ajustes
             .state('tabs.setting', {
-                url: "/setting",
+                url: "/settings",
                 views: {
                     'setting-tab': {
                         templateUrl: "templates/ajustes/setting.html",
@@ -115,7 +137,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
             })
             /* start disponibilidad*/
             .state('tabs.disponibilidad', {
-                url: "/disponibilidad/:id",
+                url: "/disponibilidad",
                 views: {
                     'setting-tab': {
                         templateUrl: "templates/ajustes/disponibilidad.html",
