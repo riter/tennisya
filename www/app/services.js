@@ -150,11 +150,25 @@ appTennisya
     .factory('partidoService', function($http) {
 
         return {
-            getPartidosT: function(){
-                return $http.get(api+'partidos/list_abiertos');
+            getPartidosT: function(idJugador, idGrupo){
+                return $http.get(api+'partidos/list_todos',{params:{idJugador:idJugador, idGrupo:idGrupo}}).then(function(response){
+                    return response.data;
+                });
             },
-            getPartidosP: function(id){
-                return $http.get(api+'partidos/list_creados/'+id);
+            getPartidosP: function(idJugador, idGrupo){
+                return $http.get(api+'partidos/list_personales',{params:{idJugador:idJugador, idGrupo:idGrupo}}).then(function(response){
+                    return response.data;
+                });
+            },
+            getPartidosC: function(idJugador, idGrupo){
+                return $http.get(api+'partidos/list_confirmados',{params:{idJugador:idJugador, idGrupo:idGrupo}}).then(function(response){
+                    return response.data;
+                });
+            },
+            getPartidosJ: function(idJugador, idGrupo){
+                return $http.get(api+'partidos/list_jugados',{params:{idJugador:idJugador, idGrupo:idGrupo}}).then(function(response){
+                    return response.data;
+                });
             },
             newPartido: function(model){// adicionar en la URL el id del grupo si es en ese caso
                 var newModel = {

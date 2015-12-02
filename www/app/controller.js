@@ -8,7 +8,7 @@ appTennisya
             $scope.jugador = userService.getJugador();
         });
     })
-    .controller('TabsCtrl', function($scope, $state, $ionicModal, extrasService, disponibilidadService, userService) {
+    .controller('TabsCtrl', function($scope, $state, $localstorage, extrasService, disponibilidadService, userService) {
         extrasService.loadClubs();
         disponibilidadService.load();
 
@@ -16,6 +16,8 @@ appTennisya
             userService.setJugador(jugador);
             $state.go('tabs.player-info');
         };
+
+        $scope.userLogin = $localstorage.getObject('user');
     })
     .controller('searchJugadorCtrl', function($scope, $ionicHistory, searchJugador) {
         $scope.data={
@@ -663,23 +665,23 @@ appTennisya
             $state.go('tabs.groups',{id:grupo.id});
         };
 
-//        $scope.nextInfoJugador = function(jugador){
-//            userService.setJugador(jugador);
-//            $state.go('tabs.player-info');
-//        };
     })
     .controller('ListPartidosCtrl', function($rootScope, $scope, partidoService) {
 
         $scope.$on('$ionicView.enter', function() {
-         //   console.log($rootScope.grupoPartido);
-        });
-
-        var load = function(){
-            partidoService.getPartidosT().then(function(response){
-                $scope.doubles = response.data.doubles;
-                $scope.singles = response.data.singles;
+            partidoService.getPartidosT($scope.userLogin.id,$rootScope.grupoPartido.id).then(function(response){
+                $scope.todos = response;
             });
-        };
+            partidoService.getPartidosP($scope.userLogin.id,$rootScope.grupoPartido.id).then(function(response){
+                $scope.personales = response;
+            });
+            partidoService.getPartidosC($scope.userLogin.id,$rootScope.grupoPartido.id).then(function(response){
+                $scope.confirmados = response;
+            });
+            partidoService.getPartidosJ($scope.userLogin.id,$rootScope.grupoPartido.id).then(function(response){
+                $scope.jugados = response;
+            });
+        });
 
         $scope.formatPartidos = function(date){
             return moment(date).format('dddd DD/MM, HH')+' hs';
@@ -687,32 +689,41 @@ appTennisya
         $scope.formatFromNow = function(date){
             return moment(date).fromNow();
         };
-
-        load();
-        //setInterval(load,15000);
-
-        $scope.numberDobles = 20;
-        $scope.numberSingles = 15;
-        $scope.getNumber = function(num) {
-            return new Array(num);
+        $scope.getVacios = function(partido){
+            var res = [], cant = partido.tipo == 'Dobles' ? 4:2;
+            for(var c=0; c < (cant - partido.jugadorpartido.length); c++){
+                res.push(cant+c);
+            }
+            return res;
         };
-        $scope.gamers = [
-            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
-            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
-            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
-            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'}
-        ]
-    })
-    .controller('GamersCtrl', function($scope) {
-        $scope.gamers = [
-            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
-            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
-            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
-            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Mari Shara', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
-            {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'}
-        ]
+        $scope.isCompleto = function(partido){
+            if(typeof (partido.jugadorpartido) !== 'undefined'){
+                if((partido.tipo=='Singles' && partido.jugadorpartido.length == 2) || (partido.tipo=='Dobles' && partido.jugadorpartido.length == 4)){
+                    return true;
+                }
+            }
+            return false;
+        };
+        $scope.hasIvitado = function(partido){
+            if(typeof (partido.jugadorpartido) !== 'undefined'){
+                var res = false;
+                angular.forEach(partido.jugadorpartido, function(value, key) {
+                    if(value.estado == 'invitado')
+                      res = true;
+                });
+            }
+            return res;
+        }
     });
+//    .controller('GamersCtrl', function($scope) {
+//        $scope.gamers = [
+//            {name: 'Novak Djokovic', country: 'Montevideo, Uruguay', club: 'Lawn Tenis, Nautilus', avatar: 'assets/img/gamers/1.jpg'},
+//            {name: 'Juan Pérez', country: 'Uruguay', club: '', avatar: 'assets/img/gamers/2.jpg'},
+//            {name: 'Pedro Aguirre', country: 'Buenos Aires, Argentina', club: 'San Isidro Club', avatar: 'assets/img/gamers/3.jpg'},
+//            {name: 'Serenita', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+//            {name: 'Jim carrey', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+//            {name: 'Mari Shara', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'},
+//            {name: 'Carito Woz', country: 'Lorem ipsum, lorem ipsum', club: '', avatar: 'assets/img/gamers/4.jpg'}
+//        ]
+//    });
    
