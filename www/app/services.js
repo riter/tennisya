@@ -170,7 +170,17 @@ appTennisya
                     return response.data;
                 });
             },
-            newPartido: function(model){// adicionar en la URL el id del grupo si es en ese caso
+            confirmPartido:function(jugador_partido,action){
+                return $http.get(api+'partidos/confirm_partido/'+jugador_partido,{params:{action:action}}).then(function(response){
+                    return response.data;
+                });
+            },
+            entrarPartido:function(idPartido,idJugador,action){
+                return $http.get(api+'partidos/entrar_partido/'+idPartido+'/'+idJugador,{params:{action:action}}).then(function(response){
+                    return response.data;
+                });
+            },
+            newPartido: function(model){
                 var newModel = {
                     grupo: model.grupo,
                     club : model.club.id,

@@ -666,7 +666,7 @@ appTennisya
         };
 
     })
-    .controller('ListPartidosCtrl', function($rootScope, $scope, partidoService) {
+    .controller('ListPartidosCtrl', function($rootScope, $scope, $cordovaActionSheet, partidoService) {
 
         $scope.$on('$ionicView.enter', function() {
             partidoService.getPartidosT($scope.userLogin.id,$rootScope.grupoPartido.id).then(function(response){
@@ -682,6 +682,65 @@ appTennisya
                 $scope.jugados = response;
             });
         });
+        $scope.confirmInvitacion = function(partido, jugadorpartido){
+            if($scope.userLogin.id == jugadorpartido.jugador.id){
+                var options = {
+                    addCancelButtonWithLabel: 'Cancelar',
+                    androidEnableCancelButton : true
+                };
+
+                if(jugadorpartido.estado == 'invitado'){
+                    options.title = 'Confirmacion de partido';
+                    options.buttonLabels = ['Aceptar', 'Rechazar'];
+                    $cordovaActionSheet.show(options)
+                        .then(function(btnIndex) {
+                           $scope.actionOptions(options.buttonLabels[btnIndex-1],jugadorpartido, partido);
+                        });
+                }else if(jugadorpartido.estado == 'aceptado'){
+                    options.title = 'Desea abandonar el partido?';
+                    options.buttonLabels = ['Salir'];
+                    $cordovaActionSheet.show(options)
+                        .then(function(btnIndex) {
+                            $scope.actionOptions(options.buttonLabels[btnIndex-1],jugadorpartido, partido);
+                        });
+                }
+            }
+        };
+        $scope.entrarPartido = function(partido){
+            var options = {
+                addCancelButtonWithLabel: 'Cancelar',
+                androidEnableCancelButton : true
+            };
+
+            options.title = 'Desea ingresar a formar parte del partido?';
+            options.buttonLabels = ['Ingresar'];
+
+            $cordovaActionSheet.show(options)
+                .then(function(btnIndex) {
+                    $scope.actionOptions(options.buttonLabels[btnIndex-1],null, partido);
+                });
+        };
+
+        $scope.actionOptions = function(action,jugadorPartido, partido){
+            switch (action){
+                case 'Aceptar': partidoService.confirmPartido(jugadorPartido.id,'aceptado').then(function(response){
+                    partido.jugadorpartido[partido.jugadorpartido.indexOf(jugadorPartido)] = response;
+                    $rootScope.$broadcast('$ionicView.enter', {});
+                });break;
+                case 'Rechazar': partidoService.confirmPartido(jugadorPartido.id,'cancelado').then(function(response){
+                    partido.jugadorpartido.splice(partido.jugadorpartido.indexOf(jugadorPartido), 1);
+                    $rootScope.$broadcast('$ionicView.enter', {});
+                });break;
+                case 'Salir': partidoService.confirmPartido(jugadorPartido.id,'salir').then(function(response){
+                    partido.jugadorpartido.splice(partido.jugadorpartido.indexOf(jugadorPartido), 1);
+                    $rootScope.$broadcast('$ionicView.enter', {});
+                });break;
+                case 'Ingresar': partidoService.entrarPartido(partido.id,$scope.userLogin.id,'entrar').then(function(response){
+                    //partido.jugadorpartido.push(response);
+                    $rootScope.$broadcast('$ionicView.enter', {});
+                });break;
+            }
+        };
 
         $scope.formatPartidos = function(date){
             return moment(date).format('dddd DD/MM, HH')+' hs';
