@@ -10,7 +10,7 @@
                     "/*": [
                         {
                             "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<feature name=\"ActionSheet\"><param name=\"ios-package\" value=\"ActionSheet\" /></feature>",
@@ -22,6 +22,10 @@
                         },
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
                             "count": 1
                         },
                         {
@@ -56,7 +60,7 @@
                     "CoreGraphics.framework": [
                         {
                             "xml": false,
-                            "count": 3
+                            "count": 4
                         }
                     ],
                     "Social.framework": [
@@ -111,34 +115,40 @@
     },
     "installed_plugins": {
         "com.ionic.keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-actionsheet": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.camera": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.file": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.file-transfer": {
-            "PACKAGE_NAME": "com.ionicframework.appmobile958855"
+            "PACKAGE_NAME": "com.appload.tennisya"
         }
     },
     "dependent_plugins": {}

@@ -172,6 +172,16 @@ button, input, select, textarea {
 .button-green {
   color: #0d8a1b !important; }
 
+.button-logout {
+  background-color: #ef473a;
+  color: #fff;
+  width: 100%; }
+
+.button-logout-2 {
+  background-color: #fff;
+  color: #ef473a;
+  width: 100%; }
+
 .ty-list .item {
   font-size: 14px;
   font-family: "roboto-regular";
