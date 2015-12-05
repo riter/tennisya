@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" afterPath="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/players.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/players.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -22,6 +22,11 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DatabaseView">
+    <flatten value="false" />
+    <groupTables value="false" />
+    <sortChildren value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="tennisya" />
@@ -31,12 +36,11 @@
       <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="725" column="116" selection-start="27277" selection-end="27277" vertical-scroll-proportion="0.0" vertical-offset="9687" max-vertical-offset="11084">
+            <state line="618" column="42" selection-start="22912" selection-end="22912" vertical-scroll-proportion="0.0" vertical-offset="7910" max-vertical-offset="11373">
               <folding>
                 <element signature="e#12767#14144#0" expanded="false" />
                 <element signature="e#16612#18229#0" expanded="false" />
                 <element signature="e#18351#20374#0" expanded="false" />
-                <marker date="1449196312038" expanded="true" signature="24572:29643" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -45,39 +49,26 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="13" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
-              <folding>
-                <element signature="e#2758#3036#0" expanded="false" />
-                <element signature="e#3072#3339#0" expanded="false" />
-                <element signature="e#3380#3659#0" expanded="false" />
-                <element signature="e#4516#4801#0" expanded="false" />
-                <element signature="e#4861#5133#0" expanded="false" />
-                <element signature="e#5215#5507#0" expanded="false" />
-                <element signature="e#5554#5853#0" expanded="false" />
-                <element signature="e#5927#6198#0" expanded="false" />
-                <element signature="e#6233#6498#0" expanded="false" />
-                <element signature="e#6532#6746#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/app/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="61" selection-start="7029" selection-end="7043" vertical-scroll-proportion="0.0" vertical-offset="2555" max-vertical-offset="9843">
+            <state line="14" column="13" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="3553">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_listPartidos.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
+      <file leaf-file-name="services.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="110" selection-start="12923" selection-end="12923" vertical-scroll-proportion="0.6909789" vertical-offset="2377" max-vertical-offset="3553">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-nav-view#0;n#ion-tab#1;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="48" column="22" selection-start="1244" selection-end="1244" vertical-scroll-proportion="0.21755028" vertical-offset="663" max-vertical-offset="9911">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="players.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="61" selection-start="1213" selection-end="1213" vertical-scroll-proportion="-10.461538" vertical-offset="187" max-vertical-offset="782">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,7 +100,6 @@
         <option value="$PROJECT_DIR$/www/templates/partidos/newPartido.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/create-partido.html" />
         <option value="$PROJECT_DIR$/www/templates/crearPartido/crearPartido.html" />
-        <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
         <option value="$PROJECT_DIR$/www/templates/jugadores/info.html" />
         <option value="$PROJECT_DIR$/www/templates/grupo/groups.html" />
         <option value="$PROJECT_DIR$/www/templates/grupo/navable-modal.html" />
@@ -118,9 +108,10 @@
         <option value="$PROJECT_DIR$/www/templates/crearPartido/search.html" />
         <option value="$PROJECT_DIR$/www/templates/crearPartido/newPartido.html" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
-        <option value="$PROJECT_DIR$/www/app/services.js" />
-        <option value="$PROJECT_DIR$/www/app/controller.js" />
         <option value="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
+        <option value="$PROJECT_DIR$/www/app/controller.js" />
+        <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
+        <option value="$PROJECT_DIR$/www/app/services.js" />
       </list>
     </option>
   </component>
@@ -389,7 +380,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../univCatolica/univcatolica-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tennisya_admin" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
@@ -435,15 +426,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2128788" sideWeight="0.67235494" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2159091" sideWeight="0.67235494" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -477,135 +468,99 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="18" selection-start="613" selection-end="613" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/grupo/groups.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="49" selection-start="907" selection-end="907" vertical-scroll-proportion="0.476" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="14" column="49" selection-start="907" selection-end="907" vertical-scroll-proportion="0.476" vertical-offset="0" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/grupo/add-jugador.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="547">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/crearPartido/navable-partido.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="18" selection-start="161" selection-end="161" vertical-scroll-proportion="0.12734082" vertical-offset="0" max-vertical-offset="534">
-          <folding />
-        </state>
+        <state line="4" column="18" selection-start="161" selection-end="161" vertical-scroll-proportion="0.12734082" vertical-offset="0" max-vertical-offset="534" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="14" selection-start="356" selection-end="356" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
+        <state line="8" column="14" selection-start="356" selection-end="356" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="408" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/crearPartido/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="100" selection-start="473" selection-end="473" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
+        <state line="11" column="100" selection-start="473" selection-end="473" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="544" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="27" selection-start="635" selection-end="635" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="714">
-          <folding />
-        </state>
+        <state line="14" column="27" selection-start="635" selection-end="635" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="714" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="665" selection-end="665" vertical-scroll-proportion="0.4857143" vertical-offset="0" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="16" column="0" selection-start="665" selection-end="665" vertical-scroll-proportion="0.4857143" vertical-offset="0" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/grupo/navable-modal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513">
-          <folding />
-        </state>
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="513" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/grupo/create-group.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="21" selection-start="37" selection-end="396" vertical-scroll-proportion="0.19577736" vertical-offset="0" max-vertical-offset="521">
-          <folding />
-        </state>
+        <state line="6" column="21" selection-start="37" selection-end="396" vertical-scroll-proportion="0.19577736" vertical-offset="0" max-vertical-offset="521" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/crearPartido/newPartido.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="117" selection-start="381" selection-end="399" vertical-scroll-proportion="-1.9615384" vertical-offset="102" max-vertical-offset="1683">
-          <folding>
-            <element signature="tag#div#1;tag#ion-list#0;tag#ion-content#0;tag#ion-modal-view#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="9" column="117" selection-start="381" selection-end="399" vertical-scroll-proportion="-1.9615384" vertical-offset="102" max-vertical-offset="1683" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="13" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="45" selection-start="12812" selection-end="12812" vertical-scroll-proportion="0.65834934" vertical-offset="2377" max-vertical-offset="3553">
           <folding>
-            <element signature="e#2758#3036#0" expanded="false" />
-            <element signature="e#3072#3339#0" expanded="false" />
-            <element signature="e#3380#3659#0" expanded="false" />
-            <element signature="e#4516#4801#0" expanded="false" />
-            <element signature="e#4861#5133#0" expanded="false" />
-            <element signature="e#5215#5507#0" expanded="false" />
-            <element signature="e#5554#5853#0" expanded="false" />
-            <element signature="e#5927#6198#0" expanded="false" />
-            <element signature="e#6233#6498#0" expanded="false" />
-            <element signature="e#6532#6746#0" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-nav-view#0;n#ion-tab#1;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/services.js">
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="61" selection-start="7029" selection-end="7043" vertical-scroll-proportion="0.0" vertical-offset="2555" max-vertical-offset="9843">
+        <state line="27" column="61" selection-start="1213" selection-end="1213" vertical-scroll-proportion="-10.461538" vertical-offset="187" max-vertical-offset="782">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="725" column="116" selection-start="27277" selection-end="27277" vertical-scroll-proportion="0.0" vertical-offset="9687" max-vertical-offset="11084">
+        <state line="618" column="42" selection-start="22912" selection-end="22912" vertical-scroll-proportion="0.0" vertical-offset="7910" max-vertical-offset="11373">
           <folding>
             <element signature="e#12767#14144#0" expanded="false" />
             <element signature="e#16612#18229#0" expanded="false" />
             <element signature="e#18351#20374#0" expanded="false" />
-            <marker date="1449196312038" expanded="true" signature="24572:29643" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
+    <entry file="file://$PROJECT_DIR$/www/app/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="110" selection-start="12923" selection-end="12923" vertical-scroll-proportion="0.6909789" vertical-offset="2377" max-vertical-offset="3553">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#ion-content#0;n#ion-nav-view#0;n#ion-tab#1;n#ion-tabs#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="48" column="22" selection-start="1244" selection-end="1244" vertical-scroll-proportion="0.21755028" vertical-offset="663" max-vertical-offset="9911">
+          <folding />
         </state>
       </provider>
     </entry>

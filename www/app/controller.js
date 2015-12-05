@@ -612,7 +612,23 @@ appTennisya
         $scope.$on('resetModalGroup', $scope.resetData);
         $scope.resetData();
     })
-    .controller('ListJugadoresCtrl', function($scope, $state, $ionicModal, $rootScope, userService, grupoService) {
+    .controller('ListJugadoresCtrl', function($ionicScrollDelegate, $scope, $state, $ionicModal, $rootScope, userService, grupoService) {
+
+        $scope.showGrupos = function(){
+            $scope.data.showGrupos = !$scope.data.showGrupos;
+            $ionicScrollDelegate.resize();
+        };
+
+        $scope.loadMoreData = function(){
+
+            userService.listJugador().then(function(response){
+                angular.forEach(response.jugadores, function(value, key) {
+                    $scope.data.jugadores.push(value);
+                });
+                $scope.data.scrolling = response.next;
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+            });
+        };
 
         $scope.$on('$ionicView.enter', function() {
             $rootScope.grupoPartido = {id:null};
@@ -621,15 +637,16 @@ appTennisya
         $scope.data = {
             showGrupos:false,
             jugadores:[],
+            scrolling:true,
             grupos:[]
         };
 
         grupoService.list().then(function(response){
             $scope.data.grupos = response;
         });
-        userService.listJugador().then(function(response){
-            $scope.data.jugadores = response;
-        });
+//        userService.listJugador().then(function(response){
+//            $scope.data.jugadores = response;
+//        });
 
         $ionicModal.fromTemplateUrl('templates/grupo/navable-modal.html', {
             scope: $scope,

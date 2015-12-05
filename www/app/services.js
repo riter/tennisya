@@ -45,6 +45,8 @@ appTennisya
         var user = null;
 
         return {
+            page: 1,
+            limit: 30,
             loginJugador: function(data,callback,error){
                 $http.post(api+'jugador/login',data).then(function(response){
                     $localstorage.setObject('user',response.data);
@@ -132,7 +134,9 @@ appTennisya
                 }
             },
             listJugador: function(){
-                return $http.get(api+'jugador/list').then(function(response){
+                var self = this;
+                return $http.get(api+'jugador/list',{params:{page:self.page,limit:self.limit}}).then(function(response){
+                    self.page++;
                     return response.data;
                 },function(e){
                     return [];

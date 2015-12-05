@@ -1,6 +1,6 @@
 <div align-title="left" class="bar bar-subheader">
 	<!-- <h2 class="title">Mis grupos</h2> -->
-    <button  class="button button-clear" ng-click="data.showGrupos = !data.showGrupos">{{ data.showGrupos?'Jugadores':'Mis grupos' }}</button>
+    <button  class="button button-clear" ng-click="showGrupos()">{{ data.showGrupos?'Jugadores':'Mis grupos' }}</button>
 	<!-- <div class="buttons"> -->
 		<button class="button button-clear button-green" ng-click="openCreateGrupo()">Crear grupo</button>
 	<!-- </div> -->
@@ -14,7 +14,8 @@
 	</ion-nav-buttons>
 
     <ion-content class="has-subheader">
-        <ion-list ng-hide="!data.showGrupos" class="players-list">
+
+        <ion-list ng-if="!data.showGrupos" class="players-list">
             <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos" type="item-text-wrap" ng-click="nextGrupo(grupo)">
                 <img ng-src="{{grupo.image != null ? grupo.image : 'assets/img/group.png'}}">
                 <h2>{{grupo.title}}</h2>
@@ -24,8 +25,7 @@
             </ion-item>
         </ion-list>
 
-		<ion-list ng-hide="data.showGrupos" class="players-list">
-
+		<ion-list ng-if="data.showGrupos" class="players-list">
 			<ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores" type="item-text-wrap" ng-click="nextInfoJugador(jugador)">
 				<img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
 				<h2>{{jugador.name}}</h2>
@@ -34,7 +34,8 @@
 				<!--<p>Lawn Tenis, Nautilus</p>-->
 				<i class="icon ion-chevron-right"></i>
 			</ion-item>
-
 		</ion-list>
+
+        <ion-infinite-scroll distance="2" on-infinite="loadMoreData()" ng-if="!data.showGrupos && data.scrolling"></ion-infinite-scroll>
 	</ion-content>
 </ion-view>
