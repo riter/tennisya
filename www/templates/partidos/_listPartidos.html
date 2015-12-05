@@ -52,11 +52,11 @@
                                     <div class="match_players">
                                         <ul class="match-players" ng-if="single.jugadorpartido">
                                             <li class="match-players_item" ng-repeat="jugadorpartido in single.jugadorpartido">
-                                                <a href="#" class="match-players_link">
+                                                <a class="match-players_link">
                                                     <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">
                                                 </a>
                                             </li>
-                                            <li class="match-players_item" ng-repeat="item in getVacios(single)">
+                                            <li class="match-players_item" ng-repeat="item in getVacios(single)"  ng-click="entrarPartido(single)">
                                                 <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
                                             </li>
                                         </ul>
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="match_players">
                                     <ul class="match-players" ng-if="esperando.jugadorpartido">
-                                        <li class="match-players_item" ng-repeat="jugadorpartido in esperando.jugadorpartido">
+                                        <li class="match-players_item" ng-repeat="jugadorpartido in esperando.jugadorpartido" ng-click="confirmInvitacion(esperando, jugadorpartido)">
                                             <a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>
                                         </li>
                                         <li class="match-players_item" ng-repeat="item in getVacios(esperando)">
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="match_players">
                                     <ul class="match-players" ng-if="confirmacion.jugadorpartido">
-                                        <li class="match-players_item" ng-repeat="jugadorpartido in confirmacion.jugadorpartido">
+                                        <li class="match-players_item" ng-repeat="jugadorpartido in confirmacion.jugadorpartido" ng-click="confirmInvitacion(confirmacion, jugadorpartido)">
                                             <a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>
                                         </li>
                                         <li class="match-players_item" ng-repeat="item in getVacios(confirmacion)">
@@ -125,8 +125,10 @@
                                 </div>
                                 <div class="match_players">
                                     <ul class="match-players" ng-if="respuesta.jugadorpartido">
-                                        <li class="match-players_item" ng-repeat="jugadorpartido in respuesta.jugadorpartido">
-                                            <a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>
+                                        <li class="match-players_item" ng-repeat="jugadorpartido in respuesta.jugadorpartido" ng-click="confirmInvitacion(respuesta, jugadorpartido)">
+                                            <a class="match-players_link">
+                                                <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">
+                                            </a>
                                         </li>
                                         <li class="match-players_item" ng-repeat="item in getVacios(respuesta)">
                                             <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
@@ -154,8 +156,11 @@
                                 </div>
                                 <div class="match_players">
                                     <ul class="match-players" ng-if="confirmado.jugadorpartido">
-                                        <li class="match-players_item" ng-repeat="jugadorpartido in confirmado.jugadorpartido">
+                                        <li class="match-players_item" ng-repeat="jugadorpartido in confirmado.jugadorpartido" ng-click="confirmInvitacion(confirmado, jugadorpartido)">
                                             <a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>
+                                        </li>
+                                        <li class="match-players_item" ng-repeat="item in getVacios(confirmado)">
+                                            <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
                                         </li>
                                     </ul>
                                 </div>
