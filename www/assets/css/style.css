@@ -358,6 +358,7 @@ button, input, select, textarea {
   line-height: 29px; */ }
 .bar-subheader .button {
   font-size: 16px !important;
+  line-height: 1.1;
   /* min-height: 28px;
   line-height: 29px; */ }
 
@@ -641,17 +642,29 @@ button, input, select, textarea {
   top: 98px; }
 
 .match {
-  min-height: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
-  padding-right: 175px; }
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; }
   .match_detail {
-    padding-right: 5px; }
+    font-family: "roboto-regular";
+    color: #020202;
+    font-size: 13px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 140px;
+        -ms-flex: 0 0 140px;
+            flex: 0 0 140px;
+    overflow: hidden; }
   .match_date, .match_place {
     font-family: "roboto-regular";
     color: #020202;
     font-size: 12px;
-    line-height: 14px;
     display: block;
+    line-height: 1.3;
     opacity: .8;
     white-space: pre-wrap; }
     .match_date-confirm:after, .match_place-confirm:after {
@@ -679,14 +692,7 @@ button, input, select, textarea {
     display: block;
     line-height: 13px; }
   .match_players {
-    overflow: hidden;
-    right: 0;
-    width: 175px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%); }
+    width: 100%; }
 
 .list-matches .item .item-content {
   padding: 10px; }
@@ -703,17 +709,24 @@ button, input, select, textarea {
           filter: grayscale(1); }
 
 .match-players {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  display: table;
-  text-align: left; }
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .match-players_item {
-    display: table-cell;
-    vertical-align: middle;
-    margin-right: 4px; }
-    .match-players_item:last-child {
-      margin-right: 0; }
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: center; }
   .match-players_img {
     height: auto;
     width: 100%;
@@ -725,10 +738,10 @@ button, input, select, textarea {
   .match-players_link {
     background-color: #858383;
     border-radius: 100%;
-    display: block;
-    height: 40px;
+    display: inline-block;
+    height: 36px;
     overflow: hidden;
-    width: 40px;
+    width: 36px;
     position: relative;
     margin-right: 6px; }
   .match-players_icon {
@@ -767,5 +780,3 @@ button, input, select, textarea {
     font-family: "roboto-bold";
     color: #020202;
     font-size: 13px; }
-
-/*# sourceMappingURL=style.css.map */

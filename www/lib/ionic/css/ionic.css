@@ -4273,7 +4273,7 @@ ion-infinite-scroll:not(.active) .icon:before {
 
 /* If you change these, change platform.scss as well */
 .has-header {
-  top: 33px;
+  top: 48px;
 }
 
 .no-header {
@@ -4281,23 +4281,23 @@ ion-infinite-scroll:not(.active) .icon:before {
 }
 
 .has-subheader {
-  top: 66px;
+  top: 80px;
 }
 
 .has-tabs-top {
-  top: 82px;
+  top: 97px;
 }
 
 .has-header.has-subheader.has-tabs-top {
-  top: 115px;
+  top: 129px;
 }
 
 .has-footer {
-  bottom: 33px;
+  bottom: 48px;
 }
 
 .has-subfooter {
-  bottom: 66px;
+  bottom: 96px;
 }
 
 .has-tabs,
@@ -4311,7 +4311,7 @@ ion-infinite-scroll:not(.active) .icon:before {
 }
 
 .has-footer.has-tabs {
-  bottom: 82px;
+  bottom: 97px;
 }
 
 .pane {
@@ -4720,7 +4720,7 @@ a.subdued:last-child {
   box-sizing: border-box;
   padding: 5px;
   width: 100%;
-  height: 33px;
+  height: 48px;
   border-width: 0;
   border-style: solid;
   border-top: 1px solid transparent;
@@ -4876,13 +4876,13 @@ a.subdued:last-child {
   overflow: hidden;
   margin: 0 10px;
   min-width: 30px;
-  height: 32px;
+  height: 47px;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 17px;
   font-weight: 500;
-  line-height: 33px;
+  line-height: 48px;
 }
 .bar .title.title-left {
   text-align: left;
@@ -4981,7 +4981,7 @@ a.subdued:last-child {
 }
 .platform-android .bar .title {
   font-size: 19px;
-  line-height: 33px;
+  line-height: 48px;
 }
 
 .bar-light .button {
@@ -5238,7 +5238,7 @@ a.subdued:last-child {
   border-top-width: 1px;
   border-bottom-width: 0;
   background-position: top;
-  height: 33px;
+  height: 48px;
 }
 .bar-footer.item-input-inset {
   position: absolute;
@@ -5249,15 +5249,15 @@ a.subdued:last-child {
 }
 
 .bar-subheader {
-  top: 33px;
+  top: 48px;
   display: block;
-  height: 33px;
+  height: 32px;
 }
 
 .bar-subfooter {
-  bottom: 33px;
+  bottom: 48px;
   display: block;
-  height: 33px;
+  height: 48px;
 }
 
 .nav-bar-block {
@@ -6121,7 +6121,7 @@ ion-tabs.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs.tabs-color-a
 /* If you change this, change platform.scss as well */
 .tabs-top > .tabs,
 .tabs.tabs-top {
-  top: 33px;
+  top: 48px;
   padding-top: 0;
   background-position: bottom;
   border-top-width: 0;
@@ -6434,27 +6434,27 @@ ion-tabs.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs.tabs-color-a
   }
 
   .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {
-    height: 33px;
+    height: 48px;
   }
   .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {
     margin-top: 0;
   }
   .platform-ios.platform-cordova .modal-wrapper .modal .tabs-top > .tabs,
   .platform-ios.platform-cordova .modal-wrapper .modal .tabs.tabs-top {
-    top: 33px;
+    top: 48px;
   }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header,
   .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
-    top: 33px;
+    top: 48px;
   }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-subheader {
-    top: 66px;
+    top: 80px;
   }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header.has-tabs-top {
-    top: 82px;
+    top: 97px;
   }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header.has-subheader.has-tabs-top {
-    top: 115px;
+    top: 129px;
   }
 
   .modal-backdrop-bg {
@@ -8549,7 +8549,7 @@ textarea[disabled],
 input[readonly]:not(.cloned-text-input),
 textarea[readonly]:not(.cloned-text-input),
 select[readonly] {
-  background-color: #f8f8f8;
+  background-color: #fff;
   cursor: not-allowed;
 }
 
@@ -10580,7 +10580,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
  * Platform specific tweaks
  */
 .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
-  height: 53px;
+  height: 68px;
 }
 .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
   margin-top: 19px !important;
@@ -10590,23 +10590,23 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 }
 .platform-ios.platform-cordova:not(.fullscreen) .tabs-top > .tabs,
 .platform-ios.platform-cordova:not(.fullscreen) .tabs.tabs-top {
-  top: 53px;
+  top: 68px;
 }
 .platform-ios.platform-cordova:not(.fullscreen) .has-header,
 .platform-ios.platform-cordova:not(.fullscreen) .bar-subheader {
-  top: 53px;
+  top: 68px;
 }
 .platform-ios.platform-cordova:not(.fullscreen) .has-subheader {
-  top: 86px;
+  top: 100px;
 }
 .platform-ios.platform-cordova:not(.fullscreen) .has-header.has-tabs-top {
-  top: 102px;
+  top: 117px;
 }
 .platform-ios.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
-  top: 135px;
+  top: 149px;
 }
 .platform-ios.platform-cordova .popover .bar-header:not(.bar-subheader) {
-  height: 33px;
+  height: 48px;
 }
 .platform-ios.platform-cordova .popover .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
   margin-top: -1px;
@@ -10616,10 +10616,10 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 }
 .platform-ios.platform-cordova .popover .has-header,
 .platform-ios.platform-cordova .popover .bar-subheader {
-  top: 33px;
+  top: 48px;
 }
 .platform-ios.platform-cordova .popover .has-subheader {
-  top: 66px;
+  top: 80px;
 }
 .platform-ios.platform-cordova.status-bar-hide {
   margin-bottom: 20px;
