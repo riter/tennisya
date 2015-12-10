@@ -68,8 +68,17 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     }
                 }
             })
+//            .state('tabs.search-grupo', {
+//                url: "/search-grupo",
+//                views: {
+//                    'player-tab': {
+//                        templateUrl: "templates/jugadores/search-grupo.html",
+//                        controller: 'searchJugadorGrupoCtrl'
+//                    }
+//                }
+//            })
             .state('tabs.player-info', {
-                url: "/players-info",
+                url: "/players-info/:id",
                 views: {
                     'player-tab': {
                         templateUrl: "templates/jugadores/info.html",

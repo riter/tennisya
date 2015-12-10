@@ -218,6 +218,12 @@ appTennisya
             saveStorage: function (data){
                 $localstorage.setObject('disponibilidad',data);
             },
+            listByJugador: function(idJugador){
+                var self = this;
+                return $http.get(api+'disponibilidad/list/'+idJugador).then(function(response){
+                    return response.data;
+                },function(){});
+            },
             load: function(){
                 var self = this;
                 return $http.get(api+'disponibilidad/list/'+$localstorage.getObject('user').id).then(function(response){
