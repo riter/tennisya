@@ -1,7 +1,7 @@
 <ion-view view-title="Info del jugador">
 
     <ion-content has-header="true">
-        <div class="list">
+        <div class="list" style="margin-bottom:0">
             <div class="item item-avatar item-playerinfo" >
                 <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
                 <h2>{{jugador.name}}</h2>
@@ -14,28 +14,21 @@
                     <p>Email:  {{jugador.email}}</p>
             </div>
         </div>
-        <div class="row">
-            <!--<div class="col-20">-->
-                <!--<div class="list">-->
-                    <!--<div class="item"></div>-->
-                    <!--<div class="item" ng-repeat="hour in getHours()">-->
-                        <!--{{hour}}-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <div class="col">
+        <h2 class="ty-calendar_title">Agendar Partido</h2>
+        <div class="row" style="padding:0">
+            <div class="col-20">
+                <div class="list ty-calendar_hour">
+                    <div class="item"></div>
+                    <div class="item" ng-repeat="hour in getHours()">
+                        {{hour}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-80">
                 <ion-slide-box show-pager="false" on-slide-changed="nextSlide(index)" style="height:200px">
                     <ion-slide ng-repeat="item in data.slides">
 
-                        <div class="row">
-                            <div class="col-33">
-                                <div class="list">
-                                    <div class="item"></div>
-                                    <div class="item" ng-repeat="hour in getHours()">
-                                        {{hour}}
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row ty-calendar_days">
                             <div class="col-33">
                                 <div>{{item.fecha1}}</div>
                                 <!--<div class="item" ng-repeat="hour in getHours()"></div>-->
@@ -47,6 +40,88 @@
                             <div class="col-33">
                                 <div>{{item.fecha3}}</div>
                                 <!--<div class="item" ng-repeat="hour in getHours()"></div>-->
+                            </div>
+                        </div>
+                        <div class="ty-calendar_mainrow">
+                            <div class="row ty-calendar_row">
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem">
+                                        <div class="ty-calendar_match">
+                                            <span>Singles dobles</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                            </div>
+                             <div class="row ty-calendar_row">
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                    <!--<div class="item" ng-repeat="hour in getHours()"></div>-->
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                    <!--<div class="item" ng-repeat="hour in getHours()"></div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ty-calendar_mainrow">
+                            <div class="row ty-calendar_row">
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                            </div>
+                             <div class="row ty-calendar_row">
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem">
+                                        <div class="ty-calendar_match">
+                                            <span>Singles </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="ty-calendar_mainrow">
+                            <div class="row ty-calendar_row">
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                            </div>
+                             <div class="row ty-calendar_row">
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
+                                <div class="col-33">
+                                    <div class="ty-calendar_elem"></div>
+                                </div>
                             </div>
                         </div>
                     </ion-slide>

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/grupo/add-jugador.html" afterPath="$PROJECT_DIR$/www/templates/grupo/add-jugador.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html" afterPath="$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html" />
+    <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/scss/modules/_calendar.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/info.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/players.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/players.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/crearPartido/search.html" afterPath="$PROJECT_DIR$/www/templates/crearPartido/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/config.codekit" afterPath="$PROJECT_DIR$/www/assets/config.codekit" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/style.css" afterPath="$PROJECT_DIR$/www/assets/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/scss/style.scss" afterPath="$PROJECT_DIR$/www/assets/scss/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <list id="781fde75-0216-48af-8707-12565d55182b" name="Rejected commit: Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/info.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/info.html" />
     </list>
     <ignored path="tennisya.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="$PROJECT_DIR$/www/templates/jugadores/info.html" ignored="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,10 +39,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="controller.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="28" selection-start="395" selection-end="395" vertical-scroll-proportion="0.33089578" vertical-offset="6" max-vertical-offset="7990">
+            <state line="7" column="0" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="7990">
               <folding>
                 <element signature="e#1645#5104#0" expanded="false" />
                 <element signature="e#6821#9458#0" expanded="false" />
@@ -53,6 +53,15 @@
                 <element signature="e#22584#24201#0" expanded="false" />
                 <element signature="e#24323#26346#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="info.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="14" selection-start="670" selection-end="670" vertical-scroll-proportion="0.4775281" vertical-offset="0" max-vertical-offset="2329">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,7 +78,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="45" selection-start="2825" selection-end="2850" vertical-scroll-proportion="-4.76" vertical-offset="1071" max-vertical-offset="3723">
+            <state line="38" column="48" selection-start="1689" selection-end="1689" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="3723">
               <folding />
             </state>
           </provider>
@@ -122,16 +131,16 @@
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/info.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
-        <option value="$PROJECT_DIR$/www/templates/jugadores/info.html" />
         <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
         <option value="$PROJECT_DIR$/www/templates/crearPartido/search.html" />
         <option value="$PROJECT_DIR$/www/templates/grupo/add-jugador.html" />
         <option value="$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
         <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
         <option value="$PROJECT_DIR$/www/templates/search/search-jugador-grupo.html" />
         <option value="$PROJECT_DIR$/www/app/controller.js" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/templates/jugadores/info.html" />
       </list>
     </option>
   </component>
@@ -489,12 +498,13 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2189394" sideWeight="0.67235494" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2189394" sideWeight="0.67064846" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -521,6 +531,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -539,15 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="192" selection-end="192" vertical-scroll-proportion="0.15178572" vertical-offset="0" max-vertical-offset="3485">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="39" selection-start="712" selection-end="712" vertical-scroll-proportion="-4.423077" vertical-offset="174" max-vertical-offset="1054">
-          <folding>
-            <element signature="n#style#0;n#ion-slide-box#0;n#div#0;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -607,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="45" selection-start="2825" selection-end="2850" vertical-scroll-proportion="-4.76" vertical-offset="1071" max-vertical-offset="3723">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/app/services.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="285" column="32" selection-start="11843" selection-end="11847" vertical-scroll-proportion="-9.68" vertical-offset="4569" max-vertical-offset="9996">
@@ -642,9 +638,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="48" selection-start="1689" selection-end="1689" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3723">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/app/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="395" selection-end="395" vertical-scroll-proportion="0.33089578" vertical-offset="6" max-vertical-offset="7990">
+        <state line="7" column="0" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="7990">
           <folding>
             <element signature="e#1645#5104#0" expanded="false" />
             <element signature="e#6821#9458#0" expanded="false" />
@@ -655,6 +658,13 @@
             <element signature="e#22584#24201#0" expanded="false" />
             <element signature="e#24323#26346#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="14" selection-start="670" selection-end="670" vertical-scroll-proportion="0.4775281" vertical-offset="0" max-vertical-offset="2329">
+          <folding />
         </state>
       </provider>
     </entry>
