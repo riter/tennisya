@@ -15,19 +15,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-20">
-                <div class="list">
-                    <div class="item"></div>
-                    <div class="item" ng-repeat="hour in getHours()">
-                        {{hour}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-80">
+            <!--<div class="col-20">-->
+                <!--<div class="list">-->
+                    <!--<div class="item"></div>-->
+                    <!--<div class="item" ng-repeat="hour in getHours()">-->
+                        <!--{{hour}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="col">
                 <ion-slide-box show-pager="false" on-slide-changed="nextSlide(index)" style="height:200px">
                     <ion-slide ng-repeat="item in data.slides">
 
                         <div class="row">
+                            <div class="col-33">
+                                <div class="list">
+                                    <div class="item"></div>
+                                    <div class="item" ng-repeat="hour in getHours()">
+                                        {{hour}}
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-33">
                                 <div>{{item.fecha1}}</div>
                                 <!--<div class="item" ng-repeat="hour in getHours()"></div>-->

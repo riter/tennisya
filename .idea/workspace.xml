@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/grupo/add-jugador.html" afterPath="$PROJECT_DIR$/www/templates/grupo/add-jugador.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html" afterPath="$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/info.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/players.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/players.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/crearPartido/search.html" afterPath="$PROJECT_DIR$/www/templates/crearPartido/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -36,49 +39,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="controller.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="639" selection-end="639" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6783">
+            <state line="11" column="28" selection-start="395" selection-end="395" vertical-scroll-proportion="0.33089578" vertical-offset="6" max-vertical-offset="7990">
               <folding>
-                <element signature="e#4353#4814#0" expanded="false" />
-                <element signature="e#7737#8459#0" expanded="false" />
-                <element signature="e#8569#11989#0" expanded="false" />
-                <element signature="e#13154#16838#0" expanded="false" />
-                <element signature="e#16909#18286#0" expanded="false" />
-                <element signature="e#18461#20651#0" expanded="false" />
-                <element signature="e#20754#22371#0" expanded="false" />
-                <element signature="e#22493#24516#0" expanded="false" />
-                <element signature="e#24655#26769#0" expanded="false" />
+                <element signature="e#1645#5104#0" expanded="false" />
+                <element signature="e#6821#9458#0" expanded="false" />
+                <element signature="e#9567#10289#0" expanded="false" />
+                <element signature="e#10399#13819#0" expanded="false" />
+                <element signature="e#18739#20116#0" expanded="false" />
+                <element signature="e#20291#22481#0" expanded="false" />
+                <element signature="e#22584#24201#0" expanded="false" />
+                <element signature="e#24323#26346#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newPartido.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/crearPartido/newPartido.html">
+      <file leaf-file-name="search-jugador-grupo.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/search/search-jugador-grupo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="51" selection-start="1643" selection-end="1643" vertical-scroll-proportion="-7.8461537" vertical-offset="459" max-vertical-offset="1989">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="info.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="58" selection-start="1313" selection-end="1313" vertical-scroll-proportion="0.3938224" vertical-offset="323" max-vertical-offset="918">
-              <folding>
-                <element signature="n#style#0;n#ion-slide-box#0;n#div#1;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="24" selection-start="896" selection-end="896" vertical-scroll-proportion="0.34455445" vertical-offset="183" max-vertical-offset="731">
+            <state line="0" column="43" selection-start="43" selection-end="43" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="544">
               <folding />
             </state>
           </provider>
@@ -87,7 +69,16 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="39" selection-start="4115" selection-end="4134" vertical-scroll-proportion="-6.24" vertical-offset="1646" max-vertical-offset="3723">
+            <state line="70" column="45" selection-start="2825" selection-end="2850" vertical-scroll-proportion="-4.76" vertical-offset="1071" max-vertical-offset="3723">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="players.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="108" selection-start="542" selection-end="542" vertical-scroll-proportion="-3.9230769" vertical-offset="68" max-vertical-offset="782">
               <folding />
             </state>
           </provider>
@@ -96,7 +87,7 @@
       <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="40" selection-start="7391" selection-end="7391" vertical-scroll-proportion="0.0" vertical-offset="2951" max-vertical-offset="10013">
+            <state line="285" column="32" selection-start="11843" selection-end="11847" vertical-scroll-proportion="-9.68" vertical-offset="4569" max-vertical-offset="9996">
               <folding />
             </state>
           </provider>
@@ -125,29 +116,31 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/templates/grupo/groups.html" />
-        <option value="$PROJECT_DIR$/www/templates/grupo/navable-modal.html" />
-        <option value="$PROJECT_DIR$/www/templates/crearPartido/navable-partido.html" />
-        <option value="$PROJECT_DIR$/www/templates/tabs.html" />
-        <option value="$PROJECT_DIR$/www/templates/crearPartido/search.html" />
         <option value="$PROJECT_DIR$/www/templates/crearPartido/newPartido.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
-        <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
         <option value="$PROJECT_DIR$/www/assets/css/animated-modal.css" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/info.html" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
-        <option value="$PROJECT_DIR$/www/app/services.js" />
-        <option value="$PROJECT_DIR$/www/app/controller.js" />
         <option value="$PROJECT_DIR$/www/templates/jugadores/info.html" />
+        <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
+        <option value="$PROJECT_DIR$/www/templates/crearPartido/search.html" />
+        <option value="$PROJECT_DIR$/www/templates/grupo/add-jugador.html" />
+        <option value="$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/app/services.js" />
+        <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
+        <option value="$PROJECT_DIR$/www/templates/search/search-jugador-grupo.html" />
+        <option value="$PROJECT_DIR$/www/app/controller.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1366" />
-    <option name="height" value="728" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -394,6 +387,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tennisya" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -407,17 +440,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tennisya_admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../univCatolica/univcatolica-app" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\search" />
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\crearPartido" />
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\partidos" />
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\grupo" />
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\ajustes" />
-      <recent name="C:\xampp\htdocs\tennisya\tennisya\www\app\lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\tennisya\tennisya\www\templates\crearPartido" />
@@ -453,7 +486,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -461,7 +494,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22162576" sideWeight="0.67235494" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2189394" sideWeight="0.67235494" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -491,130 +524,136 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/www/app/services.js</url>
+          <line>273</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="365" selection-end="365" vertical-scroll-proportion="0.65384614" vertical-offset="102" max-vertical-offset="782">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="77" selection-start="9095" selection-end="9095" vertical-scroll-proportion="-5.1538463" vertical-offset="1855" max-vertical-offset="3553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/lib/ionic/css/ionic.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6652" column="29" selection-start="125616" selection-end="125616" vertical-scroll-proportion="0.19803922" vertical-offset="112983" max-vertical-offset="184127">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/lib/angular/angular-csp.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="10" selection-start="242" selection-end="242" vertical-scroll-proportion="0.3125" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13396">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/assets/css/animated-modal.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="26" selection-start="142" selection-end="142" vertical-scroll-proportion="0.03125" vertical-offset="0" max-vertical-offset="3485">
+        <state line="5" column="13" selection-start="192" selection-end="192" vertical-scroll-proportion="0.15178572" vertical-offset="0" max-vertical-offset="3485">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="16" selection-start="199" selection-end="199" vertical-scroll-proportion="-1.15625" vertical-offset="782" max-vertical-offset="1326">
-          <folding />
+        <state line="17" column="39" selection-start="712" selection-end="712" vertical-scroll-proportion="-4.423077" vertical-offset="174" max-vertical-offset="1054">
+          <folding>
+            <element signature="n#style#0;n#ion-slide-box#0;n#div#0;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/www/templates/search/invite.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="24" selection-start="896" selection-end="896" vertical-scroll-proportion="0.34455445" vertical-offset="183" max-vertical-offset="731">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="23" selection-start="719" selection-end="719" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="62" selection-start="2973" selection-end="2973" vertical-scroll-proportion="0.28316832" vertical-offset="1013" max-vertical-offset="1972">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/tabs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="80" selection-start="266" selection-end="279" vertical-scroll-proportion="0.1969112" vertical-offset="0" max-vertical-offset="518">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="39" selection-start="4115" selection-end="4134" vertical-scroll-proportion="-6.24" vertical-offset="1646" max-vertical-offset="3723">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/crearPartido/newPartido.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="51" selection-start="1643" selection-end="1643" vertical-scroll-proportion="-7.8461537" vertical-offset="459" max-vertical-offset="1989">
+        <state line="2" column="4" selection-start="41" selection-end="242" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1989">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="24" selection-start="896" selection-end="896" vertical-scroll-proportion="-9.961538" vertical-offset="98" max-vertical-offset="731">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/grupo/create-group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="526">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/grupo/add-jugador.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="36" selection-start="292" selection-end="292" vertical-scroll-proportion="0.306" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="197" selection-end="197" vertical-scroll-proportion="0.102" vertical-offset="17" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/crearPartido/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="167" selection-start="698" selection-end="780" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="45" selection-start="2825" selection-end="2850" vertical-scroll-proportion="-4.76" vertical-offset="1071" max-vertical-offset="3723">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="40" selection-start="7391" selection-end="7391" vertical-scroll-proportion="0.0" vertical-offset="2951" max-vertical-offset="10013">
+        <state line="285" column="32" selection-start="11843" selection-end="11847" vertical-scroll-proportion="-9.68" vertical-offset="4569" max-vertical-offset="9996">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/players.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="108" selection-start="542" selection-end="542" vertical-scroll-proportion="-3.9230769" vertical-offset="68" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/grupo/info-groups.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="22" selection-start="300" selection-end="300" vertical-scroll-proportion="0.16314779" vertical-offset="0" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/search/search-jugador-grupo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="43" selection-start="43" selection-end="43" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="639" selection-end="639" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6783">
+        <state line="11" column="28" selection-start="395" selection-end="395" vertical-scroll-proportion="0.33089578" vertical-offset="6" max-vertical-offset="7990">
           <folding>
-            <element signature="e#4353#4814#0" expanded="false" />
-            <element signature="e#7737#8459#0" expanded="false" />
-            <element signature="e#8569#11989#0" expanded="false" />
-            <element signature="e#13154#16838#0" expanded="false" />
-            <element signature="e#16909#18286#0" expanded="false" />
-            <element signature="e#18461#20651#0" expanded="false" />
-            <element signature="e#20754#22371#0" expanded="false" />
-            <element signature="e#22493#24516#0" expanded="false" />
-            <element signature="e#24655#26769#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="58" selection-start="1313" selection-end="1313" vertical-scroll-proportion="0.3938224" vertical-offset="323" max-vertical-offset="918">
-          <folding>
-            <element signature="n#style#0;n#ion-slide-box#0;n#div#1;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="e#1645#5104#0" expanded="false" />
+            <element signature="e#6821#9458#0" expanded="false" />
+            <element signature="e#9567#10289#0" expanded="false" />
+            <element signature="e#10399#13819#0" expanded="false" />
+            <element signature="e#18739#20116#0" expanded="false" />
+            <element signature="e#20291#22481#0" expanded="false" />
+            <element signature="e#22584#24201#0" expanded="false" />
+            <element signature="e#24323#26346#0" expanded="false" />
           </folding>
         </state>
       </provider>

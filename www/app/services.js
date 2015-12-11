@@ -2,22 +2,7 @@
  * Created by Riter on 25/08/15.
  */
 /*
- jugadors/login POST
- email: riter.cordova@gmail.com
- password: 123456
-
- /jugadors/save POST
- name:
- estado:
- email:
- password:
- celular:
- cancha:
- rating:
- type: normal/externo
-
-* */
-//angular.module('tennisyaApp.services',[])
+ */
 appTennisya
     .factory('$localstorage', ['$window', function ($window) {
         return {
@@ -277,18 +262,18 @@ appTennisya
             }
         };
     })
-    .factory('searchService', function($http) {
-        return {
-            searchJugador: function(query,ids){
-                return $http.get(api+'jugador/search',{ cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
-                    return response.data;
-                });
-            }
-        };
-    })
+//    .factory('searchService', function($http) {
+//        return {
+//            searchJugador: function(query,ids){
+//                return $http.get(api+'jugador/search',{ cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
+//                    return response.data;
+//                });
+//            }
+//        };
+//    })
     .factory('searchJugador', function($http, $q) {
         var SearchClass = {
-            data:[],
+            data:{},
             cancelHttp:$q.defer(),
             selected:null,
             setSelected:function(item){
@@ -300,12 +285,18 @@ appTennisya
             getJugadores:function(){
                 return this.data;
             },
+            setJugadores:function(list){
+                var self = this;
+                angular.forEach(list, function(value, key) {
+                    self.data[value.id] = value;
+                });
+            },
             searchJugador: function(query, ids){
                 var self = this;
                 self.cancelHttp.resolve(self.data);
                 self.cancelHttp = $q.defer();
                 return $http.get(api+'jugador/search',{ timeout: self.cancelHttp.promise, cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
-                    angular.merge(self.data,response.data);
+                    self.setJugadores(response.data);
                     return angular.copy(self.data);
                 },function(){
                     return angular.copy(self.data);
@@ -324,10 +315,17 @@ appTennisya
             jugadorgrupo: []
 
         };
+        var listGrupos = [];
         return {
+            getList:function(){
+                var deferred = $q.defer();
+                deferred.resolve(listGrupos);
+                return deferred.promise;
+            },
             list: function () {
                 var user = $localstorage.getObject('user');
                 return $http.get(api+'group/jugadores/'+user.id).then(function(response){
+                    listGrupos = response.data;
                     return response.data;
                 });
             },
@@ -543,6 +541,7 @@ appTennisya
 
                 if (attrs.source) {
                     scope.$watch('search.value', function (newValue, oldValue) {
+                        scope.search.value = newValue;
                         if (newValue.length > attrs.minLength) {
                             scope.getData({str: newValue}).then(function (results) {
                                 scope.model = results;

@@ -1,0 +1,27 @@
+<ion-view view-title="Buscar {{data.tipo}}">
+
+    <ion-content>
+
+        <div class="bar item-input-inset">
+            <ion-search class="search-wrapper-light" placeholder="Buscar..." min-length="1" filter="data.filter" model="data.search" source="searchJugador(str)"></ion-search>
+        </div>
+
+        <ion-list class="players-list" ng-if="data.tipo == 'Jugador' ">
+            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="jugador in filterQuery(data.search,data.filter.value) | orderBy:'name'" ng-click="nextInfoJugador(jugador)">
+                <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
+                <h2>{{jugador.name}}</h2>
+                <p>{{jugador.estado}}</p>
+                <p>{{jugador.clubCancha.nombre}}</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-list class="players-list" ng-if="data.tipo == 'Grupo' ">
+            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="grupo in filterGrupo(data.search, data.filter.value) | orderBy:'title'" ng-click="nextGrupo(grupo)">
+                <img ng-src="{{grupo.image != null ? grupo.image : 'assets/img/group.png'}}">
+                <h2>{{grupo.title}}</h2>
+                <p>{{grupo.ciudad}}, {{grupo.pais}}</p>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

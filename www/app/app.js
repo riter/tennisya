@@ -36,7 +36,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
 //    $ionicConfigProvider.platform.ios.views.transition('ios');
 //    $ionicConfigProvider.platform.android.views.transition('android');
 
-    $ionicConfigProvider.backButton.previousTitleText(false);
+    $ionicConfigProvider.backButton.text('').previousTitleText(false);
 
         $stateProvider
             .state('signin', {
@@ -68,15 +68,15 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     }
                 }
             })
-//            .state('tabs.search-grupo', {
-//                url: "/search-grupo",
-//                views: {
-//                    'player-tab': {
-//                        templateUrl: "templates/jugadores/search-grupo.html",
-//                        controller: 'searchJugadorGrupoCtrl'
-//                    }
-//                }
-//            })
+            .state('tabs.search-jugador-grupo', {
+                url: "/search-jugador-grupo/:tipo",
+                views: {
+                    'player-tab': {
+                        templateUrl: "templates/search/search-jugador-grupo.html",
+                        controller: 'searchJugadorGrupoCtrl'
+                    }
+                }
+            })
             .state('tabs.player-info', {
                 url: "/players-info/:id",
                 views: {

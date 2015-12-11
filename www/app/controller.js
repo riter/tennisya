@@ -3,18 +3,54 @@
  */
 
 appTennisya
+    .controller('searchJugadorGrupoCtrl', function($scope, $state, $stateParams, searchJugador, grupoService) {
+        $scope.$on('$ionicView.beforeEnter', function(scopes, states ) {
+            if(states.direction == 'forward')
+                $scope.data.filter.value = '';
+        });
+        $scope.data ={
+            search: searchJugador.getJugadores(),
+            filter: {},
+            tipo: $stateParams.tipo
+        };
+
+        $scope.searchJugador = function(query){
+            if($scope.data.tipo == 'Grupo'){
+                return grupoService.getList();
+            }else{
+                var ids = [];
+                angular.forEach($scope.data.search, function(value, key) {
+                    ids.push(value.id);
+                });
+                return searchJugador.searchJugador(query,ids);
+            }
+        };
+
+        $scope.filterGrupo = function(items,query) {
+            var result = [];
+            angular.forEach(items, function(value, key) {
+                if (value.title.toLowerCase().indexOf(query) > -1 || value.ciudad.toLowerCase().indexOf(query) > -1 ||
+                    value.pais.toLowerCase().indexOf(query) > -1) {
+                    result.push(value);
+                }
+            });
+            return result;
+        };
+
+        $scope.nextGrupo = function(grupo){
+            grupoService.setModel(grupo);
+            $state.go('tabs.groups',{id:grupo.id});
+        };
+
+    })
     .controller('infoJugadorCtrl', function($rootScope, $scope, $state, $stateParams, $ionicSlideBoxDelegate, userService, disponibilidadService) {
         $scope.$on('$ionicView.beforeEnter', function() {
             $scope.jugador = userService.getJugador();
             $rootScope.disponibilidadPartido = null;
         });
-        $scope.$on('$ionicView.enter', function() {
-
-        });
 
         $scope.onDisponibilidad = function(item){
             $rootScope.disponibilidadPartido = {fecha:item.fecha,fechaI:item.fechaI, fechaF:item.fechaF,jugador:$scope.jugador,tipo:'Dobles'};
-
             $state.go('tabs.crear-partidos');
         };
 
@@ -97,6 +133,16 @@ appTennisya
         $scope.nextInfoJugador = function(jugador){
             userService.setJugador(jugador);
             $state.go('tabs.player-info',{id:jugador.id});
+        };
+        $scope.filterQuery = function(items,query) {
+            var result = [];
+            angular.forEach(items, function(value, key) {
+                if (value.name.toLowerCase().indexOf(query) > -1 || value.estado.toLowerCase().indexOf(query) > -1 ||
+                    value.clubCancha.nombre.toLowerCase().indexOf(query) > -1) {
+                    result.push(value);
+                }
+            });
+            return result;
         };
 
         $scope.userLogin = $localstorage.getObject('user');
@@ -336,7 +382,7 @@ appTennisya
             $state.go('tabs.info-groups',{id:grupo.id});
         };
     })
-    .controller('infoGroupCtrl', function($scope, $stateParams, $ionicHistory, $ionicModal, $localstorage, grupoService, searchService, cameraAction ) {
+    .controller('infoGroupCtrl', function($scope, $stateParams, $ionicHistory, $ionicModal, $localstorage, grupoService, searchJugador, cameraAction ) {
         var idYo = $localstorage.getObject('user').id;
         $scope.data = {
             showDelete: false,
@@ -393,7 +439,7 @@ appTennisya
             angular.forEach($scope.grupo.jugadorgrupo, function(value, key) {
                 ids.push(value.jugador.id);
             });
-            return searchService.searchJugador(query,ids);
+            return searchJugador.searchJugador(query,ids);
         };
 
         $scope.addJugador = function(item){
@@ -637,7 +683,7 @@ appTennisya
             $scope.clubs = response.data;
         });
     })
-    .controller('JugadoresSearchCtrl', function($scope, $state, $ionicHistory, $localstorage, grupoService, searchService, cameraAction) {
+    .controller('JugadoresSearchCtrl', function($scope, $state, $ionicHistory, $localstorage, grupoService, searchJugador, cameraAction) {
         var idYo = $localstorage.getObject('user').id;
 
         $scope.onSig = function (state) {
@@ -659,13 +705,13 @@ appTennisya
             angular.forEach($scope.data.jugadores, function(value, key) {
                 ids.push(value.id);
             });
-            return searchService.searchJugador(query,ids);
+            return searchJugador.searchJugador(query,ids);
         };
         $scope.addJugador = function(item){
             if(!$scope.isYo(item) && $scope.data.jugadores.indexOf(item)<0){
                 $scope.data.jugadores.push(item);
                 grupoService.setJugadores($scope.data.jugadores);
-                $scope.data.search.splice($scope.data.search.indexOf(item), 1);
+//                $scope.data.search.splice($scope.data.search.indexOf(item), 1);
             }
         };
         $scope.onDelete = function(item) {
