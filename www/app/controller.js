@@ -43,14 +43,53 @@ appTennisya
         };
 
     })
+    .controller('searchPartidosCtrl', function($scope, $state, $stateParams, searchJugador, grupoService) {
+//        $scope.$on('$ionicView.beforeEnter', function(scopes, states ) {
+//            if(states.direction == 'forward')
+//                $scope.data.filter.value = '';
+//        });
+//        $scope.data ={
+//            search: searchJugador.getJugadores(),
+//            filter: {},
+//            tipo: $stateParams.tipo
+//        };
+//
+//        $scope.searchJugador = function(query){
+//            var ids = [];
+//            angular.forEach($scope.data.search, function(value, key) {
+//                ids.push(value.id);
+//            });
+//            return searchJugador.searchJugador(query,ids);
+//        };
+//
+//        $scope.filterGrupo = function(items,query) {
+//            var result = [];
+//            angular.forEach(items, function(value, key) {
+//                if (value.title.toLowerCase().indexOf(query) > -1 || value.ciudad.toLowerCase().indexOf(query) > -1 ||
+//                    value.pais.toLowerCase().indexOf(query) > -1) {
+//                    result.push(value);
+//                }
+//            });
+//            return result;
+//        };
+
+    })
     .controller('infoJugadorCtrl', function($rootScope, $scope, $state, $stateParams, $ionicSlideBoxDelegate, userService, disponibilidadService) {
+        $scope.getHours = function (){
+            var startHour=7, endHour = 20, tmp = [];
+            for (var i = startHour-1; i <= endHour-1; i++)
+                tmp.push(((i % 12)+1) + (i < 12?' AM':' PM'));
+            return tmp;
+        };
+
         $scope.$on('$ionicView.beforeEnter', function() {
             $scope.jugador = userService.getJugador();
             $rootScope.disponibilidadPartido = null;
         });
 
-        $scope.onDisponibilidad = function(item){
-            $rootScope.disponibilidadPartido = {fecha:item.fecha,fechaI:item.fechaI, fechaF:item.fechaF,jugador:$scope.jugador,tipo:'Dobles'};
+        $scope.onDisponibilidad = function(item,fecha){
+
+            $rootScope.disponibilidadPartido = {fecha:fecha,fechaI:item.fechaI, fechaF:item.fechaF,jugador:$scope.jugador};
             $state.go('tabs.crear-partidos');
         };
 
@@ -79,48 +118,52 @@ appTennisya
             console.log($scope.data.repetir);
             console.log($scope.data.unico);
         });
+        $scope.getDispByFecha = function(fecha){
+            var disponibilidad = [];
 
+            angular.forEach($scope.data.unico, function(value, key) {
+                if(moment(fecha).format('YYYY-MM-DD') == value.fecha)
+                    disponibilidad.push(value);
+            });
+            if($scope.data.repetir[ moment(fecha).format('dd')].length > 0)
+                disponibilidad = disponibilidad.concat($scope.data.repetir[ moment(fecha).format('dd')]);
+
+            return disponibilidad;
+        };
         $scope.data = {
             slides:[{
-                    fecha1: moment().add(0,'days').format('dd D'),
-                    fecha2: moment().add(1,'days').format('dd D'),
-                    fecha3: moment().add(2,'days').format('dd D')
+                    fecha1: [moment().add(0,'days').format('dd D'),moment().add(0,'days').toDate()],
+                    fecha2: [moment().add(1,'days').format('dd D'),moment().add(1,'days').toDate()],
+                    fecha3: [moment().add(2,'days').format('dd D'),moment().add(2,'days').toDate()]
                 },
                 {
-                    fecha1: moment().add(3,'days').format('dd D'),
-                    fecha2: moment().add(4,'days').format('dd D'),
-                    fecha3: moment().add(5,'days').format('dd D')
+                    fecha1: [moment().add(3,'days').format('dd D'),moment().add(3,'days').toDate()],
+                    fecha2: [moment().add(4,'days').format('dd D'),moment().add(4,'days').toDate()],
+                    fecha3: [moment().add(5,'days').format('dd D'),moment().add(5,'days').toDate()]
                 },
                 {
-                    fecha1: moment().add(6,'days').format('dd D'),
-                    fecha2: moment().add(7,'days').format('dd D'),
-                    fecha3: moment().add(8,'days').format('dd D')
+                    fecha1: [moment().add(6,'days').format('dd D'),moment().add(6,'days').toDate()],
+                    fecha2: [moment().add(7,'days').format('dd D'),moment().add(7,'days').toDate()],
+                    fecha3: [moment().add(8,'days').format('dd D'),moment().add(8,'days').toDate()]
                 }],
             fecha: moment().add(8,'days').toDate(),
             repetir:{'Lu':[],'Ma':[],'Mi':[],'Ju':[],'Vi':[],'Sá':[],'Do':[]},
-            unico:[]
+            unico:[],
+            horas: $scope.getHours()
         };
-
         $ionicSlideBoxDelegate.update();
 
         $scope.nextSlide = function(index){
             if(index + 2 == $scope.data.slides.length){
                 $scope.data.slides.push( {
-                    fecha1: moment($scope.data.fecha).add(1,'days').format('dd D'),
-                    fecha2: moment($scope.data.fecha).add(2,'days').format('dd D'),
-                    fecha3: moment($scope.data.fecha).add(3,'days').format('dd D')
+                    fecha1: [moment($scope.data.fecha).add(1,'days').format('dd D'),moment().add(1,'days').toDate()],
+                    fecha2: [moment($scope.data.fecha).add(2,'days').format('dd D'),moment().add(2,'days').toDate()],
+                    fecha3: [moment($scope.data.fecha).add(3,'days').format('dd D'),moment().add(3,'days').toDate()]
                 });
                 $scope.data.fecha = moment($scope.data.fecha).add(3,'days').toDate();
                 $ionicSlideBoxDelegate.update();
             }
         };
-
-        $scope.getHours = function (){
-            var startHour=7, endHour = 20, tmp = [];
-            for (var i = startHour-1; i <= endHour-1; i++)
-                tmp.push(((i % 12)+1) + (i < 12?' AM':' PM'));
-            return tmp;
-        }
     })
     .controller('TabsCtrl', function($scope, $state, $localstorage, extrasService, disponibilidadService, userService) {
         extrasService.loadClubs();
@@ -180,7 +223,6 @@ appTennisya
 
                 if($rootScope.disponibilidadPartido != null){
                     console.log($rootScope.disponibilidadPartido);
-                    $scope.partido.tipo = $rootScope.disponibilidadPartido.tipo;
                     $scope.partido.fecha = moment($rootScope.disponibilidadPartido.fecha).toDate();
                     $scope.partido.horaI = moment($rootScope.disponibilidadPartido.fechaI).toDate();
                     $scope.partido.horaF = moment($rootScope.disponibilidadPartido.fechaF).toDate();

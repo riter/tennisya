@@ -135,6 +135,15 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     }
                 }
             })
+            .state('tabs.search-partidos', {
+                url: "/search-partidos",
+                views: {
+                    'partidos-tab': {
+                        templateUrl: "templates/search/search-partidos.html",
+                        controller: 'searchPartidosCtrl'
+                    }
+                }
+            })
             // ajustes
             .state('tabs.setting', {
                 url: "/settings",
