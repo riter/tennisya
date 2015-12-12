@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" afterPath="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/info.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/css/mistyle.css" afterPath="$PROJECT_DIR$/www/assets/css/mistyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
     </list>
     <list id="781fde75-0216-48af-8707-12565d55182b" name="Rejected commit: Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;" />
     <ignored path="tennisya.iws" />
@@ -39,7 +34,7 @@
       <file leaf-file-name="controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="107" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="11186">
+            <state line="30" column="33" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="11186">
               <folding>
                 <element signature="e#11641#12363#0" expanded="false" />
                 <element signature="e#12473#15893#0" expanded="false" />
@@ -48,15 +43,6 @@
                 <element signature="e#24658#26275#0" expanded="false" />
                 <element signature="e#26397#28420#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search-partidos.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/templates/search/search-partidos.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="12" selection-start="131" selection-end="131" vertical-scroll-proportion="0.13051823" vertical-offset="0" max-vertical-offset="3723">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -73,17 +59,22 @@
       <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="602" column="46" selection-start="23539" selection-end="23539" vertical-scroll-proportion="-5.24" vertical-offset="10069" max-vertical-offset="10948">
+            <state line="600" column="25" selection-start="23466" selection-end="23466" vertical-scroll-proportion="-3.88" vertical-offset="10069" max-vertical-offset="10948">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mistyle.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/assets/css/mistyle.css">
+      <file leaf-file-name="info.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="1" selection-start="2163" selection-end="2163" vertical-scroll-proportion="0.0" vertical-offset="1429" max-vertical-offset="1989">
-              <folding />
+            <state line="2" column="48" selection-start="85" selection-end="85" vertical-scroll-proportion="0.065259114" vertical-offset="0" max-vertical-offset="1853">
+              <folding>
+                <element signature="n#style#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ion-slide#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#ion-slide#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#ion-slide#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,13 +111,13 @@
         <option value="$PROJECT_DIR$/www/templates/grupo/add-list-jugador.html" />
         <option value="$PROJECT_DIR$/www/templates/jugadores/players.html" />
         <option value="$PROJECT_DIR$/www/templates/search/search-jugador-grupo.html" />
-        <option value="$PROJECT_DIR$/www/templates/jugadores/info.html" />
         <option value="$PROJECT_DIR$/www/templates/partidos/_listPartidos.html" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/assets/css/mistyle.css" />
         <option value="$PROJECT_DIR$/www/app/controller.js" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
         <option value="$PROJECT_DIR$/www/templates/search/search-partidos.html" />
+        <option value="$PROJECT_DIR$/www/templates/jugadores/info.html" />
       </list>
     </option>
   </component>
@@ -575,21 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="30" selection-start="1160" selection-end="1160" vertical-scroll-proportion="-6.9615383" vertical-offset="261" max-vertical-offset="1819">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#ion-slide-box#0;n#div#1;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#ion-slide#0;n#ion-slide-box#0;n#div#1;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#ion-slide#0;n#ion-slide-box#0;n#div#1;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#ion-slide#0;n#ion-slide-box#0;n#div#1;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/partidos/_listPartidos.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="74" selection-start="0" selection-end="15264" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="3553">
@@ -601,27 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="34" selection-start="142" selection-end="142" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="544">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="602" column="46" selection-start="23539" selection-end="23539" vertical-scroll-proportion="-5.24" vertical-offset="10069" max-vertical-offset="10948">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="107" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="11186">
-          <folding>
-            <element signature="e#11641#12363#0" expanded="false" />
-            <element signature="e#12473#15893#0" expanded="false" />
-            <element signature="e#20813#22190#0" expanded="false" />
-            <element signature="e#22365#24555#0" expanded="false" />
-            <element signature="e#24658#26275#0" expanded="false" />
-            <element signature="e#26397#28420#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -648,8 +603,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/search/search-partidos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="12" selection-start="131" selection-end="131" vertical-scroll-proportion="0.13051823" vertical-offset="0" max-vertical-offset="3723">
+        <state line="7" column="60" selection-start="317" selection-end="317" vertical-scroll-proportion="0.2284069" vertical-offset="0" max-vertical-offset="3723">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="33" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="11186">
+          <folding>
+            <element signature="e#11641#12363#0" expanded="false" />
+            <element signature="e#12473#15893#0" expanded="false" />
+            <element signature="e#20813#22190#0" expanded="false" />
+            <element signature="e#22365#24555#0" expanded="false" />
+            <element signature="e#24658#26275#0" expanded="false" />
+            <element signature="e#26397#28420#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="600" column="25" selection-start="23466" selection-end="23466" vertical-scroll-proportion="-3.88" vertical-offset="10069" max-vertical-offset="10948">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/jugadores/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="48" selection-start="85" selection-end="85" vertical-scroll-proportion="0.065259114" vertical-offset="0" max-vertical-offset="1853">
+          <folding>
+            <element signature="n#style#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ion-slide#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#ion-slide#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#ion-slide#0;n#ion-slide-box#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

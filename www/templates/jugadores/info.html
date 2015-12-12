@@ -1,7 +1,8 @@
 <ion-view title="Info del jugador">
 
     <ion-content has-header="true" scroll="false">
-        <div div-content >
+        <!--<div div-content >-->
+        <div>
 
             <div class="list" style="margin-bottom:0">
                 <div class="item item-avatar item-playerinfo" >
@@ -18,18 +19,19 @@
                 <h2 class="ty-calendar_title">Agendar Partido</h2>
             </div>
 
-            <div class="row" style="padding:0">
-                <div class="col-20">
-                    <div class="list ty-calendar_hour">
-                        <div class="item"></div>
-                        <div class="item" ng-repeat="hour in data.horas">
-                            {{hour}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-80" style="height: 100%">
-                    <ion-slide-box show-pager="false" on-slide-changed="nextSlide(index)" style="height:inherit; overflow-y: scroll">
-                        <ion-slide  ng-repeat="item in data.slides">
+            <!--<div class="row" style="padding:0">-->
+                <!--<div class="col-20">-->
+                    <!--<div class="list ty-calendar_hour">-->
+                        <!--<div class="item"></div>-->
+                        <!--<div class="item" ng-repeat="hour in data.horas">-->
+                            <!--{{hour}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-80">-->
+                    <ion-slide-box show-pager="false" on-slide-changed="nextSlide(index)" style="height: 264px">
+
+                        <ion-slide  ng-repeat="item in data.slides" style="overflow-y: scroll">
 
                             <div class="row ty-calendar_days">
                                 <div class="col-33">
@@ -94,8 +96,8 @@
 
                         </ion-slide>
                     </ion-slide-box>
-                </div>
-            </div>
+                <!--</div>-->
+            <!--</div>-->
 
         </div>
     </ion-content>
