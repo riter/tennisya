@@ -156,7 +156,9 @@ $button-default-active-border:    $button-stable-active-border !default;
 // Bars
 // -------------------------------
 
-$bar-height:                      33px !default;
+
+
+$bar-height:                      48px !default;
 $bar-title-font-size:             17px !default;
 $bar-padding-portrait:            5px !default;
 $bar-padding-landscape:           5px !default;
@@ -165,6 +167,8 @@ $bar-transparency:                1 !default;
 $bar-footer-height:               $bar-height !default;
 $bar-subheader-height:            $bar-height !default;
 $bar-subfooter-height:            $bar-height !default;
+
+$bar-subheader-height: 						32px;
 
 $bar-light-bg:                    rgba($button-light-bg, $bar-transparency) !default;
 $bar-light-text:                  $button-light-text !default;
@@ -429,7 +433,8 @@ $input-height-large:              (floor($font-size-large * $line-height-large) 
 $input-height-small:              (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
 
 $input-bg:                        $light !default;
-$input-bg-disabled:               $stable !default;
+// $input-bg-disabled:               $stable !default;
+$input-bg-disabled:               #fff !default;
 
 $input-color:                     #111 !default;
 $input-border:                    $item-default-border !default;

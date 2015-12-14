@@ -51,34 +51,6 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"ios-package\" value=\"FacebookConnectPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<plugin name=\"FacebookConnectPlugin\" value=\"FacebookConnectPlugin\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<access origin=\"https://m.facebook.com\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<access origin=\"https://graph.facebook.com\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<access origin=\"https://api.facebook.com\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<access origin=\"https://*.fbcdn.net\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<access origin=\"https://*.akamaihd.net\" />",
-                            "count": 1
                         }
                     ]
                 }
@@ -94,7 +66,7 @@
                     "Social.framework": [
                         {
                             "xml": true,
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "MessageUI.framework": [
@@ -126,24 +98,6 @@
                             "xml": false,
                             "count": 2
                         }
-                    ],
-                    "libsqlite3.dylib": [
-                        {
-                            "xml": false,
-                            "count": 1
-                        }
-                    ],
-                    "Accounts.framework": [
-                        {
-                            "xml": true,
-                            "count": 1
-                        }
-                    ],
-                    "Security.framework": [
-                        {
-                            "xml": true,
-                            "count": 1
-                        }
                     ]
                 }
             },
@@ -152,24 +106,6 @@
                     "NSLocationWhenInUseUsageDescription": [
                         {
                             "xml": "<string />",
-                            "count": 1
-                        }
-                    ],
-                    "FacebookAppID": [
-                        {
-                            "xml": "<string>1644064545847703</string>",
-                            "count": 1
-                        }
-                    ],
-                    "FacebookDisplayName": [
-                        {
-                            "xml": "<string>tennisya</string>",
-                            "count": 1
-                        }
-                    ],
-                    "CFBundleURLTypes": [
-                        {
-                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>fb1644064545847703</string></array></dict></array>",
                             "count": 1
                         }
                     ]
@@ -209,11 +145,6 @@
             "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.file-transfer": {
-            "PACKAGE_NAME": "com.appload.tennisya"
-        },
-        "phonegap-facebook-plugin": {
-            "APP_ID": "1644064545847703",
-            "APP_NAME": "tennisya",
             "PACKAGE_NAME": "com.appload.tennisya"
         }
     },

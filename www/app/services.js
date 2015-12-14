@@ -2,22 +2,7 @@
  * Created by Riter on 25/08/15.
  */
 /*
- jugadors/login POST
- email: riter.cordova@gmail.com
- password: 123456
-
- /jugadors/save POST
- name:
- estado:
- email:
- password:
- celular:
- cancha:
- rating:
- type: normal/externo
-
-* */
-//angular.module('tennisyaApp.services',[])
+ */
 appTennisya
     .factory('$localstorage', ['$window', function ($window) {
         return {
@@ -218,6 +203,12 @@ appTennisya
             saveStorage: function (data){
                 $localstorage.setObject('disponibilidad',data);
             },
+            listByJugador: function(idJugador){
+                var self = this;
+                return $http.get(api+'disponibilidad/list/'+idJugador).then(function(response){
+                    return response.data;
+                },function(){});
+            },
             load: function(){
                 var self = this;
                 return $http.get(api+'disponibilidad/list/'+$localstorage.getObject('user').id).then(function(response){
@@ -232,10 +223,15 @@ appTennisya
             },
             newDisponibilidad: function(model){
                 var deferred = $q.defer();
-                $http.post(api+'disponibilidad/new/'+$localstorage.getObject('user').id, model).then(function(response){
+
+                var newDisp = angular.copy(model);
+                newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaI).format('H:mm:ss');
+                newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaF).format('H:mm:ss');
+
+                $http.post(api+'disponibilidad/new/'+$localstorage.getObject('user').id, newDisp).then(function(response){
                     var lista = $localstorage.getObject('disponibilidad');
                     lista.push(response.data);
-                    $localstorage.getObject('disponibilidad', lista);
+                    $localstorage.setObject('disponibilidad', lista);
 
                     deferred.resolve(response.data);
                 });
@@ -271,18 +267,18 @@ appTennisya
             }
         };
     })
-    .factory('searchService', function($http) {
-        return {
-            searchJugador: function(query,ids){
-                return $http.get(api+'jugador/search',{ cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
-                    return response.data;
-                });
-            }
-        };
-    })
+//    .factory('searchService', function($http) {
+//        return {
+//            searchJugador: function(query,ids){
+//                return $http.get(api+'jugador/search',{ cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
+//                    return response.data;
+//                });
+//            }
+//        };
+//    })
     .factory('searchJugador', function($http, $q) {
         var SearchClass = {
-            data:[],
+            data:{},
             cancelHttp:$q.defer(),
             selected:null,
             setSelected:function(item){
@@ -294,12 +290,18 @@ appTennisya
             getJugadores:function(){
                 return this.data;
             },
+            setJugadores:function(list){
+                var self = this;
+                angular.forEach(list, function(value, key) {
+                    self.data[value.id] = value;
+                });
+            },
             searchJugador: function(query, ids){
                 var self = this;
                 self.cancelHttp.resolve(self.data);
                 self.cancelHttp = $q.defer();
                 return $http.get(api+'jugador/search',{ timeout: self.cancelHttp.promise, cache:true, params:{query: query, 'ids[]': ids}}).then(function(response){
-                    angular.merge(self.data,response.data);
+                    self.setJugadores(response.data);
                     return angular.copy(self.data);
                 },function(){
                     return angular.copy(self.data);
@@ -318,10 +320,17 @@ appTennisya
             jugadorgrupo: []
 
         };
+        var listGrupos = [];
         return {
+            getList:function(){
+                var deferred = $q.defer();
+                deferred.resolve(listGrupos);
+                return deferred.promise;
+            },
             list: function () {
                 var user = $localstorage.getObject('user');
                 return $http.get(api+'group/jugadores/'+user.id).then(function(response){
+                    listGrupos = response.data;
                     return response.data;
                 });
             },
@@ -500,7 +509,7 @@ appTennisya.directive('divContent', function() {
             element[0].style.position = 'relative';
             element[0].style.height = '100%';
             var hT = twoElements[0].clientHeight - 2;
-            // twoElements[1].style.height = 'calc(100% - '+hT+'px)' ;
+            twoElements[1].style.height = 'calc(100% - '+hT+'px)' ;
 
         }
     };
@@ -537,6 +546,7 @@ appTennisya
 
                 if (attrs.source) {
                     scope.$watch('search.value', function (newValue, oldValue) {
+                        scope.search.value = newValue;
                         if (newValue.length > attrs.minLength) {
                             scope.getData({str: newValue}).then(function (results) {
                                 scope.model = results;
@@ -577,3 +587,60 @@ appTennisya
                 '</div>'
         };
     });
+
+appTennisya
+    .directive('searchBar', [function () {
+        return {
+            scope: {
+                ngModel: '='
+            },
+            require: ['^ionNavBar', '?ngModel'],
+            restrict: 'E',
+            replace: true,
+            template: '<ion-nav-buttons side="right">'+
+                '<div class="searchBar numicons2">'+
+                '<div class="searchTxt" ng-show="true">'+
+                '<div class="bgdiv"></div>'+
+                '<div class="bgtxt">'+
+                '<input type="text" placeholder="Procurar..." ng-model="ngModel.txt">'+
+                '</div>'+
+                '</div>'+
+                '<i class="icon placeholder-icon" ng-click="ngModel.txt=\'\';ngModel.show=!ngModel.show"></i>'+
+                '</div>'+
+                '</ion-nav-buttons>',
+
+            compile: function (element, attrs) {
+                var icon= (ionic.Platform.isAndroid() && 'ion-android-search')
+                    || (ionic.Platform.isIOS()     && 'ion-ios7-search')
+                    || 'ion-search';
+                angular.element(element[0].querySelector('.icon')).addClass(icon);
+
+                return function($scope, $element, $attrs, ctrls) {
+                    var navBarCtrl = ctrls[0];
+                    $scope.navElement = $attrs.side === 'right' ? navBarCtrl.rightButtonsElement : navBarCtrl.leftButtonsElement;
+
+                };
+            },
+            controller: ['$scope','$ionicNavBarDelegate', function($scope,$ionicNavBarDelegate){
+                var title, definedClass;
+
+                $scope.$watch('ngModel.show', function(showing, oldVal, scope) {
+                    if(showing!==oldVal) {
+                        if(showing) {
+                            if(!definedClass) {
+                                var numicons=$scope.navElement.children().length;
+                                angular.element($scope.navElement[0].querySelector('.searchBar')).addClass('numicons'+numicons);
+                            }
+
+                            title = $ionicNavBarDelegate.getTitle();
+                            $ionicNavBarDelegate.setTitle('');
+                        } else {
+                            $ionicNavBarDelegate.setTitle(title);
+                        }
+                    } else if (!title) {
+                        title = $ionicNavBarDelegate.getTitle();
+                    }
+                });
+            }]
+        };
+    }]);

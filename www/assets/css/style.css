@@ -172,6 +172,16 @@ button, input, select, textarea {
 .button-green {
   color: #0d8a1b !important; }
 
+.button-logout {
+  background-color: #ef473a;
+  color: #fff;
+  width: 100%; }
+
+.button-logout-2 {
+  background-color: #fff;
+  color: #ef473a;
+  width: 100%; }
+
 .ty-list .item {
   font-size: 14px;
   font-family: "roboto-regular";
@@ -348,6 +358,7 @@ button, input, select, textarea {
   line-height: 29px; */ }
 .bar-subheader .button {
   font-size: 16px !important;
+  line-height: 1.1;
   /* min-height: 28px;
   line-height: 29px; */ }
 
@@ -631,17 +642,29 @@ button, input, select, textarea {
   top: 98px; }
 
 .match {
-  min-height: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
-  padding-right: 175px; }
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; }
   .match_detail {
-    padding-right: 5px; }
+    font-family: "roboto-regular";
+    color: #020202;
+    font-size: 13px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 140px;
+        -ms-flex: 0 0 140px;
+            flex: 0 0 140px;
+    overflow: hidden; }
   .match_date, .match_place {
     font-family: "roboto-regular";
     color: #020202;
     font-size: 12px;
-    line-height: 14px;
     display: block;
+    line-height: 1.3;
     opacity: .8;
     white-space: pre-wrap; }
     .match_date-confirm:after, .match_place-confirm:after {
@@ -669,14 +692,7 @@ button, input, select, textarea {
     display: block;
     line-height: 13px; }
   .match_players {
-    overflow: hidden;
-    right: 0;
-    width: 175px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%); }
+    width: 100%; }
 
 .list-matches .item .item-content {
   padding: 10px; }
@@ -693,17 +709,24 @@ button, input, select, textarea {
           filter: grayscale(1); }
 
 .match-players {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  display: table;
-  text-align: left; }
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .match-players_item {
-    display: table-cell;
-    vertical-align: middle;
-    margin-right: 4px; }
-    .match-players_item:last-child {
-      margin-right: 0; }
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: center; }
   .match-players_img {
     height: auto;
     width: 100%;
@@ -715,10 +738,10 @@ button, input, select, textarea {
   .match-players_link {
     background-color: #858383;
     border-radius: 100%;
-    display: block;
-    height: 40px;
+    display: inline-block;
+    height: 36px;
     overflow: hidden;
-    width: 40px;
+    width: 36px;
     position: relative;
     margin-right: 6px; }
   .match-players_icon {
@@ -751,11 +774,108 @@ button, input, select, textarea {
     max-height: 71px;
     max-width: 71px; }
   .item-playerinfo p {
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: 0; }
   .item-playerinfo strong {
     font-family: "roboto-bold";
     color: #020202;
     font-size: 13px; }
+
+.ty-calendar_title {
+  color: #149d03;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  padding: 7px 18px; }
+.ty-calendar_match {
+  background-color: #e0e1ff;
+  border-left: 2px solid #9a9cff;
+  color: #2f9f21;
+  font-size: 12px;
+  font-weight: bold;
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  display: table;
+  text-align: center; }
+  .ty-calendar_match span {
+    display: table-cell;
+    vertical-align: middle; }
+.ty-calendar_hour .item {
+  color: #9d9d9d;
+  font-size: 12px;
+  border: 0;
+  height: 40px;
+  text-align: center;
+  padding: 0;
+  line-height: 40px; }
+.ty-calendar_days {
+  background: #f5f5f5;
+  padding: 0;
+  position: relative;
+  z-index: 120; }
+  .ty-calendar_days .ng-binding {
+    background: #f5f5f5;
+    color: #323232;
+    font-size: 12px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center; }
+.ty-calendar_row {
+  border-bottom: 1px dotted #eeeeee;
+  height: 20px;
+  padding: 0 5px;
+  margin-top: 0 !important; }
+  .ty-calendar_row:last-child {
+    border-bottom: 0; }
+  .ty-calendar_row .ng-binding {
+    height: 20px;
+    text-align: center;
+    width: 100%; }
+.ty-calendar_col {
+  border-bottom: 2px solid #eeeeee;
+  height: 40px;
+  position: relative; }
+  .ty-calendar_col:after {
+    content: "";
+    border: 1px dotted #eeeeee;
+    position: absolute;
+    top: 19px;
+    width: 100%; }
+.ty-calendar_mainrow {
+  overflow-y: scroll;
+  position: absolute;
+  height: 100%;
+  margin-top: 0 !important;
+  top: 0;
+  padding: 26px 0 0 !important; }
+.ty-calendar_elem {
+  text-align: center;
+  position: relative; }
+.ty-calendar_active {
+  height: 100%; }
+  .ty-calendar_active .ty-calendar_col {
+    background-color: rgba(228, 240, 252, 0.8); }
+.ty-calendar_active-text {
+  color: #2588e4 !important;
+  font-weight: bold; }
+.ty-calendar_time {
+  background-color: #fe3a3d;
+  position: absolute;
+  height: 2px;
+  padding: 1px 0;
+  width: 100%;
+  z-index: 115; }
+  .ty-calendar_time:before {
+    content: "";
+    background-color: #fe3a3d;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    height: 4px;
+    width: 4px; }
 
 /*# sourceMappingURL=style.css.map */

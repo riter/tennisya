@@ -1,17 +1,16 @@
 .match{
-  display: flex;
-  position: relative;
-  flex-wrap: nowrap;
+	min-height: 40px;
+	position: relative;
+	padding-right: 175px;
 	&_detail{
-		@include font(rr, 13px, #020202);
-		flex: 0 0 140px;
-		overflow: hidden;
+		// float: left;
+		padding-right: 5px;
 	}
 	&_date,
 	&_place{
 		@include font(rr, 12px, #020202);
+		line-height: 14px;
 		display: block;
-		line-height: 1.3;
 		opacity: .8;
 		white-space: pre-wrap;
 		&-confirm{
@@ -41,8 +40,13 @@
 		line-height: 13px;
 	}
 	&_players{
-		width: 100%;
-		// @include center(v);
+		// position: absolute;
+		overflow: hidden;
+		right: 0;
+		// top: 0;
+		// min-width: 173px;
+		width: 175px;
+		@include center(v);
 	}
 }
 

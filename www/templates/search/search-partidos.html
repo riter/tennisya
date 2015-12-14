@@ -1,0 +1,213 @@
+<ion-view title="Buscar Partidos">
+
+<!--<ion-nav-buttons side="right">-->
+    <!--<div class="searchBar numicons2">-->
+        <!--<div class="searchTxt" ng-show="true">-->
+            <!--<div class="bgdiv"></div>-->
+            <!--<div class="bgtxt">-->
+                <!--<input type="text" placeholder="Procurar..." ng-model="ngModel.txt">-->
+             <!--</div>-->
+        <!--</div>-->
+        <!--<button class="button button-icon">-->
+            <!--<i class="ic-search"></i>-->
+        <!--</button>-->
+    <!--</div>-->
+
+<!--</ion-nav-buttons>-->
+
+<ion-content class="padding">
+<!--<ion-tabs class="tabs-striped tabs-top tabs-background-light game">-->
+
+    <!--<ion-tab title="Todos">-->
+        <!--<ion-nav-view name="todos-tab">-->
+            <!--<ion-content>-->
+                <!--<ion-list class="list-matches">-->
+                    <!--<ion-item class="item-divider">-->
+                        <!--Partidos dobles-->
+                    <!--</ion-item>-->
+                    <!--<ion-item ng-if="double.tipo == 'Dobles'" ng-repeat="double in todos">-->
+                        <!--<div class="match">-->
+                            <!--<div class="match_detail">-->
+                                <!--<span class="match_date">{{formatPartidos(double.fechai)}}</span>-->
+                                <!--<span ng-class="{'match_place-confirm':double.confirmCancha, 'match_place-pending':!double.confirmCancha}" class="match_place">{{double.clubCancha.nombre}}</span>-->
+                                <!--<span class="match_time">{{formatFromNow(double.fechai)}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="match_players">-->
+                                <!--<ul class="match-players" ng-if="double.jugadorpartido">-->
+                                    <!--<li class="match-players_item" ng-repeat="jugadorpartido in double.jugadorpartido">-->
+                                        <!--<a class="match-players_link">-->
+                                            <!--<img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+
+                                    <!--<li class="match-players_item" ng-repeat="item in getVacios(double)">-->
+                                        <!--<a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>-->
+                                    <!--</li>-->
+
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</ion-item>-->
+
+                    <!--<ion-item class="item-divider">-->
+                        <!--Partidos singles-->
+                    <!--</ion-item>-->
+                    <!--<ion-item ng-if="single.tipo == 'Singles'" ng-repeat="single in todos">-->
+                        <!--<div class="match">-->
+                            <!--<div class="match_detail">-->
+                                <!--<span class="match_date">{{formatPartidos(single.fechai)}}</span>-->
+                                <!--<span ng-class="{'match_place-confirm':single.confirmCancha, 'match_place-pending':!single.confirmCancha}" class="match_place">{{single.clubCancha.nombre}}</span>-->
+                                <!--<span class="match_time">{{formatFromNow(single.fechai)}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="match_players">-->
+                                <!--<ul class="match-players" ng-if="single.jugadorpartido">-->
+                                    <!--<li class="match-players_item" ng-repeat="jugadorpartido in single.jugadorpartido">-->
+                                        <!--<a class="match-players_link">-->
+                                            <!--<img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li class="match-players_item" ng-repeat="item in getVacios(single)"  ng-click="entrarPartido(single)">-->
+                                        <!--<a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</ion-item>-->
+                    <!--<div style="height: 46px"></div>-->
+                <!--</ion-list>-->
+            <!--</ion-content>-->
+        <!--</ion-nav-view>-->
+    <!--</ion-tab>-->
+
+    <!--<ion-tab title="Personales">-->
+        <!--<ion-nav-view name="personal-tab">-->
+            <!--<ion-content>-->
+                <!--<ion-list class="list-matches">-->
+                    <!--<ion-item class="item-divider">Esperando Cancha</ion-item>-->
+                    <!--<ion-item ng-if="esperando.confirmCancha == false" ng-repeat="esperando in personales">-->
+                        <!--<div class="match">-->
+                            <!--<div class="match_detail">-->
+                                <!--<span class="match_date">{{formatPartidos(esperando.fechai)}}</span>-->
+                                <!--<span ng-class="{'match_place-confirm':esperando.confirmCancha, 'match_place-pending':!esperando.confirmCancha}" class="match_place">{{esperando.clubCancha.nombre}}</span>-->
+                                <!--<span class="match_time">{{formatFromNow(esperando.fechai)}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="match_players">-->
+                                <!--<ul class="match-players" ng-if="esperando.jugadorpartido">-->
+                                    <!--<li class="match-players_item" ng-repeat="jugadorpartido in esperando.jugadorpartido" ng-click="confirmInvitacion(esperando, jugadorpartido)">-->
+                                        <!--<a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>-->
+                                    <!--</li>-->
+                                    <!--<li class="match-players_item" ng-repeat="item in getVacios(esperando)">-->
+                                        <!--<a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</ion-item>-->
+
+                    <!--<ion-item class="item-divider">Esperando Confirmación</ion-item>-->
+                    <!--<ion-item ng-if="confirmacion.confirmCancha && !isCompleto(confirmacion)" ng-repeat="confirmacion in personales">-->
+                        <!--<div class="match">-->
+                            <!--<div class="match_detail">-->
+                                <!--<span class="match_date">{{formatPartidos(confirmacion.fechai)}}</span>-->
+                                <!--<span ng-class="{'match_place-confirm':confirmacion.confirmCancha, 'match_place-pending':!confirmacion.confirmCancha}" class="match_place">{{confirmacion.clubCancha.nombre}}</span>-->
+                                <!--<span class="match_time">{{formatFromNow(confirmacion.fechai)}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="match_players">-->
+                                <!--<ul class="match-players" ng-if="confirmacion.jugadorpartido">-->
+                                    <!--<li class="match-players_item" ng-repeat="jugadorpartido in confirmacion.jugadorpartido" ng-click="confirmInvitacion(confirmacion, jugadorpartido)">-->
+                                        <!--<a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>-->
+                                    <!--</li>-->
+                                    <!--<li class="match-players_item" ng-repeat="item in getVacios(confirmacion)">-->
+                                        <!--<a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</ion-item>-->
+
+                    <!--<ion-item class="item-divider">Esperando Respuesta</ion-item>-->
+                    <!--<ion-item ng-if="respuesta.confirmCancha && isCompleto(respuesta) && hasIvitado(respuesta) " ng-repeat="respuesta in personales">-->
+                        <!--<div class="match">-->
+                            <!--<div class="match_detail">-->
+                                <!--<span class="match_date">{{formatPartidos(respuesta.fechai)}}</span>-->
+                                <!--<span ng-class="{'match_place-confirm':respuesta.confirmCancha, 'match_place-pending':!respuesta.confirmCancha}" class="match_place">{{respuesta.clubCancha.nombre}}</span>-->
+                                <!--<span class="match_time">{{formatFromNow(respuesta.fechai)}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="match_players">-->
+                                <!--<ul class="match-players" ng-if="respuesta.jugadorpartido">-->
+                                    <!--<li class="match-players_item" ng-repeat="jugadorpartido in respuesta.jugadorpartido" ng-click="confirmInvitacion(respuesta, jugadorpartido)">-->
+                                        <!--<a class="match-players_link">-->
+                                            <!--<img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li class="match-players_item" ng-repeat="item in getVacios(respuesta)">-->
+                                        <!--<a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</ion-item>-->
+                <!--</ion-list>-->
+                <!--<div style="height: 46px"></div>-->
+            <!--</ion-content>-->
+        <!--</ion-nav-view>-->
+    <!--</ion-tab>-->
+
+    <!--<ion-tab title="Confirmados">-->
+        <!--<ion-nav-view name="confirmados-tab">-->
+            <!--<ion-content>-->
+                <!--<ion-list class="list-matches">-->
+                    <!--<ion-item ng-repeat="confirmado in confirmados">-->
+                        <!--<div class="match">-->
+                            <!--<div class="match_detail">-->
+                                <!--<span class="match_date">{{formatPartidos(confirmado.fechai)}}</span>-->
+                                <!--<span ng-class="{'match_place-confirm':confirmado.confirmCancha, 'match_place-pending':!confirmado.confirmCancha}" class="match_place">{{confirmado.clubCancha.nombre}}</span>-->
+                                <!--<span class="match_time">{{formatFromNow(confirmado.fechai)}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="match_players">-->
+                                <!--<ul class="match-players" ng-if="confirmado.jugadorpartido">-->
+                                    <!--<li class="match-players_item" ng-repeat="jugadorpartido in confirmado.jugadorpartido" ng-click="confirmInvitacion(confirmado, jugadorpartido)">-->
+                                        <!--<a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>-->
+                                    <!--</li>-->
+                                    <!--<li class="match-players_item" ng-repeat="item in getVacios(confirmado)">-->
+                                        <!--<a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</ion-item>-->
+                <!--</ion-list>-->
+                <!--<div style="height: 46px"></div>-->
+            <!--</ion-content>-->
+        <!--</ion-nav-view>-->
+    <!--</ion-tab>-->
+
+    <!--<ion-tab title="Jugados">-->
+        <!--<ion-nav-view name="jugados-tab">-->
+            <!--<ion-content>-->
+                <!--<ion-list class="list-matches">-->
+                    <!--<ion-item ng-repeat="jugado in jugados">-->
+                        <!--<div class="match">-->
+                            <!--<div class="match_detail">-->
+                                <!--<span class="match_date">{{formatPartidos(jugado.fechai)}}</span>-->
+                                <!--<span ng-class="{'match_place-confirm':jugado.confirmCancha, 'match_place-pending':!jugado.confirmCancha}" class="match_place">{{jugado.clubCancha.nombre}}</span>-->
+                                <!--<span class="match_time">{{formatFromNow(jugado.fechai)}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="match_players">-->
+                                <!--<ul class="match-players" ng-if="jugado.jugadorpartido">-->
+                                    <!--<li class="match-players_item" ng-repeat="jugadorpartido in jugado.jugadorpartido">-->
+                                        <!--<a class="match-players_link"><img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}"></a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</ion-item>-->
+                <!--</ion-list>-->
+                <!--<div style="height: 46px"></div>-->
+            <!--</ion-content>-->
+        <!--</ion-nav-view>-->
+    <!--</ion-tab>-->
+
+<!--</ion-tabs>-->
+</ion-content>
+</ion-view>
