@@ -791,11 +791,14 @@ button, input, select, textarea {
   background-color: #e0e1ff;
   border-left: 2px solid #9a9cff;
   color: #2f9f21;
+  font-size: 12px;
+  font-weight: bold;
   height: 40px;
   width: 100%;
   position: absolute;
   z-index: 100;
-  display: table; }
+  display: table;
+  text-align: center; }
   .ty-calendar_match span {
     display: table-cell;
     vertical-align: middle; }
@@ -807,12 +810,11 @@ button, input, select, textarea {
   text-align: center;
   padding: 0;
   line-height: 40px; }
-  .ty-calendar_hour .item:first-child {
-    background: #f5f5f5;
-    height: 26px;
-    line-height: 26px; }
 .ty-calendar_days {
-  padding: 0; }
+  background: #f5f5f5;
+  padding: 0;
+  position: relative;
+  z-index: 120; }
   .ty-calendar_days .ng-binding {
     background: #f5f5f5;
     color: #323232;
@@ -831,9 +833,44 @@ button, input, select, textarea {
     height: 20px;
     text-align: center;
     width: 100%; }
-.ty-calendar_mainrow {
+.ty-calendar_col {
   border-bottom: 2px solid #eeeeee;
-  height: 40px; }
+  height: 40px;
+  position: relative; }
+  .ty-calendar_col:after {
+    content: "";
+    border: 1px dotted #eeeeee;
+    position: absolute;
+    top: 19px;
+    width: 100%; }
+.ty-calendar_mainrow {
+  overflow-y: scroll;
+  position: absolute;
+  height: 100%;
+  margin-top: 0 !important;
+  top: 0;
+  padding: 26px 0 0 !important; }
 .ty-calendar_elem {
   text-align: center;
   position: relative; }
+.ty-calendar_active {
+  height: 100%; }
+  .ty-calendar_active .ty-calendar_col {
+    background-color: rgba(228, 240, 252, 0.8); }
+.ty-calendar_time {
+  background-color: #fe3a3d;
+  position: absolute;
+  height: 2px;
+  padding: 1px 0;
+  width: 100%;
+  z-index: 115; }
+  .ty-calendar_time:before {
+    content: "";
+    background-color: #fe3a3d;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    height: 4px;
+    width: 4px; }
