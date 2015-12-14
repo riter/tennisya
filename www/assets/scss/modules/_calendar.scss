@@ -97,11 +97,14 @@
 		position: relative;
 	}
 	&_active{
-		
 		height: 100%;
 		.ty-calendar_col{
 			background-color: rgba(#e4f0fc,.8);	
 		}
+	}
+	&_active-text{
+		color: #2588e4 !important;
+		font-weight: bold;
 	}
 	&_time{
 		background-color: #fe3a3d;

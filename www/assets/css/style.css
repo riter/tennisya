@@ -774,7 +774,7 @@ button, input, select, textarea {
     max-height: 71px;
     max-width: 71px; }
   .item-playerinfo p {
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: 0; }
   .item-playerinfo strong {
     font-family: "roboto-bold";
@@ -857,6 +857,9 @@ button, input, select, textarea {
   height: 100%; }
   .ty-calendar_active .ty-calendar_col {
     background-color: rgba(228, 240, 252, 0.8); }
+.ty-calendar_active-text {
+  color: #2588e4 !important;
+  font-weight: bold; }
 .ty-calendar_time {
   background-color: #fe3a3d;
   position: absolute;
@@ -874,3 +877,5 @@ button, input, select, textarea {
     left: -1px;
     height: 4px;
     width: 4px; }
+
+/*# sourceMappingURL=style.css.map */
