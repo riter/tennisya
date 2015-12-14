@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e607698b-59d5-4d5f-aa9b-60b5f21244b4" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/controller.js" afterPath="$PROJECT_DIR$/www/app/controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/jugadores/info.html" afterPath="$PROJECT_DIR$/www/templates/jugadores/info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" afterPath="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/services.js" afterPath="$PROJECT_DIR$/www/app/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="781fde75-0216-48af-8707-12565d55182b" name="Rejected commit: Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;www/templates/jugadores/info.html&#10;" />
     <ignored path="tennisya.iws" />
@@ -55,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="693" selection-end="693" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3876">
+            <state line="6" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.18214285" vertical-offset="0" max-vertical-offset="3876">
               <folding />
             </state>
           </provider>
@@ -73,10 +67,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_disponibilidad.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="new_disponibilidad.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="120" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.3646833" vertical-offset="507" max-vertical-offset="1853">
+            <state line="41" column="120" selection-start="1740" selection-end="1740" vertical-scroll-proportion="-7.3076925" vertical-offset="507" max-vertical-offset="1853">
               <folding />
             </state>
           </provider>
@@ -118,9 +112,9 @@
         <option value="$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html" />
         <option value="$PROJECT_DIR$/www/templates/jugadores/info.html" />
         <option value="$PROJECT_DIR$/www/app/services.js" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/app/controller.js" />
         <option value="$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
       </list>
     </option>
   </component>
@@ -475,7 +469,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -584,13 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="693" selection-end="693" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/disponibilidad.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="83" selection-start="865" selection-end="865" vertical-scroll-proportion="0.2284069" vertical-offset="119" max-vertical-offset="646">
@@ -614,7 +601,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/ajustes/new_disponibilidad.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="120" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.3646833" vertical-offset="507" max-vertical-offset="1853">
+        <state line="41" column="120" selection-start="1740" selection-end="1740" vertical-scroll-proportion="-7.3076925" vertical-offset="507" max-vertical-offset="1853">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.18214285" vertical-offset="0" max-vertical-offset="3876">
           <folding />
         </state>
       </provider>
