@@ -299,7 +299,7 @@ appTennisya
     .controller('DisponibilidadCtrl', function($scope,  $ionicModal, disponibilidadService, extrasService ) {
 
         extrasService.getClub().then(function(response){
-            $scope.clubs = response.data;
+            $scope.clubs = response;
         });
 
         $scope.data = {
@@ -342,7 +342,7 @@ appTennisya
                 });
             }else{
                 disponibilidadService.newDisponibilidad($scope.disponibilidad).then(function(response){
-                    $scope.items.push(response.data);
+                    $scope.items.push(response);
                 });
             }
             $scope.closeModal();
@@ -364,7 +364,7 @@ appTennisya
                 $scope.disponibilidad = item;
                 $scope.parseDias(item.repetir);
             }else
-                $scope.disponibilidad = {autoConfirm:true,fechaI: new Date(),fechaF: new Date()};
+                $scope.disponibilidad = {autoConfirm:true, fecha:new Date(), fechaI: new Date(), fechaF: new Date()};
 
             $scope.modal.show();
         };
@@ -618,7 +618,7 @@ appTennisya
         };
 
         extrasService.getClub().then(function(response){
-            $scope.clubs = response.data;
+            $scope.clubs = response;
         });
 
     })
@@ -722,7 +722,7 @@ appTennisya
         };
 
         extrasService.getClub().then(function(response){
-            $scope.clubs = response.data;
+            $scope.clubs = response;
         });
     })
     .controller('JugadoresSearchCtrl', function($scope, $state, $ionicHistory, $localstorage, grupoService, searchJugador, cameraAction) {

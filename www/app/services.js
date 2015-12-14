@@ -223,10 +223,15 @@ appTennisya
             },
             newDisponibilidad: function(model){
                 var deferred = $q.defer();
-                $http.post(api+'disponibilidad/new/'+$localstorage.getObject('user').id, model).then(function(response){
+
+                var newDisp = angular.copy(model);
+                newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaI).format('H:mm:ss');
+                newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD')+ ' ' +moment(model.horaF).format('H:mm:ss');
+
+                $http.post(api+'disponibilidad/new/'+$localstorage.getObject('user').id, newDisp).then(function(response){
                     var lista = $localstorage.getObject('disponibilidad');
                     lista.push(response.data);
-                    $localstorage.getObject('disponibilidad', lista);
+                    $localstorage.setObject('disponibilidad', lista);
 
                     deferred.resolve(response.data);
                 });
