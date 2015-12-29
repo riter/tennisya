@@ -1,6 +1,6 @@
 <ion-view title="Registro" class="fondo-login">
     <ion-content>
-        <form>
+        <form name="form" novalidate>
             <div class="row ">
                 <div class="col text-center">
                     <img ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
@@ -15,7 +15,7 @@
                     <input class="login-fields_field" type="text" placeholder="Estado" ng-model="user.estado" required>
                 </label>
                 <label class="item item-input background-transparent login-fields_label">
-                    <input class="login-fields_field" type="tel" placeholder="Celular" ng-model="user.celular" required>
+                    <input class="login-fields_field" type="tel" placeholder="Celular" ng-model="user.celular">
                 </label>
                 <label class="item item-input background-transparent login-fields_label">
                     <select class="login-fields_select" ng-model="user.clubCancha" ng-options="club.nombre for club in clubs track by club.id" required>
@@ -28,16 +28,16 @@
                 <label class="item item-input background-transparent login-fields_label">
                     <input class="login-fields_field" type="password" placeholder="Contraseña" ng-model="user.password" required>
                 </label>
-                <!--<label class="item item-input background-transparent login-fields_label">-->
-                    <!--<input class="login-fields_field" type="password" placeholder="Repetir Contraseña" ng-model="user.confir_passowrd" required>-->
-                <!--</label>-->
+                <label class="item item-input background-transparent login-fields_label">
+                    <input class="login-fields_field" type="password" placeholder="Repetir Contraseña"  ng-model="user.confir_passowrd" required>
+                </label>
 
-                <label class="item  item-thumbnail-left  background-transparent no-border" ng-click="loadPhoto()">
+                <label class="item  item-thumbnail-left  background-transparent no-border" ng-click="openCamera()">
                     <img ng-src="{{user.photo?user.photo:'../www/assets/img/thumb_profile.png'}}">
                 </label>
             </div>
 
-            <button class="button button-full btn-register" ng-click="signUp(user)"> Registrar </button>
+            <button class="button button-full btn-register" ng-disabled="form.$invalid || (user.password !== user.confir_passowrd)" ng-click="signUp(user)"> Registrar </button>
         </form>
     </ion-content>
 </ion-view>

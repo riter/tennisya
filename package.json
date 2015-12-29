@@ -28,9 +28,11 @@
       "locator": "https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git",
       "id": "cordova-plugin-actionsheet"
     },
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-dialogs"
   ],
   "cordovaPlatforms": [
+    "android",
     "ios"
   ]
 }

@@ -6,22 +6,30 @@
 //var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
 var api = 'http://tennisya.apploadapps.com/web/api/';
 
-var appTennisya = angular.module('tennisyaApp', ['ionic','ngCordova']);
+var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova']);
 
-appTennisya.run(function($ionicPlatform) {
-        $ionicPlatform.ready(function() {
-            if(window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                cordova.plugins.Keyboard.disableScroll(true);
-            }
-            if(window.StatusBar) {
-                StatusBar.styleDefault();
-            }
+appTennisya.run(function ($ionicPlatform, $ionicHistory) {
+    $ionicPlatform.ready(function () {
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.Keyboard.disableScroll(true);
+        }
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
 
-        });
+        $ionicPlatform.registerBackButtonAction(function (event) {
+            console.log($ionicHistory.currentStateName());
+            if ($ionicHistory.currentStateName().indexOf("tabs") >=0 || $ionicHistory.currentStateName().indexOf("signin") >=0) {
+                ionic.Platform.exitApp();
+            }else {
+                $ionicHistory.goBack();
+            }
+        }, 100);
     });
+});
 
-appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+appTennisya.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.platform.ios.tabs.style('standard');
     $ionicConfigProvider.platform.ios.tabs.position('bottom');
     $ionicConfigProvider.platform.android.tabs.style('standard');
@@ -36,19 +44,10 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
 //    $ionicConfigProvider.platform.ios.views.transition('ios');
 //    $ionicConfigProvider.platform.android.views.transition('android');
 
+    $ionicConfigProvider.views.transition('ios');
     $ionicConfigProvider.backButton.text('').previousTitleText(false);
 
-        $stateProvider
-            .state('signin', {
-                url: "/sign-in",
-                templateUrl: "templates/inicio/sign-in.html",
-                controller: 'SignInCtrl'
-            })
-            .state('signup', {
-                url: "/sign-up",
-                templateUrl: "templates/inicio/sign-up.html",
-                controller: 'SignUpCtrl'
-            })
+    $stateProvider
             .state('tabs', {
                 url: "/tab",
                 abstract: true,
@@ -62,7 +61,7 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                         templateUrl: "templates/jugadores/players.html",
                         controller: 'ListJugadoresCtrl'
                     },
-                    'navable-modal@': {
+                    'navable-grupo@': {
                         templateUrl: 'templates/grupo/create-group.html',
                         controller: 'JugadoresSearchCtrl'
                     }
@@ -86,46 +85,6 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     }
                 }
             })
-            .state('tabs.groups', {
-                url: '/groups/:id',
-                views:{
-                    'player-tab':{
-                        templateUrl: "templates/grupo/groups.html",
-                        controller: 'groupsCtrl'
-                    }
-                }
-            })
-            .state('tabs.info-groups', {
-                url: '/infoGroups/:id',
-                views:{
-                    'player-tab':{
-                        templateUrl: "templates/grupo/info-groups.html",
-                        controller: 'infoGroupCtrl'
-                    }
-                }
-            })
-            .state('tabs.crear-partidos', {
-                url: "/crearPartidos",
-                views: {
-                    'newPartido-tab': {
-                        template:'<ion-view title=""></ion-view>',
-                        controller: 'crearPartidoCtrl'
-                    },
-                    'navable-partido@': {
-                        templateUrl: 'templates/crearPartido/newPartido.html'
-                    }
-                }
-            })
-            .state('tabs.crear-partidos.search', {
-                url: '/crearPartidos/search',
-                views: {
-                    'navable-partido@': {
-                        templateUrl: 'templates/crearPartido/search.html',
-                        controller: 'searchJugadorCtrl'
-                    }
-                }
-            })
-
             .state('tabs.partidos', {
                 url: "/partidos",
                 views: {
@@ -144,79 +103,12 @@ appTennisya.config(function($stateProvider, $urlRouterProvider, $ionicConfigProv
                     }
                 }
             })
-            // ajustes
-            .state('tabs.setting', {
-                url: "/settings",
-                views: {
-                    'setting-tab': {
-                        templateUrl: "templates/ajustes/setting.html",
-                        controller: 'AjustesCtrl'
-                    }
-                }
-            })
-            /* start disponibilidad*/
-            .state('tabs.disponibilidad', {
-                url: "/disponibilidad",
-                views: {
-                    'setting-tab': {
-                        templateUrl: "templates/ajustes/disponibilidad.html",
-                        controller: 'DisponibilidadCtrl'
-                    }
-                }
-            })
-            .state('tabs.newdisponibilidad', {
-                url: "/newdisponibilidad",
-                views: {
-                    'setting-tab': {
-                        templateUrl: "templates/ajustes/new_disponibilidad.html",
-                        controller: 'DisponibilidadCtrl'
-                    }
-                }
-            })
-            /* end disponibilidad*/
+            ;
 
-            .state('tabs.profile', {
-                url: "/profile",
-                views: {
-                    'setting-tab': {
-                        templateUrl: "templates/ajustes/profile.html",
-                        controller: 'ProfileCtrl'
-                    }
-                }
-            })
-            .state('tabs.share', {
-                url: "/share",
-                views: {
-                    'setting-tab': {
-                        templateUrl: "templates/ajustes/share.html",
-                        controller: 'ShareCtrl'
-                    }
-                }
-            })
-            .state('tabs.info', {
-                url: "/info",
-                views: {
-                    'setting-tab': {
-                        templateUrl: "templates/ajustes/info.html"
-                    }
-                }
-            })
-            //create grupos
-            .state('tabs.player.add_jugador', {
-                url: '/players/modal/group',
-                views: {
-                    'navable-modal@': {
-                        templateUrl: 'templates/grupo/add-list-jugador.html',
-                        controller: 'JugadoresSearchCtrl'
-                    }
-                }
-            })
-        ;
+    if (window.localStorage['user']) {
+        $urlRouterProvider.otherwise("tab/players");
+    } else {
+        $urlRouterProvider.otherwise("/sign-in");
+    }
 
-        if(window.localStorage['user']){
-            $urlRouterProvider.otherwise("tab/players");
-        }else{
-            $urlRouterProvider.otherwise("/sign-in");
-        }
-
-    });
+});

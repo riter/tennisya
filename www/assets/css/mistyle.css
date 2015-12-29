@@ -110,3 +110,14 @@ label.item.valid-lr {
     padding-left: 5px;
     padding-right:5px;
 }
+
+/* center vertical imagen em ajusstes perfil */
+.profile_avatar{
+    position: relative;
+}
+.profile_avatar img{
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+}

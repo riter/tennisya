@@ -6,11 +6,11 @@
 
     <ion-content>
         <ion-list show-delete="data.showDelete" ng-class="{'enable-pointer-events':data.showDelete}">
-            <ion-item  ng-hide="data.showDelete" class="item balanced" ng-click="openModal()">
+            <ion-item  ng-hide="data.showDelete" class="item balanced" ng-click="newDisponibilidad()">
                 Añadir disponibilidad...
             </ion-item>
 
-            <ion-item item="item" ng-class="{'item-toggle':!data.showDelete,'active':!item.activo}" class="item item-remove-animate" ng-repeat="item in items" ng-click="data.showDelete?openModal(item):''">
+            <ion-item item="item" ng-class="{'item-toggle':!data.showDelete,'active':!item.activo}" class="item item-remove-animate" ng-repeat="item in items" ng-click="data.showDelete?newDisponibilidad(item):''">
                 {{item.title}}
                 <p>{{(item.repetir != null && item.repetir != '') ? item.repetir+' -' : ''}} {{formatFecha(item.fechaI,'h:mm')}} a {{formatFecha(item.fechaF,'h:mm')}} hs</p>
                 <p>{{item.localidad}}, {{item.ciudad}}, {{item.pais}}</p>
