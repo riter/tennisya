@@ -43,8 +43,8 @@ appTennisya
                     var deferred = $q.defer();
 
                     var newDisp = angular.copy(model);
-                    newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.horaI).format('H:mm:ss');
-                    newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.horaF).format('H:mm:ss');
+                    newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechai).format('H:mm:ss');
+                    newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechaf).format('H:mm:ss');
 
                     $http.post(api + 'disponibilidad/new/' + $localstorage.getObject('user').id, newDisp).then(function (response) {
                         var lista = $localstorage.getObject('disponibilidad');
@@ -56,10 +56,14 @@ appTennisya
                     return deferred.promise;
                 },
                 updateDisponibilidad: function (model) {
+                    var newDisp = angular.copy(model);
+                    newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechai).format('H:mm:ss');
+                    newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechaf).format('H:mm:ss');
+                    
                     if (typeof (model.clubCancha) === 'object')
-                        model.clubCancha = model.clubCancha.id;
+                        newDisp.clubCancha = model.clubCancha.id;
 
-                    return $http.post(api + 'disponibilidad/update/' + model.id, model);
+                    return $http.post(api + 'disponibilidad/update/' + newDisp.id, newDisp);
                 },
                 deleteDisponibilidad: function (id) {
                     return $http.get(api + 'disponibilidad/delete/' + id);

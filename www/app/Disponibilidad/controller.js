@@ -18,6 +18,9 @@ appTennisya
             $scope.data = {
                 showDelete: false
             };
+            $scope.showDelete = function(){
+                $scope.data.showDelete = !$scope.data.showDelete;
+            };  
             $scope.chageActivo = function (item) {
                 disponibilidadService.updateDisponibilidad(item);
             };
@@ -51,8 +54,9 @@ appTennisya
                     if (item) {
                         $scope.disponibilidad = item;
                         $scope.disponibilidad.repetir = $scope.parseDias(item.repetir);
+                        $scope.disponibilidad.fecha = item.fechai;
                     } else
-                        $scope.disponibilidad = {autoConfirm: true, fecha: new Date(), fechaI: new Date(), fechaF: new Date(), repetir:''};
+                        $scope.disponibilidad = {autoConfirm: false, fecha: new Date(), fechai: new Date(), fechaf: new Date(), repetir:''};
                     $scope.modalNewDisp.show();
 
                 });
