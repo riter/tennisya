@@ -11,6 +11,8 @@
     left: 0;
     padding: 0 !important;
     background-color: transparent;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 /* fin Input para fecha y hora newPartido*/
 
@@ -120,4 +122,17 @@ label.item.valid-lr {
     bottom: 0;
     margin: auto;
     position: absolute;
+}
+
+.info_logo {
+    background-size: contain !important;
+    width: 70% !important;
+    height: 70% !important;
+    right: 0 !important;
+    left: 0 !important;
+    margin: auto !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    max-width: 400px !important;
+    max-height: 400px !important;
 }

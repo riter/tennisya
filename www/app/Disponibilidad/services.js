@@ -10,7 +10,6 @@ appTennisya
             return {
                 list: function () {
                     var deferred = $q.defer();
-
                     if ($localstorage.exist('disponibilidad')) {
                         deferred.resolve($localstorage.getObject('disponibilidad'));
                         return deferred.promise;
@@ -41,16 +40,13 @@ appTennisya
                 },
                 newDisponibilidad: function (model) {
                     var deferred = $q.defer();
-
                     var newDisp = angular.copy(model);
                     newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechai).format('H:mm:ss');
                     newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechaf).format('H:mm:ss');
-
                     $http.post(api + 'disponibilidad/new/' + $localstorage.getObject('user').id, newDisp).then(function (response) {
                         var lista = $localstorage.getObject('disponibilidad');
                         lista.push(response.data);
                         $localstorage.setObject('disponibilidad', lista);
-
                         deferred.resolve(response.data);
                     });
                     return deferred.promise;
@@ -59,14 +55,16 @@ appTennisya
                     var newDisp = angular.copy(model);
                     newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechai).format('H:mm:ss');
                     newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechaf).format('H:mm:ss');
-                    
                     if (typeof (model.clubCancha) === 'object')
                         newDisp.clubCancha = model.clubCancha.id;
-
                     return $http.post(api + 'disponibilidad/update/' + newDisp.id, newDisp);
                 },
                 deleteDisponibilidad: function (id) {
-                    return $http.get(api + 'disponibilidad/delete/' + id);
+                    var deferred = $q.defer();
+                    $http.get(api + 'disponibilidad/delete/' + id).then(function (response) {
+                        deferred.resolve(response.data);
+                    });
+                    return deferred.promise;
                 }
             };
         })
@@ -74,7 +72,6 @@ appTennisya
             return {
                 getClub: function () {
                     var deferred = $q.defer();
-
                     if ($localstorage.exist('clubs')) {
                         deferred.resolve($localstorage.getObject('clubs'));
                         return deferred.promise;
@@ -88,4 +85,5 @@ appTennisya
                     });
                 }
             };
-        });
+        })
+        ;

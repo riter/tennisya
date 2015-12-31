@@ -1,18 +1,18 @@
 <ion-view title="Disponibilidad">
 
     <ion-nav-buttons side="right">
-        <a class="button button-clear button-balanced btn-left" ng-click="showDelete()">{{ data.showDelete?'Cancelar':'Editar' }}</a>
+        <button class="button button-clear button-balanced btn-left" ng-click="data.showDelete = !data.showDelete; $event.stopPropagation();"> {{ data.showDelete?'Cancelar':'Editar' }}</button>
     </ion-nav-buttons>
 
     <ion-content>
         <ion-list show-delete="data.showDelete" ng-class="{'enable-pointer-events':data.showDelete}">
-            <ion-item  ng-hide="data.showDelete" class="item balanced" ng-click="newDisponibilidad()">
+            <ion-item  class="item balanced" ng-click="newDisponibilidad()">
                 Añadir disponibilidad...
             </ion-item>
 
             <ion-item item="item" ng-class="{'item-toggle':!data.showDelete,'active':!item.activo}" class="item item-remove-animate" ng-repeat="item in items" ng-click="data.showDelete?newDisponibilidad(item):''">
                 {{item.title}}
-                <p>{{(item.repetir != null && item.repetir != '') ? item.repetir+' -' : ''}} {{formatFecha(item.fechai,'h:mm')}} a {{formatFecha(item.fechaf,'h:mm')}} hs</p>
+                <p>{{(item.repetir != null && item.repetir != '') ? item.repetir : formatFecha(item.fecha, 'MM/DD')}} - {{formatFecha(item.fechai,'H:mm')}} a {{formatFecha(item.fechaf,'H:mm')}} hs</p>
                 <p>{{item.localidad}}, {{item.ciudad}}, {{item.pais}}</p>
 
                 <label ng-hide="data.showDelete" class="toggle toggle-balanced">

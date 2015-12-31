@@ -45,7 +45,8 @@ appTennisya.config(function ($stateProvider, $urlRouterProvider, $ionicConfigPro
 //    $ionicConfigProvider.platform.android.views.transition('android');
 
     $ionicConfigProvider.views.transition('ios');
-    $ionicConfigProvider.backButton.text('').previousTitleText(false);
+    $ionicConfigProvider.backButton.previousTitleText("");
+    $ionicConfigProvider.backButton.text("").previousTitleText(false);
 
     $stateProvider
             .state('tabs', {

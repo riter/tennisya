@@ -20,7 +20,7 @@ appTennisya.config(function($stateProvider) {
                 }
             })
             .state('tabs.disponibilidad.repetir', {
-                url: '/disponibilidad/repetir',
+                url: '/modal/repetir',
                 views: {
                     'navable-disponibilidad@': {
                         templateUrl: 'templates/disponibilidad/repetir.html'

@@ -169,7 +169,7 @@ appTennisya
             disponibilidadService.load();
 
             $scope.formatFecha = function (date, format) {
-                return moment(date).format(format);
+                return date===null?'':moment(date).format(format);
             };
 
             $scope.nextInfoJugador = function (jugador) {
