@@ -8,8 +8,8 @@ appTennisya
         .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaFacebook, $cordovaOauth, userService) {
 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
-                $ionicHistory.clearHistory();
-                $ionicHistory.clearCache();
+//                $ionicHistory.clearHistory();
+//                $ionicHistory.clearCache();
                 
                 $scope.user = {email:'',password:''}; 
             });

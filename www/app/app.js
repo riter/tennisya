@@ -19,7 +19,6 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory) {
         }
 
         $ionicPlatform.registerBackButtonAction(function (event) {
-            console.log($ionicHistory.currentStateName());
             if ($ionicHistory.currentStateName().indexOf("tabs") >=0 || $ionicHistory.currentStateName().indexOf("signin") >=0) {
                 ionic.Platform.exitApp();
             }else {

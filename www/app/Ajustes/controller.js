@@ -24,7 +24,7 @@ appTennisya
                         });
             };
         })
-        .controller('ProfileCtrl', function ($scope, $state, $ionicHistory, $localstorage, userService, extrasService, cameraAction) {
+        .controller('ProfileCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $localstorage, userService, extrasService, cameraAction) {
             $scope.profile = $localstorage.getObject('user');
     
             extrasService.getClub().then(function (response) {
@@ -35,7 +35,7 @@ appTennisya
                 userService.updateJugador(user).then(function (response){
                     $scope.profile = response;
                 },function (error){
-                     alert('Ha ocurrido un error al guardar. Por favor intetelo más tarde.');
+                    $cordovaDialogs.alert('Ha ocurrido un error al guardar. Por favor intetelo más tarde.', 'Perfil', 'Hecho');
                 });
                 $ionicHistory.goBack();
             };
