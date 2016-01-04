@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('ListJugadoresCtrl', function ($ionicScrollDelegate, $ionicHistory, $scope, $state, $ionicModal, $rootScope, userService, grupoService) {
+        .controller('ListJugadoresCtrl', function ($ionicScrollDelegate, $ionicHistory, $scope, $state, $interval, $ionicModal, $rootScope, userService, grupoService) {
             userService.resetPage();
             $scope.showGrupos = function () {
                 $scope.data.showGrupos = !$scope.data.showGrupos;
@@ -24,6 +24,7 @@ appTennisya
 
             $scope.$on('$ionicView.enter', function () {
                 $rootScope.grupoPartido = {id: null};
+                $scope.loadGrupos();
             });
 
             $scope.data = {
@@ -33,9 +34,15 @@ appTennisya
                 grupos: []
             };
 
-            grupoService.list().then(function (response) {
-                $scope.data.grupos = response;
+            $scope.loadGrupos = function () {
+                grupoService.list().then(function (response) {
+                    $scope.data.grupos = response;
+                });
+            };
+            $scope.$on('$ionicView.beforeLeave', function () {
+                $interval.cancel($scope.intervalReload);
             });
+            $scope.intervalReload = $interval($scope.loadGrupos, 30000);
 
             // create Grupos
             $scope.closeNewGrupo = function () {

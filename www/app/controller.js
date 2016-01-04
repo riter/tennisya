@@ -10,7 +10,7 @@ appTennisya
             });
             $scope.data = {
                 search: searchJugador.getJugadores(),
-                filter: {value :''},
+                filter: {value: ''},
                 tipo: $stateParams.tipo
             };
 
@@ -79,7 +79,7 @@ appTennisya
             disponibilidadService.load();
 
             $scope.formatFecha = function (date, format) {
-                return date===null?'':moment(date).format(format);
+                return date === null ? '' : moment(date).format(format);
             };
 
             $scope.nextInfoJugador = function (jugador) {
@@ -99,9 +99,8 @@ appTennisya
 
             $scope.userLogin = $localstorage.getObject('user');
         })
-        .controller('ListPartidosCtrl', function ($rootScope, $scope, $cordovaActionSheet, partidoService) {
-
-            $scope.$on('$ionicView.enter', function () {
+        .controller('ListPartidosCtrl', function ($rootScope, $scope, $interval, $cordovaActionSheet, partidoService) {
+            $scope.loadPartidos = function () {
                 partidoService.getPartidosT($scope.userLogin.id, $rootScope.grupoPartido.id).then(function (response) {
                     $scope.todos = response;
                 });
@@ -114,7 +113,13 @@ appTennisya
                 partidoService.getPartidosJ($scope.userLogin.id, $rootScope.grupoPartido.id).then(function (response) {
                     $scope.jugados = response;
                 });
+            };
+            $scope.$on('$ionicView.enter', $scope.loadPartidos);
+            $scope.$on('$ionicView.beforeLeave', function(){
+                 $interval.cancel($scope.intervalReload);
             });
+            $scope.intervalReload = $interval($scope.loadPartidos, 30000);
+
             $scope.confirmInvitacion = function (partido, jugadorpartido) {
                 if ($scope.userLogin.id == jugadorpartido.jugador.id) {
                     var options = {

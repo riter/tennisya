@@ -54,6 +54,7 @@ appTennisya
                 }
             };
             $scope.$on('$ionicView.enter', function () {
+                $scope.modalNewPartido._isShown = false;
                 $scope.openPatido();
 
                 if ($scope.invitar != null && searchJugador.getSelected() != null) {

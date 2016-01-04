@@ -1,104 +1,102 @@
 <ion-view view-title="{{grupoPartido.id !== null? 'Partidos: '+grupoPartido.title : 'Partidos' }}">
     <ion-nav-buttons side="right">
-        <button class="button button-icon" ui-sref="tabs.search-partidos">
-            <i class="ic-search"></i>
-        </button>
+        <!--        <button class="button button-icon" ui-sref="tabs.search-partidos"><i class="ic-search"></i></button>-->
     </ion-nav-buttons>
 
-     <!--<ion-content class="has-subheader">-->
-        <ion-tabs class="tabs-striped tabs-top tabs-background-light game">
+    <!--<ion-content class="has-subheader">-->
+    <ion-tabs class="tabs-striped tabs-top tabs-background-light game">
 
-            <ion-tab title="Todos">
-                <ion-nav-view name="todos-tab">
-                    <ion-content>
-                        <ion-list class="list-matches">
-                            <ion-item class="item-divider">
-                                Partidos dobles
-                                <label for="ty-orderby" class="match_orderby-label">
-                                    Mostrar
-                                </label>
-                                <input type="checkbox" id="ty-orderby" class="match_orderby-checkbox">
-                                <ul class="match_orderby-list">
-                                    <li>
-                                        <input type="radio" id="orderby-1" name="orderby">
-                                        <label for="orderby-1">Todos</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" id="orderby-2" name="orderby">
-                                        <label for="orderby-2">Esperando cancha</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" id="orderby-3" name="orderby">
-                                        <label for="orderby-3">Esperando confirmación</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" id="orderby-4" name="orderby">
-                                        <label for="orderby-4">Esperando respuesta</label>
-                                    </li>
-                                </ul>
-                            </ion-item>
-                            <ion-item ng-if="double.tipo == 'Dobles'" ng-repeat="double in todos">
-                                <div class="match">
-                                    <div class="match_detail">
-                                        <span class="match_date">{{formatPartidos(double.fechai)}}</span>
-                                        <span ng-class="{'match_place-confirm':double.confirmCancha, 'match_place-pending':!double.confirmCancha}" class="match_place">{{double.clubCancha.nombre}}</span>
-                                        <span class="match_time">{{formatFromNow(double.fechai)}}</span>
-                                    </div>
-                                    <div class="match_players">
-                                        <ul class="match-players" ng-if="double.jugadorpartido">
-                                            <li class="match-players_item" ng-repeat="jugadorpartido in double.jugadorpartido">
-                                                <a class="match-players_link">
-                                                    <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">
-                                                </a>
-                                            </li>
-
-                                            <li class="match-players_item" ng-repeat="item in getVacios(double)">
-                                                <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
+        <ion-tab title="Todos">
+            <ion-nav-view name="todos-tab">
+                <ion-content>
+                    <ion-list class="list-matches">
+                        <ion-item class="item-divider">
+                            Partidos dobles
+                            <label for="ty-orderby" class="match_orderby-label">
+                                Mostrar
+                            </label>
+                            <input type="checkbox" id="ty-orderby" class="match_orderby-checkbox">
+                            <ul class="match_orderby-list">
+                                <li>
+                                    <input type="radio" id="orderby-1" name="orderby">
+                                    <label for="orderby-1">Todos</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="orderby-2" name="orderby">
+                                    <label for="orderby-2">Esperando cancha</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="orderby-3" name="orderby">
+                                    <label for="orderby-3">Esperando confirmación</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="orderby-4" name="orderby">
+                                    <label for="orderby-4">Esperando respuesta</label>
+                                </li>
+                            </ul>
+                        </ion-item>
+                        <ion-item ng-if="double.tipo == 'Dobles'" ng-repeat="double in todos">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">{{formatPartidos(double.fechai)}}</span>
+                                    <span ng-class="{'match_place-confirm':double.confirmCancha, 'match_place-pending':!double.confirmCancha}" class="match_place">{{double.clubCancha.nombre}}</span>
+                                    <span class="match_time">{{formatFromNow(double.fechai)}}</span>
                                 </div>
-                            </ion-item>
+                                <div class="match_players">
+                                    <ul class="match-players" ng-if="double.jugadorpartido">
+                                        <li class="match-players_item" ng-repeat="jugadorpartido in double.jugadorpartido">
+                                            <a class="match-players_link">
+                                                <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">
+                                            </a>
+                                        </li>
 
-                            <ion-item class="item-divider">
-                                Partidos singles
-                            </ion-item>
-                            <ion-item ng-if="single.tipo == 'Singles'" ng-repeat="single in todos">
-                                <div class="match">
-                                    <div class="match_detail">
-                                        <span class="match_date">{{formatPartidos(single.fechai)}}</span>
-                                        <span ng-class="{'match_place-confirm':single.confirmCancha, 'match_place-pending':!single.confirmCancha}" class="match_place">{{single.clubCancha.nombre}}</span>
-                                        <span class="match_time">{{formatFromNow(single.fechai)}}</span>
-                                    </div>
-                                    <div class="match_players">
-                                        <ul class="match-players" ng-if="single.jugadorpartido">
-                                            <li class="match-players_item" ng-repeat="jugadorpartido in single.jugadorpartido">
-                                                <a class="match-players_link">
-                                                    <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">
-                                                </a>
-                                            </li>
-                                            <li class="match-players_item" ng-repeat="item in getVacios(single)"  ng-click="entrarPartido(single)">
-                                                <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                        <li class="match-players_item" ng-repeat="item in getVacios(double)">
+                                            <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
+                                        </li>
+
+                                    </ul>
                                 </div>
-                            </ion-item>
-                            <div style="height: 46px"></div>
-                        </ion-list>
-                    </ion-content>
-                </ion-nav-view>
-            </ion-tab>
+                            </div>
+                        </ion-item>
 
-            <ion-tab title="Personales">
-                <ion-nav-view name="personal-tab">
+                        <ion-item class="item-divider">
+                            Partidos singles
+                        </ion-item>
+                        <ion-item ng-if="single.tipo == 'Singles'" ng-repeat="single in todos">
+                            <div class="match">
+                                <div class="match_detail">
+                                    <span class="match_date">{{formatPartidos(single.fechai)}}</span>
+                                    <span ng-class="{'match_place-confirm':single.confirmCancha, 'match_place-pending':!single.confirmCancha}" class="match_place">{{single.clubCancha.nombre}}</span>
+                                    <span class="match_time">{{formatFromNow(single.fechai)}}</span>
+                                </div>
+                                <div class="match_players">
+                                    <ul class="match-players" ng-if="single.jugadorpartido">
+                                        <li class="match-players_item" ng-repeat="jugadorpartido in single.jugadorpartido">
+                                            <a class="match-players_link">
+                                                <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}" widht="36" height="36" ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}">
+                                            </a>
+                                        </li>
+                                        <li class="match-players_item" ng-repeat="item in getVacios(single)"  ng-click="entrarPartido(single)">
+                                            <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ion-item>
+                        <div style="height: 46px"></div>
+                    </ion-list>
+                </ion-content>
+            </ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Personales">
+            <ion-nav-view name="personal-tab">
                 <ion-content>
                     <ion-list class="list-matches">
                         <ion-item class="item-divider">
                             Esperando Cancha
                             <label for="ty-orderby-2" class="match_orderby-label">
-                                    Mostrar
+                                Mostrar
                             </label>
                             <input type="checkbox" id="ty-orderby-2" class="match_orderby-checkbox">
                             <ul class="match_orderby-list">
@@ -162,7 +160,7 @@
                         </ion-item>
 
                         <ion-item class="item-divider">Esperando Respuesta</ion-item>
-                        <ion-item ng-if="respuesta.confirmCancha && isCompleto(respuesta) && hasIvitado(respuesta) " ng-repeat="respuesta in personales">
+                        <ion-item ng-if="respuesta.confirmCancha && isCompleto(respuesta) && hasIvitado(respuesta)" ng-repeat="respuesta in personales">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">{{formatPartidos(respuesta.fechai)}}</span>
@@ -186,11 +184,11 @@
                     </ion-list>
                     <div style="height: 46px"></div>
                 </ion-content>
-                </ion-nav-view>
-            </ion-tab>
+            </ion-nav-view>
+        </ion-tab>
 
-            <ion-tab title="Confirmados">
-                <ion-nav-view name="confirmados-tab">
+        <ion-tab title="Confirmados">
+            <ion-nav-view name="confirmados-tab">
                 <ion-content>
                     <ion-list class="list-matches">
                         <ion-item ng-repeat="confirmado in confirmados">
@@ -215,11 +213,11 @@
                     </ion-list>
                     <div style="height: 46px"></div>
                 </ion-content>
-                </ion-nav-view>
-            </ion-tab>
+            </ion-nav-view>
+        </ion-tab>
 
-            <ion-tab title="Jugados">
-                <ion-nav-view name="jugados-tab">
+        <ion-tab title="Jugados">
+            <ion-nav-view name="jugados-tab">
                 <ion-content>
                     <ion-list class="list-matches">
                         <ion-item ng-repeat="jugado in jugados">
@@ -241,9 +239,9 @@
                     </ion-list>
                     <div style="height: 46px"></div>
                 </ion-content>
-                </ion-nav-view>
-            </ion-tab>
+            </ion-nav-view>
+        </ion-tab>
 
-        </ion-tabs>
-     <!--</ion-content>-->
+    </ion-tabs>
+    <!--</ion-content>-->
 </ion-view>
