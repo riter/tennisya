@@ -180,7 +180,9 @@ button, input, select, textarea {
 .button-logout-2 {
   background-color: #fff;
   color: #ef473a;
-  width: 100%; }
+  width: 100%;
+  border-right: 0;
+  border-left: 0; }
 
 .ty-list .item {
   font-size: 14px;
@@ -693,6 +695,48 @@ button, input, select, textarea {
     line-height: 13px; }
   .match_players {
     width: 100%; }
+  .match_orderby-label {
+    font-family: 'roboto-bold';
+    line-height: 24px;
+    float: right; }
+    .match_orderby-label:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 4.5px 0 4.5px;
+      border-color: #000000 transparent transparent transparent; }
+  .match_orderby-checkbox {
+    display: none; }
+    .match_orderby-checkbox:checked + .match_orderby-list {
+      display: block; }
+  .match_orderby-list {
+    background-color: #e0e0e0;
+    padding: 0 0 0 5px;
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    top: 100%;
+    display: none; }
+    .match_orderby-list li {
+      border-bottom: 1px solid #fff; }
+      .match_orderby-list li:last-child {
+        border-bottom: 0; }
+      .match_orderby-list li label {
+        font-family: "roboto-regular";
+        color: #403f3f;
+        font-size: 11px;
+        line-height: 1.3;
+        display: block;
+        text-decoration: none;
+        padding: 5px 29px 5px 10px; }
+      .match_orderby-list li input[type="radio"] {
+        display: none; }
+        .match_orderby-list li input[type="radio"]:checked + label {
+          background: transparent url("../img/checked.png") right center no-repeat;
+          background-size: 21px; }
 
 .list-matches .item .item-content {
   padding: 10px; }
@@ -702,7 +746,9 @@ button, input, select, textarea {
   color: #403f3f;
   font-size: 12px;
   padding: 0px 10px;
-  min-height: 23px; }
+  height: 25px;
+  overflow: initial;
+  z-index: inherit; }
 
 .grayscale {
   -webkit-filter: grayscale(1);
@@ -784,6 +830,7 @@ button, input, select, textarea {
 .ty-calendar_title {
   color: #149d03;
   font-size: 14px;
+  line-height: 1.2;
   font-weight: bold;
   margin: 0;
   padding: 7px 18px; }
@@ -877,5 +924,8 @@ button, input, select, textarea {
     left: -1px;
     height: 4px;
     width: 4px; }
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.has-tabs-top {
+  top: 102px; }
 
 /*# sourceMappingURL=style.css.map */

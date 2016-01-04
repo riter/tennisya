@@ -44,6 +44,60 @@
 		width: 100%;
 		// @include center(v);
 	}
+	&_orderby-label{
+		font-family: 'roboto-bold';
+		line-height: 24px;
+	    float: right;
+		&:after{
+			content: "";
+			display: inline-block;
+			vertical-align: middle;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 8px 4.5px 0 4.5px;
+			border-color: #000000 transparent transparent transparent;
+		}
+	}
+	&_orderby-checkbox{
+		display: none;
+		&:checked{
+			+ .match_orderby-list{
+				display: block;
+			}
+		}
+	}
+	&_orderby-list{
+		background-color: #e0e0e0;
+		padding: 0 0 0 5px;
+		position: absolute;
+		z-index: 100;
+		right: 0;
+		top: 100%;
+		display: none;
+		li{
+			border-bottom: 1px solid #fff;
+			&:last-child{
+				border-bottom: 0;
+			}
+			label{
+				@include font(rr, 11px, #403f3f);
+				line-height: 1.3;
+				display: block;
+				text-decoration: none;
+				padding: 5px 29px 5px 10px;
+			}
+			input[type="radio"]{
+				display: none;
+				&:checked{
+					+ label{
+						background:transparent url('../img/checked.png') right center no-repeat;
+						background-size: 21px;
+					}
+				}
+			}
+		}
+	}
 }
 
 .list-matches{
@@ -55,13 +109,17 @@
 			background-color: #fff;
 			@include font(rb,12px,#403f3f);
 			padding: 0px 10px;
-			min-height: 23px;
+			height: 25px;
+			overflow: initial;
+			z-index: inherit;
 		}
 	}
 }
 .grayscale{
 	filter: grayscale(1);
 }
+
+
 .has-tabs-top{
 	// top: 78px;
 }
