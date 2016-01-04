@@ -25,6 +25,11 @@ appTennisya.config(function($stateProvider) {
                     }
                 }
             })
+//           modal inicion que esta dentro vel view player
+//             'navable-grupo@': {
+//                        templateUrl: 'templates/grupo/create-group.html',
+//                        controller: 'JugadoresSearchCtrl'
+//                    }
             .state('tabs.player.add_jugador', {
                 url: '/players/modal/group',
                 views: {

@@ -62,7 +62,7 @@ appTennisya
                                 .then(function (result) {
                                     // Success!
                                 }, function (err) {
-                                    alert(JSON.stringify(err));
+                                    //alert(JSON.stringify(err));
                                 });
                         break;
                     case 'mail':
@@ -71,7 +71,7 @@ appTennisya
                                 .then(function (result) {
                                     // Success!
                                 }, function (err) {
-                                    alert(JSON.stringify(err));
+                                    //alert(JSON.stringify(err));
                                 });
                         break;
                     case 'facebook':
@@ -80,7 +80,7 @@ appTennisya
                                 .then(function (result) {
                                     // Success!
                                 }, function (err) {
-                                    alert(JSON.stringify(err));
+                                    //alert(JSON.stringify(err));
                                 });
                         break;
                 }

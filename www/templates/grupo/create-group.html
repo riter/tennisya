@@ -1,22 +1,22 @@
 <ion-view title="Crear grupo">
 
     <ion-header-bar class="bar-stable">
-        <button class="button button-clear btn-left" ng-click="modal.hide()"> Cancelar </button>
+        <button class="button button-clear btn-left" ng-click="closeNewGrupo()"> Cancelar </button>
         <h1 class="title title-header">Crear grupo</h1>
-        <button class="button button-clear btn-left" ng-click="onSig('tabs.player.add_jugador')" ng-disabled="data.title.length == 0"> Sig. </button>
+        <button class="button button-clear btn-left" ui-sref="tabs.player.add_jugador" ng-disabled="new_group.title.length == 0"> Sig. </button>
     </ion-header-bar>
 
-    <ion-content class="has-header">
+    <ion-content class="has-header" scroll="false">
         <ion-list class="players-list">
 
             <ion-item class="item item-avatar item-text" type="item-text-wrap">
-                <img ng-src="{{data.image?data.image:'assets/img/group.png' }}" ng-click="openCamera()">
+                <img ng-src="{{new_group.image?new_group.image:'assets/img/group.png' }}" ng-click="openCamera()">
                 <span>Ingresa un asunto del grupo y un icono del grupo opcional</span>
             </ion-item>
 
             <label class="item item-input item-cont">
-                <input type="text" ng-model="data.title" placeholder="Asunto del grupo" autofocus maxlength="25">
-                <span class="item-note">{{25 - data.title.length}}</span>
+                <input type="text" ng-model="new_group.title" placeholder="Asunto del grupo" auto-focus maxlength="25">
+                <span class="item-note">{{25 - new_group.title.length}}</span>
             </label>
 
         </ion-list>

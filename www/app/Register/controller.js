@@ -5,41 +5,44 @@
  */
 
 appTennisya
-        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaFacebook, $cordovaOauth, userService) {
+        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaOauth, userService) {
 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
-//                $ionicHistory.clearHistory();
-//                $ionicHistory.clearCache();
-                
-                $scope.user = {email:'',password:''}; 
+                $scope.user = {email: '', password: ''};
+            });
+            $scope.$on('$ionicView.afterEnter', function (scopes, states) {
+                $ionicHistory.clearHistory();
+                $ionicHistory.clearCache();
             });
 
             $scope.signIn = function (user) {
 
-                userService.loginJugador(user, function () {
+                userService.loginJugador(user).then(function () {
                     $state.go('tabs.player');
                 }, function (error) {
-                    alert(error.error);
+                    var msg = typeof (error.error) !== 'undefined' ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
+                    $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                 });
             };
 
             $scope.signInFacebook = function () {
+                var msg = 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
                 $cordovaFacebook.login(["email"])
                         .then(function (success) {
                             $cordovaFacebook.api("me?fields=id,name,email", ["email"])
                                     .then(function (success) {
 
-                                        userService.facebookJugador({email: success.email}, function () {
+                                        userService.facebookJugador({email: success.email}).then(function () {
                                             $state.go('tabs.player');
                                         }, function (error) {
-                                            alert(error.error);
+                                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                                         });
 
                                     }, function (error) {
-                                        alert(JSON.stringify(error));
+                                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                                     });
                         }, function (error) {
-                            alert(JSON.stringify(error));
+                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                         });
             };
 

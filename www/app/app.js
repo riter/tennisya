@@ -19,9 +19,9 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory) {
         }
 
         $ionicPlatform.registerBackButtonAction(function (event) {
-            if ($ionicHistory.currentStateName().indexOf("tabs") >=0 || $ionicHistory.currentStateName().indexOf("signin") >=0) {
+            if ($ionicHistory.currentStateName().indexOf("tabs") >= 0 || $ionicHistory.currentStateName().indexOf("signin") >= 0) {
                 ionic.Platform.exitApp();
-            }else {
+            } else {
                 $ionicHistory.goBack();
             }
         }, 100);
@@ -54,34 +54,12 @@ appTennisya.config(function ($stateProvider, $urlRouterProvider, $ionicConfigPro
                 templateUrl: "templates/tabs.html",
                 controller: 'TabsCtrl'
             })
-            .state('tabs.player', {
-                url: "/players",
-                views: {
-                    'player-tab': {
-                        templateUrl: "templates/jugadores/players.html",
-                        controller: 'ListJugadoresCtrl'
-                    },
-                    'navable-grupo@': {
-                        templateUrl: 'templates/grupo/create-group.html',
-                        controller: 'JugadoresSearchCtrl'
-                    }
-                }
-            })
             .state('tabs.search-jugador-grupo', {
                 url: "/search-jugador-grupo/:tipo",
                 views: {
                     'player-tab': {
                         templateUrl: "templates/search/search-jugador-grupo.html",
                         controller: 'searchJugadorGrupoCtrl'
-                    }
-                }
-            })
-            .state('tabs.player-info', {
-                url: "/players-info/:id",
-                views: {
-                    'player-tab': {
-                        templateUrl: "templates/jugadores/info.html",
-                        controller: 'infoJugadorCtrl'
                     }
                 }
             })
