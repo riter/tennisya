@@ -45,6 +45,7 @@
 .ion-remove-list:before{
     font-size: 25px !important;
 }
+
 @import "modules/button";
 @import "modules/list";
 @import "modules/select";
@@ -62,3 +63,10 @@
 @import "modules/info";
 @import "modules/item-playerinfo";
 @import "modules/calendar";
+
+
+
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.has-tabs-top{
+    top: 102px;
+}

@@ -14,6 +14,28 @@
                         <ion-list class="list-matches">
                             <ion-item class="item-divider">
                                 Partidos dobles
+                                <label for="ty-orderby" class="match_orderby-label">
+                                    Mostrar
+                                </label>
+                                <input type="checkbox" id="ty-orderby" class="match_orderby-checkbox">
+                                <ul class="match_orderby-list">
+                                    <li>
+                                        <input type="radio" id="orderby-1" name="orderby">
+                                        <label for="orderby-1">Todos</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="orderby-2" name="orderby">
+                                        <label for="orderby-2">Esperando cancha</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="orderby-3" name="orderby">
+                                        <label for="orderby-3">Esperando confirmación</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="orderby-4" name="orderby">
+                                        <label for="orderby-4">Esperando respuesta</label>
+                                    </li>
+                                </ul>
                             </ion-item>
                             <ion-item ng-if="double.tipo == 'Dobles'" ng-repeat="double in todos">
                                 <div class="match">
@@ -73,7 +95,31 @@
                 <ion-nav-view name="personal-tab">
                 <ion-content>
                     <ion-list class="list-matches">
-                        <ion-item class="item-divider">Esperando Cancha</ion-item>
+                        <ion-item class="item-divider">
+                            Esperando Cancha
+                            <label for="ty-orderby-2" class="match_orderby-label">
+                                    Mostrar
+                            </label>
+                            <input type="checkbox" id="ty-orderby-2" class="match_orderby-checkbox">
+                            <ul class="match_orderby-list">
+                                <li>
+                                    <input type="radio" id="orderby-2-1" name="orderby">
+                                    <label for="orderby-2-1">Todos</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="orderby-2-2" name="orderby">
+                                    <label for="orderby-2-2">Esperando cancha</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="orderby-2-3" name="orderby">
+                                    <label for="orderby-2-3">Esperando confirmación</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="orderby-2-4" name="orderby">
+                                    <label for="orderby-2-4">Esperando respuesta</label>
+                                </li>
+                            </ul>
+                        </ion-item>
                         <ion-item ng-if="esperando.confirmCancha == false" ng-repeat="esperando in personales">
                             <div class="match">
                                 <div class="match_detail">
