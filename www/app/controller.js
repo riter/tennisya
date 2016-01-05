@@ -114,11 +114,13 @@ appTennisya
                     $scope.jugados = response;
                 });
             };
-            $scope.$on('$ionicView.enter', $scope.loadPartidos);
+            $scope.$on('$ionicView.afterEnter', function(){
+                $scope.intervalReload = $interval($scope.loadPartidos, 30000);
+            });
             $scope.$on('$ionicView.beforeLeave', function(){
                  $interval.cancel($scope.intervalReload);
             });
-            $scope.intervalReload = $interval($scope.loadPartidos, 30000);
+            $scope.loadPartidos();
 
             $scope.confirmInvitacion = function (partido, jugadorpartido) {
                 if ($scope.userLogin.id == jugadorpartido.jugador.id) {

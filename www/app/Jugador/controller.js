@@ -22,11 +22,6 @@ appTennisya
                 });
             };
 
-            $scope.$on('$ionicView.enter', function () {
-                $rootScope.grupoPartido = {id: null};
-                $scope.loadGrupos();
-            });
-
             $scope.data = {
                 showGrupos: false,
                 jugadores: [],
@@ -35,21 +30,26 @@ appTennisya
             };
 
             $scope.loadGrupos = function () {
+                console.log(moment().format('h:m:s'));
                 grupoService.list().then(function (response) {
                     $scope.data.grupos = response;
                 });
             };
+            
+            $scope.$on('$ionicView.afterEnter', function () {
+                $rootScope.grupoPartido = {id: null};
+                $scope.intervalReload = $interval($scope.loadGrupos, 30000);
+            });
             $scope.$on('$ionicView.beforeLeave', function () {
                 $interval.cancel($scope.intervalReload);
             });
-            $scope.intervalReload = $interval($scope.loadGrupos, 30000);
+            $scope.loadGrupos();
 
             // create Grupos
             $scope.closeNewGrupo = function () {
-                $scope.modalNewGroup.hide();
-                $scope.modalNewGroup.remove();
                 $ionicHistory.nextViewOptions({disableAnimate: true});
                 $state.go('tabs.player');
+                $scope.modalNewGroup.remove();
             };
             $scope.openNewGrupo = function () {
                 $ionicModal.fromTemplateUrl('templates/grupo/navable-grupo.html', {
@@ -63,7 +63,6 @@ appTennisya
             };
 
 
-
             $rootScope.$on('updategroup', function (event, args) {
                 var index = -1;
                 angular.forEach($scope.data.grupos, function (value, key) {
@@ -72,9 +71,6 @@ appTennisya
                 });
 
                 switch (args.action) {
-                    case 'new':
-                        $scope.data.grupos.unshift(args.grupo);
-                        break;
                     case 'update':
                         if (index > -1)
                             angular.merge($scope.data.grupos[index], args.grupo);
@@ -88,7 +84,7 @@ appTennisya
 
             $scope.nextGrupo = function (grupo) {
                 grupoService.setModel(grupo);
-                $state.go('tabs.groups', {id: grupo.id});
+                $state.go('tabs.group', {id: grupo.id});
             };
 
         })

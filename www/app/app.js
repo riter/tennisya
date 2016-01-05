@@ -43,7 +43,7 @@ appTennisya.config(function ($stateProvider, $urlRouterProvider, $ionicConfigPro
 //    $ionicConfigProvider.platform.ios.views.transition('ios');
 //    $ionicConfigProvider.platform.android.views.transition('android');
 
-    $ionicConfigProvider.views.transition('ios');
+//    $ionicConfigProvider.views.transition('ios');
     $ionicConfigProvider.backButton.previousTitleText("");
     $ionicConfigProvider.backButton.text("").previousTitleText(false);
 

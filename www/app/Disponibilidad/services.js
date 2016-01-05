@@ -68,22 +68,4 @@ appTennisya
                 }
             };
         })
-        .factory('extrasService', function ($q, $http, $localstorage) {
-            return {
-                getClub: function () {
-                    var deferred = $q.defer();
-                    if ($localstorage.exist('clubs')) {
-                        deferred.resolve($localstorage.getObject('clubs'));
-                        return deferred.promise;
-                    } else
-                        return this.loadClubs();
-                },
-                loadClubs: function () {
-                    return $http.get(api + 'club/list').then(function (response) {
-                        $localstorage.setObject('clubs', response.data);
-                        return response.data;
-                    });
-                }
-            };
-        })
         ;

@@ -66,7 +66,6 @@ appTennisya
                 });
             };
             $scope.closeNewDisponibilidad = function () {
-                $scope.modalNewDisp.hide();
                 $scope.modalNewDisp.remove();
             };
             $scope.parseDias = function (json) {

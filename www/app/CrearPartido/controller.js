@@ -5,80 +5,77 @@
  */
 
 appTennisya
-        .controller('crearPartidoCtrl', function ($rootScope, $state, $scope, $ionicHistory, $ionicModal, $localstorage, partidoService, userService, extrasService, searchJugador) {
-
-            $ionicModal.fromTemplateUrl('templates/crearPartido/navable-partido.html', {
-                animation: 'slide-in-up',
-                scope: $scope
-            }).then(function (modal) {
-                $scope.modalNewPartido = modal;
-
-            });
-            $scope.openPatido = function () {
-                if (!$scope.modalNewPartido._isShown) {
-                    $scope.invitar = null;
-                    $scope.partido = {reservada: true, tipo: 'Singles', jugador1: $localstorage.getObject('user'), grupo: $rootScope.grupoPartido.id};
-
-                    if ($rootScope.disponibilidadPartido != null) {
-                        console.log($rootScope.disponibilidadPartido);
-                        $scope.partido.fecha = moment($rootScope.disponibilidadPartido.fecha).toDate();
-                        $scope.partido.horaI = moment($rootScope.disponibilidadPartido.fechaI).toDate();
-                        $scope.partido.horaF = moment($rootScope.disponibilidadPartido.fechaF).toDate();
-                        $scope.partido.jugador2 = $rootScope.disponibilidadPartido.jugador;
-                    }
-                    $scope.modalNewPartido.show();
-                }
-            };
-            $scope.onCreate = function (model) {
-                console.log(model);
-                partidoService.newPartido(model).then(function (response) {
-                    $scope.modalNewPartido.hide();
-                    $ionicHistory.goBack();
-                });
-            };
-
+        .controller('crearPartidoCtrl', function ($rootScope, $state, $scope, $ionicHistory, $ionicModal, $localstorage, partidoService, extrasService, searchJugador) {
             extrasService.getClub().then(function (response) {
                 $scope.clubs = response;
             });
 
-            $scope.formatLYMD = function (date) {
-                return moment(date).format('YYYY/MM/DD');
+            $scope.$on('$ionicView.afterEnter', function (scopes, states) {
+                if ($scope.modalNewPartido === null)
+                    $scope.openPatido();
+            });
+
+            //view 1 Crear Partido llenar datos de formulario
+            $scope.modalNewPartido = null;
+            $scope.openPatido = function () {
+                $scope.partido = {reservada: true, tipo: 'Singles', jugador1: $localstorage.getObject('user'), grupo: $rootScope.grupoPartido.id};
+                $scope.invitar = null;
+                $scope.withDisponibilidad();
+
+                $ionicModal.fromTemplateUrl('templates/crearPartido/navable-partido.html', {
+                    animation: 'slide-in-up',
+                    scope: $scope
+                }).then(function (modal) {
+                    $scope.modalNewPartido = modal;
+                    $scope.modalNewPartido.show();
+                });
+
             };
-            $scope.formatHHMM = function (time) {
-                return moment(time).format('h:mm a');
+            $scope.onCancelar = function () {
+                $ionicHistory.goBack();
+                $scope.modalNewPartido.remove().then(function () {
+                    $scope.modalNewPartido = null;
+                });
             };
+            
+            $scope.onCreate = function (model) {
+                partidoService.newPartido(model).then(function (response) {
+                    $scope.onCancelar();
+                });
+            };
+            
+            $scope.withDisponibilidad = function () {
+                if ($rootScope.disponibilidadPartido) {
+                    $scope.partido.fecha = moment($rootScope.disponibilidadPartido.fecha).toDate();
+                    $scope.partido.horaI = moment($rootScope.disponibilidadPartido.fechaI).toDate();
+                    $scope.partido.horaF = moment($rootScope.disponibilidadPartido.fechaF).toDate();
+                    $scope.partido.jugador2 = $rootScope.disponibilidadPartido.jugador;
+                }
+            };
+
             $scope.changeTipo = function (value) {
-                if (value == 'Singles') {
+                if (value === 'Singles') {
                     $scope.partido.jugador3 = null;
                     $scope.partido.jugador4 = null;
                 }
-            };
-            $scope.$on('$ionicView.enter', function () {
-                $scope.modalNewPartido._isShown = false;
-                $scope.openPatido();
-
-                if ($scope.invitar != null && searchJugador.getSelected() != null) {
-                    $scope.partido[$scope.invitar] = searchJugador.getSelected();
-                    $scope.invitar = null;
-                    searchJugador.setSelected(null);
-                }
-            });
-
-            $scope.onCancelar = function () {
-                $ionicHistory.goBack();
-                $scope.modalNewPartido.hide();
             };
 
             $scope.search = function (jugador) {
                 $scope.invitar = jugador;
                 $state.go('tabs.crear-partidos.search');
             };
-        })
-        .controller('searchJugadorCtrl', function ($scope, $ionicHistory, searchJugador) {
+            
+            //view 2 Añadir Jugador
+            $scope.isAdd = function (jugador) {
+                return $scope.partido.jugador1 === jugador || $scope.partido.jugador2 === jugador || $scope.partido.jugador3 === jugador || $scope.partido.jugador4 === jugador;
+            };
+            $scope.selected = function (jugador) {
+                $scope.partido[$scope.invitar] = jugador;
+                $scope.invitar = null;
+            };
             $scope.data = {
                 search: searchJugador.getJugadores()
             };
-
             $scope.searchJugador = function (query) {
                 var ids = [];
                 angular.forEach($scope.data.search, function (value, key) {
@@ -86,9 +83,5 @@ appTennisya
                 });
                 return searchJugador.searchJugador(query, ids);
             };
-
-            $scope.selected = function (jugador) {
-                searchJugador.setSelected(jugador);
-            }
         })
         ;

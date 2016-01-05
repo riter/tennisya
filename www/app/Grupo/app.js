@@ -7,12 +7,12 @@
 appTennisya.config(function($stateProvider) {
 
         $stateProvider
-            .state('tabs.groups', {
-                url: '/groups/:id',
+            .state('tabs.group', {
+                url: '/group/:id',
                 views:{
                     'player-tab':{
-                        templateUrl: "templates/grupo/groups.html",
-                        controller: 'groupsCtrl'
+                        templateUrl: "templates/grupo/group.html",
+                        controller: 'groupCtrl'
                     }
                 }
             })
@@ -25,7 +25,7 @@ appTennisya.config(function($stateProvider) {
                     }
                 }
             })
-//           modal inicion que esta dentro vel view player
+//           view inicio create grupo que esta dentro vel view player
 //             'navable-grupo@': {
 //                        templateUrl: 'templates/grupo/create-group.html',
 //                        controller: 'JugadoresSearchCtrl'

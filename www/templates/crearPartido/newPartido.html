@@ -1,4 +1,4 @@
-<ion-modal-view class=" new-match">
+<ion-view class=" new-match">
     <form name="form" novalidate>
         <ion-header-bar class="bar-stable">
             <button class="button button-clear btn-cgreen" ng-click="onCancelar()"> Cancelar </button>
@@ -33,20 +33,20 @@
                 <div class="ty-list-group">
                     <label class="item new-input-date">
                         Fecha
-                        <input type="date" ng-model="partido.fecha">
-                        <span class="item-note">{{formatLYMD(partido.fecha)}}</span>
+                        <input type="date" ng-model="partido.fecha" required>
+                        <span class="item-note">{{partido.fecha| date:'yyyy/MM/dd' }}</span>
                     </label>
 
                     <label class="item new-input-date">
                         Empieza
-                        <input type="time" ng-model="partido.horaI">
-                        <span class="item-note">{{formatHHMM(partido.horaI)}}</span>
+                        <input type="time" ng-model="partido.horaI" required>
+                        <span class="item-note">{{partido.horaI| date:'h:mm a'| lowercase }}</span>
                     </label>
 
                     <label class="item new-input-date">
                         Termina
-                        <input type="time" ng-model="partido.horaF">
-                        <span class="item-note">{{formatHHMM(partido.horaF)}}</span>
+                        <input type="time" ng-model="partido.horaF" required>
+                        <span class="item-note">{{partido.horaF| date:'h:mm a'| lowercase }}</span>
                     </label>
                 </div>
 
@@ -54,37 +54,37 @@
 
                 <div class="ty-list-group">
 
-                    <a class="item gamer">
+                    <div class="item gamer">
                         Jugador 1
                         <span class="item-note">
                             {{partido.jugador1?partido.jugador1.name:'Invitar*>'}}
                             <input type="hidden" ng-model="partido.jugador1"/>
                         </span>
-                    </a>
+                    </div>
 
-                    <a class="item gamer" ng-click="search('jugador2')">
+                    <div class="item gamer" ng-click="search('jugador2')">
                         Jugador 2
                         <span class="item-note">
                             {{partido.jugador2?partido.jugador2.name:'Invitar*>'}}
                             <input type="hidden" ng-model="partido.jugador2" />
                         </span>
-                    </a>
+                    </div>
 
-                    <a class="item gamer" ng-click="search('jugador3')" ng-show="partido.tipo == 'Dobles'">
+                    <div class="item gamer" ng-click="search('jugador3')" ng-show="partido.tipo == 'Dobles'">
                         Jugador 3
                         <span class="item-note">
                             {{partido.jugador3?partido.jugador3.name:'Invitar*>'}}
                             <input type="hidden" ng-model="partido.jugador3"/>
                         </span>
-                    </a>
+                    </div>
 
-                    <a class="item gamer" ng-click="search('jugador4')" ng-show="partido.tipo == 'Dobles'">
+                    <div class="item gamer" ng-click="search('jugador4')" ng-show="partido.tipo == 'Dobles'">
                         Jugador 4
                         <span class="item-note">
                             {{partido.jugador4?partido.jugador4.name:'Invitar*>'}}
                             <input type="hidden" ng-model="partido.jugador4"/>
                         </span>
-                    </a>
+                    </div>
                 </div>
 
             </ion-list>
@@ -110,4 +110,4 @@
 
         </ion-content>
     </form>
-</ion-modal-view>
+</ion-view>

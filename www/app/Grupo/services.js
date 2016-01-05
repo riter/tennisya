@@ -94,10 +94,10 @@ appTennisya
                 updateJugador: function (id, jugador) {
                     return $http.post(api + 'group/update/' + id, {campo: 'jugador', jugador: jugador.id});
                 },
-                updateTitle: function (id) {
-                    return $http.post(api + 'group/update/' + id, {campo: 'title', title: data.title});
+                updateTitle: function (id,title) {
+                    return $http.post(api + 'group/update/' + id, {campo: 'title', title: title});
                 },
-                updateImage: function (id) {
+                updateImage: function (id, imageURI) {
                     var deferred = $q.defer();
 
                     var option = {
@@ -107,7 +107,7 @@ appTennisya
                         chunkedMode: false,
                         params: {campo: 'image'}
                     };
-                    $cordovaFileTransfer.upload(api + 'group/update/' + id, data.image, option)
+                    $cordovaFileTransfer.upload(api + 'group/update/' + id, imageURI, option)
                             .then(function (result) {
                                 deferred.resolve(JSON.parse(result.response));
                                 //return callback({data: JSON.parse(result.response)});
@@ -122,7 +122,7 @@ appTennisya
                 },
                 getJugadores: function (id) {
                     return $http.get(api + 'group/list_jugadores/' + id).then(function (response) {
-                        data = response.data;
+                        angular.merge(data, response.data);
                         return data;
                     });
                 },
