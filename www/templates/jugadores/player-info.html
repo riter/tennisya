@@ -48,19 +48,19 @@
 
                             <!--<span class="ty-calendar_time" style="top:50px"></span>-->
 
-                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha1[1])" ng-style="{top: (((formatFecha(disp.fechaI,'H')|number)-7)*40)+'px',height:(((formatFecha(disp.fechaF,'H')|number)-(formatFecha(disp.fechaI,'H')|number))*40)+'px' }" ng-repeat="disp in getDispByFecha(item.fecha1[1])">
+                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha1[1])" ng-style="getTopHeigth(disp.fechaI,disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha1[1])">
                                 <span>Disponible</span>
                             </div>
                             <div class="ty-calendar_col" ng-repeat="hour in data.horas"></div>
                         </div>
                         <div class="col-25" style="position: relative">
-                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha2[1])" ng-style="{top: (((formatFecha(disp.fechaI,'H')|number)-7)*40)+'px',height:(((formatFecha(disp.fechaF,'H')|number)-(formatFecha(disp.fechaI,'H')|number))*40)+'px' }" ng-repeat="disp in getDispByFecha(item.fecha2[1])">
+                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha2[1])" ng-style="getTopHeigth(disp.fechaI,disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha2[1])">
                                 <span>Disponible</span>
                             </div>
                             <div class="ty-calendar_col" ng-repeat="hour in data.horas"></div>
                         </div>
                         <div class="col-25" style="position: relative">
-                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha3[1])" ng-style="{top: (((formatFecha(disp.fechaI,'H')|number)-7)*40)+'px',height:(((formatFecha(disp.fechaF,'H')|number)-(formatFecha(disp.fechaI,'H')|number))*40)+'px' }" ng-repeat="disp in getDispByFecha(item.fecha3[1])">
+                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha3[1])" ng-style="getTopHeigth(disp.fechaI,disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha3[1])">
                                 <span>Disponible</span>
                             </div>
                             <div class="ty-calendar_col" ng-repeat="hour in data.horas"></div>

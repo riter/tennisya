@@ -35,7 +35,7 @@ appTennisya
                     $scope.data.grupos = response;
                 });
             };
-            
+
             $scope.$on('$ionicView.afterEnter', function () {
                 $rootScope.grupoPartido = {id: null};
                 $scope.intervalReload = $interval($scope.loadGrupos, 30000);
@@ -89,9 +89,11 @@ appTennisya
 
         })
         .controller('infoJugadorCtrl', function ($rootScope, $scope, $state, $stateParams, $ionicSlideBoxDelegate, userService, disponibilidadService) {
+            $scope.startHour = 6;
+            $scope.endHour = 23, $scope.alto = 40;//alto en px 
             $scope.getHours = function () {
-                var startHour = 6, endHour = 23, tmp = [];
-                for (var i = startHour - 1; i <= endHour - 1; i++)
+                var tmp = [];
+                for (var i = $scope.startHour - 1; i <= $scope.endHour - 1; i++)
                     tmp.push(((i % 12) + 1) + (i < 12 ? ' AM' : ' PM'));
                 return tmp;
             };
@@ -174,6 +176,16 @@ appTennisya
                     $scope.data.fecha = moment($scope.data.fecha).add(3, 'days').toDate();
                     $ionicSlideBoxDelegate.update();
                 }
+            };
+
+            $scope.getTopHeigth = function (fechaI, fechaF) {
+                var minTop = ((parseInt(moment(fechaI).format('H')) - $scope.startHour) * 60) + parseInt(moment(fechaI).format('m'));
+                var top = (minTop * $scope.alto) / 60;
+
+                var minHeight = ((parseInt(moment(fechaF).format('H')) - $scope.startHour) * 60) + parseInt(moment(fechaF).format('m'));
+                var height = ((minHeight * $scope.alto) / 60) - top;
+                
+                return {top: top + 'px', height: height+'px'};
             };
         })
         ;
