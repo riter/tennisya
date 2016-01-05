@@ -35,14 +35,14 @@ appTennisya
                                         userService.facebookJugador({email: success.email}).then(function () {
                                             $state.go('tabs.player');
                                         }, function (error) {
-                                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                                            $cordovaDialogs.alert(JSON.stringify(error), 'Inicio de sesion', 'Hecho');
                                         });
 
                                     }, function (error) {
-                                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                                        $cordovaDialogs.alert(JSON.stringify(error), 'Inicio de sesion', 'Hecho');
                                     });
                         }, function (error) {
-                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                            $cordovaDialogs.alert(JSON.stringify(error), 'Inicio de sesion', 'Hecho');
                         });
             };
 
