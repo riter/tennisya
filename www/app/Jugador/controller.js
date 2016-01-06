@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('ListJugadoresCtrl', function ($ionicScrollDelegate, $ionicHistory, $scope, $state, $interval, $ionicModal, $rootScope, userService, grupoService) {
+        .controller('ListJugadoresCtrl', function ($ionicScrollDelegate, $ionicHistory, $scope, $state, $timeout, $ionicModal, $rootScope, userService, grupoService) {
             userService.resetPage();
             $scope.showGrupos = function () {
                 $scope.data.showGrupos = !$scope.data.showGrupos;
@@ -29,21 +29,19 @@ appTennisya
                 grupos: []
             };
 
-            $scope.loadGrupos = function () {
-                console.log(moment().format('h:m:s'));
+            var loadGrupos = function () {
                 grupoService.list().then(function (response) {
                     $scope.data.grupos = response;
+                    $scope.intervalReload = $timeout(loadGrupos, 30000);
                 });
             };
-
             $scope.$on('$ionicView.afterEnter', function () {
                 $rootScope.grupoPartido = {id: null};
-                $scope.intervalReload = $interval($scope.loadGrupos, 30000);
+                loadGrupos();
             });
             $scope.$on('$ionicView.beforeLeave', function () {
-                $interval.cancel($scope.intervalReload);
+                $timeout.cancel($scope.intervalReload);
             });
-            $scope.loadGrupos();
 
             // create Grupos
             $scope.closeNewGrupo = function () {
@@ -54,14 +52,14 @@ appTennisya
             $scope.openNewGrupo = function () {
                 $ionicModal.fromTemplateUrl('templates/grupo/navable-grupo.html', {
                     scope: $scope,
-                    animation: 'slide-in-up'
+                    animation: 'slide-in-up',
+                    focusFirstInput: true
                 }).then(function (modal) {
                     $scope.modalNewGroup = modal;
                     $scope.new_group = {focus: true, title: '', image: null, pais: '', ciudad: '', jugadores: [], search: []};
                     $scope.modalNewGroup.show();
                 });
             };
-
 
             $rootScope.$on('updategroup', function (event, args) {
                 var index = -1;
@@ -184,8 +182,8 @@ appTennisya
 
                 var minHeight = ((parseInt(moment(fechaF).format('H')) - $scope.startHour) * 60) + parseInt(moment(fechaF).format('m'));
                 var height = ((minHeight * $scope.alto) / 60) - top;
-                
-                return {top: top + 'px', height: height+'px'};
+
+                return {top: top + 'px', height: height + 'px'};
             };
         })
         ;

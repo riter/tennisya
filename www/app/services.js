@@ -139,7 +139,6 @@ appTennisya
                     }, function (e) {
                         return [];
                     });
-
                 },
                 setJugador: function (jugador) {
                     user = jugador;

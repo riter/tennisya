@@ -18,13 +18,13 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory) {
             StatusBar.styleDefault();
         }
 
-        $ionicPlatform.registerBackButtonAction(function (event) {
-            if ($ionicHistory.currentStateName().indexOf("tabs") >= 0 || $ionicHistory.currentStateName().indexOf("signin") >= 0) {
-                ionic.Platform.exitApp();
-            } else {
-                $ionicHistory.goBack();
-            }
-        }, 100);
+//        $ionicPlatform.registerBackButtonAction(function (event) {
+//            if ($ionicHistory.currentStateName().indexOf("tabs") >= 0 || $ionicHistory.currentStateName().indexOf("signin") >= 0) {
+//                ionic.Platform.exitApp();
+//            } else {
+//                $ionicHistory.goBack();
+//            }
+//        }, 100);
     });
 });
 
@@ -60,15 +60,6 @@ appTennisya.config(function ($stateProvider, $urlRouterProvider, $ionicConfigPro
                     'player-tab': {
                         templateUrl: "templates/search/search-jugador-grupo.html",
                         controller: 'searchJugadorGrupoCtrl'
-                    }
-                }
-            })
-            .state('tabs.partidos', {
-                url: "/partidos",
-                views: {
-                    'partidos-tab': {
-                        templateUrl: "templates/partidos/_listPartidos.html",
-                        controller: 'ListPartidosCtrl'
                     }
                 }
             })
