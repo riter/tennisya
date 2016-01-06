@@ -137,6 +137,20 @@ label.item.valid-lr {
     max-height: 400px !important;
 }
 
-.match_orderby-label{
+.popover-backdrop.active{
+    background-color: transparent !important;
+}
+.popover-mostrar{
+    position: relative !important;
+    height: auto !important;
+    width: 170px !important;
+}
+.popover-mostrar .scroll-content{
+    position: relative !important;
+}
+.popover-arrow {
     display: none !important;
+}
+.popover-wrapper{
+    height: 0;
 }

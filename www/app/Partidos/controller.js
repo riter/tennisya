@@ -5,7 +5,28 @@
  */
 
 appTennisya
-        .controller('ListPartidosCtrl', function ($rootScope, $scope, $timeout, $cordovaActionSheet, partidoService) {
+        .controller('ListPartidosCtrl', function ($rootScope, $scope, $timeout, $ionicPopover, $cordovaActionSheet, partidoService) {
+            $ionicPopover.fromTemplateUrl('templates/partidos/mostrar.html', {
+                scope: $scope
+            }).then(function (popover) {
+                $scope.popover = popover;
+            });
+            
+            $scope.filterTodos = 'todos';
+            $scope.filterPersonales = 'todos';
+            
+            $scope.openMostrar = function (event, tabMostrar) {
+                $scope.tabMostrar = tabMostrar;
+                $scope.popover.show(event);
+            };
+            $scope.filterMostrar = function (filter_mostrar) {
+                if($scope.tabMostrar === 'todos'){
+                    $scope.filterTodos = filter_mostrar;
+                }else if($scope.tabMostrar === 'personales'){
+                    $scope.filterPersonales = filter_mostrar;
+                }
+            };
+
             var getPartidosT = function () {
                 partidoService.getPartidosT($scope.userLogin.id, $rootScope.grupoPartido.id).then(function (response) {
                     $scope.todos = response;

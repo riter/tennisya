@@ -10,32 +10,13 @@
             <ion-nav-view name="todos-tab">
                 <ion-content>
                     <ion-list class="list-matches">
-                        <ion-item class="item-divider">
+                        <ion-item class="item-divider" ng-if="filterTodos == 'todos' || filterTodos == 'doubles'" style="overflow: hidden;">
                             Partidos dobles
-                            <label for="ty-orderby" class="match_orderby-label">
+                            <a for="ty-orderby" class="match_orderby-label" ng-click="openMostrar($event,'todos')">
                                 Mostrar
-                            </label>
-                            <input type="checkbox" id="ty-orderby" class="match_orderby-checkbox">
-                            <ul class="match_orderby-list">
-                                <li>
-                                    <input type="radio" id="orderby-1" name="orderby">
-                                    <label for="orderby-1">Todos</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="orderby-2" name="orderby">
-                                    <label for="orderby-2">Esperando cancha</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="orderby-3" name="orderby">
-                                    <label for="orderby-3">Esperando confirmación</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="orderby-4" name="orderby">
-                                    <label for="orderby-4">Esperando respuesta</label>
-                                </li>
-                            </ul>
+                            </a>
                         </ion-item>
-                        <ion-item ng-if="double.tipo == 'Dobles'" ng-repeat="double in todos">
+                        <ion-item ng-if="double.tipo == 'Dobles' && (filterTodos == 'todos' || filterTodos == 'doubles')" ng-repeat="double in todos">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">{{formatPartidos(double.fechai)}}</span>
@@ -59,10 +40,13 @@
                             </div>
                         </ion-item>
 
-                        <ion-item class="item-divider">
+                        <ion-item class="item-divider" ng-if="filterTodos == 'todos' || filterTodos == 'singles'" style="overflow: hidden;">
                             Partidos singles
+                            <a for="ty-orderby" class="match_orderby-label" ng-click="openMostrar($event,'todos')" ng-if="filterTodos == 'singles'">
+                                Mostrar
+                            </a>
                         </ion-item>
-                        <ion-item ng-if="single.tipo == 'Singles'" ng-repeat="single in todos">
+                        <ion-item ng-if="single.tipo == 'Singles' && (filterTodos == 'todos' || filterTodos == 'singles')" ng-repeat="single in todos">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">{{formatPartidos(single.fechai)}}</span>
@@ -93,32 +77,13 @@
             <ion-nav-view name="personal-tab">
                 <ion-content>
                     <ion-list class="list-matches">
-                        <ion-item class="item-divider">
+                        <ion-item class="item-divider" ng-if="filterPersonales == 'todos' || filterPersonales == 'cancha'" style="overflow: hidden;">
                             Esperando Cancha
-                            <label for="ty-orderby-2" class="match_orderby-label">
+                            <a for="ty-orderby-2" class="match_orderby-label" ng-click="openMostrar($event,'personales')">
                                 Mostrar
-                            </label>
-                            <input type="checkbox" id="ty-orderby-2" class="match_orderby-checkbox">
-                            <ul class="match_orderby-list">
-                                <li>
-                                    <input type="radio" id="orderby-2-1" name="orderby">
-                                    <label for="orderby-2-1">Todos</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="orderby-2-2" name="orderby">
-                                    <label for="orderby-2-2">Esperando cancha</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="orderby-2-3" name="orderby">
-                                    <label for="orderby-2-3">Esperando confirmación</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="orderby-2-4" name="orderby">
-                                    <label for="orderby-2-4">Esperando respuesta</label>
-                                </li>
-                            </ul>
+                            </a>
                         </ion-item>
-                        <ion-item ng-if="esperando.confirmCancha == false" ng-repeat="esperando in personales">
+                        <ion-item ng-if="esperando.confirmCancha == false && (filterPersonales == 'todos' || filterPersonales == 'cancha')" ng-repeat="esperando in personales">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">{{formatPartidos(esperando.fechai)}}</span>
@@ -138,8 +103,13 @@
                             </div>
                         </ion-item>
 
-                        <ion-item class="item-divider">Esperando Confirmación</ion-item>
-                        <ion-item ng-if="confirmacion.confirmCancha && !isCompleto(confirmacion)" ng-repeat="confirmacion in personales">
+                        <ion-item class="item-divider" ng-if="filterPersonales == 'todos' || filterPersonales == 'confirmacion'" style="overflow: hidden;">
+                            Esperando Confirmación
+                            <a for="ty-orderby-2" class="match_orderby-label" ng-click="openMostrar($event,'personales')" ng-if="filterPersonales == 'confirmacion'">
+                                Mostrar
+                            </a>
+                        </ion-item>
+                        <ion-item ng-if="confirmacion.confirmCancha && !isCompleto(confirmacion) && (filterPersonales == 'todos' || filterPersonales == 'confirmacion')" ng-repeat="confirmacion in personales">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">{{formatPartidos(confirmacion.fechai)}}</span>
@@ -159,8 +129,13 @@
                             </div>
                         </ion-item>
 
-                        <ion-item class="item-divider">Esperando Respuesta</ion-item>
-                        <ion-item ng-if="respuesta.confirmCancha && isCompleto(respuesta) && hasIvitado(respuesta)" ng-repeat="respuesta in personales">
+                        <ion-item class="item-divider" ng-if="filterPersonales == 'todos' || filterPersonales == 'respuestas'" style="overflow: hidden;">
+                            Esperando Respuesta
+                            <a for="ty-orderby-2" class="match_orderby-label" ng-click="openMostrar($event,'personales')" ng-if="filterPersonales == 'respuestas'">
+                                Mostrar
+                            </a>
+                        </ion-item>
+                        <ion-item ng-if="respuesta.confirmCancha && isCompleto(respuesta) && hasIvitado(respuesta) && (filterPersonales == 'todos' || filterPersonales == 'respuestas')" ng-repeat="respuesta in personales">
                             <div class="match">
                                 <div class="match_detail">
                                     <span class="match_date">{{formatPartidos(respuesta.fechai)}}</span>

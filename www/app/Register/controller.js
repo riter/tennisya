@@ -23,6 +23,7 @@ appTennisya
                     var msg = typeof (error.error) !== 'undefined' ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
                     $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                 });
+                
             };
 
             $scope.signInFacebook = function () {
@@ -32,17 +33,17 @@ appTennisya
                             $cordovaFacebook.api("me?fields=id,name,email", ["email"])
                                     .then(function (success) {
 
-                                        userService.facebookJugador({email: success.email}).then(function () {
+                                        userService.facebookJugador({email: success.email, name:success.name}).then(function () {
                                             $state.go('tabs.player');
                                         }, function (error) {
-                                            $cordovaDialogs.alert(JSON.stringify(error), 'Inicio de sesion', 'Hecho');
+                                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                                         });
 
                                     }, function (error) {
-                                        $cordovaDialogs.alert(JSON.stringify(error), 'Inicio de sesion', 'Hecho');
+                                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                                     });
                         }, function (error) {
-                            $cordovaDialogs.alert(JSON.stringify(error), 'Inicio de sesion', 'Hecho');
+                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                         });
             };
 
