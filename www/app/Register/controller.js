@@ -14,7 +14,6 @@ appTennisya
 //                if (!$localstorage.exist('tokenNotification')) {
                     $cordovaPush.register(configNotifications).then(function (regid) {
                         alert(regid);
-                        alert(ionic.Platform.isIOS());
                         if (ionic.Platform.isIOS()) {
                             $localstorage.set('tokenNotification', regid);
                         }
