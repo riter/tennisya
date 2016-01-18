@@ -5,10 +5,19 @@
  */
 
 appTennisya
-        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaOauth, userService) {
+        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaPush, $cordovaDevice, $cordovaOauth, userService, $localstorage) {
 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
                 $scope.user = {email: '', password: ''};
+
+                // registrar para notificaciones 
+                if (!$localstorage.exist('tokenNotification')) {
+                    $cordovaPush.register(configNotifications).then(function (regid) {
+                        if (ionic.Platform.isIOS()) {
+                            $localstorage.set('tokenNotification', regid);
+                        }
+                    });
+                }
             });
             $scope.$on('$ionicView.afterEnter', function (scopes, states) {
                 $ionicHistory.clearHistory();
@@ -16,6 +25,9 @@ appTennisya
             });
 
             $scope.signIn = function (user) {
+                user.tokenNotification = $localstorage.get('tokenNotification');
+                user.platform = ionic.Platform.platform();
+                user.udid = $cordovaDevice.getDevice().uuid;
 
                 userService.loginJugador(user).then(function () {
                     $state.go('tabs.player');
@@ -23,7 +35,6 @@ appTennisya
                     var msg = typeof (error.error) !== 'undefined' ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
                     $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                 });
-                
             };
 
             $scope.signInFacebook = function () {
@@ -32,8 +43,15 @@ appTennisya
                         .then(function (success) {
                             $cordovaFacebook.api("me?fields=id,name,email", ["email"])
                                     .then(function (success) {
+                                        var data = {
+                                            platform: ionic.Platform.platform(),
+                                            tokenNotification: $localstorage.get('tokenNotification'),
+                                            udid: $cordovaDevice.getDevice().uuid,
+                                            email : success.email,
+                                            name : success.name
+                                        };
 
-                                        userService.facebookJugador({email: success.email, name:success.name}).then(function () {
+                                        userService.facebookJugador(data).then(function () {
                                             $state.go('tabs.player');
                                         }, function (error) {
                                             $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');

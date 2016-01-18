@@ -23,6 +23,7 @@
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="3000"/>
 
+    <!--<preference name="android-build-tool" value="ant" />-->
     <!--plugins-->
     <gap:plugin name="org.apache.cordova.device"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>
@@ -33,7 +34,8 @@
     <gap:plugin name="org.apache.cordova.dialogs"/>
     <gap:plugin name="cordova-plugin-actionsheet" source="npm" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-
+    <gap:plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
+    
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
         <param name="APP_ID" value="1644064545847703" />
         <param name="APP_NAME" value="tennisya" />

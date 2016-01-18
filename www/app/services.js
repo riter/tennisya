@@ -23,6 +23,9 @@ appTennisya
                     },
                     exist: function (key) {
                         return $window.localStorage[key] ? true : false;
+                    },
+                    remove: function(key){
+                        $window.localStorage.removeItem(key);
                     }
                 };
             }])

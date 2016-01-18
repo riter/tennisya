@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaActionSheet) {
+        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaPush, $cordovaActionSheet, $localstorage) {
 
             $scope.onCerrarSesion = function () {
                 var options = {
@@ -18,6 +18,9 @@ appTennisya
                             if (btnIndex == 1) {
                                 $localstorage.clear();
                                 setTimeout(function () {
+                                    $cordovaPush.unregister(configNotifications).then(function (result) {
+                                        $localstorage.remove('tokenNotification');
+                                    });
                                     $cordovaFacebook.logout();
                                     $state.go('signin');
                                 }, 300);
