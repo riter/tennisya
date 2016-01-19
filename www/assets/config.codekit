@@ -282,6 +282,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/linkedin.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1692,
+		"inputAbbreviatedPath": "\/img\/linkedin.png",
+		"outputAbbreviatedPath": "\/img\/linkedin.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/newpartido.png": {
 		"fileType": 32768,
 		"ignore": 0,

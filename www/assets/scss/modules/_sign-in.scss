@@ -94,7 +94,7 @@
 	&-twitter{
 		background-color: #6699cc;
     border-color: rgba(102, 153, 204,0.85);
-    background-image: url('../img/twitter.png');
+    background-image: url('../img/linkedin.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 13px;
@@ -102,6 +102,21 @@
     padding-left: 71px;
     &:hover,
     &.activated,
+		&:active{
+			background-color: rgba(102, 153, 204,0.85);
+		}
+	}
+	&-linkedin{
+		background-color: #0077B5;
+	    border-color: rgba(102, 153, 204,0.85);
+	    background-image: url('../img/linkedin.png');
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position: 13px;
+	    text-align: left;
+	    padding-left: 71px;
+	    &:hover,
+	    &.activated,
 		&:active{
 			background-color: rgba(102, 153, 204,0.85);
 		}
