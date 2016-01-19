@@ -1,12 +1,4 @@
 {
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-console": {
         "source": {
             "type": "registry",
@@ -89,22 +81,27 @@
         "is_top_level": true,
         "variables": {}
     },
-    "phonegap-facebook-plugin": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phonegap/phonegap-facebook-plugin.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {
-            "APP_ID": "1644064545847703",
-            "APP_NAME": "tennisya"
-        }
-    },
     "cordova-plugin-dialogs": {
         "source": {
             "type": "registry",
             "id": "cordova-plugin-dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.phonegap.plugins.PushPlugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phonegap-build/PushPlugin.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
         },
         "is_top_level": true,
         "variables": {}

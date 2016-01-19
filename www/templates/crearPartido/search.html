@@ -13,7 +13,7 @@
 
         <ion-list class="players-list">
 
-            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="jugador in filterQuery(data.search,data.filter.value) | orderBy:'name'" ng-click="selected(jugador); $ionicGoBack()">
+            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-hide="isAdd(jugador)" ng-repeat="jugador in filterQuery(data.search,data.filter.value) | orderBy:'name'" ng-click="selected(jugador); $ionicGoBack()">
                 <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
                 <h2>{{jugador.name}}</h2>
                 <p>{{jugador.estado}}</p>

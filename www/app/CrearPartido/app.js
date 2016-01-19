@@ -11,7 +11,7 @@ appTennisya.config(function($stateProvider) {
                 url: "/crearPartidos",
                 views: {
                     'newPartido-tab': {
-                        template:'<ion-view title=""></ion-view>',
+                        template:'templates/crearPartido/createPartido.html',
                         controller: 'crearPartidoCtrl'
                     },
                     'navable-partido@': {
@@ -23,8 +23,7 @@ appTennisya.config(function($stateProvider) {
                 url: '/crearPartidos/search',
                 views: {
                     'navable-partido@': {
-                        templateUrl: 'templates/crearPartido/search.html',
-                        controller: 'searchJugadorCtrl'
+                        templateUrl: 'templates/crearPartido/search.html'
                     }
                 }
             })

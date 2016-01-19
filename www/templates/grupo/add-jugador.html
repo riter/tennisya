@@ -1,7 +1,7 @@
 <ion-modal-view>
 
     <ion-header-bar class="bar-stable">
-        <button class="button button-clear btn-left" ng-click="modalAddJugador.hide()"> Cancelar </button>
+        <button class="button button-clear btn-left" ng-click="modalAddJugador.remove()"> Cancelar </button>
 
         <h1 class="title title-header">Selecciona un jugador</h1>
 
@@ -14,7 +14,7 @@
         </div>
 
         <ion-list class="players-list">
-            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="jugador in filterQuery(data.search,data.filter.value) | orderBy:'name'" ng-click="addJugador(jugador)">
+            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-hide="isAdd(jugador)" ng-repeat="jugador in filterQuery(data.search,data.filter.value) | orderBy:'name'" ng-click="selectJugador(jugador)">
                 <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
                 <h2>{{jugador.name}}</h2>
                 <p>{{jugador.estado}}</p>

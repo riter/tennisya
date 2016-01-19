@@ -5,41 +5,64 @@
  */
 
 appTennisya
-        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaFacebook, $cordovaOauth, userService) {
+        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaPush, $cordovaDevice, $cordovaOauth, userService, $localstorage) {
 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
-//                $ionicHistory.clearHistory();
-//                $ionicHistory.clearCache();
-                
-                $scope.user = {email:'',password:''}; 
+                $scope.user = {email: '', password: ''};
+
+                // registrar para notificaciones 
+//                if (!$localstorage.exist('tokenNotification')) {
+                    $cordovaPush.register(configNotifications).then(function (regid) {
+                        alert(regid);
+                        if (ionic.Platform.isIOS()) {
+                            $localstorage.set('tokenNotification', regid);
+                        }
+                    });
+//                }
+            });
+            $scope.$on('$ionicView.afterEnter', function (scopes, states) {
+                $ionicHistory.clearHistory();
+                $ionicHistory.clearCache();
             });
 
             $scope.signIn = function (user) {
+                user.tokenNotification = $localstorage.get('tokenNotification');
+                user.platform = ionic.Platform.platform();
+                user.udid = $cordovaDevice.getDevice().uuid;
 
-                userService.loginJugador(user, function () {
+                userService.loginJugador(user).then(function () {
                     $state.go('tabs.player');
                 }, function (error) {
-                    alert(error.error);
+                    var msg = typeof (error.error) !== 'undefined' ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
+                    $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                 });
             };
 
             $scope.signInFacebook = function () {
+                var msg = 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
                 $cordovaFacebook.login(["email"])
                         .then(function (success) {
                             $cordovaFacebook.api("me?fields=id,name,email", ["email"])
                                     .then(function (success) {
+                                        var data = {
+                                            platform: ionic.Platform.platform(),
+                                            tokenNotification: $localstorage.get('tokenNotification'),
+                                            udid: $cordovaDevice.getDevice().uuid,
+                                            email : success.email,
+                                            name : success.name
+                                        };
 
-                                        userService.facebookJugador({email: success.email}, function () {
+                                        userService.facebookJugador(data).then(function () {
                                             $state.go('tabs.player');
                                         }, function (error) {
-                                            alert(error.error);
+                                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                                         });
 
                                     }, function (error) {
-                                        alert(JSON.stringify(error));
+                                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                                     });
                         }, function (error) {
-                            alert(JSON.stringify(error));
+                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                         });
             };
 

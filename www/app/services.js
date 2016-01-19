@@ -23,6 +23,9 @@ appTennisya
                     },
                     exist: function (key) {
                         return $window.localStorage[key] ? true : false;
+                    },
+                    remove: function(key){
+                        $window.localStorage.removeItem(key);
                     }
                 };
             }])
@@ -32,26 +35,29 @@ appTennisya
             return {
                 page: 1,
                 limit: 30,
-                resetPage: function(){
-                  this.page = 1;
+                resetPage: function () {
+                    this.page = 1;
                 },
-                loginJugador: function (data, callback, error) {
+                loginJugador: function (data) {
+                    var deferred = $q.defer();
                     $http.post(api + 'jugador/login', data).then(function (response) {
                         $localstorage.setObject('user', response.data);
-                        return callback();
+                        deferred.resolve();
                     }, function (e) {
-                        return error(e.data);
+                        deferred.reject(e.data);
                     });
+                    return deferred.promise;
 
                 },
                 facebookJugador: function (data, callback, error) {
+                    var deferred = $q.defer();
                     $http.post(api + 'jugador/login_social', data).then(function (response) {
                         $localstorage.setObject('user', response.data);
-                        return callback();
+                        deferred.resolve();
                     }, function (e) {
-                        return error(e.data);
+                        deferred.reject(e);
                     });
-
+                    return deferred.promise;
                 },
                 saveJugador: function (model) {
                     var data = angular.copy(model);
@@ -136,69 +142,12 @@ appTennisya
                     }, function (e) {
                         return [];
                     });
-
                 },
                 setJugador: function (jugador) {
                     user = jugador;
                 },
                 getJugador: function () {
                     return user;
-                }
-            }
-        })
-        .factory('partidoService', function ($http) {
-
-            return {
-                getPartidosT: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_todos', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
-                        return response.data;
-                    });
-                },
-                getPartidosP: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_personales', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
-                        return response.data;
-                    });
-                },
-                getPartidosC: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_confirmados', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
-                        return response.data;
-                    });
-                },
-                getPartidosJ: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_jugados', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
-                        return response.data;
-                    });
-                },
-                confirmPartido: function (jugador_partido, action) {
-                    return $http.get(api + 'partidos/confirm_partido/' + jugador_partido, {params: {action: action}}).then(function (response) {
-                        return response.data;
-                    });
-                },
-                entrarPartido: function (idPartido, idJugador, action) {
-                    return $http.get(api + 'partidos/entrar_partido/' + idPartido + '/' + idJugador, {params: {action: action}}).then(function (response) {
-                        return response.data;
-                    });
-                },
-                newPartido: function (model) {
-                    var newModel = {
-                        grupo: model.grupo,
-                        club: model.club.id,
-                        tipo: model.tipo,
-                        fechaI: moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.horaI).format('H:mm:ss'),
-                        fechaF: moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.horaF).format('H:mm:ss'),
-                        reservada: model.reservada,
-                        jugadores: []
-                    };
-                    if (model.jugador1)
-                        newModel.jugadores.push(model.jugador1.id);
-                    if (model.jugador2)
-                        newModel.jugadores.push(model.jugador2.id);
-                    if (model.jugador3)
-                        newModel.jugadores.push(model.jugador3.id);
-                    if (model.jugador4)
-                        newModel.jugadores.push(model.jugador4.id);
-
-                    return $http.post(api + 'partidos/new', newModel);
                 }
             };
         })
@@ -236,140 +185,26 @@ appTennisya
             };
             return SearchClass;
         })
-        .factory('grupoService', function ($q, $localstorage, $http, $cordovaFileTransfer) {
-            var data = {
-                id: null,
-                title: '',
-                image: null,
-                pais: '',
-                ciudad: '',
-                jugadorgrupo: []
+        ;
 
-            };
-            var listGrupos = [];
-            return {
-                getList: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve(listGrupos);
-                    return deferred.promise;
-                },
-                list: function () {
-                    var user = $localstorage.getObject('user');
-                    return $http.get(api + 'group/jugadores/' + user.id).then(function (response) {
-                        listGrupos = response.data;
-                        return response.data;
-                    });
-                },
-                setModel: function (model) {
-                    if (typeof (model.jugadorgrupo) === 'undefined')
-                        model.jugadorgrupo = [];
-                    data = model;
-                },
-                getModel: function () {
-                    return data;
-                },
-                resetModel: function () {
-                    this.setModel({
-                        id: null,
-                        title: '',
-                        image: null,
-                        pais: '',
-                        ciudad: '',
-                        jugadorgrupo: []
-
-                    });
-                },
-                setTitle: function (title) {
-                    data.title = title;
-                },
-                setThumb: function (url) {
-                    data.image = url;
-                },
-                setJugadores: function (listJugadores) {
-                    data.jugadorgrupo = listJugadores;
-                },
-                save: function (idAdmin) {
-                    var deferred = $q.defer();
-                    var param = {
-                        title: data.title,
-                        jugadorgrupo: []
-                    };
-                    angular.forEach(data.jugadorgrupo, function (value, key) {
-                        param.jugadorgrupo.push({id: value.id});
-                    });
-
-                    if (data.image === null) {
-                        $http.post(api + 'group/save/' + idAdmin, param).then(function (response) {
-//                        data = response.data;
-//                        data.jugadorgrupo = [];
-                            deferred.resolve(response.data);
-                        });
-                    } else {
-                        var option = {
-                            fileKey: 'files',
-                            fileName: 'image.jpg',
-                            mimeType: "image/png",
-                            chunkedMode: false,
-                            params: param
-                        };
-                        $cordovaFileTransfer.upload(api + 'group/save/' + idAdmin, data.image, option)
-                                .then(function (result) {
-//                            data = JSON.parse(result.response);
-//                            data.jugadorgrupo = [];
-                                    deferred.resolve(JSON.parse(result.response));
-                                }, function (err) {
-                                    deferred.reject(err);
-                                }, function (progress) {
-                                    // constant progress updates
-                                });
-                    }
-
-                    return deferred.promise;
-                },
-                updateJugador: function (id, jugador) {
-                    return $http.post(api + 'group/update/' + id, {campo: 'jugador', jugador: jugador.id});
-                },
-                updateTitle: function (id) {
-                    return $http.post(api + 'group/update/' + id, {campo: 'title', title: data.title});
-                },
-                updateImage: function (id) {
-                    var deferred = $q.defer();
-
-                    var option = {
-                        fileKey: 'files',
-                        fileName: 'image.jpg',
-                        mimeType: "image/png",
-                        chunkedMode: false,
-                        params: {campo: 'image'}
-                    };
-                    $cordovaFileTransfer.upload(api + 'group/update/' + id, data.image, option)
-                            .then(function (result) {
-                                deferred.resolve(JSON.parse(result.response));
-                                //return callback({data: JSON.parse(result.response)});
-                            }, function (err) {
-                                deferred.reject(err);
-                                //return error(err);
-                            }, function (progress) {
-                                // constant progress updates
-                            });
-
-                    return deferred.promise;
-                },
-                getJugadores: function (id) {
-                    return $http.get(api + 'group/list_jugadores/' + id).then(function (response) {
-                        data = response.data;
-                        return data;
-                    });
-                },
-                deleteJugador: function (id_grupo_jugador) {
-                    return $http.get(api + 'group/delete_jugador/' + id_grupo_jugador);
-                },
-                delete: function (id) {
-                    return $http.get(api + 'group/delete/' + id);
-                }
-            };
-        });
-
+appTennisya.factory('extrasService', function ($q, $http, $localstorage) {
+    return {
+        getClub: function () {
+            var deferred = $q.defer();
+            if ($localstorage.exist('clubs')) {
+                deferred.resolve($localstorage.getObject('clubs'));
+                return deferred.promise;
+            } else
+                return this.loadClubs();
+        },
+        loadClubs: function () {
+            return $http.get(api + 'club/list').then(function (response) {
+                $localstorage.setObject('clubs', response.data);
+                return response.data;
+            });
+        }
+    };
+});
 appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamera) {
 
     var cameraAction = {
@@ -402,8 +237,8 @@ appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamer
             var options = {
                 quality: 50,
                 allowEdit: true,
-                targetWidth:300,
-                targetHeight:300,
+                targetWidth: 300,
+                targetHeight: 300,
                 destinationType: Camera.DestinationType.FILE_URI,
                 sourceType: Camera.PictureSourceType.CAMERA
             };
@@ -415,8 +250,8 @@ appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamer
                 destinationType: Camera.DestinationType.FILE_URI,
                 sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
                 allowEdit: true,
-                targetWidth:300,
-                targetHeight:300,
+                targetWidth: 300,
+                targetHeight: 300,
                 encodingType: Camera.EncodingType.JPEG
             };
             this.openCamera(options);
@@ -433,146 +268,3 @@ appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamer
     };
     return cameraAction;
 });
-
-appTennisya.directive('divContent', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var twoElements = element[0].children;
-            element[0].style.position = 'relative';
-            element[0].style.height = '100%';
-            var hT = twoElements[0].clientHeight - 2;
-            twoElements[1].style.height = 'calc(100% - ' + hT + 'px)';
-
-        }
-    };
-});
-
-//appTennisya.directive('autoFocus', function($timeout) {
-//    return {
-//        link: function(scope, element, attrs) {
-//            $timeout(function() {
-//                element[0].focus();
-//            }, 150);
-//        }
-//    };
-//});
-appTennisya
-        .directive('ionSearch', function ($timeout) {
-            return {
-                restrict: 'E',
-                replace: true,
-                scope: {
-                    getData: '&source',
-                    model: '=?',
-                    search: '=?filter',
-                    changeFocus: '&focus'
-                },
-                link: function (scope, element, attrs) {
-                    attrs.minLength = attrs.minLength || 0;
-                    scope.placeholder = attrs.placeholder || '';
-                    scope.search = {value: ''};
-                    var inputElement = element.find('input')[0];
-
-                    if (attrs.class)
-                        element.addClass(attrs.class);
-
-                    if (attrs.source) {
-                        scope.$watch('search.value', function (newValue, oldValue) {
-                            scope.search.value = newValue;
-                            if (newValue.length > attrs.minLength) {
-                                scope.getData({str: newValue}).then(function (results) {
-                                    scope.model = results;
-                                });
-                            } else {
-                                //scope.model = [];
-                            }
-                        });
-                    }
-
-                    if (attrs.focus) {
-                        $timeout(function () {
-                            inputElement.focus();
-                        }, 300);
-                    }
-
-                    scope.clearSearch = function () {
-                        // Manually trigger blur
-                        inputElement.blur();
-                        scope.search.value = '';
-                    };
-
-                    angular.element(inputElement).bind('focus', function () {
-                        scope.changeFocus({value: true});
-                        // We need to call `$digest()` because we manually changed the model
-                        scope.$digest();
-                    });
-                    // When the user leaves the search bar
-                    angular.element(inputElement).bind('blur', function () {
-                        scope.changeFocus({value: false});
-                        scope.$digest();
-                    });
-                },
-                template: '<div class="item-input-wrapper">' +
-                        '<i class="icon ion-search placeholder-icon"></i>' +
-                        '<input type="search" placeholder="{{placeholder}}" ng-model="search.value">' +
-                        '<i ng-if="search.value.length > 0" ng-click="clearSearch()" class="icon ion-close"></i>' +
-                        '</div>'
-            };
-        });
-
-appTennisya
-        .directive('searchBar', [function () {
-                return {
-                    scope: {
-                        ngModel: '='
-                    },
-                    require: ['^ionNavBar', '?ngModel'],
-                    restrict: 'E',
-                    replace: true,
-                    template: '<ion-nav-buttons side="right">' +
-                            '<div class="searchBar numicons2">' +
-                            '<div class="searchTxt" ng-show="true">' +
-                            '<div class="bgdiv"></div>' +
-                            '<div class="bgtxt">' +
-                            '<input type="text" placeholder="Procurar..." ng-model="ngModel.txt">' +
-                            '</div>' +
-                            '</div>' +
-                            '<i class="icon placeholder-icon" ng-click="ngModel.txt=\'\';ngModel.show=!ngModel.show"></i>' +
-                            '</div>' +
-                            '</ion-nav-buttons>',
-                    compile: function (element, attrs) {
-                        var icon = (ionic.Platform.isAndroid() && 'ion-android-search')
-                                || (ionic.Platform.isIOS() && 'ion-ios7-search')
-                                || 'ion-search';
-                        angular.element(element[0].querySelector('.icon')).addClass(icon);
-
-                        return function ($scope, $element, $attrs, ctrls) {
-                            var navBarCtrl = ctrls[0];
-                            $scope.navElement = $attrs.side === 'right' ? navBarCtrl.rightButtonsElement : navBarCtrl.leftButtonsElement;
-
-                        };
-                    },
-                    controller: ['$scope', '$ionicNavBarDelegate', function ($scope, $ionicNavBarDelegate) {
-                            var title, definedClass;
-
-                            $scope.$watch('ngModel.show', function (showing, oldVal, scope) {
-                                if (showing !== oldVal) {
-                                    if (showing) {
-                                        if (!definedClass) {
-                                            var numicons = $scope.navElement.children().length;
-                                            angular.element($scope.navElement[0].querySelector('.searchBar')).addClass('numicons' + numicons);
-                                        }
-
-                                        title = $ionicNavBarDelegate.getTitle();
-                                        $ionicNavBarDelegate.setTitle('');
-                                    } else {
-                                        $ionicNavBarDelegate.setTitle(title);
-                                    }
-                                } else if (!title) {
-                                    title = $ionicNavBarDelegate.getTitle();
-                                }
-                            });
-                        }]
-                };
-            }]);

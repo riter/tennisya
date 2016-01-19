@@ -49,7 +49,8 @@ appTennisya
             $scope.newDisponibilidad = function (item) {
                 $ionicModal.fromTemplateUrl('templates/disponibilidad/navable-disponibilidad.html', {
                     animation: 'slide-in-up',
-                    scope: $scope
+                    scope: $scope,
+                    focusFirstInput: true
                 }).then(function (modal) {
                     $scope.modalNewDisp = modal;
                     if (item) {
@@ -66,7 +67,6 @@ appTennisya
                 });
             };
             $scope.closeNewDisponibilidad = function () {
-                $scope.modalNewDisp.hide();
                 $scope.modalNewDisp.remove();
             };
             $scope.parseDias = function (json) {

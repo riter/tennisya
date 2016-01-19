@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $ionicHistory, $cordovaActionSheet) {
+        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaPush, $cordovaActionSheet, $localstorage) {
 
             $scope.onCerrarSesion = function () {
                 var options = {
@@ -18,6 +18,10 @@ appTennisya
                             if (btnIndex == 1) {
                                 $localstorage.clear();
                                 setTimeout(function () {
+                                    $cordovaPush.unregister(configNotifications).then(function (result) {
+                                        $localstorage.remove('tokenNotification');
+                                    });
+                                    $cordovaFacebook.logout();
                                     $state.go('signin');
                                 }, 300);
                             }
@@ -26,15 +30,15 @@ appTennisya
         })
         .controller('ProfileCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $localstorage, userService, extrasService, cameraAction) {
             $scope.profile = $localstorage.getObject('user');
-    
+
             extrasService.getClub().then(function (response) {
                 $scope.clubs = response;
             });
 
             $scope.onGuardar = function (user) {
-                userService.updateJugador(user).then(function (response){
+                userService.updateJugador(user).then(function (response) {
                     $scope.profile = response;
-                },function (error){
+                }, function (error) {
                     $cordovaDialogs.alert('Ha ocurrido un error al guardar. Por favor intetelo más tarde.', 'Perfil', 'Hecho');
                 });
                 $ionicHistory.goBack();
@@ -62,7 +66,7 @@ appTennisya
                                 .then(function (result) {
                                     // Success!
                                 }, function (err) {
-                                    alert(JSON.stringify(err));
+                                    //alert(JSON.stringify(err));
                                 });
                         break;
                     case 'mail':
@@ -71,7 +75,7 @@ appTennisya
                                 .then(function (result) {
                                     // Success!
                                 }, function (err) {
-                                    alert(JSON.stringify(err));
+                                    //alert(JSON.stringify(err));
                                 });
                         break;
                     case 'facebook':
@@ -80,7 +84,7 @@ appTennisya
                                 .then(function (result) {
                                     // Success!
                                 }, function (err) {
-                                    alert(JSON.stringify(err));
+                                    //alert(JSON.stringify(err));
                                 });
                         break;
                 }
