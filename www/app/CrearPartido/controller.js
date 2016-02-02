@@ -19,7 +19,7 @@ appTennisya
             $scope.modalNewPartido = null;
             $scope.openPatido = function () {
                 $scope.title = $rootScope.filterPartidos.title;
-                var idGrupo = $rootScope.filterPartidos.type === 'grupo'? $rootScope.filterPartidos.idType : null;
+                var idGrupo = $rootScope.filterPartidos.type === 'grupo' ? $rootScope.filterPartidos.idType : null;
                 $scope.partido = {reservada: true, tipo: 'Singles', jugador1: $localstorage.getObject('user'), grupo: idGrupo};
                 $scope.invitar = null;
                 $scope.withDisponibilidad();
@@ -39,18 +39,20 @@ appTennisya
                     $ionicHistory.goBack();
                 });
             };
-            
+
             $scope.onCreate = function (model) {
                 partidoService.newPartido(model).then(function (response) {
                     $scope.onCancelar();
                 });
             };
-            
+
             $scope.withDisponibilidad = function () {
-                if ($rootScope.disponibilidadPartido) {
-                    $scope.partido.fecha = moment($rootScope.disponibilidadPartido.fecha).toDate();
-                    $scope.partido.horaI = moment($rootScope.disponibilidadPartido.fechaI).toDate();
-                    $scope.partido.horaF = moment($rootScope.disponibilidadPartido.fechaF).toDate();
+                if ($rootScope.filterPartidos.type === 'jugador') {
+                    if (typeof ($rootScope.disponibilidadPartido.fecha) !== 'undefined') {
+                        $scope.partido.fecha = moment($rootScope.disponibilidadPartido.fecha).toDate();
+                        $scope.partido.horaI = moment($rootScope.disponibilidadPartido.fechaI).toDate();
+                        $scope.partido.horaF = moment($rootScope.disponibilidadPartido.fechaF).toDate();
+                    }
                     $scope.partido.jugador2 = $rootScope.disponibilidadPartido.jugador;
                 }
             };
@@ -66,7 +68,7 @@ appTennisya
                 $scope.invitar = jugador;
                 $state.go('tabs.crear-partidos.search');
             };
-            
+
             //view 2 Añadir Jugador
             $scope.isAdd = function (jugador) {
                 return $scope.partido.jugador1 === jugador || $scope.partido.jugador2 === jugador || $scope.partido.jugador3 === jugador || $scope.partido.jugador4 === jugador;

@@ -10,7 +10,7 @@ appTennisya
             $scope.showGrupos = function () {
                 $scope.data.showGrupos = !$scope.data.showGrupos;
                 $ionicScrollDelegate.resize();
-                
+
                 if ($scope.data.showGrupos === true) {
                     $rootScope.filterPartidos = {type: 'grupos', idType: null, title: 'Grupos'};
                 } else {
@@ -111,7 +111,7 @@ appTennisya
             $scope.$on('$ionicView.beforeEnter', function () {
                 $scope.jugador = userService.getJugador();
                 $rootScope.filterPartidos = {type: 'jugador', idType: $scope.jugador.id, title: $scope.jugador.name};
-                $rootScope.disponibilidadPartido = null;
+                $rootScope.disponibilidadPartido = {jugador: $scope.jugador};
             });
 
             $scope.onDisponibilidad = function (item, fecha) {
