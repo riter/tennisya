@@ -28,25 +28,25 @@ appTennisya
             };
 
             var getPartidosT = function () {
-                partidoService.getPartidosT($scope.userLogin.id, $rootScope.grupoPartido.id).then(function (response) {
+                partidoService.getPartidosT($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.todos = response;
                     $scope.intervalPartidosT = $timeout(getPartidosT, 30000);
                 });
             };
             var getPartidosP = function () {
-                partidoService.getPartidosP($scope.userLogin.id, $rootScope.grupoPartido.id).then(function (response) {
+                partidoService.getPartidosP($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.personales = response;
                     $scope.intervalPartidosP = $timeout(getPartidosP, 30000);
                 });
             };
             var getPartidosC = function () {
-                partidoService.getPartidosC($scope.userLogin.id, $rootScope.grupoPartido.id).then(function (response) {
+                partidoService.getPartidosC($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.confirmados = response;
                     $scope.intervalPartidosC = $timeout(getPartidosC, 30000);
                 });
             };
             var getPartidosJ = function () {
-                partidoService.getPartidosJ($scope.userLogin.id, $rootScope.grupoPartido.id).then(function (response) {
+                partidoService.getPartidosJ($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.jugados = response;
                     $scope.intervalPartidosJ = $timeout(getPartidosJ, 30000);
                 });
@@ -59,6 +59,7 @@ appTennisya
                 getPartidosJ();
             };
             $scope.$on('$ionicView.afterEnter', function () {
+                $scope.title = $rootScope.filterPartidos.title !== null? 'Partidos: '+ $rootScope.filterPartidos.title : 'Partidos';
                 $scope.loadPartidos();
             });
             $scope.$on('$ionicView.beforeLeave', function () {

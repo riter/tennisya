@@ -18,7 +18,9 @@ appTennisya
             //view 1 Crear Partido llenar datos de formulario
             $scope.modalNewPartido = null;
             $scope.openPatido = function () {
-                $scope.partido = {reservada: true, tipo: 'Singles', jugador1: $localstorage.getObject('user'), grupo: $rootScope.grupoPartido.id};
+                $scope.title = $rootScope.filterPartidos.title;
+                var idGrupo = $rootScope.filterPartidos.type === 'grupo'? $rootScope.filterPartidos.idType : null;
+                $scope.partido = {reservada: true, tipo: 'Singles', jugador1: $localstorage.getObject('user'), grupo: idGrupo};
                 $scope.invitar = null;
                 $scope.withDisponibilidad();
 
@@ -32,9 +34,9 @@ appTennisya
 
             };
             $scope.onCancelar = function () {
-                $ionicHistory.goBack();
                 $scope.modalNewPartido.remove().then(function () {
                     $scope.modalNewPartido = null;
+                    $ionicHistory.goBack();
                 });
             };
             

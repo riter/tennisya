@@ -1,4 +1,4 @@
-<ion-view view-title="{{grupoPartido.id !== null? 'Partidos: '+grupoPartido.title : 'Partidos' }}">
+<ion-view view-title="{{ title }}">
     <ion-nav-buttons side="right">
         <!--        <button class="button button-icon" ui-sref="tabs.search-partidos"><i class="ic-search"></i></button>-->
     </ion-nav-buttons>
@@ -104,7 +104,8 @@
                         </ion-item>
 
                         <ion-item class="item-divider" ng-if="filterPersonales == 'todos' || filterPersonales == 'confirmacion'" style="overflow: hidden;">
-                            Esperando Confirmación
+                            Partidos Incompletos
+<!--                            Esperando Confirmación-->
                             <a for="ty-orderby-2" class="match_orderby-label" ng-click="openMostrar($event,'personales')" ng-if="filterPersonales == 'confirmacion'">
                                 Mostrar
                             </a>

@@ -1,6 +1,6 @@
 <ion-popover-view class="popover-mostrar no-margin">
     <ion-content scroll="false" class="no-margin">
-        
+
         <ul class="match_orderby-list" ng-if="tabMostrar == 'todos'">
             <li>
                 <input type="radio" id="orderby-1" name="orderby" ng-model="filter_mostrar" ng-value="'todos'" ng-change="filterMostrar(filter_mostrar)">
@@ -15,7 +15,7 @@
                 <label for="orderby-3">Partidos singles</label>
             </li>
         </ul>
-        
+
         <ul class="match_orderby-list" ng-if="tabMostrar == 'personales'">
             <li>
                 <input type="radio" id="orderby-1" name="orderby" checked ng-model="filter_mostrar" ng-value="'todos'" ng-change="filterMostrar(filter_mostrar)">
@@ -27,7 +27,8 @@
             </li>
             <li>
                 <input type="radio" id="orderby-3" name="orderby" ng-model="filter_mostrar" ng-value="'confirmacion'" ng-change="filterMostrar(filter_mostrar)">
-                <label for="orderby-3">Esperando confirmación</label>
+                <!-- <label for="orderby-3">Esperando confirmación</label>-->
+                <label for="orderby-3">Partidos Incompletos</label>
             </li>
             <li>
                 <input type="radio" id="orderby-4" name="orderby" ng-model="filter_mostrar" ng-value="'respuestas'" ng-change="filterMostrar(filter_mostrar)">
