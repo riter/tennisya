@@ -3,8 +3,8 @@
  */
 //var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
 // var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
-//var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
-var api = 'http://tennisya.apploadapps.com/web/api/';
+var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+// var api = 'http://tennisya.apploadapps.com/web/api/';
 
 var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova']);
 var configNotifications = {
