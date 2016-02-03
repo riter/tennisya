@@ -10,6 +10,12 @@ appTennisya
             $scope.showGrupos = function () {
                 $scope.data.showGrupos = !$scope.data.showGrupos;
                 $ionicScrollDelegate.resize();
+
+                if ($scope.data.showGrupos === true) {
+                    $rootScope.filterPartidos = {type: 'grupos', idType: null, title: 'Grupos'};
+                } else {
+                    $rootScope.filterPartidos = {type: 'jugadores', idType: null, title: null};
+                }
             };
 
             $scope.loadMoreData = function () {
@@ -36,7 +42,13 @@ appTennisya
                 });
             };
             $scope.$on('$ionicView.afterEnter', function () {
-                $rootScope.grupoPartido = {id: null};
+//                $rootScope.grupoPartido = {id: null};
+                if ($scope.data.showGrupos === true) {
+                    $rootScope.filterPartidos = {type: 'grupos', idType: null, title: 'Grupos'};
+                } else {
+                    $rootScope.filterPartidos = {type: 'jugadores', idType: null, title: null};
+                }
+
                 loadGrupos();
             });
             $scope.$on('$ionicView.beforeLeave', function () {
@@ -98,7 +110,8 @@ appTennisya
 
             $scope.$on('$ionicView.beforeEnter', function () {
                 $scope.jugador = userService.getJugador();
-                $rootScope.disponibilidadPartido = null;
+                $rootScope.filterPartidos = {type: 'jugador', idType: $scope.jugador.id, title: $scope.jugador.name};
+                $rootScope.disponibilidadPartido = {jugador: $scope.jugador};
             });
 
             $scope.onDisponibilidad = function (item, fecha) {

@@ -11,7 +11,7 @@ appTennisya.config(function($stateProvider) {
                 url: "/partidos",
                 views: {
                     'partidos-tab': {
-                        templateUrl: "templates/partidos/_listPartidos.html",
+                        templateUrl: "templates/partidos/listPartidos.html",
                         controller: 'ListPartidosCtrl'
                     }
                 }

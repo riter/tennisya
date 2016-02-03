@@ -11,14 +11,13 @@ appTennisya
                 $scope.user = {email: '', password: ''};
 
                 // registrar para notificaciones 
-//                if (!$localstorage.exist('tokenNotification')) {
+                if (!$localstorage.exist('tokenNotification')) {
                     $cordovaPush.register(configNotifications).then(function (regid) {
-                        alert(regid);
                         if (ionic.Platform.isIOS()) {
                             $localstorage.set('tokenNotification', regid);
                         }
                     });
-//                }
+                }
             });
             $scope.$on('$ionicView.afterEnter', function (scopes, states) {
                 $ionicHistory.clearHistory();

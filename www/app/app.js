@@ -1,7 +1,7 @@
 /**
  * Created by Riter on 24/08/15.
  */
-//var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+//var api = 'http://test.tennisya.apploadapps.com/app_dev.php/api/';
 // var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
 var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
 // var api = 'http://tennisya.apploadapps.com/web/api/';

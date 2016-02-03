@@ -53,7 +53,8 @@ appTennisya
         .controller('groupCtrl', function ($scope, $state, $stateParams, $rootScope, $localstorage, grupoService) {
 
             $scope.$on('$ionicView.enter', function () {
-                $rootScope.grupoPartido = {id: parseInt($stateParams.id), title: $scope.grupo.title};
+//                $rootScope.grupoPartido = {id: parseInt($stateParams.id), title: $scope.grupo.title};
+                $rootScope.filterPartidos = {type:'grupo', idType: parseInt($stateParams.id), title: $scope.grupo.title};
             });
             $scope.isYo = function (jugador) {
                 return $localstorage.getObject('user').id === jugador.id;

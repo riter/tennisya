@@ -7,23 +7,23 @@ appTennisya
         .factory('partidoService', function ($http) {
 
             return {
-                getPartidosT: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_todos', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
+                getPartidosT: function (idJugador, type, idType) {
+                    return $http.get(api + 'partidos/list_todos', {params: {idJugador: idJugador, type:type, idType: idType}}).then(function (response) {
                         return response.data;
                     });
                 },
-                getPartidosP: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_personales', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
+                getPartidosP: function (idJugador, type, idType) {
+                    return $http.get(api + 'partidos/list_personales', {params: {idJugador: idJugador, type:type, idType: idType}}).then(function (response) {
                         return response.data;
                     });
                 },
-                getPartidosC: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_confirmados', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
+                getPartidosC: function (idJugador, type, idType) {
+                    return $http.get(api + 'partidos/list_confirmados', {params: {idJugador: idJugador, type:type, idType: idType}}).then(function (response) {
                         return response.data;
                     });
                 },
-                getPartidosJ: function (idJugador, idGrupo) {
-                    return $http.get(api + 'partidos/list_jugados', {params: {idJugador: idJugador, idGrupo: idGrupo}}).then(function (response) {
+                getPartidosJ: function (idJugador, type, idType) {
+                    return $http.get(api + 'partidos/list_jugados', {params: {idJugador: idJugador, type:type, idType: idType}}).then(function (response) {
                         return response.data;
                     });
                 },
