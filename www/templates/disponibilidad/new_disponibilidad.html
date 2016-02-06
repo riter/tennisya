@@ -1,5 +1,5 @@
 <ion-view title="Añadir disponibilidad">
-    
+
     <form name="form" novalidate>
         <ion-header-bar class="bar-stable">
             <button class="button button-clear btn-left" ng-click="closeNewDisponibilidad()"> Cancelar </button>
@@ -60,20 +60,19 @@
                 <label class="item new-input-date">
                     Fecha
                     <input type="date" ng-model="disponibilidad.fecha" required>
-                    <span class="item-note">{{disponibilidad.fecha | date:'yyyy/MM/dd' }}</span>
+                    <span class="item-note">{{disponibilidad.fecha| date:'yyyy/MM/dd' }}</span>
                 </label>
 
                 <label class="item new-input-date">
                     Hora de Comienzo
                     <input type="time" ng-model="disponibilidad.fechai" required>
-                    <span class="item-note">{{disponibilidad.fechai | date:'h:mm a'| lowercase }}</span>
+                    <span class="item-note">{{disponibilidad.fechai| date:'h:mm a'| lowercase }}</span>
                 </label>
                 <label class="item new-input-date">
                     Hora de Fin
                     <input type="time" ng-model="disponibilidad.fechaf" required>
-                    <span class="item-note">{{disponibilidad.fechaf | date:'h:mm a'| lowercase }}</span>
+                    <span class="item-note">{{disponibilidad.fechaf| date:'h:mm a'| lowercase }}</span>
                 </label>
-                
                 <a class="item" ui-sref="tabs.disponibilidad.repetir">
                     Repetir
                     <span class="item-note">

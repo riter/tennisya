@@ -20,7 +20,7 @@ appTennisya
             $scope.openPatido = function () {
                 $scope.title = $rootScope.filterPartidos.title;
                 var idGrupo = $rootScope.filterPartidos.type === 'grupo' ? $rootScope.filterPartidos.idType : null;
-                $scope.partido = {reservada: true, tipo: 'Singles', jugador1: $localstorage.getObject('user'), grupo: idGrupo};
+                $scope.partido = {fecha: moment().toDate(), horaI: moment("0000-00-00 00:00:00").toDate(), horaF: moment("0000-00-00 00:00:00").toDate(), reservada: true, tipo: 'Singles', jugador1: $localstorage.getObject('user'), grupo: idGrupo};
                 $scope.invitar = null;
                 $scope.withDisponibilidad();
 

@@ -61,7 +61,7 @@ appTennisya
                         $scope.disponibilidad.fechai = moment(item.fechai).toDate();
                         $scope.disponibilidad.fechaf = moment(item.fechaf).toDate();
                     } else
-                        $scope.disponibilidad = {autoConfirm: false, fecha: null, fechai: null, fechaf: null, repetir: ''};
+                        $scope.disponibilidad = {autoConfirm: false, fecha: moment().toDate(), fechai: moment("0000-00-00 00:00:00").toDate(), fechaf: moment("0000-00-00 00:00:00").toDate(), repetir: ''};
                     $scope.modalNewDisp.show();
 
                 });
@@ -82,22 +82,23 @@ appTennisya
             };
 
             $scope.onGuardar = function () {
-                if (typeof ($scope.disponibilidad.id) !== 'undefined') {
-                    disponibilidadService.updateDisponibilidad($scope.disponibilidad).then(function (response) {
-                        $scope.items.forEach(function (disp, index) {
-                            if (disp.id === response.data.id){
-                                response.data.$$hashKey = $scope.items[index].$$hashKey;
-                                $scope.items[index] = response.data;
-                            }
-                        });
-                        disponibilidadService.saveStorage($scope.items);
-                    });
-                } else {
-                    disponibilidadService.newDisponibilidad($scope.disponibilidad).then(function (response) {
-                        $scope.items.push(response);
-                        disponibilidadService.saveStorage($scope.items);
-                    });
-                }
+//                if (typeof ($scope.disponibilidad.id) !== 'undefined') {
+//                    disponibilidadService.updateDisponibilidad($scope.disponibilidad).then(function (response) {
+//                        $scope.items.forEach(function (disp, index) {
+//                            if (disp.id === response.data.id){
+//                                response.data.$$hashKey = $scope.items[index].$$hashKey;
+//                                $scope.items[index] = response.data;
+//                            }
+//                        });
+//                        disponibilidadService.saveStorage($scope.items);
+//                    });
+//                } else {
+//                    disponibilidadService.newDisponibilidad($scope.disponibilidad).then(function (response) {
+//                        $scope.items.push(response);
+//                        disponibilidadService.saveStorage($scope.items);
+//                    });
+//                }
+                console.log($scope.disponibilidad);
                 $scope.closeNewDisponibilidad();
             };
         });
