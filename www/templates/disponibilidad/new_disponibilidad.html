@@ -70,7 +70,7 @@
                 </label>
                 <label class="item new-input-date">
                     Hora de Fin
-                    <input type="time" ng-model="disponibilidad.fechaf" required>
+                    <input type="time" ng-min="disponibilidad.fechai" ng-model="disponibilidad.fechaf" required>
                     <span class="item-note">{{disponibilidad.fechaf| date:'h:mm a'| lowercase }}</span>
                 </label>
                 <a class="item" ui-sref="tabs.disponibilidad.repetir">
