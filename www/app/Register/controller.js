@@ -11,13 +11,14 @@ appTennisya
                 $scope.user = {email: '', password: ''};
 
                 // registrar para notificaciones 
-                if (!$localstorage.exist('tokenNotification')) {
-                    $cordovaPush.register(configNotifications).then(function (regid) {
-                        if (ionic.Platform.isIOS()) {
-                            $localstorage.set('tokenNotification', regid);
-                        }
-                    });
-                }
+//                if (!$localstorage.exist('tokenNotification')) {
+//                    $cordovaPush.register(configNotifications).then(function (regid) {
+//                        if (ionic.Platform.isIOS()) {
+//                            alert(regid);
+//                            $localstorage.set('tokenNotification', regid);
+//                        }
+//                    });
+//                }
             });
             $scope.$on('$ionicView.afterEnter', function (scopes, states) {
                 $ionicHistory.clearHistory();
@@ -47,8 +48,8 @@ appTennisya
                                             platform: ionic.Platform.platform(),
                                             tokenNotification: $localstorage.get('tokenNotification'),
                                             udid: $cordovaDevice.getDevice().uuid,
-                                            email : success.email,
-                                            name : success.name
+                                            email: success.email,
+                                            name: success.name
                                         };
 
                                         userService.facebookJugador(data).then(function () {

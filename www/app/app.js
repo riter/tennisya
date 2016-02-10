@@ -34,11 +34,12 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory, $cordovaPush, $localsto
 
 
 //        if (!$localstorage.exist('tokenNotification')) {
-//            $cordovaPush.register(configNotifications).then(function (regid) {
-//                if (ionic.Platform.isIOS()) {
-//                    $localstorage.set('tokenNotification', regid);
-//                }
-//            });
+            $cordovaPush.register(configNotifications).then(function (regid) {
+                 alert(regid);
+                if (ionic.Platform.isIOS()) {
+                    $localstorage.set('tokenNotification', regid);
+                }
+            });
 //        }
         $rootScope.$on('$cordovaPush:notificationReceived', function (event, notification) {
             if (ionic.Platform.isAndroid() && notification.event === 'registered' && notification.regid.length > 0) {
