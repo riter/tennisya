@@ -30,25 +30,25 @@ appTennisya
             var getPartidosT = function () {
                 partidoService.getPartidosT($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.todos = response;
-                    $scope.intervalPartidosT = $timeout(getPartidosT, 30000);
+//                    $scope.intervalPartidosT = $timeout(getPartidosT, 30000);
                 });
             };
             var getPartidosP = function () {
                 partidoService.getPartidosP($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.personales = response;
-                    $scope.intervalPartidosP = $timeout(getPartidosP, 30000);
+//                    $scope.intervalPartidosP = $timeout(getPartidosP, 30000);
                 });
             };
             var getPartidosC = function () {
                 partidoService.getPartidosC($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.confirmados = response;
-                    $scope.intervalPartidosC = $timeout(getPartidosC, 30000);
+//                    $scope.intervalPartidosC = $timeout(getPartidosC, 30000);
                 });
             };
             var getPartidosJ = function () {
                 partidoService.getPartidosJ($scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType).then(function (response) {
                     $scope.jugados = response;
-                    $scope.intervalPartidosJ = $timeout(getPartidosJ, 30000);
+//                    $scope.intervalPartidosJ = $timeout(getPartidosJ, 30000);
                 });
             };
 
@@ -75,7 +75,7 @@ appTennisya
                         addCancelButtonWithLabel: 'Cancelar',
                         androidEnableCancelButton: true
                     };
-
+                    
                     if (jugadorpartido.estado == 'invitado') {
                         options.title = 'Confirmacion de partido';
                         options.buttonLabels = ['Aceptar', 'Rechazar'];
@@ -109,29 +109,36 @@ appTennisya
             };
 
             $scope.actionOptions = function (action, jugadorPartido, partido) {
+                var jugadores = [];
+                for(var c=0; c<partido.jugadorpartido.length; c++){
+                    if(jugadorPartido === null || partido.jugadorpartido[c].id !== jugadorPartido.id){
+                        jugadores.push(partido.jugadorpartido[c].jugador.id);
+                    }
+                }
+                
                 switch (action) {
                     case 'Aceptar':
-                        partidoService.confirmPartido(jugadorPartido.id, 'aceptado').then(function (response) {
+                        partidoService.confirmPartido(jugadorPartido.id, 'aceptado',jugadores).then(function (response) {
                             partido.jugadorpartido[partido.jugadorpartido.indexOf(jugadorPartido)] = response;
-                            $rootScope.$broadcast('$ionicView.enter', {});
+//                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                     case 'Rechazar':
-                        partidoService.confirmPartido(jugadorPartido.id, 'cancelado').then(function (response) {
+                        partidoService.confirmPartido(jugadorPartido.id, 'cancelado',jugadores).then(function (response) {
                             partido.jugadorpartido.splice(partido.jugadorpartido.indexOf(jugadorPartido), 1);
-                            $rootScope.$broadcast('$ionicView.enter', {});
+//                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                     case 'Salir':
-                        partidoService.confirmPartido(jugadorPartido.id, 'salir').then(function (response) {
+                        partidoService.confirmPartido(jugadorPartido.id, 'salir',jugadores).then(function (response) {
                             partido.jugadorpartido.splice(partido.jugadorpartido.indexOf(jugadorPartido), 1);
-                            $rootScope.$broadcast('$ionicView.enter', {});
+//                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                     case 'Ingresar':
-                        partidoService.entrarPartido(partido.id, $scope.userLogin.id, 'entrar').then(function (response) {
-                            //partido.jugadorpartido.push(response);
-                            $rootScope.$broadcast('$ionicView.enter', {});
+                        partidoService.entrarPartido(partido.id, $scope.userLogin.id, 'entrar',jugadores).then(function (response) {
+                            partido.jugadorpartido.push(response);
+//                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                 }

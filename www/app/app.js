@@ -3,7 +3,7 @@
  */
 //var api = 'http://test.tennisya.apploadapps.com/app_dev.php/api/';
 // var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
-//var api = 'http://localhost/tennisya/tennisya_admin/web/app_dev.php/api/';
+//var api = 'http://localhost/tennisyaApp/tennisya_admin/web/app_dev.php/api/';
  var api = 'http://tennisya.apploadapps.com/web/api/';
 
 var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova']);
@@ -35,49 +35,17 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory, $cordovaPush, $localsto
 
 //        if (!$localstorage.exist('tokenNotification')) {
             $cordovaPush.register(configNotifications).then(function (regid) {
-                 alert(regid);
                 if (ionic.Platform.isIOS()) {
                     $localstorage.set('tokenNotification', regid);
                 }
             });
 //        }
+
         $rootScope.$on('$cordovaPush:notificationReceived', function (event, notification) {
-            if (ionic.Platform.isAndroid() && notification.event === 'registered' && notification.regid.length > 0) {
+            if (ionic.Platform.isAndroid() && notification.event === 'registered') {
                 $localstorage.set('tokenNotification', notification.regid);
             }
         });
-
-//        $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
-//
-//                if (ionic.Platform.isAndroid()) {
-//                    switch (notification.event) {
-//                        case 'message':
-//                            // this is the actual push notification. its format depends on the data model from the push server
-//                            alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
-//                            break;
-//                        case 'error':
-//                            alert('GCM error = ' + notification.msg);
-//                            break;
-//                    }
-//                } else if (ionic.Platform.isIOS()) {
-//                    if (notification.alert) {
-//                        alert(notification.alert);
-//                    }
-//
-//                    if (notification.sound) {
-//                        var snd = new Media(event.sound);
-//                        snd.play();
-//                    }
-//
-//                    if (notification.badge) {
-//                        $cordovaPush.setBadgeNumber(notification.badge).then(function (result) {
-//                            // Success!
-//                        }, function (err) {
-//                            // An error occurred. Show a message to the user
-//                        });
-//                    }
-//                }
-//            });
 
     });
 });

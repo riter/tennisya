@@ -74,7 +74,7 @@ appTennisya
 //        };
 
         })
-        .controller('TabsCtrl', function ($scope, $state, $ionicHistory, $localstorage, extrasService, disponibilidadService, userService) {
+        .controller('TabsCtrl', function ($scope, $state, $ionicHistory, $localstorage, notoficacionService, extrasService, disponibilidadService, userService) {
             extrasService.loadClubs();
             disponibilidadService.load();
 
@@ -98,6 +98,43 @@ appTennisya
             };
 
             $scope.userLogin = $localstorage.getObject('user');
+            
+            $scope.badge = 0;
+            notoficacionService.loadList($scope.userLogin.id).then(function () {
+                $scope.badge = notoficacionService.data.length;
+            });
+            
+            $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
+
+                if (ionic.Platform.isAndroid()) {
+                    switch (notification.event) {
+                        case 'message':
+                            // this is the actual push notification. its format depends on the data model from the push server
+                            alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
+                            break;
+                        case 'error':
+                            alert('GCM error = ' + notification.msg);
+                            break;
+                    }
+                } else if (ionic.Platform.isIOS()) {
+                    if (notification.alert) {
+                        alert(notification.alert);
+                    }
+
+                    if (notification.sound) {
+                        var snd = new Media(event.sound);
+                        snd.play();
+                    }
+
+                    if (notification.badge) {
+                        $cordovaPush.setBadgeNumber(notification.badge).then(function (result) {
+                            // Success!
+                        }, function (err) {
+                            // An error occurred. Show a message to the user
+                        });
+                    }
+                }
+            });
         })
         ;
    

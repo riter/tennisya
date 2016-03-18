@@ -27,13 +27,13 @@ appTennisya
                         return response.data;
                     });
                 },
-                confirmPartido: function (jugador_partido, action) {
-                    return $http.get(api + 'partidos/confirm_partido/' + jugador_partido, {params: {action: action}}).then(function (response) {
+                confirmPartido: function (jugador_partido, action, jugadores) {
+                    return $http.get(api + 'partidos/confirm_partido/' + jugador_partido, {params: {action: action, 'jugadores[]':jugadores}}).then(function (response) {
                         return response.data;
                     });
                 },
-                entrarPartido: function (idPartido, idJugador, action) {
-                    return $http.get(api + 'partidos/entrar_partido/' + idPartido + '/' + idJugador, {params: {action: action}}).then(function (response) {
+                entrarPartido: function (idPartido, idJugador, action, jugadores) {
+                    return $http.get(api + 'partidos/entrar_partido/' + idPartido + '/' + idJugador, {params: {action: action, 'jugadores[]':jugadores}}).then(function (response) {
                         return response.data;
                     });
                 },

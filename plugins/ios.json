@@ -129,43 +129,43 @@
     },
     "installed_plugins": {
         "com.ionic.keyboard": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-actionsheet": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.camera": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.file": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         },
         "org.apache.cordova.file-transfer": {
-            "PACKAGE_NAME": "com.apploadapps.tennisya"
+            "PACKAGE_NAME": "com.appload.tennisya"
         }
     },
     "dependent_plugins": {}
