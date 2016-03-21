@@ -104,37 +104,37 @@ appTennisya
                 $scope.badge = notoficacionService.data.length;
             });
             
-            $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
-
-                if (ionic.Platform.isAndroid()) {
-                    switch (notification.event) {
-                        case 'message':
-                            // this is the actual push notification. its format depends on the data model from the push server
-                            alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
-                            break;
-                        case 'error':
-                            alert('GCM error = ' + notification.msg);
-                            break;
-                    }
-                } else if (ionic.Platform.isIOS()) {
-                    if (notification.alert) {
-                        alert(notification.alert);
-                    }
-
-                    if (notification.sound) {
-                        var snd = new Media(event.sound);
-                        snd.play();
-                    }
-
-                    if (notification.badge) {
-                        $cordovaPush.setBadgeNumber(notification.badge).then(function (result) {
-                            // Success!
-                        }, function (err) {
-                            // An error occurred. Show a message to the user
-                        });
-                    }
-                }
-            });
+//            $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
+//
+//                if (ionic.Platform.isAndroid()) {
+//                    switch (notification.event) {
+//                        case 'message':
+//                            // this is the actual push notification. its format depends on the data model from the push server
+//                            alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
+//                            break;
+//                        case 'error':
+//                            alert('GCM error = ' + notification.msg);
+//                            break;
+//                    }
+//                } else if (ionic.Platform.isIOS()) {
+//                    if (notification.alert) {
+//                        alert(notification.alert);
+//                    }
+//
+//                    if (notification.sound) {
+//                        var snd = new Media(event.sound);
+//                        snd.play();
+//                    }
+//
+//                    if (notification.badge) {
+//                        $cordovaPush.setBadgeNumber(notification.badge).then(function (result) {
+//                            // Success!
+//                        }, function (err) {
+//                            // An error occurred. Show a message to the user
+//                        });
+//                    }
+//                }
+//            });
         })
         ;
    
