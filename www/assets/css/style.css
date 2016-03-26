@@ -940,3 +940,25 @@ button, input, select, textarea {
   top: 102px; }
 
 /*# sourceMappingURL=style.css.map */
+.mi-badge{
+    border-radius: 50% !important;
+    width: 0 !important;
+    height: 0 !important;
+    top: 50% !important;
+    margin-top: -4px !important;
+    right: 28px !important;
+    color: transparent !important;
+    background-color: #0d8a1b !important;
+    padding: 4px !important;
+    min-width: initial !important;
+}
+
+.mi-badge-tab{
+    border-radius: 50% !important;
+    width: 0 !important;
+    height: 0 !important;
+    color: transparent !important;
+    background-color: #0d8a1b !important;
+    padding: 4px !important;
+    min-width: initial !important;
+}

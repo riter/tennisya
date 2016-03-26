@@ -17,6 +17,7 @@
                 <img ng-src="{{grupo.image != null ? grupo.image : 'assets/img/group.png'}}">
                 <h2>{{grupo.title}}</h2>
                 <p>{{grupo.ciudad}}, {{grupo.pais}}</p>
+                <span class="badge badge-balanced mi-badge">{{isNotifGrupo(grupo.id)?'.':''}}</span>
                 <!--<p>Lawn Tenis, Nautilus</p>-->
                 <i class="icon ion-chevron-right"></i>
             </ion-item>
@@ -29,6 +30,7 @@
                 <p>{{jugador.estado}}</p>
                 <p>{{jugador.clubCancha.nombre}}</p>
                 <!--<p>Lawn Tenis, Nautilus</p>-->
+                <span class="badge badge-balanced mi-badge">{{isNotifJugador(jugador.id)?'.':''}}</span>
                 <i class="icon ion-chevron-right"></i>
             </ion-item>
         </ion-list>

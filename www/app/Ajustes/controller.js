@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaPush, $cordovaActionSheet, $localstorage) {
+        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaActionSheet, $localstorage, notoficacionService) {
 
             $scope.onCerrarSesion = function () {
                 var options = {
@@ -18,14 +18,23 @@ appTennisya
                             if (btnIndex == 1) {
                                 $localstorage.clear();
                                 setTimeout(function () {
-                                    $cordovaPush.unregister(configNotifications).then(function (result) {
-                                        $localstorage.remove('tokenNotification');
-                                    });
-                                    $cordovaFacebook.logout();
+                                    notoficacionService.unregister();
+                                    logoutFacebook();
                                     $state.go('signin');
                                 }, 300);
                             }
                         });
+            };
+            var logoutFacebook = function () {
+                try {
+                    $cordovaFacebook.getLoginStatus()
+                            .then(function (success) {
+                                if (success.status == 'connected')
+                                    $cordovaFacebook.logout();
+                            }, function (error) {
+                            });
+                } catch (e) {
+                }
             };
         })
         .controller('ProfileCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $localstorage, userService, extrasService, cameraAction) {

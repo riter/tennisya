@@ -38,11 +38,10 @@ appTennisya
             var loadGrupos = function () {
                 grupoService.list().then(function (response) {
                     $scope.data.grupos = response;
-                    $scope.intervalReload = $timeout(loadGrupos, 30000);
+//                    $scope.intervalReload = $timeout(loadGrupos, 30000);
                 });
             };
             $scope.$on('$ionicView.afterEnter', function () {
-//                $rootScope.grupoPartido = {id: null};
                 if ($scope.data.showGrupos === true) {
                     $rootScope.filterPartidos = {type: 'grupos', idType: null, title: 'Grupos'};
                 } else {

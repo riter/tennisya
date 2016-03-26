@@ -61,6 +61,7 @@ appTennisya
             $scope.$on('$ionicView.afterEnter', function () {
                 $scope.title = $rootScope.filterPartidos.title !== null? 'Partidos: '+ $rootScope.filterPartidos.title : 'Partidos';
                 $scope.loadPartidos();
+//                $scope.removeNotificacion();
             });
             $scope.$on('$ionicView.beforeLeave', function () {
                 $timeout.cancel($scope.intervalPartidosT);
@@ -120,25 +121,25 @@ appTennisya
                     case 'Aceptar':
                         partidoService.confirmPartido(jugadorPartido.id, 'aceptado',jugadores).then(function (response) {
                             partido.jugadorpartido[partido.jugadorpartido.indexOf(jugadorPartido)] = response;
-//                            $rootScope.$broadcast('$ionicView.enter', {});
+                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                     case 'Rechazar':
                         partidoService.confirmPartido(jugadorPartido.id, 'cancelado',jugadores).then(function (response) {
                             partido.jugadorpartido.splice(partido.jugadorpartido.indexOf(jugadorPartido), 1);
-//                            $rootScope.$broadcast('$ionicView.enter', {});
+                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                     case 'Salir':
                         partidoService.confirmPartido(jugadorPartido.id, 'salir',jugadores).then(function (response) {
                             partido.jugadorpartido.splice(partido.jugadorpartido.indexOf(jugadorPartido), 1);
-//                            $rootScope.$broadcast('$ionicView.enter', {});
+                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                     case 'Ingresar':
                         partidoService.entrarPartido(partido.id, $scope.userLogin.id, 'entrar',jugadores).then(function (response) {
                             partido.jugadorpartido.push(response);
-//                            $rootScope.$broadcast('$ionicView.enter', {});
+                            $rootScope.$broadcast('$ionicView.enter', {});
                         });
                         break;
                 }

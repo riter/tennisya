@@ -135,8 +135,9 @@ appTennisya
                     return deferred.promise;
                 },
                 listJugador: function () {
+                    var user = $localstorage.getObject('user');
                     var self = this;
-                    return $http.get(api + 'jugador/list', {params: {page: self.page, limit: self.limit}}).then(function (response) {
+                    return $http.get(api + 'jugador/list', {params: {jugador: user.id, page: self.page, limit: self.limit}}).then(function (response) {
                         self.page++;
                         return response.data;
                     }, function (e) {

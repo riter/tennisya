@@ -61,10 +61,10 @@ appTennisya
                         });
                     }
 
-                    if (attrs.focus) {
+                    if (typeof(attrs.focus)) {
                         $timeout(function () {
                             inputElement.focus();
-                        }, 400);
+                        }, 700);
                     }
 
                     scope.clearSearch = function () {

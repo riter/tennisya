@@ -74,7 +74,8 @@ appTennisya
 //        };
 
         })
-        .controller('TabsCtrl', function ($scope, $state, $ionicHistory, $localstorage, notoficacionService, extrasService, disponibilidadService, userService) {
+        .controller('TabsCtrl', function ($rootScope, $scope, $state, $ionicHistory, $localstorage, notoficacionService, extrasService, disponibilidadService, userService) {
+            notoficacionService.register();
             extrasService.loadClubs();
             disponibilidadService.load();
 
@@ -89,8 +90,8 @@ appTennisya
             $scope.filterQuery = function (items, query) {
                 var result = [];
                 angular.forEach(items, function (value, key) {
-                    if (value.name.toLowerCase().indexOf(query.toLowerCase()) > -1 || value.estado.toLowerCase().indexOf(query.toLowerCase()) > -1 ||
-                            value.clubCancha.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+                    if ( $scope.userLogin.id !== value.id && (value.name.toLowerCase().indexOf(query.toLowerCase()) > -1 || value.estado.toLowerCase().indexOf(query.toLowerCase()) > -1 ||
+                            value.clubCancha.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1) ) {
                         result.push(value);
                     }
                 });
@@ -98,13 +99,48 @@ appTennisya
             };
 
             $scope.userLogin = $localstorage.getObject('user');
-            
-            $scope.badge = 0;
-            notoficacionService.loadList($scope.userLogin.id).then(function () {
-                $scope.badge = notoficacionService.data.length;
-            });
-            
-//            $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
+
+            $scope.isNotifGrupo = function (idGrupo) {
+                var res = false;
+                angular.forEach($scope.notificaciones, function (value, key) {
+                    if (value.grupo === idGrupo)
+                        res = true;
+                });
+                return res;
+            };
+            $scope.isNotifJugador = function (idJugador) {
+                var res = false;
+                angular.forEach($scope.notificaciones, function (value, key) {
+                    if (value.grupo === null && value.noleidos[$scope.userLogin.id] !== undefined && value.noleidos[$scope.userLogin.id].indexOf(idJugador) > -1)
+                        res = true;
+                });
+                return res;
+            };
+
+            $scope.isNotifPartido = function () {
+                if ($rootScope.filterPartidos && $rootScope.filterPartidos.type === 'jugador') {
+                    return $scope.isNotifJugador($rootScope.filterPartidos.idType);
+                } else if ($rootScope.filterPartidos && $rootScope.filterPartidos.type === 'grupo') {
+                    return $scope.isNotifGrupo($rootScope.filterPartidos.idType);
+                }
+                return false;
+            };
+            $scope.removeNotificacion = function () {
+                if ($rootScope.filterPartidos && ($rootScope.filterPartidos.type === 'jugador' || $rootScope.filterPartidos.type === 'grupo')) {
+                    notoficacionService.leido($rootScope.filterPartidos.idType, $scope.userLogin.id, $rootScope.filterPartidos.type).then(function () {
+                        $scope.notificaciones = notoficacionService.data;
+                    });
+                }
+            };
+            $rootScope.loadNotificaciones = function () {
+                notoficacionService.loadList($scope.userLogin.id).then(function () {
+                    $scope.notificaciones = notoficacionService.data;
+                });
+            };
+            $scope.loadNotificaciones();
+
+            $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
+                $scope.loadNotificaciones();
 //
 //                if (ionic.Platform.isAndroid()) {
 //                    switch (notification.event) {
@@ -134,7 +170,7 @@ appTennisya
 //                        });
 //                    }
 //                }
-//            });
+            });
         })
         ;
    

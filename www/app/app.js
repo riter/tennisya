@@ -14,14 +14,17 @@ var configNotifications = {
     senderID: "648422481399"
 };
 
-appTennisya.run(function ($ionicPlatform, $ionicHistory, $cordovaPush, $localstorage, $rootScope) {
+appTennisya.run(function ($ionicPlatform, $ionicHistory, $rootScope, notoficacionService) {
     $ionicPlatform.ready(function () {
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
-        }
-        if (window.StatusBar) {
-            StatusBar.styleDefault();
+        try {
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
+            if (window.StatusBar) {
+                StatusBar.styleDefault();
+            }
+        } catch (e) {
         }
 
         $ionicPlatform.registerBackButtonAction(function (event) {
@@ -32,22 +35,11 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory, $cordovaPush, $localsto
             }
         }, 100);
 
-
-//        if (!$localstorage.exist('tokenNotification')) {
-            $cordovaPush.register(configNotifications).then(function (regid) {
-                 alert(regid);
-                if (ionic.Platform.isIOS()) {
-                    $localstorage.set('tokenNotification', regid);
-                }
-            });
-//        }
-
-        $rootScope.$on('$cordovaPush:notificationReceived', function (event, notification) {
-            alert(notification.regid);
-            if (ionic.Platform.isAndroid() && notification.event === 'registered') {
-                $localstorage.set('tokenNotification', notification.regid);
-            }
+        $ionicPlatform.on('resume', function () {
+           $rootScope.loadNotificaciones();
         });
+        
+        notoficacionService.receive();
 
     });
 });

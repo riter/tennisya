@@ -82,23 +82,22 @@ appTennisya
             };
 
             $scope.onGuardar = function () {
-//                if (typeof ($scope.disponibilidad.id) !== 'undefined') {
-//                    disponibilidadService.updateDisponibilidad($scope.disponibilidad).then(function (response) {
-//                        $scope.items.forEach(function (disp, index) {
-//                            if (disp.id === response.data.id){
-//                                response.data.$$hashKey = $scope.items[index].$$hashKey;
-//                                $scope.items[index] = response.data;
-//                            }
-//                        });
-//                        disponibilidadService.saveStorage($scope.items);
-//                    });
-//                } else {
-//                    disponibilidadService.newDisponibilidad($scope.disponibilidad).then(function (response) {
-//                        $scope.items.push(response);
-//                        disponibilidadService.saveStorage($scope.items);
-//                    });
-//                }
-                console.log($scope.disponibilidad);
+                if (typeof ($scope.disponibilidad.id) !== 'undefined') {
+                    disponibilidadService.updateDisponibilidad($scope.disponibilidad).then(function (response) {
+                        $scope.items.forEach(function (disp, index) {
+                            if (disp.id === response.data.id){
+                                response.data.$$hashKey = $scope.items[index].$$hashKey;
+                                $scope.items[index] = response.data;
+                            }
+                        });
+                        disponibilidadService.saveStorage($scope.items);
+                    });
+                } else {
+                    disponibilidadService.newDisponibilidad($scope.disponibilidad).then(function (response) {
+                        $scope.items.push(response);
+                        disponibilidadService.saveStorage($scope.items);
+                    });
+                }
                 $scope.closeNewDisponibilidad();
             };
         });

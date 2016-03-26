@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaPush, $cordovaDevice, $cordovaOauth, userService, $localstorage) {
+        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaPush, $cordovaDevice, $cordovaOauth, userService, notoficacionService) {
 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
                 $scope.user = {email: '', password: ''};
@@ -16,7 +16,6 @@ appTennisya
             });
 
             $scope.signIn = function (user) {
-                user.tokenNotification = $localstorage.get('tokenNotification');
                 user.platform = ionic.Platform.platform();
                 user.udid = $cordovaDevice.getDevice().uuid;
 
@@ -36,7 +35,6 @@ appTennisya
                                     .then(function (success) {
                                         var data = {
                                             platform: ionic.Platform.platform(),
-                                            tokenNotification: $localstorage.get('tokenNotification'),
                                             udid: $cordovaDevice.getDevice().uuid,
                                             email: success.email,
                                             name: success.name
