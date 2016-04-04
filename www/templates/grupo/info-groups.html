@@ -13,7 +13,7 @@
             <ion-item class="item item-avatar item-text" type="item-text-wrap">
                 <img ng-src="{{grupo.image?grupo.image:'assets/img/group.png' }}">
 
-                <label class="item item-input item-cont">
+                <label class="item item-input item-cont transition" ng-class="{'actived':!data.showDelete}">
                     <input type="text" ng-model="grupo.title" ng-change="data.changeTitle = true" placeholder="Asunto del grupo" maxlength="25" ng-disabled="!data.showDelete">
                     <span class="item-note">{{25 - grupo.title.length}}</span>
                 </label>
@@ -26,7 +26,7 @@
             <div class="item item-divider">{{grupo.jugadorgrupo.length}} jugadores</div>
 
             <ion-item  ng-show="isAdmin()" class="item balanced" ng-click="openAddJugador()">
-                Añadir jugador...
+                Añadir jugador
             </ion-item>
 
             <ion-list show-delete="data.showDelete && isAdmin()" class="players-list">

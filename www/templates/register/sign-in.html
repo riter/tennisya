@@ -5,19 +5,19 @@
                 <img data-ng-src="assets/img/icon-login.png" class="image-list-thumb thumb-login"/>
             </div>
         </div>
-        <form>
+        <form name="form" novalidate>
             <div class="list login-fields">
                 <label class="item item-input background-transparent login-fields_label">
-                    <input type="email" placeholder="Email" ng-model="user.email" class="login-fields_field">
+                    <input type="email" placeholder="Email" ng-model="user.email" class="login-fields_field" required>
                 </label>
                 <label class="item item-input background-transparent login-fields_label">
                     <input type="password" placeholder="Contraseña" ng-model="user.password" class="login-fields_field">
                 </label>
             </div>
             <div class="sign-in_cright">
-                <a href="#" class="sign-in_forget">¿Olvidó contraseña?</a>
+                <a ng-click="!form.$invalid && lostPassword(user)" class="sign-in_forget">¿Olvidó contraseña?</a>
             </div>
-            <button class="button button-full sign-in_submit" ng-click="signIn(user)">
+            <button class="button button-full sign-in_submit" ng-click="!form.$invalid && signIn(user)">
                 Iniciar sesión
             </button>
         </form>

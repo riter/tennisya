@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('SignInCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaPush, $cordovaDevice, $cordovaOauth, userService, notoficacionService) {
+        .controller('SignInCtrl', function ($http, $scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaPush, $cordovaDevice, $cordovaOauth, userService) {
 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
                 $scope.user = {email: '', password: ''};
@@ -14,7 +14,14 @@ appTennisya
                 $ionicHistory.clearHistory();
                 $ionicHistory.clearCache();
             });
-
+            $scope.lostPassword = function (user) {
+                userService.lostPassword(user).then(function (response) {
+                    $cordovaDialogs.alert(response.msg, '¿Olvidó contraseña?', 'Hecho');
+                }, function (error) {
+                    var msg = typeof (error.error) !== 'undefined' ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
+                    $cordovaDialogs.alert(msg, '¿Olvidó contraseña?', 'Hecho');
+                });
+            };
             $scope.signIn = function (user) {
                 user.platform = ionic.Platform.platform();
                 user.udid = $cordovaDevice.getDevice().uuid;
@@ -55,18 +62,33 @@ appTennisya
             };
 
             $scope.signInLinkedin = function () {
-                console.log('signInGoogle');
+                var msg = 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
+
                 $cordovaOauth.linkedin("77pysieyuk50ks", "y1Rzh4FLej8mJko0", ["r_basicprofile", "r_emailaddress"], "riter123angel").then(function (result) {
-                    //success
-                    alert(JSON.stringify(result));
+                    $http.get('https://api.linkedin.com/v1/people/~:(id,email-address,formatted-name)', {params: {format: 'json', oauth2_access_token: result.access_token}}).then(function (response) {
+                        var data = {
+                            platform: ionic.Platform.platform(),
+                            udid: $cordovaDevice.getDevice().uuid,
+                            email: response.data.emailAddress,
+                            name: response.data.formattedName
+                        };
+
+                        userService.facebookJugador(data).then(function () {
+                            $state.go('tabs.player');
+                        }, function (error) {
+                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                        });
+
+                    }, function (error) {
+                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                    });
+//
                 }, function (error) {
-                    //error
-                    alert(JSON.stringify(error));
                 });
             };
 
         })
-        .controller('SignUpCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, userService, extrasService, cameraAction) {
+        .controller('SignUpCtrl', function ($scope, $state, $cordovaDialogs, userService, extrasService, cameraAction) {
             $scope.user = {celular: ''};
             extrasService.getClub().then(function (response) {
                 $scope.clubs = response;

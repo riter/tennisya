@@ -64,7 +64,7 @@ appTennisya
                     if (typeof(attrs.focus)) {
                         $timeout(function () {
                             inputElement.focus();
-                        }, 700);
+                        }, 800);
                     }
 
                     scope.clearSearch = function () {

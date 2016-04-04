@@ -38,6 +38,16 @@ appTennisya
                 resetPage: function () {
                     this.page = 1;
                 },
+                lostPassword: function (data) {
+                    var deferred = $q.defer();
+                    $http.get(api + 'jugador/lostpassword', {params: data}).then(function (response) {
+                        deferred.resolve(response.data);
+                    }, function (e) {
+                        deferred.reject(e.data);
+                    });
+                    return deferred.promise;
+
+                },
                 loginJugador: function (data) {
                     var deferred = $q.defer();
                     $http.post(api + 'jugador/login', data).then(function (response) {
@@ -49,7 +59,7 @@ appTennisya
                     return deferred.promise;
 
                 },
-                facebookJugador: function (data, callback, error) {
+                facebookJugador: function (data) {
                     var deferred = $q.defer();
                     $http.post(api + 'jugador/login_social', data).then(function (response) {
                         $localstorage.setObject('user', response.data);
@@ -238,8 +248,8 @@ appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamer
             var options = {
                 quality: 50,
                 allowEdit: true,
-                targetWidth: 300,
-                targetHeight: 300,
+                targetWidth: 640,//300,
+                targetHeight: 640,//300,
                 destinationType: Camera.DestinationType.FILE_URI,
                 sourceType: Camera.PictureSourceType.CAMERA
             };
@@ -269,3 +279,14 @@ appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamer
     };
     return cameraAction;
 });
+
+String.prototype.hashCode = function() {
+  var hash = 0, i, chr, len;
+  if (this.length === 0) return hash;
+  for (i = 0, len = this.length; i < len; i++) {
+    chr   = this.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};

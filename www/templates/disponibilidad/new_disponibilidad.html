@@ -57,28 +57,30 @@
 
                 <div class="item item-divider">Fechas, dias y horarios</div>
 
-                <label class="item new-input-date">
-                    Fecha
-                    <input type="date" ng-model="disponibilidad.fecha" required>
-                    <span class="item-note">{{disponibilidad.fecha| date:'yyyy/MM/dd' }}</span>
-                </label>
+                <div class="ty-list-group">
+                    <label class="item new-input-date">
+                        Fecha
+                        <input type="date" ng-model="disponibilidad.fecha" required>
+                        <span class="item-note">{{disponibilidad.fecha| date:'yyyy/MM/dd' }}</span>
+                    </label>
 
-                <label class="item new-input-date">
-                    Hora de Comienzo
-                    <input type="time" ng-model="disponibilidad.fechai" required>
-                    <span class="item-note">{{disponibilidad.fechai| date:'h:mm a'| lowercase }}</span>
-                </label>
-                <label class="item new-input-date">
-                    Hora de Fin
-                    <input type="time" ng-min="disponibilidad.fechai" ng-model="disponibilidad.fechaf" required>
-                    <span class="item-note">{{disponibilidad.fechaf| date:'h:mm a'| lowercase }}</span>
-                </label>
-                <a class="item" ui-sref="tabs.disponibilidad.repetir">
-                    Repetir
-                    <span class="item-note">
-                        {{disponibilidad.repetir === ''?'repetir':disponibilidad.repetir}} <i class="icon ion-chevron-right icon-accessory"></i>
-                    </span>
-                </a>
+                    <label class="item new-input-date">
+                        Hora de Comienzo
+                        <input type="time" ng-model="disponibilidad.fechai" required>
+                        <span class="item-note">{{disponibilidad.fechai| date:'h:mm a'| lowercase }}</span>
+                    </label>
+                    <label class="item new-input-date">
+                        Hora de Fin
+                        <input type="time" ng-min="disponibilidad.fechai" ng-model="disponibilidad.fechaf" required>
+                        <span class="item-note">{{disponibilidad.fechaf| date:'h:mm a'| lowercase }}</span>
+                    </label>
+                    <a class="item" ui-sref="tabs.disponibilidad.repetir">
+                        Repetir
+                        <span class="item-note">
+                            {{disponibilidad.repetir === ''?'repetir':disponibilidad.repetir}} <i class="icon ion-chevron-right icon-accessory"></i>
+                        </span>
+                    </a>
+                </div>
 
                 <div class="item item-divider"></div>
 
@@ -91,7 +93,7 @@
                         </div>
                     </label>
                 </ion-item>
-
+                <div class="item item-divider"></div>
             </ion-list>
         </ion-content>
     </form>

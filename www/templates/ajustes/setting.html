@@ -1,36 +1,34 @@
 <ion-view title="Ajustes">
     <ion-content scroll="false">
         <div class="list ty-list">
-            <a ui-sref="tabs.disponibilidad" class="item item-icon-right">
-                Visibilidad y Disponibilidad
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </a>
+
+            <div class="ty-list-group">
+                <a ui-sref="tabs.disponibilidad" class="item item-icon-right">
+                    Visibilidad y Disponibilidad
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </a>
+            </div>
             <ion-item class="item item-divider"></ion-item>
-            
+
             <div class="ty-list-group">
-              <a ui-sref="tabs.profile()" class="item item-icon-right">
-                  Perfil
-                  <i class="icon ion-chevron-right icon-accessory"></i>
-              </a>
-              <!--<a href="#/tab/profile" class="item item-icon-right">-->
-                  <!--Notificaciones-->
-                  <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
-              <!--</a>-->
+                <a ui-sref="tabs.profile()" class="item item-icon-right">
+                    Perfil
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </a>
             </div>
-            
             <div class="item item-divider"></div>
-            
+
             <div class="ty-list-group">
-              <a ui-sref="tabs.share()" class="item item-icon-right">
-                  Contarle a un amigo
-                  <i class="icon ion-chevron-right icon-accessory"></i>
-              </a>
-              <a ui-sref="tabs.info()" class="item item-icon-right">
-                  Información
-                  <i class="icon ion-chevron-right icon-accessory"></i>
-              </a>
+                <a ui-sref="tabs.share()" class="item item-icon-right">
+                    Contarle a un amigo
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </a>
+                <a ui-sref="tabs.info()" class="item item-icon-right">
+                    Información
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </a>
             </div>
-            
+
             <div class="item item-divider"></div>
 
             <a class="button button-logout-2" ng-click="onCerrarSesion()">

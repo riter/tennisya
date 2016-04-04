@@ -6,7 +6,7 @@
         </ion-header-bar>
 
         <ion-content>
-            <ion-list >
+            <ion-list class="newpartido">
                 <ion-item class="item-divider text-center" ng-show="partido.grupo !== null">Grupo: {{title}}</ion-item>
 
                 <div class="ty-list-group">
@@ -85,25 +85,27 @@
                             <input type="hidden" ng-model="partido.jugador4"/>
                         </span>
                     </div>
+                    
+                    <div class="item" >
+                    <p class="notice">* De no invitar a un jugador específico el partido será publicado en forma abierta para todos los jugadores</p>
+
+
+                    <label class="custom-radio">
+                        <input type="radio" ng-model="partido.reservada" ng-value="false"> Reservar cancha*
+                        <span class="ic-radio"></span>
+                    </label>
+                    <label class="custom-radio">
+                        <input type="radio" ng-model="partido.reservada" ng-value="true" checked> Cancha ya reservada
+                        <span class="ic-radio"></span>
+                    </label>
+                </div>
                 </div>
 
+                
+                
             </ion-list>
 
-            <div class="ty-list-group">
-
-                <p class="notice">* De no invitar a un jugador específico el partido será publicado en forma abierta para todos los jugadores</p>
-
-
-                <label class="custom-radio">
-                    <input type="radio" ng-model="partido.reservada" ng-value="false"> Reservar cancha*
-                    <span class="ic-radio"></span>
-                </label>
-                <label class="custom-radio">
-                    <input type="radio" ng-model="partido.reservada" ng-value="true" checked> Cancha ya reservada
-                    <span class="ic-radio"></span>
-                </label>
-
-            </div>
+    
             <div class="btn-submit">
                 <button class="button button-full" ng-disabled="form.$invalid"  ng-click="onCreate(partido)">Crear partido</button>
             </div>

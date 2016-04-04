@@ -61,7 +61,7 @@ appTennisya
             $scope.$on('$ionicView.afterEnter', function () {
                 $scope.title = $rootScope.filterPartidos.title !== null? 'Partidos: '+ $rootScope.filterPartidos.title : 'Partidos';
                 $scope.loadPartidos();
-//                $scope.removeNotificacion();
+                $scope.removeNotificacion();
             });
             $scope.$on('$ionicView.beforeLeave', function () {
                 $timeout.cancel($scope.intervalPartidosT);

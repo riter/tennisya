@@ -16,20 +16,6 @@
 }
 /* fin Input para fecha y hora newPartido*/
 
-/* inicio modal tipo ActionSheet*/
-.action-sheet{
-    width: 100%;
-    height: 200px;
-    top: calc(100% - 200px); /* 250px + altura del header */
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-.action-sheet .scroll-content{
-    height: inherit;
-}
-/* fin modal tipo ActionSheet*/
-
 /* inicio validacion*/
 label.item.has-error {
     border-bottom: 2px solid red;
@@ -137,6 +123,7 @@ label.item.valid-lr {
     max-height: 400px !important;
 }
 
+/* popup mostrar en partidos */
 .popover-backdrop.active{
     background-color: transparent !important;
 }
@@ -156,4 +143,76 @@ label.item.valid-lr {
 }
 .match-players_link img{
     width: 100%;
+}
+
+/* border con margin en las listas*/
+.ty-list-group{
+    padding: 0;
+}
+.ty-list-group .item{
+    border: 0;
+    margin-top: 1px;
+    padding-left: 39px;
+}
+.newpartido .ty-list-group .item{
+    padding-left: 39px;
+}
+.ty-list-group .item:not(:last-child):before {
+    content: "";
+    bottom: 1px;
+    height: 100%;
+    left: 33px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #ddd;
+}
+/* Fin border con margin en las listas*/
+
+.new-match .notice {
+    white-space: initial;
+    margin-bottom: 10px;
+    padding-right: 0;
+    margin-top: -11px;
+}
+
+/* grupo info*/
+.transition{
+    -o-transition:all .2s ease-out, background 1s ease-in;
+    -ms-transition:all .2s ease-out, background 1s ease-in;
+    -moz-transition:all .2s ease-out, background 1s ease-in;
+    -webkit-transition:all .2s ease-out, background 1s ease-in;
+    transition:all .2s ease-out, background 1s ease-in;
+}
+.item-cont.actived input {
+    font-weight: bold;
+}
+.item-cont input {
+    font-weight: normal;
+}
+
+.item-cont.actived {
+    border-color: transparent;
+}
+.item-cont {
+    padding: 0px 15px 5px 0px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    margin-bottom: 10px;
+}
+
+/* icono checkbox en disponibilidad add/edit */
+.item-checkbox .checkbox{
+    margin-top: -19px !important;
+}
+.checkbox-icon{
+    width: 24px !important;
+    height: 24px !important;
+}
+.checkbox-icon:after{
+    width: 12px !important;
+    height: 5px !important;
 }
