@@ -37,7 +37,7 @@ appTennisya
                 }
             };
         })
-        .controller('ProfileCtrl', function ($scope, $state, $ionicHistory, $cordovaDialogs, $localstorage, userService, extrasService, cameraAction) {
+        .controller('ProfileCtrl', function ($scope, $ionicHistory, $cordovaDialogs, $localstorage, userService, extrasService, cameraAction) {
             $scope.profile = $localstorage.getObject('user');
 
             extrasService.getClub().then(function (response) {

@@ -97,7 +97,7 @@ appTennisya
             };
 
         })
-        .controller('infoJugadorCtrl', function ($rootScope, $scope, $state, $stateParams, $ionicSlideBoxDelegate, userService, disponibilidadService) {
+        .controller('infoJugadorCtrl', function ($rootScope, $scope, $state, $stateParams, $ionicSlideBoxDelegate, $window, userService, disponibilidadService) {
             $scope.startHour = 6;
             $scope.endHour = 23, $scope.alto = 40;//alto en px 
             $scope.getHours = function () {
@@ -111,6 +111,14 @@ appTennisya
                 $scope.jugador = userService.getJugador();
                 $rootScope.filterPartidos = {type: 'jugador', idType: $scope.jugador.id, title: $scope.jugador.name};
                 $rootScope.disponibilidadPartido = {jugador: $scope.jugador};
+                
+                $scope.images = [{
+                    src: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
+                    safeSrc: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
+                    thumb: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
+                    size: '0x0',
+                    type: 'image'
+                }];
             });
 
             $scope.onDisponibilidad = function (item, fecha) {
@@ -119,22 +127,23 @@ appTennisya
             };
 
             disponibilidadService.listByJugador(parseInt($stateParams.id)).then(function (response) {
-                console.log(response);
+                var hoy = moment(moment().format('YYYY-MM-DD'));
+
                 angular.forEach(response, function (value, key) {
                     if (value.repetir != null && value.repetir.indexOf('.') > -1) {
                         var dias = value.repetir.split('.');
                         for (var i = 0; i < dias.length - 1; i++) {
                             $scope.data.repetir[dias[i]].push({
                                 fecha: moment(value.fechai).format('YYYY-MM-DD'),
-                                fechaI: value.fechai, //.format('H'),
+                                fechaI: value.fechai,
                                 fechaF: value.fechaf
                             });
                         }
                     } else {
-                        if (moment(value.fechai.split(' ')[0]).diff(moment(moment().format('YYYY-MM-DD')), 'days') >= 0) {
+                        if (moment(value.fechai.split(' ')[0]).diff(hoy, 'days') >= 0) {
                             $scope.data.unico.push({
                                 fecha: moment(value.fechai).format('YYYY-MM-DD'),
-                                fechaI: value.fechai, //.format('H'),
+                                fechaI: value.fechai,
                                 fechaF: value.fechaf
                             });
                         }

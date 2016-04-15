@@ -10,9 +10,10 @@
 
         <ion-list>
 
-            <ion-item class="item item-avatar item-text" type="item-text-wrap">
-                <img ng-src="{{grupo.image?grupo.image:'assets/img/group.png' }}">
-
+            <ion-item class="item item-avatar item-text item-group" type="item-text-wrap">
+                <!--<img ng-src="{{grupo.image?grupo.image:'assets/img/group.png' }}">-->
+                <div id="photoswipe" photo-swipe images="images"></div>
+                
                 <label class="item item-input item-cont transition" ng-class="{'actived':!data.showDelete}">
                     <input type="text" ng-model="grupo.title" ng-change="data.changeTitle = true" placeholder="Asunto del grupo" maxlength="25" ng-disabled="!data.showDelete">
                     <span class="item-note">{{25 - grupo.title.length}}</span>
@@ -30,13 +31,13 @@
             </ion-item>
 
             <ion-list show-delete="data.showDelete && isAdmin()" class="players-list">
-                <ion-item item="item" class="item item-avatar item-icon-right item-remove-animate" ng-repeat="jugador in grupo.jugadorgrupo" type="item-text-wrap" href="">
+                <ion-item item="item" class="item item-avatar item-icon-right item-remove-animate" ng-repeat="jugador in grupo.jugadorgrupo" type="item-text-wrap">
                     <img ng-src="{{jugador.jugador.photo != null ? jugador.jugador.photo : 'assets/img/profile.png'}}">
                     <h2>{{isYo(jugador.jugador) ? 'Yo' : jugador.jugador.name}}</h2>
                     <p>{{jugador.jugador.estado}}</p>
                     <p>{{jugador.jugador.clubCancha.nombre}}</p>
                     <!--<p>Lawn Tenis, Nautilus</p>-->
-                    <i class="icon ion-chevron-right"></i>
+                    <!--<i class="icon ion-chevron-right"></i>-->
 
                     <ion-delete-button style="color: #ef473a;" ng-if="!isYo(jugador.jugador)" class="ion-minus-circled ion-remove-list item-remove-animate assertive" ng-click="onDelete(jugador)"></ion-delete-button>
                 </ion-item>

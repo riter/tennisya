@@ -191,6 +191,7 @@ label.item.valid-lr {
 }
 .item-cont input {
     font-weight: normal;
+    padding-left: 15px;
 }
 
 .item-cont.actived {
@@ -216,3 +217,35 @@ label.item.valid-lr {
     width: 12px !important;
     height: 5px !important;
 }
+
+.scrolling{
+    overflow: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* fade in out*/
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.item-playerinfo img:first-child, .item-group img:first-child{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.item-group img:first-child{
+    max-width: 40px;
+    max-height: 40px;
+}
+    

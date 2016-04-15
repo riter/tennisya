@@ -19,12 +19,14 @@ appTennisya
                         return JSON.parse($window.localStorage[key] || '{}');
                     },
                     clear: function () {
+                        var clubs = this.getObject('clubs');
                         $window.localStorage.clear();
+                        this.setObject('clubs', clubs);
                     },
                     exist: function (key) {
                         return $window.localStorage[key] ? true : false;
                     },
-                    remove: function(key){
+                    remove: function (key) {
                         $window.localStorage.removeItem(key);
                     }
                 };
@@ -34,7 +36,7 @@ appTennisya
 
             return {
                 page: 1,
-                limit: 30,
+                limit: 15,
                 resetPage: function () {
                     this.page = 1;
                 },
@@ -148,9 +150,15 @@ appTennisya
                     var user = $localstorage.getObject('user');
                     var self = this;
                     return $http.get(api + 'jugador/list', {params: {jugador: user.id, page: self.page, limit: self.limit}}).then(function (response) {
-                        self.page++;
+                        if(self.page === 1)
+                            $localstorage.setObject('jugadores', response.data);
+                        
+                        self.page++;    
                         return response.data;
                     }, function (e) {
+                        if(self.page === 1 && $localstorage.getObject('jugadores'))
+                            return $localstorage.getObject('jugadores');
+                        
                         return [];
                     });
                 },
@@ -248,8 +256,8 @@ appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamer
             var options = {
                 quality: 50,
                 allowEdit: true,
-                targetWidth: 640,//300,
-                targetHeight: 640,//300,
+                targetWidth: 640, //300,
+                targetHeight: 640, //300,
                 destinationType: Camera.DestinationType.FILE_URI,
                 sourceType: Camera.PictureSourceType.CAMERA
             };
@@ -280,13 +288,45 @@ appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamer
     return cameraAction;
 });
 
-String.prototype.hashCode = function() {
-  var hash = 0, i, chr, len;
-  if (this.length === 0) return hash;
-  for (i = 0, len = this.length; i < len; i++) {
-    chr   = this.charCodeAt(i);
-    hash  = ((hash << 5) - hash) + chr;
-    hash |= 0; // Convert to 32bit integer
-  }
-  return hash;
-};
+appTennisya.factory('filesystemService', function ($q, $cordovaFileTransfer, $cordovaFile) {
+    var downloaded = {
+        removeFile: function (url) {
+            var deferred = $q.defer();
+
+            var filename = url.hashCode() + '.' + url.split('.').pop();
+            $cordovaFile.removeFile(cordova.file.externalDataDirectory, filename)
+                    .then(function (success) {
+                        deferred.resolve(success.name);
+                    }, function (e) {
+                        deferred.reject(e);
+                    });
+            return deferred.promise;
+        },
+        download: function (url) {
+            var deferred = $q.defer();
+            try {
+                var directory = (ionic.Platform.isIOS() ? cordova.file.dataDirectory : cordova.file.externalDataDirectory) + 'tennisya/profiles/';
+                var filename = url.hashCode() + '.' + url.split('.').pop();
+
+                var trustHosts = true;
+                var options = {};
+
+                $cordovaFile.checkFile(directory, filename)
+                        .then(function (fileSystem) {
+                            deferred.resolve(fileSystem.nativeURL);
+                        }, function () {
+                            var targetPath = directory + filename;
+                            $cordovaFileTransfer.download(decodeURI(url), targetPath, options, trustHosts).then(function (fileSystem) {
+                                deferred.resolve(fileSystem.nativeURL);
+                            }, function (e) {
+                                deferred.resolve(null);
+                            });
+                        });
+            } catch (e) {
+                deferred.resolve(null);
+            }
+            return deferred.promise;
+        }
+    };
+    return downloaded;
+});

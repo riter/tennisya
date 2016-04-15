@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('SignInCtrl', function ($http, $scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaPush, $cordovaDevice, $cordovaOauth, userService) {
+        .controller('SignInCtrl', function ($http, $scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaDevice, $cordovaOauth, userService) {
 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
                 $scope.user = {email: '', password: ''};

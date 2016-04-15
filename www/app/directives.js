@@ -4,6 +4,52 @@
 /*
  */
 
+String.prototype.hashCode = function () {
+    var hash = 0, i, chr, len;
+    if (this.length === 0)
+        return hash;
+    for (i = 0, len = this.length; i < len; i++) {
+        chr = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+};
+
+Array.prototype.union = function (newArray, conditionRemove) {
+
+    var obj = {};
+
+    var i = 0;
+    while (i < newArray.length) {
+        obj[newArray[i].id] = newArray[i];
+        if (typeof (conditionRemove) === 'function' && conditionRemove(newArray[i])) {
+            delete obj[newArray[i].id];
+        }
+        i++;
+    }
+
+    i = 0;
+    while (i < this.length) {
+        if (obj[this[i].id] !== undefined) {
+
+            if (this[i]['$$hashKey'] !== undefined)
+                obj[this[i].id]['$$hashKey'] = this[i].$$hashKey;
+
+            this[i] = obj[this[i].id];
+            delete obj[this[i].id];
+        }
+        if (typeof (conditionRemove) === 'function' && conditionRemove(this[i])) {
+            this.splice(i, 1);
+        } else {
+            i++;
+        }
+    }
+    for (var k in obj) {
+        this.push(obj[k]);
+    }
+};
+
 appTennisya.directive('divContent', function () {
     return {
         restrict: 'A',
@@ -61,7 +107,7 @@ appTennisya
                         });
                     }
 
-                    if (typeof(attrs.focus)) {
+                    if (typeof (attrs.focus)) {
                         $timeout(function () {
                             inputElement.focus();
                         }, 800);
@@ -92,58 +138,35 @@ appTennisya
             };
         });
 
-//appTennisya
-//        .directive('searchBar', [function () {
-//                return {
-//                    scope: {
-//                        ngModel: '='
-//                    },
-//                    require: ['^ionNavBar', '?ngModel'],
-//                    restrict: 'E',
-//                    replace: true,
-//                    template: '<ion-nav-buttons side="right">' +
-//                            '<div class="searchBar numicons2">' +
-//                            '<div class="searchTxt" ng-show="true">' +
-//                            '<div class="bgdiv"></div>' +
-//                            '<div class="bgtxt">' +
-//                            '<input type="text" placeholder="Procurar..." ng-model="ngModel.txt">' +
-//                            '</div>' +
-//                            '</div>' +
-//                            '<i class="icon placeholder-icon" ng-click="ngModel.txt=\'\';ngModel.show=!ngModel.show"></i>' +
-//                            '</div>' +
-//                            '</ion-nav-buttons>',
-//                    compile: function (element, attrs) {
-//                        var icon = (ionic.Platform.isAndroid() && 'ion-android-search')
-//                                || (ionic.Platform.isIOS() && 'ion-ios7-search')
-//                                || 'ion-search';
-//                        angular.element(element[0].querySelector('.icon')).addClass(icon);
+appTennisya.directive('downloadTask', function (filesystemService) {
+    return {
+        restrict: 'A',
+        scope: {
+            downloadTask: '=?'
+        },
+        link: function (scope, element, attrs) {
+//            if (scope.downloadTask !== null && scope.downloadTask.indexOf('http') === 0) {
+//                filesystemService.download(scope.downloadTask).then(function (uri) {
+//                    scope.downloadTask = uri;
+//                });
+//                scope.downloadTask = null;
+//            }
+        }
+    };
+});
+
+// insertar en tabs.html el atributo keyboard-handler
+//appTennisya.directive('keyboardHandler', function ($window) {
+//    return {
+//        restrict: 'A',
+//        link: function postLink(scope, element, attrs) {
+//            angular.element($window).bind('native.keyboardshow', function () {
+//                element.addClass('hidden');
+//            });
 //
-//                        return function ($scope, $element, $attrs, ctrls) {
-//                            var navBarCtrl = ctrls[0];
-//                            $scope.navElement = $attrs.side === 'right' ? navBarCtrl.rightButtonsElement : navBarCtrl.leftButtonsElement;
-//
-//                        };
-//                    },
-//                    controller: ['$scope', '$ionicNavBarDelegate', function ($scope, $ionicNavBarDelegate) {
-//                            var title, definedClass;
-//
-//                            $scope.$watch('ngModel.show', function (showing, oldVal, scope) {
-//                                if (showing !== oldVal) {
-//                                    if (showing) {
-//                                        if (!definedClass) {
-//                                            var numicons = $scope.navElement.children().length;
-//                                            angular.element($scope.navElement[0].querySelector('.searchBar')).addClass('numicons' + numicons);
-//                                        }
-//
-//                                        title = $ionicNavBarDelegate.getTitle();
-//                                        $ionicNavBarDelegate.setTitle('');
-//                                    } else {
-//                                        $ionicNavBarDelegate.setTitle(title);
-//                                    }
-//                                } else if (!title) {
-//                                    title = $ionicNavBarDelegate.getTitle();
-//                                }
-//                            });
-//                        }]
-//                };
-//            }]);
+//            angular.element($window).bind('native.keyboardhide', function () {
+//                element.addClass('visible');
+//            });
+//        }
+//    }
+//});

@@ -10,7 +10,7 @@
                 Añadir disponibilidad...
             </ion-item>
 
-            <ion-item item="item" ng-class="{'item-toggle':!data.showDelete,'active':!item.activo}" class="item item-remove-animate" ng-repeat="item in items" ng-click="data.showDelete?newDisponibilidad(item):''">
+            <ion-item item="item" ng-class="{'item-toggle':!data.showDelete,'active':!item.activo}" class="item item-remove-animate" ng-repeat="item in items.data" ng-click="data.showDelete?newDisponibilidad(item):''">
                 {{item.title}}
                 <p>{{(item.repetir != null && item.repetir != '') ? item.repetir : formatFecha(item.fecha, 'MM/DD')}} - {{formatFecha(item.fechai,'H:mm')}} a {{formatFecha(item.fechaf,'H:mm')}} hs</p>
                 <p>{{item.localidad}}, {{item.ciudad}}, {{item.pais}}</p>

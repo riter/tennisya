@@ -54,7 +54,9 @@ appTennisya
 
             $scope.$on('$ionicView.enter', function () {
 //                $rootScope.grupoPartido = {id: parseInt($stateParams.id), title: $scope.grupo.title};
-                $rootScope.filterPartidos = {type:'grupo', idType: parseInt($stateParams.id), title: $scope.grupo.title};
+                $rootScope.filterPartidos = {type: 'grupo', idType: parseInt($stateParams.id), title: $scope.grupo.title};
+                
+                $scope.removeNotificacion('newgrupo');
             });
             $scope.isYo = function (jugador) {
                 return $localstorage.getObject('user').id === jugador.id;
@@ -101,6 +103,7 @@ appTennisya
 
                     grupoService.updateImage($scope.grupo.id, imageURI).then(function (response) {
                         $scope.grupo.image = response.image;
+                        $scope.fullScreen();
                     }, function () {
                         $cordovaDialogs.alert('Error al subir foto del grupo.', 'Informacion', 'Hecho');
                         $scope.grupo.image = tmpImage;
@@ -180,12 +183,24 @@ appTennisya
 
             $scope.selectJugador = function (item) {
                 grupoService.updateJugador($scope.grupo.id, item).then(function (response) {
-                    $scope.data.tmp.jugadorgrupo.push(response.data);
+//                    $scope.data.tmp.jugadorgrupo.push(response.data);
                     $scope.grupo.jugadorgrupo.push(response.data);
                 }, function (err) {
                     $cordovaDialogs.alert('Error al adicionar un jugador', 'Informacion', 'Hecho');
                 });
                 $scope.modalAddJugador.remove();
             };
+
+
+            $scope.fullScreen = function () {
+                $scope.images = [{
+                        src: $scope.grupo.image !== null ? $scope.grupo.image : 'assets/img/group.png',
+                        safeSrc: $scope.grupo.image !== null ? $scope.grupo.image : 'assets/img/group.png',
+                        thumb: $scope.grupo.image !== null ? $scope.grupo.image : 'assets/img/group.png',
+                        size: '0x0',
+                        type: 'image'
+                    }];
+            };
+            $scope.fullScreen();
         })
         ;

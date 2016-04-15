@@ -6,7 +6,7 @@
 //var api = 'http://localhost/tennisyaApp/tennisya_admin/web/app_dev.php/api/';
  var api = 'http://tennisya.apploadapps.com/web/api/';
 
-var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova']);
+var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova','ngPhotoSwipe']);
 var configNotifications = {
     badge: true,
     sound: true,

@@ -21,19 +21,18 @@ appTennisya
 
             $scope.chageActivo = function (item) {
                 disponibilidadService.updateDisponibilidad(item).then(function(){
-                    disponibilidadService.saveStorage($scope.items);
+                    disponibilidadService.saveStorage();
                 });
             };
             $scope.onDelete = function (item) {
                 disponibilidadService.deleteDisponibilidad(item.id).then(function (data) {
-                    disponibilidadService.saveStorage($scope.items);
+                    disponibilidadService.saveStorage();
                 });
-                $scope.items.splice($scope.items.indexOf(item), 1);
+                $scope.items.data.splice($scope.items.data.indexOf(item), 1);
             };
-
-            disponibilidadService.list().then(function (data) {
-                $scope.items = data;
-            });
+            
+            $scope.items = disponibilidadService.getList();
+            disponibilidadService.load();
 
             /* new Disponibilidad*/
             $scope.dias = [
@@ -84,18 +83,18 @@ appTennisya
             $scope.onGuardar = function () {
                 if (typeof ($scope.disponibilidad.id) !== 'undefined') {
                     disponibilidadService.updateDisponibilidad($scope.disponibilidad).then(function (response) {
-                        $scope.items.forEach(function (disp, index) {
+                        $scope.items.data.forEach(function (disp, index) {
                             if (disp.id === response.data.id){
-                                response.data.$$hashKey = $scope.items[index].$$hashKey;
-                                $scope.items[index] = response.data;
+                                response.data.$$hashKey = $scope.items.data[index].$$hashKey;
+                                $scope.items.data[index] = response.data;
                             }
                         });
-                        disponibilidadService.saveStorage($scope.items);
+                        disponibilidadService.saveStorage();
                     });
                 } else {
                     disponibilidadService.newDisponibilidad($scope.disponibilidad).then(function (response) {
-                        $scope.items.push(response);
-                        disponibilidadService.saveStorage($scope.items);
+                        $scope.items.data.push(response);
+                        disponibilidadService.saveStorage();
                     });
                 }
                 $scope.closeNewDisponibilidad();

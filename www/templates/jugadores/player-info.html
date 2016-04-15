@@ -5,7 +5,10 @@
 
             <div class="list" style="margin-bottom:0">
                 <div class="item item-avatar item-playerinfo" >
-                    <img ng-src="{{jugador.photo != null ? jugador.photo : 'assets/img/profile.png'}}">
+                    <!--<img src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">-->
+
+                    <div id="photoswipe" photo-swipe images="images"></div>
+
                     <h2>{{jugador.name}}</h2>
                     <p>{{jugador.estado}}</p>
                     <p>{{jugador.clubCancha.nombre}}</p>
@@ -13,7 +16,7 @@
                 </div>
                 <div class="item">
                     <strong>Información de contacto: </strong>
-                        <p>Email:  {{jugador.email}}</p>
+                    <p>Email:  {{jugador.email}}</p>
                 </div>
                 <h2 class="ty-calendar_title">Agendar Partido</h2>
             </div>
@@ -36,7 +39,7 @@
                             <div>{{item.fecha3[0]}}</div>
                         </div>
                     </div>
-                    <div class="row ty-calendar_mainrow">
+                    <div class="row ty-calendar_mainrow scrolling">
                         <div class="col-25">
                             <div class="list ty-calendar_hour">
                                 <div class="item" ng-repeat="hour in data.horas">
@@ -48,19 +51,19 @@
 
                             <!--<span class="ty-calendar_time" style="top:50px"></span>-->
 
-                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha1[1])" ng-style="getTopHeigth(disp.fechaI,disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha1[1])">
+                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp, item.fecha1[1])" ng-style="getTopHeigth(disp.fechaI, disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha1[1])">
                                 <span>Disponible</span>
                             </div>
                             <div class="ty-calendar_col" ng-repeat="hour in data.horas"></div>
                         </div>
                         <div class="col-25" style="position: relative">
-                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha2[1])" ng-style="getTopHeigth(disp.fechaI,disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha2[1])">
+                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp, item.fecha2[1])" ng-style="getTopHeigth(disp.fechaI, disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha2[1])">
                                 <span>Disponible</span>
                             </div>
                             <div class="ty-calendar_col" ng-repeat="hour in data.horas"></div>
                         </div>
                         <div class="col-25" style="position: relative">
-                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp,item.fecha3[1])" ng-style="getTopHeigth(disp.fechaI,disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha3[1])">
+                            <div class="ty-calendar_match" ng-click="onDisponibilidad(disp, item.fecha3[1])" ng-style="getTopHeigth(disp.fechaI, disp.fechaF)" ng-repeat="disp in getDispByFecha(item.fecha3[1])">
                                 <span>Disponible</span>
                             </div>
                             <div class="ty-calendar_col" ng-repeat="hour in data.horas"></div>

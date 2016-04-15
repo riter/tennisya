@@ -14,6 +14,7 @@ appTennisya
                 jugadorgrupo: []
 
             };
+            var gcancelHttp = $q.defer();
             var listGrupos = [];
             return {
                 getList: function () {
@@ -25,7 +26,10 @@ appTennisya
                     var user = $localstorage.getObject('user');
                     return $http.get(api + 'group/jugadores/' + user.id).then(function (response) {
                         listGrupos = response.data;
+                        $localstorage.setObject('grupos', response.data);
                         return response.data;
+                    },function(){
+                        return $localstorage.getObject('grupos');
                     });
                 },
                 setModel: function (model) {
@@ -94,7 +98,7 @@ appTennisya
                 updateJugador: function (id, jugador) {
                     return $http.post(api + 'group/update/' + id, {campo: 'jugador', jugador: jugador.id});
                 },
-                updateTitle: function (id,title) {
+                updateTitle: function (id, title) {
                     return $http.post(api + 'group/update/' + id, {campo: 'title', title: title});
                 },
                 updateImage: function (id, imageURI) {
@@ -110,18 +114,16 @@ appTennisya
                     $cordovaFileTransfer.upload(api + 'group/update/' + id, imageURI, option)
                             .then(function (result) {
                                 deferred.resolve(JSON.parse(result.response));
-                                //return callback({data: JSON.parse(result.response)});
                             }, function (err) {
                                 deferred.reject(err);
-                                //return error(err);
-                            }, function (progress) {
-                                // constant progress updates
                             });
 
                     return deferred.promise;
                 },
                 getJugadores: function (id) {
-                    return $http.get(api + 'group/list_jugadores/' + id).then(function (response) {
+                    gcancelHttp.resolve([]);
+                    gcancelHttp = $q.defer();
+                    return $http.get(api + 'group/list_jugadores/' + id, {timeout: gcancelHttp.promise}).then(function (response) {
                         angular.merge(data, response.data);
                         return data;
                     });

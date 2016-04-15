@@ -6,36 +6,40 @@
 
 appTennisya
         .factory('disponibilidadService', function ($q, $http, $localstorage) {
-            var data = [];
-            return {
-                list: function () {
-                    var deferred = $q.defer();
-                    if ($localstorage.exist('disponibilidad')) {
-                        deferred.resolve($localstorage.getObject('disponibilidad'));
-                        return deferred.promise;
-                    } else
-                        return this.load();
+
+            var disponibilidad = {
+                model: {
+                    data: [],
+                    lastUpdate: null
                 },
-                saveStorage: function (data) {
-                    $localstorage.setObject('disponibilidad', data);
+                init: function () {
+                    if ($localstorage.exist('disponibilidad')) {
+                        var tmp = $localstorage.getObject('disponibilidad');
+                        this.model.data = tmp.data;
+                        this.model.lastUpdate = tmp.lastUpdate;
+                    }
+                },
+                getList: function () {
+                    return this.model;
+                },
+                saveStorage: function () {
+                    $localstorage.setObject('disponibilidad', this.model);
                 },
                 listByJugador: function (idJugador) {
-                    var self = this;
-                    return $http.get(api + 'disponibilidad/list/' + idJugador).then(function (response) {
-                        return response.data;
+                    return $http.get(api + 'disponibilidad/list/' + idJugador,{cache: true}).then(function (response) {
+                        return response.data.list;
                     }, function () {
                     });
                 },
                 load: function () {
                     var self = this;
-                    return $http.get(api + 'disponibilidad/list/' + $localstorage.getObject('user').id).then(function (response) {
-                        data = response.data;
-                        self.saveStorage(data);
-                        return data;
+                    return $http.get(api + 'disponibilidad/list/' + $localstorage.getObject('user').id, {params: {lastUpdate : self.model.lastUpdate}}).then(function (response) {
+                        self.model.data.union(response.data.list,function(model){//function condicion para eliminar item
+                            return model.activo === null;
+                        });
+                        self.model.lastUpdate = response.data.lastUpdate;
+                        self.saveStorage();
                     }, function () {
-                        if ($localstorage.exist('disponibilidad'))
-                            data = $localstorage.getObject('disponibilidad');
-                        return data;
                     });
                 },
                 newDisponibilidad: function (model) {
@@ -52,11 +56,13 @@ appTennisya
                     return deferred.promise;
                 },
                 updateDisponibilidad: function (model) {
+                    var self = this;
                     var newDisp = angular.copy(model);
                     newDisp.fechaI = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechai).format('H:mm:ss');
                     newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechaf).format('H:mm:ss');
                     if (typeof (model.clubCancha) === 'object')
                         newDisp.clubCancha = model.clubCancha.id;
+                    
                     return $http.post(api + 'disponibilidad/update/' + newDisp.id, newDisp);
                 },
                 deleteDisponibilidad: function (id) {
@@ -67,5 +73,7 @@ appTennisya
                     return deferred.promise;
                 }
             };
+            disponibilidad.init();
+            return disponibilidad;
         })
         ;

@@ -155,7 +155,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<string name=\"fb_app_name\">tennisyan</string>",
+                            "xml": "<string name=\"fb_app_name\">tennisya</string>",
                             "count": 1
                         }
                     ]
@@ -205,7 +205,7 @@
         },
         "phonegap-facebook-plugin": {
             "APP_ID": "1644064545847703",
-            "APP_NAME": "tennisyan",
+            "APP_NAME": "tennisya",
             "PACKAGE_NAME": "com.appload.tennisya"
         }
     },
