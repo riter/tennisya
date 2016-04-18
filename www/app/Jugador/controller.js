@@ -38,7 +38,7 @@ appTennisya
             var loadGrupos = function () {
                 grupoService.list().then(function (response) {
                     $scope.data.grupos = response;
-//                    $scope.intervalReload = $timeout(loadGrupos, 30000);
+                    $scope.intervalReload = $timeout(loadGrupos, 30000);
                 });
             };
             $scope.$on('$ionicView.afterEnter', function () {

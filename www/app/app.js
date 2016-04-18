@@ -14,7 +14,7 @@ var configNotifications = {
     senderID: "648422481399"
 };
 
-appTennisya.run(function ($ionicPlatform, $ionicHistory, $rootScope, notoficacionService) {
+appTennisya.run(function ($ionicPlatform, $ionicHistory, $rootScope) {
     $ionicPlatform.ready(function () {
         try {
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -39,8 +39,6 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory, $rootScope, notoficacio
            $rootScope.loadNotificaciones();
         });
         
-        notoficacionService.receive();
-
     });
 });
 appTennisya.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {

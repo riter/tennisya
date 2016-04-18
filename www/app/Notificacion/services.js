@@ -16,7 +16,6 @@ appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $loc
         callbackReceive: null,
         data: [],
         cancelHttp: $q.defer(),
-        selected: null,
         loadList: function (jugador) {
             var self = this;
             self.cancelHttp.resolve(self.data);
@@ -46,6 +45,7 @@ appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $loc
         register: function () {
             var self = this;
             try {
+                this.receive();
                 $cordovaPush.register(this.configNotifications).then(function (regid) {
                     if (ionic.Platform.isIOS()) {
                         self.setTokenID(regid);
@@ -55,8 +55,13 @@ appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $loc
             }
         },
         setTokenID: function (token) {
+            if ($localstorage.exist('tokenNotificacion') && $localstorage.get('tokenNotificacion') === token)
+                return;
+                
             this.tokenID = token;
-            $http.get(api + 'notificacion/save/' + $cordovaDevice.getDevice().uuid + '/' + this.tokenID + '/' + ionic.Platform.platform());
+            $http.get(api + 'notificacion/save/' + $cordovaDevice.getDevice().uuid + '/' + this.tokenID + '/' + ionic.Platform.platform()).then(function () {
+                $localstorage.set('tokenNotificacion', token);
+            });
         },
         unregister: function () {
             try {

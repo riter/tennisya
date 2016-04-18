@@ -186,19 +186,22 @@ label.item.valid-lr {
     -webkit-transition:all .2s ease-out, background 1s ease-in;
     transition:all .2s ease-out, background 1s ease-in;
 }
-.item-cont.actived input {
+/*.item-cont.actived input {
     font-weight: bold;
-}
+}*/
 .item-cont input {
     font-weight: normal;
     padding-left: 15px;
+    color: #000;
+    background-color: transparent;
+    opacity: 1;
 }
 
 .item-cont.actived {
     border-color: transparent;
 }
 .item-cont {
-    padding: 0px 15px 5px 0px;
+    padding: 5px 15px 0px 0px;
     border-left: 0;
     border-right: 0;
     border-top: 0;

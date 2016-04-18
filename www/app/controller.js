@@ -43,38 +43,10 @@ appTennisya
             };
 
         })
-        .controller('searchPartidosCtrl', function ($scope, $state, $stateParams, searchJugador, grupoService) {
-//        $scope.$on('$ionicView.beforeEnter', function(scopes, states ) {
-//            if(states.direction == 'forward')
-//                $scope.data.filter.value = '';
-//        });
-//        $scope.data ={
-//            search: searchJugador.getJugadores(),
-//            filter: {},
-//            tipo: $stateParams.tipo
-//        };
-//
-//        $scope.searchJugador = function(query){
-//            var ids = [];
-//            angular.forEach($scope.data.search, function(value, key) {
-//                ids.push(value.id);
-//            });
-//            return searchJugador.searchJugador(query,ids);
-//        };
-//
-//        $scope.filterGrupo = function(items,query) {
-//            var result = [];
-//            angular.forEach(items, function(value, key) {
-//                if (value.title.toLowerCase().indexOf(query) > -1 || value.ciudad.toLowerCase().indexOf(query) > -1 ||
-//                    value.pais.toLowerCase().indexOf(query) > -1) {
-//                    result.push(value);
-//                }
-//            });
-//            return result;
-//        };
-
+        .controller('searchPartidosCtrl', function () {
+            
         })
-        .controller('TabsCtrl', function ($rootScope, $scope, $state, $localstorage, notoficacionService, extrasService, disponibilidadService, userService) {
+        .controller('TabsCtrl', function ($rootScope, $scope, $state, $localstorage, notoficacionService, extrasService, userService) {
             notoficacionService.register();
             extrasService.loadClubs();
 
@@ -144,7 +116,7 @@ appTennisya
                     $scope.notificaciones = notoficacionService.data;
                 });
             };
-            $scope.loadNotificaciones();
+//            $scope.loadNotificaciones();
             
         })
         ;

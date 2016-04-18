@@ -16,7 +16,7 @@
                 
                 <label class="item item-input item-cont transition" ng-class="{'actived':!data.showDelete}">
                     <input type="text" ng-model="grupo.title" ng-change="data.changeTitle = true" placeholder="Asunto del grupo" maxlength="25" ng-disabled="!data.showDelete">
-                    <span class="item-note">{{25 - grupo.title.length}}</span>
+                    <span ng-show="data.showDelete" class="item-note">{{25 - grupo.title.length}}</span>
                 </label>
             </ion-item>
 

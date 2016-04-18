@@ -29,7 +29,7 @@ appTennisya
                 userService.loginJugador(user).then(function () {
                     $state.go('tabs.player');
                 }, function (error) {
-                    var msg = typeof (error.error) !== 'undefined' ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
+                    var msg = error? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
                     $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
                 });
             };

@@ -309,12 +309,12 @@ button, input, select, textarea {
     color: #000;
     font-size: 14px;
     line-height: 1; }
-    .profile_field::-webkit-input-placeholder {
+/*    .profile_field::-webkit-input-placeholder {
       color: #000; }
     .profile_field:-moz-placeholder {
       color: #000; }
     .profile_field:-ms-input-placeholder {
-      color: #000; }
+      color: #000; }*/
   .profile_avatar {
     border: 1px solid #8e8e8e;
     overflow: hidden;
@@ -961,4 +961,17 @@ button, input, select, textarea {
     background-color: #0d8a1b !important;
     padding: 4px !important;
     min-width: initial !important;
+}
+/* photoswipe si la image es un redondeo*/
+.pswp--open .pswp__zoom-wrap img {
+   animation: radioin 222ms ease-in-out;
+}
+
+@keyframes radioin {
+  0% {
+     border-radius: 50%;
+  }
+  100% {
+     border-radius: 0%;
+  }
 }

@@ -1,60 +1,58 @@
-<ion-view title="Perfil"> <!--hide-back-button="true"-->
+<ion-view title="Perfil">
 
-    <!--    <ion-nav-buttons side="left">
-            <button class="button button-clear btn-left" ng-click="$ionicGoBack()"> Cancelar </button>
-        </ion-nav-buttons>-->
 
     <ion-nav-buttons side="right">
-        <button class="button button-clear btn-right" ng-click="onGuardar(profile)"> Guardar</button>
+        <button class="button button-clear btn-right" ng-click="onGuardar(profile)" ng-disabled="form.$invalid" > Guardar</button>
     </ion-nav-buttons>
+    <form name="form" novalidate>
+        <ion-content>
+            <div class="profile">
+                <ion-list >
+                    <label class="item item-input item-icon-right">
+                        <input class="profile_field" type="text" placeholder="Nombre Completo" ng-model="profile.name" required>
+                        <i class="icon ion-edit icon-accessory"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <input class="profile_field" type="text" placeholder="Estado" ng-model="profile.estado">
+                        <i class="icon ion-edit icon-accessory"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <input class="profile_field" type="email" placeholder="Email" ng-model="profile.email" disabled>
+                        <i class="icon ion-edit icon-accessory"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <input class="profile_field" type="tel" placeholder="Celular" ng-model="profile.celular">
+                        <i class="icon ion-edit icon-accessory"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <select class="profile_select" ng-model="profile.clubCancha" ng-options="club.id as club.nombre for club in clubs track by club.id" required>
+                            <option value="">Cancha de preferencia</option>
+                        </select>
+                        <i class="icon ion-edit icon-accessory"></i>
+                    </label>
+                    <!--<label class="item item-input item-select">-->
+                    <!--<div class="input-label">-->
+                    <!--Pais-->
+                    <!--</div>-->
+                    <!--<select ng-model="disponibilidad.pais" ng-options="pais for pais in ['Uruguay','Argentina','Brazil']">-->
+                    <!--<option value=""> Seleccionar </option>-->
+                    <!--</select>-->
+                    <!--</label>-->
+                    <label class="item item-input item-icon-right">
+                        <span class="input-label">Rating</span>
+                        <input type="text" ng-model="profile.rating" disabled>
+                        <i class="icon ion-edit icon-accessory"></i>
+                    </label>
 
-    <ion-content>
-        <div class="profile">
-            <ion-list >
-                <label class="item item-input item-icon-right">
-                    <input class="profile_field" type="text" placeholder="Nombre Completo" ng-model="profile.name">
-                    <i class="icon ion-edit icon-accessory"></i>
-                </label>
-                <label class="item item-input item-icon-right">
-                    <input class="profile_field" type="text" placeholder="Estado" ng-model="profile.estado">
-                    <i class="icon ion-edit icon-accessory"></i>
-                </label>
-                <label class="item item-input item-icon-right">
-                    <input class="profile_field" type="email" placeholder="Email" ng-model="profile.email">
-                    <i class="icon ion-edit icon-accessory"></i>
-                </label>
-                <label class="item item-input item-icon-right">
-                    <input class="profile_field" type="tel" placeholder="Celular" ng-model="profile.celular">
-                    <i class="icon ion-edit icon-accessory"></i>
-                </label>
-                <label class="item item-input item-icon-right">
-                    <select class="profile_select" ng-model="profile.clubCancha" ng-options="club.id as club.nombre for club in clubs track by club.id">
-                        <option value="">Cancha de preferencia</option>
-                    </select>
-                    <i class="icon ion-edit icon-accessory"></i>
-                </label>
-                <!--<label class="item item-input item-select">-->
-                <!--<div class="input-label">-->
-                <!--Pais-->
-                <!--</div>-->
-                <!--<select ng-model="disponibilidad.pais" ng-options="pais for pais in ['Uruguay','Argentina','Brazil']">-->
-                <!--<option value=""> Seleccionar </option>-->
-                <!--</select>-->
-                <!--</label>-->
-                <label class="item item-input item-icon-right">
-                    <span class="input-label">Rating</span>
-                    <input type="text" ng-model="profile.rating">
-                    <i class="icon ion-edit icon-accessory"></i>
-                </label>
+                    <div class="item item-body">
+                        <figure class="profile_avatar" ng-click="openCamera()">
+                            <img src="assets/img/thumb_profile.png" download-task="profile.photo" ng-src="{{profile.photo}}">
+                        </figure>
+                        <p class="no-margin profile_txt">Cambiar imagen de perfil</p>
+                    </div>
 
-                <div class="item item-body">
-                    <figure class="profile_avatar" ng-click="openCamera()">
-                        <img src="assets/img/thumb_profile.png" download-task="profile.photo" ng-src="{{profile.photo}}">
-                    </figure>
-                    <p class="no-margin profile_txt">Cambiar imagen de perfil</p>
-                </div>
-
-            </ion-list>
-        </div>
-    </ion-content>
+                </ion-list>
+            </div>
+        </ion-content>
+    </form>
 </ion-view>

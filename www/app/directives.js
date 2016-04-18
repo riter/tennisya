@@ -126,8 +126,10 @@ appTennisya
                     });
                     // When the user leaves the search bar
                     angular.element(inputElement).bind('blur', function () {
-                        scope.changeFocus({value: false});
-                        scope.$digest();
+                        try{
+                            scope.changeFocus({value: false});
+                            scope.$digest();
+                        }catch(e){}
                     });
                 },
                 template: '<div class="item-input-wrapper">' +
