@@ -6,7 +6,6 @@
 
 appTennisya
         .controller('ListJugadoresCtrl', function ($ionicScrollDelegate, $ionicHistory, $scope, $state, $timeout, $ionicModal, $rootScope, userService, grupoService) {
-            userService.resetPage();
             $scope.showGrupos = function () {
                 $scope.data.showGrupos = !$scope.data.showGrupos;
                 $ionicScrollDelegate.resize();
@@ -20,9 +19,6 @@ appTennisya
 
             $scope.loadMoreData = function () {
                 userService.listJugador().then(function (response) {
-                    angular.forEach(response.jugadores, function (value, key) {
-                        $scope.data.jugadores.push(value);
-                    });
                     $scope.data.scrolling = response.next;
                     $scope.$broadcast('scroll.infiniteScrollComplete');
                 });
@@ -30,30 +26,30 @@ appTennisya
 
             $scope.data = {
                 showGrupos: false,
-                jugadores: [],
+                jugadores: userService.getList(),
                 scrolling: true,
                 grupos: []
             };
 
             var loadGrupos = function () {
-                grupoService.list().then(function (response) {
-                    $scope.data.grupos = response;
-                    $scope.intervalReload = $timeout(loadGrupos, 30000);
-                });
+                $scope.data.grupos = grupoService.getList();
+                grupoService.list();
             };
-            $scope.$on('$ionicView.afterEnter', function () {
+            $scope.$on('$ionicView.afterEnter', function (event, data) {
                 if ($scope.data.showGrupos === true) {
                     $rootScope.filterPartidos = {type: 'grupos', idType: null, title: 'Grupos'};
                 } else {
                     $rootScope.filterPartidos = {type: 'jugadores', idType: null, title: null};
                 }
-
-                loadGrupos();
-            });
-            $scope.$on('$ionicView.beforeLeave', function () {
-                $timeout.cancel($scope.intervalReload);
+                if ($scope.modalNewGroup === undefined || !$scope.modalNewGroup._isShown) {
+                    loadGrupos();
+                }
             });
 
+            $scope.nextGrupo = function (grupo) {
+                grupoService.setModel(grupo);
+                $state.go('tabs.group', {id: grupo.id});
+            };
             // create Grupos
             $scope.closeNewGrupo = function () {
                 $ionicHistory.nextViewOptions({disableAnimate: true});
@@ -71,31 +67,6 @@ appTennisya
                     $scope.modalNewGroup.show();
                 });
             };
-
-            $rootScope.$on('updategroup', function (event, args) {
-                var index = -1;
-                angular.forEach($scope.data.grupos, function (value, key) {
-                    if (args.grupo.id == value.id)
-                        index = key;
-                });
-
-                switch (args.action) {
-                    case 'update':
-                        if (index > -1)
-                            angular.merge($scope.data.grupos[index], args.grupo);
-                        break;
-                    case 'remove':
-                        if (index > -1)
-                            $scope.data.grupos.splice(index, 1);
-                        break;
-                }
-            });
-
-            $scope.nextGrupo = function (grupo) {
-                grupoService.setModel(grupo);
-                $state.go('tabs.group', {id: grupo.id});
-            };
-
         })
         .controller('infoJugadorCtrl', function ($rootScope, $scope, $state, $stateParams, $ionicSlideBoxDelegate, $window, userService, disponibilidadService) {
             $scope.startHour = 6;
@@ -111,14 +82,14 @@ appTennisya
                 $scope.jugador = userService.getJugador();
                 $rootScope.filterPartidos = {type: 'jugador', idType: $scope.jugador.id, title: $scope.jugador.name};
                 $rootScope.disponibilidadPartido = {jugador: $scope.jugador};
-                
+
                 $scope.images = [{
-                    src: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
-                    safeSrc: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
-                    thumb: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
-                    size: '0x0',
-                    type: 'image'
-                }];
+                        src: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
+                        safeSrc: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
+                        thumb: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
+                        size: '0x0',
+                        type: 'image'
+                    }];
             });
 
             $scope.onDisponibilidad = function (item, fecha) {

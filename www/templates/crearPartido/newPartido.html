@@ -10,6 +10,8 @@
                 <ion-item class="item-divider text-center" ng-show="partido.grupo !== null">Grupo: {{title}}</ion-item>
 
                 <div class="ty-list-group">
+                    
+                    
                     <label class="item item-input item-select">
                         <div class="input-label">Tipo</div>
                         <select ng-model="partido.tipo" ng-change="changeTipo(partido.tipo)">
@@ -33,20 +35,20 @@
                 <div class="ty-list-group">
                     <label class="item new-input-date">
                         Fecha
-                        <input type="date" ng-model="partido.fecha" required>
+                        <input type="date" datetimepicker ng-model="partido.fecha" required>
                         <span class="item-note">{{partido.fecha| date:'yyyy/MM/dd' }}</span>
                     </label>
 
                     <label class="item new-input-date">
                         Empieza
-                        <input type="time" ng-model="partido.horaI" required>
-                        <span class="item-note">{{partido.horaI| date:'h:mm a'| lowercase }}</span>
+                        <input type="time" datetimepicker min-interval="30" ng-model="partido.horaI" required>
+                        <span class="item-note">{{partido.horaI| date:'HH:mm' }}</span>
                     </label>
 
                     <label class="item new-input-date">
                         Termina
-                        <input type="time" ng-min="partido.horaI" ng-model="partido.horaF" required>
-                        <span class="item-note">{{partido.horaF| date:'h:mm a'| lowercase }}</span>
+                        <input type="time" datetimepicker min-interval="30" ng-min="partido.horaI" ng-model="partido.horaF" required>
+                        <span class="item-note">{{partido.horaF| date:'HH:mm' }}</span>
                     </label>
                 </div>
 

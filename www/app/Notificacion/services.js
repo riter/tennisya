@@ -45,12 +45,12 @@ appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $loc
         register: function () {
             var self = this;
             try {
-                this.receive();
                 $cordovaPush.register(this.configNotifications).then(function (regid) {
                     if (ionic.Platform.isIOS()) {
                         self.setTokenID(regid);
                     }
                 });
+                this.receive();
             } catch (e) {
             }
         },

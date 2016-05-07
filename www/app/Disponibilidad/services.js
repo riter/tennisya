@@ -17,6 +17,9 @@ appTennisya
                         var tmp = $localstorage.getObject('disponibilidad');
                         this.model.data = tmp.data;
                         this.model.lastUpdate = tmp.lastUpdate;
+                    }else{
+                        this.model.data = [];
+                        this.model.lastUpdate = null;
                     }
                 },
                 getList: function () {
@@ -49,7 +52,7 @@ appTennisya
                     newDisp.fechaF = moment(model.fecha).format('YYYY-MM-DD') + ' ' + moment(model.fechaf).format('H:mm:ss');
                     $http.post(api + 'disponibilidad/new/' + $localstorage.getObject('user').id, newDisp).then(function (response) {
                         var lista = $localstorage.getObject('disponibilidad');
-                        lista.push(response.data);
+                        lista.data.push(response.data);
                         $localstorage.setObject('disponibilidad', lista);
                         deferred.resolve(response.data);
                     });

@@ -35,10 +35,13 @@ appTennisya
             var user = null;
 
             return {
-                page: 1,
-                limit: 15,
-                resetPage: function () {
-                    this.page = 1;
+                model: {
+                    data: [],
+                    page: 1,
+                    limit: 15
+                },
+                getList: function () {
+                    return this.model;
                 },
                 lostPassword: function (data) {
                     var deferred = $q.defer();
@@ -149,17 +152,24 @@ appTennisya
                 listJugador: function () {
                     var user = $localstorage.getObject('user');
                     var self = this;
-                    return $http.get(api + 'jugador/list', {params: {jugador: user.id, page: self.page, limit: self.limit}}).then(function (response) {
-                        if(self.page === 1)
-                            $localstorage.setObject('jugadores', response.data);
-                        
-                        self.page++;    
+                    return $http.get(api + 'jugador/list', {params: {jugador: user.id, page: self.model.page, limit: self.model.limit}}).then(function (response) {
+                        self.model.data.union(response.data.jugadores);
+
+                        if (self.model.page === 1)
+                            $localstorage.setObject('jugadores', self.model);
+
+                        self.model.page++;
                         return response.data;
                     }, function (e) {
-                        if(self.page === 1 && $localstorage.getObject('jugadores'))
-                            return $localstorage.getObject('jugadores');
-                        
-                        return [];
+                        if (self.model.page === 1 && $localstorage.exist('jugadores')) {
+                            var tmpPlayers = $localstorage.getObject('jugadores');
+                            self.model.data = tmpPlayers.data;
+                            self.model.page = tmpPlayers.page;
+                            self.model.limit = tmpPlayers.limit;
+                        }
+//
+                        return {next: false};
+
                     });
                 },
                 setJugador: function (jugador) {
@@ -207,7 +217,16 @@ appTennisya
         ;
 
 appTennisya.factory('extrasService', function ($q, $http, $localstorage) {
-    return {
+    var configuracion = {
+        getPais: function () {
+            return ['Uruguay', 'Argentina', 'Brazil'];
+        },
+        getCiudad: function () {
+            return ['Montevideo', 'Maldonado', 'Rivera', 'Minas'];
+        },
+        getLocalidad: function () {
+            return ['Carrasco', 'Canelones', 'Cerros Azules', 'Arenas de José Ignacio'];
+        },
         getClub: function () {
             var deferred = $q.defer();
             if ($localstorage.exist('clubs')) {
@@ -223,6 +242,7 @@ appTennisya.factory('extrasService', function ($q, $http, $localstorage) {
             });
         }
     };
+    return configuracion;
 });
 appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamera) {
 

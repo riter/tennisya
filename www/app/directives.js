@@ -23,9 +23,6 @@ Array.prototype.union = function (newArray, conditionRemove) {
     var i = 0;
     while (i < newArray.length) {
         obj[newArray[i].id] = newArray[i];
-        if (typeof (conditionRemove) === 'function' && conditionRemove(newArray[i])) {
-            delete obj[newArray[i].id];
-        }
         i++;
     }
 
@@ -46,7 +43,8 @@ Array.prototype.union = function (newArray, conditionRemove) {
         }
     }
     for (var k in obj) {
-        this.push(obj[k]);
+        if (!(typeof (conditionRemove) === 'function' && conditionRemove(obj[k])))
+            this.push(obj[k]);
     }
 };
 
@@ -126,10 +124,11 @@ appTennisya
                     });
                     // When the user leaves the search bar
                     angular.element(inputElement).bind('blur', function () {
-                        try{
+                        try {
                             scope.changeFocus({value: false});
                             scope.$digest();
-                        }catch(e){}
+                        } catch (e) {
+                        }
                     });
                 },
                 template: '<div class="item-input-wrapper">' +
@@ -157,18 +156,49 @@ appTennisya.directive('downloadTask', function (filesystemService) {
     };
 });
 
-// insertar en tabs.html el atributo keyboard-handler
-//appTennisya.directive('keyboardHandler', function ($window) {
-//    return {
-//        restrict: 'A',
-//        link: function postLink(scope, element, attrs) {
-//            angular.element($window).bind('native.keyboardshow', function () {
-//                element.addClass('hidden');
-//            });
-//
-//            angular.element($window).bind('native.keyboardhide', function () {
-//                element.addClass('visible');
-//            });
-//        }
-//    }
-//});
+appTennisya.directive('datetimepicker', function ($cordovaDatePicker, $timeout) {
+    return {
+        restrict: 'A',
+        scope: {
+            ngModel: '=?'
+        },
+        link: function (scope, element, attrs) {
+
+            element.bind('click', function (ev) {
+                ev.preventDefault();
+                document.activeElement.blur();
+
+                if (!scope.ngModel || scope.ngModel == '') {
+                    scope.ngModel = new Date();
+                    if (attrs.min) {
+                        scope.ngModel = attrs.min;
+                    }
+                }
+
+                var options = {
+                    date: scope.ngModel,
+                    mode: attrs.type,
+                    minuteInterval: parseInt(attrs.minInterval || 1),
+                    is24Hour: true,
+                    allowOldDates: attrs.type == 'date' ? false : true,
+                    androidTheme: window.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT,
+                    locale: window.navigator.userLanguage || window.navigator.language, //'es_ES'
+                    doneButtonLabel: 'Aceptar',
+                    doneButtonColor: '#0d8a1b',
+                    cancelButtonLabel: 'Cancelar',
+                    cancelButtonColor: '#0d8a1b'
+                };
+
+                if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android)/gi)) {
+                    $cordovaDatePicker.show(options).then(function (date) {
+                        $timeout(function () {
+                            scope.ngModel = date;
+                        }, 50);
+                    }, function (err) {
+                    });
+                }
+            });
+
+        }
+    };
+});

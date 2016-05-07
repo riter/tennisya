@@ -16,7 +16,7 @@ appTennisya
 
             $scope.searchJugador = function (query) {
                 if ($scope.data.tipo == 'Grupo') {
-                    return grupoService.getList();
+                    return grupoService.getListData();
                 } else {
                     var ids = [];
                     angular.forEach($scope.data.search, function (value, key) {
@@ -39,16 +39,14 @@ appTennisya
 
             $scope.nextGrupo = function (grupo) {
                 grupoService.setModel(grupo);
-                $state.go('tabs.groups', {id: grupo.id});
+                $state.go('tabs.group', {id: grupo.id});
             };
 
         })
         .controller('searchPartidosCtrl', function () {
-            
+
         })
         .controller('TabsCtrl', function ($rootScope, $scope, $state, $localstorage, notoficacionService, extrasService, userService) {
-            notoficacionService.register();
-            extrasService.loadClubs();
 
             $scope.formatFecha = function (date, format) {
                 return date === null ? '' : moment(date).format(format);
@@ -61,8 +59,11 @@ appTennisya
             $scope.filterQuery = function (items, query) {
                 var result = [];
                 angular.forEach(items, function (value, key) {
-                    if ($scope.userLogin.id !== value.id && (value.name.toLowerCase().indexOf(query.toLowerCase()) > -1 || value.estado.toLowerCase().indexOf(query.toLowerCase()) > -1 ||
-                            value.clubCancha.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1)) {
+                    if ($scope.userLogin.id !== value.id && (
+                            (value.name && value.name.toLowerCase().indexOf(query.toLowerCase()) > -1) || 
+                            (value.estado && value.estado.toLowerCase().indexOf(query.toLowerCase()) > -1) ||
+                            (value.clubCancha && value.clubCancha.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1)
+                            )) {
                         result.push(value);
                     }
                 });
@@ -70,6 +71,9 @@ appTennisya
             };
 
             $scope.userLogin = $localstorage.getObject('user');
+            $scope.isYo = function (jugador) {
+                return $scope.userLogin.id == jugador.id;
+            };
 
             $scope.isNotifGrupo = function (idGrupo) {
                 var res = false;
@@ -116,8 +120,10 @@ appTennisya
                     $scope.notificaciones = notoficacionService.data;
                 });
             };
-//            $scope.loadNotificaciones();
-            
+
+            notoficacionService.register();
+            $scope.loadNotificaciones();
+            extrasService.loadClubs();
         })
         ;
    

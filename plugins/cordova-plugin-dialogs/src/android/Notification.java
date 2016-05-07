@@ -476,7 +476,8 @@ public class Notification extends CordovaPlugin {
     private AlertDialog.Builder createDialog(CordovaInterface cordova) {
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.HONEYCOMB) {
-            return new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+            return new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_HOLO_LIGHT);
+            //return new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         } else {
             return new AlertDialog.Builder(cordova.getActivity());
         }
@@ -486,7 +487,8 @@ public class Notification extends CordovaPlugin {
     private ProgressDialog createProgressDialog(CordovaInterface cordova) {
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            return new ProgressDialog(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+            return new ProgressDialog(cordova.getActivity(), AlertDialog.THEME_HOLO_LIGHT);
+            //return new ProgressDialog(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         } else {
             return new ProgressDialog(cordova.getActivity());
         }
@@ -497,6 +499,10 @@ public class Notification extends CordovaPlugin {
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         dlg.create();
         AlertDialog dialog =  dlg.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#0d8a1b"));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#0d8a1b"));
+        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.parseColor("#0d8a1b"));
+
         if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
             TextView messageview = (TextView)dialog.findViewById(android.R.id.message);
             messageview.setTextDirection(android.view.View.TEXT_DIRECTION_LOCALE);

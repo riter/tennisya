@@ -22,7 +22,7 @@
                         <div class="input-label">
                             Pais
                         </div>
-                        <select ng-model="disponibilidad.pais" ng-options="pais for pais in ['Uruguay','Argentina','Brazil']" required>
+                        <select ng-model="disponibilidad.pais" ng-options="pais for pais in paises" required>
                             <option value=""> </option>
                         </select>
                     </label>
@@ -31,7 +31,7 @@
                         <div class="input-label">
                             Ciudad
                         </div>
-                        <select ng-model="disponibilidad.ciudad" ng-options="ciudad for ciudad in ['Montevideo','Maldonado','Rivera','Minas']" required>
+                        <select ng-model="disponibilidad.ciudad" ng-options="ciudad for ciudad in ciudades" required>
                             <option value=""> </option>
                         </select>
                     </label>
@@ -40,7 +40,7 @@
                         <div class="input-label">
                             Localidad
                         </div>
-                        <select ng-model="disponibilidad.localidad" ng-options="localidad for localidad in ['Carrasco','Canelones','Cerros Azules','Arenas de José Ignacio']" required>
+                        <select ng-model="disponibilidad.localidad" ng-options="localidad for localidad in localidades" required>
                             <option value=""> </option>
                         </select>
                     </label>
@@ -60,19 +60,19 @@
                 <div class="ty-list-group">
                     <label class="item new-input-date">
                         Fecha
-                        <input type="date" ng-model="disponibilidad.fecha" required>
+                        <input type="date" datetimepicker ng-model="disponibilidad.fecha" required>
                         <span class="item-note">{{disponibilidad.fecha| date:'yyyy/MM/dd' }}</span>
                     </label>
 
                     <label class="item new-input-date">
                         Hora de Comienzo
-                        <input type="time" ng-model="disponibilidad.fechai" required>
-                        <span class="item-note">{{disponibilidad.fechai| date:'h:mm a'| lowercase }}</span>
+                        <input type="time" datetimepicker min-interval="30" ng-model="disponibilidad.fechai" required>
+                        <span class="item-note">{{disponibilidad.fechai| date:'HH:mm' }}</span>
                     </label>
                     <label class="item new-input-date">
                         Hora de Fin
-                        <input type="time" ng-min="disponibilidad.fechai" ng-model="disponibilidad.fechaf" required>
-                        <span class="item-note">{{disponibilidad.fechaf| date:'h:mm a'| lowercase }}</span>
+                        <input type="time" datetimepicker min-interval="30" ng-min="disponibilidad.fechai" ng-model="disponibilidad.fechaf" required>
+                        <span class="item-note">{{disponibilidad.fechaf| date:'HH:mm' }}</span>
                     </label>
                     <a class="item" ui-sref="tabs.disponibilidad.repetir">
                         Repetir

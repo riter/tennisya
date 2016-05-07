@@ -38,6 +38,7 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
     <gap:plugin name="com.ionic.keyboard" />
+    <gap:plugin name="cordova-plugin-datepicker" source="npm" />
     
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
         <param name="APP_ID" value="1644064545847703" />

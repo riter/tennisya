@@ -11,6 +11,9 @@ appTennisya
                     $scope.disponibilidad.repetir = $scope.parseDias();
             });
 
+            $scope.paises = extrasService.getPais();
+            $scope.ciudades = extrasService.getCiudad();
+            $scope.localidades = extrasService.getLocalidad();
             extrasService.getClub().then(function (response) {
                 $scope.clubs = response;
             });
@@ -60,7 +63,7 @@ appTennisya
                         $scope.disponibilidad.fechai = moment(item.fechai).toDate();
                         $scope.disponibilidad.fechaf = moment(item.fechaf).toDate();
                     } else
-                        $scope.disponibilidad = {autoConfirm: false, fecha: moment().toDate(), fechai: moment("0000-00-00 00:00:00").toDate(), fechaf: moment("0000-00-00 00:00:00").toDate(), repetir: ''};
+                        $scope.disponibilidad = {autoConfirm: false, fecha: moment().toDate(), fechai: moment('00:00:00', 'HH:mm:ss').toDate(), fechaf: moment('00:00:00', 'HH:mm:ss').toDate(), repetir: ''};
                     $scope.modalNewDisp.show();
 
                 });

@@ -5,8 +5,8 @@
  */
 
 appTennisya
-        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaActionSheet, $localstorage, notoficacionService) {
-
+        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaActionSheet, $localstorage, notoficacionService, grupoService, disponibilidadService) {
+    
             $scope.onCerrarSesion = function () {
                 var options = {
                     addCancelButtonWithLabel: 'Cancelar',
@@ -18,6 +18,8 @@ appTennisya
                             if (btnIndex == 1) {
                                 $localstorage.clear();
                                 setTimeout(function () {
+                                    grupoService.reset();
+                                    disponibilidadService.init();
                                     notoficacionService.unregister();
                                     logoutFacebook();
                                     $state.go('signin');

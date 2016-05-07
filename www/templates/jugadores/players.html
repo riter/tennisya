@@ -13,7 +13,7 @@
     <ion-content class="has-subheader">
 
         <ion-list ng-if="data.showGrupos" class="players-list">
-            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos" type="item-text-wrap" ng-click="nextGrupo(grupo)">
+            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos.data | orderBy:'id':true" type="item-text-wrap" ng-click="nextGrupo(grupo)">
                 <img src="assets/img/group.png" download-task="grupo.image" ng-src="{{grupo.image}}">
                 <h2>{{grupo.title}}</h2>
                 <p>{{grupo.ciudad}}, {{grupo.pais}}</p>
@@ -24,7 +24,7 @@
         </ion-list>
 
         <ion-list ng-if="!data.showGrupos" class="players-list">
-            <ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores" type="item-text-wrap" ng-click="nextInfoJugador(jugador)">
+            <ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores.data | orderBy:'name' " type="item-text-wrap" ng-click="nextInfoJugador(jugador)">
                 <img src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
                 <h2>{{jugador.name}}</h2>
                 <p>{{jugador.estado}}</p>

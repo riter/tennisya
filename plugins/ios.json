@@ -87,6 +87,10 @@
                         {
                             "xml": "<access origin=\"https://*.akamaihd.net\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DatePicker\"><param name=\"ios-package\" value=\"DatePicker\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -234,6 +238,9 @@
         "phonegap-facebook-plugin": {
             "APP_ID": "1644064545847703",
             "APP_NAME": "tennisya",
+            "PACKAGE_NAME": "com.appload.tennisya"
+        },
+        "cordova-plugin-datepicker": {
             "PACKAGE_NAME": "com.appload.tennisya"
         }
     },

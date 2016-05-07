@@ -1,10 +1,9 @@
 /**
  * Created by Riter on 24/08/15.
  */
-//var api = 'http://test.tennisya.apploadapps.com/app_dev.php/api/';
-// var api = 'http://localhost/tennisya_admin/web/app_dev.php/api/';
 //var api = 'http://localhost/tennisyaApp/tennisya_admin/web/app_dev.php/api/';
  var api = 'http://tennisya.apploadapps.com/web/api/';
+//var api = "192.168.1.5/web/api/";
 
 var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova','ngPhotoSwipe']);
 var configNotifications = {

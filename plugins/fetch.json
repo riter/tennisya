@@ -117,5 +117,14 @@
             "APP_ID": "1644064545847703",
             "APP_NAME": "tennisya"
         }
+    },
+    "cordova-plugin-datepicker": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
