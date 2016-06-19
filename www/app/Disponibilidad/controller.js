@@ -14,9 +14,7 @@ appTennisya
             $scope.paises = extrasService.getPais();
             $scope.ciudades = extrasService.getCiudad();
             $scope.localidades = extrasService.getLocalidad();
-            extrasService.getClub().then(function (response) {
-                $scope.clubs = response;
-            });
+            $scope.clubs = extrasService.getClubs();
 
             $scope.data = {
                 showDelete: false

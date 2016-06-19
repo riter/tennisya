@@ -5,11 +5,9 @@
  */
 
 appTennisya
-        .controller('crearPartidoCtrl', function ($rootScope, $state, $scope, $ionicHistory, $ionicModal, $localstorage, partidoService, extrasService, searchJugador) {
-            extrasService.getClub().then(function (response) {
-                $scope.clubs = response;
-            });
-
+        .controller('crearPartidoCtrl', function ($rootScope, $state, $scope, $ionicHistory, $ionicModal, $localstorage, partidoService, grupoService, extrasService, searchJugador) {
+            $scope.clubs = extrasService.getClubs();
+            
             $scope.$on('$ionicView.afterEnter', function (scopes, states) {
                 if ($scope.modalNewPartido === null)
                     $scope.openPatido();
@@ -81,11 +79,28 @@ appTennisya
                 search: searchJugador.getJugadores()
             };
             $scope.searchJugador = function (query) {
-                var ids = [];
-                angular.forEach($scope.data.search, function (value, key) {
-                    ids.push(value.id);
+                if ($scope.partido.grupo) {
+                    return grupoService.getModelData();
+                } else {
+                    var ids = [];
+                    angular.forEach($scope.data.search, function (value, key) {
+                        ids.push(value.id);
+                    });
+                    return searchJugador.searchJugador(query, ids);
+                }
+            };
+            $scope.filterJugadorGrupo = function (items, query) {
+                var result = [];
+                angular.forEach(items, function (value, key) {
+                    if ($scope.userLogin.id !== value.jugador.id && (
+                            (value.jugador.name && value.jugador.name.toLowerCase().indexOf(query.toLowerCase()) > -1) || 
+                            (value.jugador.estado && value.jugador.estado.toLowerCase().indexOf(query.toLowerCase()) > -1) ||
+                            (value.jugador.clubCancha && value.jugador.clubCancha.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1)
+                            )) {
+                        result.push(value.jugador);
+                    }
                 });
-                return searchJugador.searchJugador(query, ids);
+                return result;
             };
         })
         ;

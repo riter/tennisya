@@ -293,7 +293,7 @@ ngPhotoSwipe.directive('photoGallery', [function () {
                 '</div>' +
                 '<div ng-switch-default>' +
                 '<a href="{{img.src}}" itemprop="contentUrl" data-size="{{img.size}}">' +
-                '<img ng-src="{{img.thumb}}" itemprop="thumbnail" alt="{{img.caption}}" />' +
+                '<img ng-src="{{img.thumb}}" itemprop="thumbnail" alt="{{img.caption}}" err-src="{{img.srcError}}"/>' +
                 '</a>' +
                 '</div>' +
                 '</div>' +

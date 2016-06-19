@@ -16,5 +16,14 @@ appTennisya.config(function($stateProvider) {
                     }
                 }
             })
+            .state('tabs.info-partido', {
+                url: "/infos",
+                views: {
+                    'partidos-tab': {
+                        templateUrl: "templates/partidos/info.html",
+                        controller: 'InfoPartidosCtrl'
+                    }
+                }
+            })
         ;
     });

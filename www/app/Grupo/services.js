@@ -24,12 +24,19 @@ appTennisya
                 getList: function () {
                     return this.model;
                 },
+                getListIds: function () {
+                    var res = [];
+                    angular.forEach(this.model.data, function (value, key) {
+                        res.push(value.id);
+                    });
+                    return res;
+                },
                 list: function () {
                     var self = this;
                     return $http.get(api + 'group/jugadores/' + $localstorage.getObject('user').id, {params: {lastUpdate: self.model.lastUpdate}}).then(function (response) {
                         self.model.data.union(response.data.list, function (model) {//function condicion para eliminar item
                             return model.remove === true;
-                        });
+                        }, true);
                         self.model.lastUpdate = response.data.lastUpdate;
                         $localstorage.setObject('grupos', self.model);
                     }, function () {
@@ -51,6 +58,11 @@ appTennisya
                 },
                 getModel: function () {
                     return this.select;
+                },
+                getModelData: function () {
+                    var deferred = $q.defer();
+                    deferred.resolve(this.select);
+                    return deferred.promise;
                 },
                 getJugadores: function () {
                     var self = this;
@@ -98,7 +110,7 @@ appTennisya
 
                     }, function () {
                         self.getModel().jugadorgrupo.splice(index, 0, grupo_jugador);
-                        $cordovaDialogs.alert('Error al eliminar jugador', 'Informacion', 'Hecho');
+                        $cordovaDialogs.alert('Error al eliminar jugador', 'Informacion', 'Aceptar');
                     });
                 },
                 delete: function (id) {
@@ -111,7 +123,7 @@ appTennisya
 
                     }, function () {
                         self.getList().data.splice(index, 0, self.getModel());
-                        $cordovaDialogs.alert('Error al salir del grupo', 'Informacion', 'Hecho');
+                        $cordovaDialogs.alert('Error al salir del grupo', 'Informacion', 'Aceptar');
                     });
                 },
                 save: function (idAdmin, grupo) {
@@ -123,16 +135,20 @@ appTennisya
                         jugadorgrupo: []
                     };
                     angular.forEach(grupo.jugadores, function (value, key) {
-                        param.jugadorgrupo.push({id: value.id});
+                        if (grupo.image === null)
+                            param.jugadorgrupo.push(value.id);
+                        else
+                            param['jugadorgrupo[' + key + ']'] = value.id;
                     });
 
                     if (grupo.image === null) {
                         $http.post(api + 'group/save/' + idAdmin, param).then(function (response) {
-                            self.getList().data.push(response.data);
+                            self.model.data.union([response.data], null, true);
                         }, function (err) {
-                            $cordovaDialogs.alert('Error al crear grupo', 'Informacion', 'Hecho');
+                            $cordovaDialogs.alert('Error al crear grupo', 'Informacion', 'Aceptar');
                         });
                     } else {
+                        delete param['jugadorgrupo'];
                         var option = {
                             fileKey: 'files',
                             fileName: 'image.jpg',
@@ -142,143 +158,15 @@ appTennisya
                         };
                         $cordovaFileTransfer.upload(api + 'group/save/' + idAdmin, grupo.image, option)
                                 .then(function (result) {
-                                    self.getList().data.push(JSON.parse(result.response));
+                                    self.model.data.union([JSON.parse(result.response)], null, true);
                                 }, function (err) {
-                                    $cordovaDialogs.alert('Error al crear grupo', 'Informacion', 'Hecho');
+                                    $cordovaDialogs.alert('Error al crear grupo', 'Informacion', 'Aceptar');
                                 }, function (progress) {
                                     // constant progress updates
                                 });
                     }
-
                     return deferred.promise;
                 }
             };
             return gruposSer;
         });
-//        .factory('grupoService', function ($q, $localstorage, $http, $cordovaFileTransfer) {
-//            var data = {
-//                id: null,
-//                title: '',
-//                image: null,
-//                pais: '',
-//                ciudad: '',
-//                jugadorgrupo: []
-//
-//            };
-//            var gcancelHttp = $q.defer();
-//            var listGrupos = [];
-//            return {
-//                getList: function () {
-//                    var deferred = $q.defer();
-//                    deferred.resolve(listGrupos);
-//                    return deferred.promise;
-//                },
-//                list: function () {
-//                    var user = $localstorage.getObject('user');
-//                    return $http.get(api + 'group/jugadores/' + user.id).then(function (response) {
-//                        listGrupos = response.data;
-//                        $localstorage.setObject('grupos', response.data);
-//                        return response.data;
-//                    }, function () {
-//                        return $localstorage.getObject('grupos');
-//                    });
-//                },
-//                setModel: function (model) {
-//                    if (typeof (model.jugadorgrupo) === 'undefined')
-//                        model.jugadorgrupo = [];
-//                    if (typeof (model.lastUpdate) === 'undefined')
-//                        model.lastUpdate = '';
-//                    
-//                    data = model;
-//                },
-//                getModel: function () {
-//                    return data;
-//                },
-//                setTitle: function (title) {
-//                    data.title = title;
-//                },
-//                setThumb: function (url) {
-//                    data.image = url;
-//                },
-//                setJugadores: function (listJugadores) {
-//                    data.jugadorgrupo = listJugadores;
-//                },
-//                save: function (idAdmin, grupo) {
-//                    var deferred = $q.defer();
-//                    var param = {
-//                        title: grupo.title,
-//                        pais: grupo.pais, ciudad: grupo.ciudad,
-//                        jugadorgrupo: []
-//                    };
-//                    angular.forEach(grupo.jugadores, function (value, key) {
-//                        param.jugadorgrupo.push({id: value.id});
-//                    });
-//
-//                    if (grupo.image === null) {
-//                        $http.post(api + 'group/save/' + idAdmin, param).then(function (response) {
-//                            deferred.resolve(response.data);
-//                        });
-//                    } else {
-//                        var option = {
-//                            fileKey: 'files',
-//                            fileName: 'image.jpg',
-//                            mimeType: "image/png",
-//                            chunkedMode: false,
-//                            params: param
-//                        };
-//                        $cordovaFileTransfer.upload(api + 'group/save/' + idAdmin, grupo.image, option)
-//                                .then(function (result) {
-//                                    deferred.resolve(JSON.parse(result.response));
-//                                }, function (err) {
-//                                    deferred.reject(err);
-//                                }, function (progress) {
-//                                    // constant progress updates
-//                                });
-//                    }
-//
-//                    return deferred.promise;
-//                },
-//                updateJugador: function (id, jugador) {
-//                    return $http.post(api + 'group/update/' + id, {campo: 'jugador', jugador: jugador.id});
-//                },
-//                updateTitle: function (id, title) {
-//                    return $http.post(api + 'group/update/' + id, {campo: 'title', title: title});
-//                },
-//                updateImage: function (id, imageURI) {
-//                    var deferred = $q.defer();
-//
-//                    var option = {
-//                        fileKey: 'files',
-//                        fileName: 'image.jpg',
-//                        mimeType: "image/png",
-//                        chunkedMode: false,
-//                        params: {campo: 'image'}
-//                    };
-//                    $cordovaFileTransfer.upload(api + 'group/update/' + id, imageURI, option)
-//                            .then(function (result) {
-//                                deferred.resolve(JSON.parse(result.response));
-//                            }, function (err) {
-//                                deferred.reject(err);
-//                            });
-//
-//                    return deferred.promise;
-//                },
-//                getJugadores: function (id) {
-//                    gcancelHttp.resolve([]);
-//                    gcancelHttp = $q.defer();
-//                    return $http.get(api + 'group/list_jugadores/' + id, {timeout: gcancelHttp.promise,params: {lastUpdate : data.lastUpdate}}).then(function (response) {
-//                        data.jugadorgrupo.union(response.data.list, function (model) {//function condicion para eliminar item
-//                            return model.remove === true;
-//                        });
-//                        data.lastUpdate = response.data.lastUpdate;
-//                        return data;
-//                    });
-//                },
-//                deleteJugador: function (id_grupo_jugador) {
-//                    return $http.get(api + 'group/delete_jugador/' + id_grupo_jugador);
-//                },
-//                delete: function (id) {
-//                    return $http.get(api + 'group/delete/' + id);
-//                }
-//            };
-//        });

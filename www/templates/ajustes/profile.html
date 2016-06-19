@@ -25,7 +25,7 @@
                         <i class="icon ion-edit icon-accessory"></i>
                     </label>
                     <label class="item item-input item-icon-right">
-                        <select class="profile_select" ng-model="profile.clubCancha" ng-options="club.id as club.nombre for club in clubs track by club.id" required>
+                        <select class="profile_select" ng-model="profile.clubCancha" ng-options="club.id as club.nombre for club in clubs.list track by club.id" required>
                             <option value="">Cancha de preferencia</option>
                         </select>
                         <i class="icon ion-edit icon-accessory"></i>
@@ -46,7 +46,7 @@
 
                     <div class="item item-body">
                         <figure class="profile_avatar" ng-click="openCamera()">
-                            <img src="assets/img/thumb_profile.png" download-task="profile.photo" ng-src="{{profile.photo}}">
+                            <img download-task="profile.photo" ng-src="{{profile.photo}}" err-src="assets/img/thumb_profile.png">
                         </figure>
                         <p class="no-margin profile_txt">Cambiar imagen de perfil</p>
                     </div>

@@ -16,25 +16,30 @@ String.prototype.hashCode = function () {
     return hash;
 };
 
-Array.prototype.union = function (newArray, conditionRemove) {
+/* newArray=array para la union, 
+ * conditionRemove=function para eliminar datos, 
+ * insertion= si TRUE los datos nuevos se insertan al inicio o sino al final
+ */
+Array.prototype.union = function (newArray, conditionRemove, insertion) {
 
     var obj = {};
 
     var i = 0;
     while (i < newArray.length) {
-        obj[newArray[i].id] = newArray[i];
+        obj['cod' + newArray[i].id] = newArray[i];
         i++;
     }
 
     i = 0;
     while (i < this.length) {
-        if (obj[this[i].id] !== undefined) {
+
+        if (obj['cod' + this[i].id] !== undefined) {
 
             if (this[i]['$$hashKey'] !== undefined)
-                obj[this[i].id]['$$hashKey'] = this[i].$$hashKey;
+                obj['cod' + this[i].id]['$$hashKey'] = this[i].$$hashKey;
 
-            this[i] = obj[this[i].id];
-            delete obj[this[i].id];
+            this[i] = obj['cod' + this[i].id];
+            delete obj['cod' + this[i].id];
         }
         if (typeof (conditionRemove) === 'function' && conditionRemove(this[i])) {
             this.splice(i, 1);
@@ -44,7 +49,10 @@ Array.prototype.union = function (newArray, conditionRemove) {
     }
     for (var k in obj) {
         if (!(typeof (conditionRemove) === 'function' && conditionRemove(obj[k])))
-            this.push(obj[k]);
+            if (insertion)
+                this.unshift(obj[k]);
+            else
+                this.push(obj[k]);
     }
 };
 
@@ -156,6 +164,24 @@ appTennisya.directive('downloadTask', function (filesystemService) {
     };
 });
 
+appTennisya.directive('errSrc', function () {
+    return {
+        link: function (scope, element, attrs) {
+            element.bind('error', function () {
+                if (attrs.src != attrs.errSrc) {
+                    attrs.$set('src', attrs.errSrc);
+                }
+            });
+
+            attrs.$observe('ngSrc', function (value) {
+                if (!value && attrs.errSrc) {
+                    attrs.$set('src', attrs.errSrc);
+                }
+            });
+        }
+    }
+});
+
 appTennisya.directive('datetimepicker', function ($cordovaDatePicker, $timeout) {
     return {
         restrict: 'A',
@@ -201,4 +227,111 @@ appTennisya.directive('datetimepicker', function ($cordovaDatePicker, $timeout) 
 
         }
     };
+});
+
+appTennisya.factory('$ActionSheetGral', ['$q', '$cordovaDialogs', '$cordovaActionSheet', function ($q, $cordovaDialogs, $cordovaActionSheet) {
+
+        return {
+            show: function (title, actions, destructive) {
+                var q = $q.defer();
+                if ((actions.length === 1 && destructive === '') || (actions.length === 0 && destructive !== '')) {
+                    if (ionic.Platform.isAndroid()) {
+                        var msg = destructive === '' ? actions[0] : destructive;
+                        $cordovaDialogs.confirm(title, msg, ['Cancelar', msg])
+                                .then(function (buttonIndex) {// no button = 0, 'Cancel' = 1, 'Ok' = 2
+                                    if (buttonIndex === 2)
+                                        q.resolve(msg);
+                                });
+                    } else {
+//                        actions.push('Cancelar');
+                        this.showActionGral(q, title, actions, destructive);
+                    }
+                } else {
+                    this.showActionGral(q, title, actions, destructive);
+                }
+                return q.promise;
+            },
+            showActionGral: function (q, title, actions, destructive) {
+
+                var options = {
+                    addCancelButtonWithLabel: 'Cancelar',
+                    androidEnableCancelButton: false,
+                    buttonLabels: angular.copy(actions)
+                };
+                if (title !== '') {
+                    options.title = title;
+                }
+                if (destructive !== '') {
+                    options.addDestructiveButtonWithLabel = destructive;
+                    actions.unshift(destructive);
+                }
+
+                $cordovaActionSheet.show(options)
+                        .then(function (btnIndex) {
+                            if (actions[btnIndex - 1 ] !== undefined)
+                                q.resolve(actions[btnIndex - 1]);
+                        });
+            }
+        };
+    }]);
+
+appTennisya.factory('cameraAction', function ($ActionSheetGral, $cordovaCamera) {
+
+    var cameraAction = {
+        callback: null,
+        options: {
+            buttonLabels: ['Hacer foto', 'Seleccionar foto'],
+            //addDestructiveButtonWithLabel : 'Eliminar foto',
+            addCancelButtonWithLabel: 'Cancelar',
+            androidEnableCancelButton: true
+        },
+        showAction: function (callback) {
+            this.callback = callback;
+
+            var self = this;
+            $ActionSheetGral.show('', ['Hacer foto', 'Seleccionar foto'], '').then(function (response) {
+                switch (response) {
+                    case 'Hacer foto':
+                        self.getPhoto();
+                        break;
+                    case 'Seleccionar foto':
+                        self.selectPhoto();
+                        break;
+                }
+            });
+        },
+        getPhoto: function () {
+            var options = {
+                quality: 50,
+                allowEdit: true,
+                targetWidth: 640, //300,
+                targetHeight: 640, //300,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.CAMERA
+            };
+            this.openCamera(options);
+            $cordovaCamera.cleanup();
+        },
+        selectPhoto: function () {
+            var options = {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                allowEdit: true,
+                targetWidth: 300,
+                targetHeight: 300,
+                encodingType: Camera.EncodingType.JPEG
+            };
+            this.openCamera(options);
+        },
+        openCamera: function (options) {
+            var self = this;
+            $cordovaCamera.getPicture(options).then(function (imageURI) {
+                if (typeof (self.callback) === 'function')
+                    self.callback(imageURI);
+            }, function (err) {
+                //alert(JSON.stringify(err));
+            });
+        }
+    };
+    return cameraAction;
 });

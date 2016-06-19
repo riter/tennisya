@@ -23,18 +23,18 @@ appTennisya
                     $scope.$broadcast('scroll.infiniteScrollComplete');
                 });
             };
+            var loadGrupos = function () {
+                grupoService.list();
+            };
 
             $scope.data = {
                 showGrupos: false,
                 jugadores: userService.getList(),
                 scrolling: true,
-                grupos: []
+                grupos: grupoService.getList()
             };
+            loadGrupos();
 
-            var loadGrupos = function () {
-                $scope.data.grupos = grupoService.getList();
-                grupoService.list();
-            };
             $scope.$on('$ionicView.afterEnter', function (event, data) {
                 if ($scope.data.showGrupos === true) {
                     $rootScope.filterPartidos = {type: 'grupos', idType: null, title: 'Grupos'};
@@ -67,6 +67,33 @@ appTennisya
                     $scope.modalNewGroup.show();
                 });
             };
+
+            $scope.$on($ionicHistory.currentStateName(), function (event, response) {
+                switch (response.type) {
+                    case 'resume':
+                        userService.updateListJugador();
+                        loadGrupos();
+                        break;
+                    case 'grupos':
+                        loadGrupos();
+                        break;
+                }
+            });
+
+            $scope.orderNotifGrupo = function () {
+                var gruposNotif = [];
+                angular.forEach($scope.data.grupos.data, function (grupo, key) {
+                    grupo.notif = $scope.isNotifGrupo(grupo);
+                    if (grupo.notif) {
+                        gruposNotif.push(grupo);
+                    }
+                });
+                while (gruposNotif.length > 0) {
+                    var newg = $scope.data.grupos.data.splice($scope.data.grupos.data.indexOf(gruposNotif.pop()), 1);
+                    $scope.data.grupos.data.unshift(newg[0]);
+                }
+                return $scope.data.grupos.data;
+            };
         })
         .controller('infoJugadorCtrl', function ($rootScope, $scope, $state, $stateParams, $ionicSlideBoxDelegate, $window, userService, disponibilidadService) {
             $scope.startHour = 6;
@@ -88,7 +115,8 @@ appTennisya
                         safeSrc: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
                         thumb: $scope.jugador.photo !== null ? $scope.jugador.photo : 'assets/img/profile.png',
                         size: '0x0',
-                        type: 'image'
+                        type: 'image',
+                        srcError: 'assets/img/profile.png'
                     }];
             });
 

@@ -4,7 +4,7 @@
 /*
  */
 
-appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $localstorage, $cordovaPush, $cordovaDevice) {
+appTennisya.factory('notoficacionService', function ($ionicHistory, $rootScope, $q, $http, $localstorage, $cordovaPush, $cordovaDevice) {
     var notificationClass = {
         configNotifications: {
             badge: true,
@@ -14,33 +14,44 @@ appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $loc
         },
         tokenID: "",
         callbackReceive: null,
-        data: [],
         cancelHttp: $q.defer(),
+        model: {
+            data: [],
+            lastUpdate: null
+        },
+        getList: function () {
+            return this.model;
+        },
         loadList: function (jugador) {
             var self = this;
             self.cancelHttp.resolve(self.data);
             self.cancelHttp = $q.defer();
-            return $http.get(api + 'notificacion/list/' + jugador, {timeout: self.cancelHttp.promise}).then(function (response) {
-                $localstorage.setObject('notificacion', response.data);
-                self.data = response.data;
-                return self.data;
+            $http.get(api + 'notificacion/list/' + jugador, {timeout: self.cancelHttp.promise, params: {lastUpdate: self.model.lastUpdate}}).then(function (response) {
+                self.model.data.union(response.data.list, function (model) {//function condicion para eliminar item
+                    return model.leido === true;
+                }, true);
+                self.model.lastUpdate = response.data.lastUpdate;
+                self.saveStorage();
+
             }, function () {
-                return $localstorage.getObject('notificacion');
+                if ($localstorage.exist('notificacion')) {
+                    var tmpNotif = $localstorage.getObject('notificacion');
+                    self.model.data = tmpNotif.data;
+                    self.model.lastUpdate = tmpNotif.lastUpdate;
+                }
             });
         },
         leido: function (id, jugador, type) {
             var self = this;
-            self.cancelHttp.resolve(self.data);
-            self.cancelHttp = $q.defer();
-            return $http.get(api + 'notificacion/leido/' + id + '/' + jugador + '/' + type).then(function (response) {
-                self.data = self.data.filter(function (item) {
-                    return (type === 'newgrupo' && !(item.grupo === id && item.partido === null)) || (type === 'grupo' && !(item.grupo === id && item.partido !== null)) || (type === 'jugador' && !(item.grupo === null && item.partido !== null && item.noleidos[id] !== undefined));
-                });
-                $localstorage.setObject('notificacion', self.data);
-                return self.data;
-            }, function () {
-
+            $http.get(api + 'notificacion/leido/' + id + '/' + jugador + '/' + type).then(function (response) {
+                self.model.data.union(response.data, function (model) {//function condicion para eliminar item
+                    return model.leido === true;
+                }, true);
+                self.saveStorage();
             });
+        },
+        saveStorage: function () {
+            $localstorage.setObject('notificacion', this.model);
         },
         register: function () {
             var self = this;
@@ -51,13 +62,12 @@ appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $loc
                     }
                 });
                 this.receive();
-            } catch (e) {
-            }
+            } catch (e) {}
         },
         setTokenID: function (token) {
             if ($localstorage.exist('tokenNotificacion') && $localstorage.get('tokenNotificacion') === token)
                 return;
-                
+
             this.tokenID = token;
             $http.get(api + 'notificacion/save/' + $cordovaDevice.getDevice().uuid + '/' + this.tokenID + '/' + ionic.Platform.platform()).then(function () {
                 $localstorage.set('tokenNotificacion', token);
@@ -75,8 +85,17 @@ appTennisya.factory('notoficacionService', function ($rootScope, $q, $http, $loc
                 if (ionic.Platform.isAndroid() && notification.event === 'registered') {
                     self.setTokenID(notification.regid);
                 } else {
+//                    alert(JSON.stringify(notification));
                     $rootScope.loadNotificaciones();
-                    //notification.foreground -> si la app esta activa o minimizada
+                    if (notification.foreground || notification.foreground === '1') { // 0 si la app esta minimizada y  1 si esta activa
+//                        alert(notification.foreground);
+                        notification = ionic.Platform.isAndroid() ? notification.payload :  notification;
+                        
+                        if(!angular.isUndefined(notification.newG) || !angular.isUndefined(notification.updG))
+                            $rootScope.$broadcast($ionicHistory.currentStateName(), {type: 'grupos'});
+                        if(!angular.isUndefined(notification.updP))
+                            $rootScope.$broadcast($ionicHistory.currentStateName(), {type: 'partido', partido:notification.updP});
+                    }
                     if (typeof (self.callbackReceive) === 'function')
                         self.callbackReceive();
                 }

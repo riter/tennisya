@@ -5,21 +5,25 @@
  */
 
 appTennisya
-        .controller('SignInCtrl', function ($http, $scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaDevice, $cordovaOauth, userService) {
-
+        .controller('SignInCtrl', function ($cordovaSplashscreen, $http, $scope, $state, $ionicHistory, $cordovaDialogs, $cordovaFacebook, $cordovaDevice, $cordovaOauth, userService) {
+ 
             $scope.$on('$ionicView.beforeEnter', function (scopes, states) {
                 $scope.user = {email: '', password: ''};
             });
             $scope.$on('$ionicView.afterEnter', function (scopes, states) {
                 $ionicHistory.clearHistory();
                 $ionicHistory.clearCache();
+
+                setTimeout(function () {
+                    $cordovaSplashscreen.hide();
+                }, 1000);
             });
             $scope.lostPassword = function (user) {
                 userService.lostPassword(user).then(function (response) {
-                    $cordovaDialogs.alert(response.msg, '¿Olvidó contraseña?', 'Hecho');
+                    $cordovaDialogs.alert(response.msg, '¿Olvidó contraseña?', 'Aceptar');
                 }, function (error) {
                     var msg = typeof (error.error) !== 'undefined' ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
-                    $cordovaDialogs.alert(msg, '¿Olvidó contraseña?', 'Hecho');
+                    $cordovaDialogs.alert(msg, '¿Olvidó contraseña?', 'Aceptar');
                 });
             };
             $scope.signIn = function (user) {
@@ -29,8 +33,8 @@ appTennisya
                 userService.loginJugador(user).then(function () {
                     $state.go('tabs.player');
                 }, function (error) {
-                    var msg = error? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
-                    $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                    var msg = error ? error.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
+                    $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Aceptar');
                 });
             };
 
@@ -50,14 +54,14 @@ appTennisya
                                         userService.facebookJugador(data).then(function () {
                                             $state.go('tabs.player');
                                         }, function (error) {
-                                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Aceptar');
                                         });
 
                                     }, function (error) {
-                                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Aceptar');
                                     });
                         }, function (error) {
-                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Aceptar');
                         });
             };
 
@@ -76,11 +80,11 @@ appTennisya
                         userService.facebookJugador(data).then(function () {
                             $state.go('tabs.player');
                         }, function (error) {
-                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                            $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Aceptar');
                         });
 
                     }, function (error) {
-                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Hecho');
+                        $cordovaDialogs.alert(msg, 'Inicio de sesion', 'Aceptar');
                     });
 //
                 }, function (error) {
@@ -90,9 +94,7 @@ appTennisya
         })
         .controller('SignUpCtrl', function ($scope, $state, $cordovaDialogs, userService, extrasService, cameraAction) {
             $scope.user = {celular: ''};
-            extrasService.getClub().then(function (response) {
-                $scope.clubs = response;
-            });
+            $scope.clubs = extrasService.getClubs();
 
             $scope.openCamera = function () {
                 cameraAction.showAction(function (imageURI) {
@@ -105,7 +107,7 @@ appTennisya
                     $state.go('tabs.player');
                 }, function (error) {
                     var msg = typeof (error.data.error) !== 'undefined' ? error.data.error : 'Ha ocurrido un error. Vuelva a intentarlo mas tarde.';
-                    $cordovaDialogs.alert(msg, 'Registro', 'Hecho');
+                    $cordovaDialogs.alert(msg, 'Registro', 'Aceptar');
                 });
             };
         })

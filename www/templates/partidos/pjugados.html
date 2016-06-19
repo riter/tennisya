@@ -1,0 +1,27 @@
+<ion-content>
+    <ion-list class="list-matches">
+        <ion-item ng-if="formatFecha(jugado.fechai, 'YYYY/MM/DD') < formatFecha('', 'YYYY/MM/DD')" ng-repeat="jugado in list.dataJugados | filter: partidosPersConf | orderBy:'fechaf':true ">
+            <div class="match">
+                <div class="match_detail">
+                    <span class="match_date">{{jugado.id + '-' + formatFecha(jugado.fechai, 'dddd DD/MM, HH') + ' hs'}}</span>
+                    <span class="match_place match_place-confirm">{{jugado.clubCancha.nombre}}</span>
+                    <span class="match_time">{{formatFromNow(jugado.fechai)}}</span>
+                </div>
+                <div class="match_players">
+                    <ul class="match-players" ng-if="jugado.jugadorpartido">
+                        <li class="match-players_item" ng-repeat="jugadorpartido in jugado.jugadorpartido">
+                            <a class="match-players_link">
+                                <img class="match-players_img" err-src="assets/img/profile.png" ng-src="{{jugadorpartido.jugador.photo}}"  download-task="jugadorpartido.jugador.photo" widht="36" height="36">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll distance="2%" on-infinite="getPartidosJ()" 
+                         ng-if="filterPartidos.idType !== null? list.paginate.jugados[filterPartidos.type][filterPartidos.idType].next : list.paginate.jugados[filterPartidos.type].next">
+    </ion-infinite-scroll>
+    
+    <div style="height: 46px"></div>
+</ion-content>

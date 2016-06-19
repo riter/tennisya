@@ -1,0 +1,72 @@
+<ion-view class="new-match" view-title="Información">
+    <form name="form" novalidate>
+        <ion-header-bar class="bar-stable">
+            <button class="button button-clear btn-cgreen" ng-click="onCancelar()"> Cancelar </button>
+            <h1 class="title">Nuevo partido</h1>
+        </ion-header-bar>
+
+        <ion-content>
+            <ion-list class="newpartido">
+
+                <div class="ty-list-group">
+
+                    <label class="item">
+                        Tipo
+                        <span class="item-note">{{partido.tipo}}</span>
+                    </label>
+                    <label class="item">
+                        Lugar
+                        <span class="item-note">{{partido.clubCancha.nombre}}</span>
+                    </label>
+                </div>
+
+                <ion-item class="item-divider"></ion-item>
+
+                <div class="ty-list-group">
+                    <label class="item new-input-date">
+                        Fecha
+                        <span class="item-note">{{partido.fechai| date:'yyyy/MM/dd' }}</span>
+                    </label>
+
+                    <label class="item new-input-date">
+                        Empieza
+                        <span class="item-note">{{partido.fechai| date:'HH:mm' }}</span>
+                    </label>
+
+                    <label class="item new-input-date">
+                        Termina
+                        <span class="item-note">{{partido.fechaf| date:'HH:mm' }}</span>
+                    </label>
+                </div>
+
+                <div class="item item-divider item-divider-doble">JUGADORES: {{partido.jugadorpartido.length}} de {{ partido.tipo === 'Singles' ? 2 : 4 }}</div>
+
+                <div class="players-list">
+
+                    <ion-item  ng-if="hasAnadir()" class="item balanced" ng-click="openAddJugador()">
+                        Invitar jugador
+                    </ion-item>
+
+                    <ion-item item="item" class="item item-avatar item-icon-right" ng-repeat="jugadorpartido in partido.jugadorpartido" type="item-text-wrap">
+                        <img ng-src="{{jugadorpartido.jugador.photo != null ? jugadorpartido.jugador.photo : 'assets/img/profile.png'}}">
+                        <h2>{{isYo(jugadorpartido.jugador) ? 'Yo' : jugadorpartido.jugador.name}}</h2>
+                        <p>{{jugadorpartido.jugador.estado}}</p>
+                        <p>{{jugadorpartido.jugador.clubCancha.nombre}}</p>
+                    </ion-item>
+
+                </div>
+
+                <div class="item" >
+                    <p class="notice">* De no invitar a un jugador específico el partido será publicado en forma abierta para todos los jugadores</p>
+
+                    <label class="custom-radio">
+                        <input type="radio" ng-model="partido.confirmCancha" ng-value="true" disabled> Cancha confirmada
+                        <span class="ic-radio"></span>
+                    </label>
+
+                </div>
+
+            </ion-list>
+        </ion-content>
+    </form>
+</ion-view>

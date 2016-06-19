@@ -4,8 +4,22 @@
 /*
  */
 appTennisya
-        .factory('$localstorage', ['$window', function ($window) {
+        .factory('$localstorage', ['$window', '$cacheFactory', function ($window, $cacheFactory) {
                 return {
+                    keys: [],
+                    cache: $cacheFactory('cacheTennis'),
+                    setCacheObject: function (key, value) {
+                        if (angular.isUndefined(this.cache.get(key))) {
+                            this.keys.push(key);
+                        }
+                        this.cache.put(key, angular.isUndefined(value) ? null : JSON.stringify(value));
+                    },
+                    getCacheObject: function (key) {
+                        return JSON.parse(this.cache.get(key) || '{}');
+                    },
+                    caehExist: function (key) {
+                        return !angular.isUndefined(this.cache.get(key));
+                    },
                     set: function (key, value) {
                         $window.localStorage[key] = value;
                     },
@@ -31,45 +45,63 @@ appTennisya
                     }
                 };
             }])
-        .factory('userService', function ($q, $http, $localstorage, $cordovaFileTransfer) {
+        .factory('userService', function ($q, $http, $localstorage, $cordovaFileTransfer, $ionicLoading) {
             var user = null;
 
             return {
                 model: {
                     data: [],
                     page: 1,
-                    limit: 15
+                    limit: 15,
+                    lastUpdate: null,
+                    idEnd: null
                 },
                 getList: function () {
                     return this.model;
                 },
                 lostPassword: function (data) {
+                    $ionicLoading.show();
+
                     var deferred = $q.defer();
                     $http.get(api + 'jugador/lostpassword', {params: data}).then(function (response) {
+                        $ionicLoading.hide();
+
                         deferred.resolve(response.data);
                     }, function (e) {
+                        $ionicLoading.hide();
+
                         deferred.reject(e.data);
                     });
                     return deferred.promise;
 
                 },
                 loginJugador: function (data) {
+                    $ionicLoading.show();
+
                     var deferred = $q.defer();
                     $http.post(api + 'jugador/login', data).then(function (response) {
+                        $ionicLoading.hide();
                         $localstorage.setObject('user', response.data);
                         deferred.resolve();
                     }, function (e) {
+                        $ionicLoading.hide();
                         deferred.reject(e.data);
                     });
                     return deferred.promise;
 
                 },
                 facebookJugador: function (data) {
+                    $ionicLoading.show();
+
                     var deferred = $q.defer();
                     $http.post(api + 'jugador/login_social', data).then(function (response) {
+                        $ionicLoading.hide();
+
                         $localstorage.setObject('user', response.data);
                         deferred.resolve();
                     }, function (e) {
+                        $ionicLoading.hide();
+
                         deferred.reject(e);
                     });
                     return deferred.promise;
@@ -81,6 +113,7 @@ appTennisya
                     if (typeof (data.clubCancha) === 'object')
                         data.clubCancha = data.clubCancha.id;
 
+                    $ionicLoading.show();
                     if (data.photo) {
                         var option = {
                             fileKey: 'files',
@@ -91,21 +124,27 @@ appTennisya
                         };
                         $cordovaFileTransfer.upload(api + 'jugador/save', data.photo, option)
                                 .then(function (result) {
+                                    $ionicLoading.hide();
+
                                     user = JSON.parse(result.response);
                                     $localstorage.setObject('user', user);
 
                                     deferred.resolve(user);
                                 }, function (err) {
+                                    $ionicLoading.hide();
+
                                     deferred.reject(err);
-                                }, function (progress) {
-                                    // constant progress updates
                                 });
                     } else {
                         $http.post(api + 'jugador/save', data).then(function (response) {
+                            $ionicLoading.hide();
+
                             user = response.data;
                             $localstorage.setObject('user', user);
                             deferred.resolve(user);
                         }, function (err) {
+                            $ionicLoading.hide();
+
                             deferred.reject(err);
                         });
                     }
@@ -118,8 +157,8 @@ appTennisya
                     if (typeof (data.clubCancha) === 'object')
                         data.clubCancha = data.clubCancha.id;
 
+                    $ionicLoading.show();
                     if (data.photo && data.photo.indexOf('http') < 0) {
-
                         var option = {
                             fileKey: 'files',
                             fileName: 'image.jpg',
@@ -129,47 +168,70 @@ appTennisya
                         };
                         $cordovaFileTransfer.upload(api + 'jugador/update/' + data.id, data.photo, option)
                                 .then(function (result) {
+                                    $ionicLoading.hide();
+
                                     user = JSON.parse(result.response);
                                     $localstorage.setObject('user', user);
 
                                     deferred.resolve(user);
                                 }, function (err) {
+                                    $ionicLoading.hide();
+
                                     deferred.reject(err);
-                                }, function (progress) {
-                                    // constant progress updates
                                 });
                     } else {
                         $http.post(api + 'jugador/update/' + data.id, data).then(function (response) {
+                            $ionicLoading.hide();
+
                             user = response.data;
                             $localstorage.setObject('user', user);
                             deferred.resolve(user);
                         }, function (err) {
+                            $ionicLoading.hide();
+
                             deferred.reject(err);
                         });
                     }
                     return deferred.promise;
                 },
+                updateListJugador: function () {
+                    var user = $localstorage.getObject('user');
+                    var self = this;
+                    $http.get(api + 'jugador/list', {params: {type: 'refresh', jugador: user.id, lastUpdate: self.model.lastUpdate, idEnd: self.model.idEnd}}).then(function (response) {
+                        self.model.data.union(response.data.list);
+                        self.model.lastUpdate = response.data.lastUpdate;
+                    });
+                    if (self.model.next !== undefined && !self.model.next) {
+                        $http.get(api + 'jugador/list', {params: {type: 'news', jugador: user.id, lastUpdate: self.model.lastUpdate, idEnd: self.model.idEnd}}).then(function (response) {
+                            self.model.data.union(response.data.list, null, true);
+                            self.model.lastUpdate = response.data.lastUpdate;
+                        });
+                    }
+                },
                 listJugador: function () {
                     var user = $localstorage.getObject('user');
                     var self = this;
                     return $http.get(api + 'jugador/list', {params: {jugador: user.id, page: self.model.page, limit: self.model.limit}}).then(function (response) {
-                        self.model.data.union(response.data.jugadores);
+                        self.model.data.union(response.data.list);
 
-                        if (self.model.page === 1)
+                        if (self.model.page === 1) {
                             $localstorage.setObject('jugadores', self.model);
-
+                            self.model.lastUpdate = response.data.lastUpdate;
+                        }
+                        self.model.idEnd = response.data.idEnd;
                         self.model.page++;
-                        return response.data;
+                        self.model.next = response.data.next;
+                        return {next: self.model.next};
                     }, function (e) {
                         if (self.model.page === 1 && $localstorage.exist('jugadores')) {
                             var tmpPlayers = $localstorage.getObject('jugadores');
                             self.model.data = tmpPlayers.data;
                             self.model.page = tmpPlayers.page;
                             self.model.limit = tmpPlayers.limit;
+                            self.model.lastUpdate = tmpPlayers.lastUpdate;
+                            self.model.idEnd = tmpPlayers.idEnd;
                         }
-//
-                        return {next: false};
-
+                        return {next: true};
                     });
                 },
                 setJugador: function (jugador) {
@@ -227,85 +289,19 @@ appTennisya.factory('extrasService', function ($q, $http, $localstorage) {
         getLocalidad: function () {
             return ['Carrasco', 'Canelones', 'Cerros Azules', 'Arenas de José Ignacio'];
         },
-        getClub: function () {
-            var deferred = $q.defer();
+        getClubs: function () {
+            var res = {list: []};
             if ($localstorage.exist('clubs')) {
-                deferred.resolve($localstorage.getObject('clubs'));
-                return deferred.promise;
-            } else
-                return this.loadClubs();
-        },
-        loadClubs: function () {
-            return $http.get(api + 'club/list').then(function (response) {
-                $localstorage.setObject('clubs', response.data);
-                return response.data;
+                res.list = $localstorage.getObject('clubs').list;
+            }
+            $http.get(api + 'club/list', {cache: true}).then(function (response) {
+                res.list = response.data;
+                $localstorage.setObject('clubs', res);
             });
+            return res;
         }
     };
     return configuracion;
-});
-appTennisya.factory('cameraAction', function ($cordovaActionSheet, $cordovaCamera) {
-
-    var cameraAction = {
-        callback: null,
-        options: {
-            buttonLabels: ['Hacer foto', 'Seleccionar foto'],
-            //addDestructiveButtonWithLabel : 'Eliminar foto',
-            addCancelButtonWithLabel: 'Cancelar',
-            androidEnableCancelButton: true
-        },
-        showAction: function (callback) {
-            this.callback = callback;
-
-            var self = this;
-            $cordovaActionSheet.show(this.options)
-                    .then(function (btnIndex) {
-                        switch (btnIndex) {
-                            case 1:
-                                self.getPhoto();
-                                break;
-                            case 2:
-                                self.selectPhoto();
-                                break;
-                            case 3:
-                                break;
-                        }
-                    });
-        },
-        getPhoto: function () {
-            var options = {
-                quality: 50,
-                allowEdit: true,
-                targetWidth: 640, //300,
-                targetHeight: 640, //300,
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.CAMERA
-            };
-            this.openCamera(options);
-            $cordovaCamera.cleanup();
-        },
-        selectPhoto: function () {
-            var options = {
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
-                allowEdit: true,
-                targetWidth: 300,
-                targetHeight: 300,
-                encodingType: Camera.EncodingType.JPEG
-            };
-            this.openCamera(options);
-        },
-        openCamera: function (options) {
-            var self = this;
-            $cordovaCamera.getPicture(options).then(function (imageURI) {
-                if (typeof (self.callback) === 'function')
-                    self.callback(imageURI);
-            }, function (err) {
-                //alert(JSON.stringify(err));
-            });
-        }
-    };
-    return cameraAction;
 });
 
 appTennisya.factory('filesystemService', function ($q, $cordovaFileTransfer, $cordovaFile) {

@@ -1,0 +1,66 @@
+<ion-content>
+    <ion-list class="list-matches">
+        <ion-item class="item-divider" ng-if="filterTodos == 'todos' || filterTodos == 'doubles'" style="overflow: hidden;">
+            Partidos dobles
+            <a for="ty-orderby" class="match_orderby-label" ng-click="openMostrar($event, 'todos')">
+                Mostrar
+            </a>
+        </ion-item>
+        <ion-item ng-click="infoPartidos(double)" ng-if="double.tipo == 'Dobles' && (filterTodos == 'todos' || filterTodos == 'doubles')" ng-repeat="double in list.data| filter: partidosTodos">
+            <div class="match">
+                <div class="match_detail">
+                    <span class="match_date">{{double.id + '-' + formatFecha(double.fechai, 'dddd DD/MM, HH') + ' hs'}}</span>
+                    <span ng-class="{'match_place-confirm':double.confirmCancha, 'match_place-pending':!double.confirmCancha}" class="match_place">{{double.clubCancha.nombre}}</span>
+                    <span class="match_time">{{formatFromNow(double.fechai)}}</span>
+                </div>
+                <div class="match_players">
+                    <ul class="match-players" ng-if="double.jugadorpartido">
+                        <li class="match-players_item" ng-repeat="jugadorpartido in double.jugadorpartido">
+                            <a class="match-players_link">
+                                <img ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}" err-src="assets/img/profile.png" ng-src="{{jugadorpartido.jugador.photo}}"  download-task="jugadorpartido.jugador.photo" widht="36" height="36">
+                            </a>
+                        </li>
+
+                        <li class="match-players_item" ng-repeat="item in getVacios(double)">
+                            <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="item-divider" ng-if="filterTodos == 'todos' || filterTodos == 'singles'" style="overflow: hidden;">
+            Partidos singles
+            <a for="ty-orderby" class="match_orderby-label" ng-click="openMostrar($event, 'todos')" ng-if="filterTodos == 'singles'">
+                Mostrar
+            </a>
+        </ion-item>
+        <ion-item ng-click="infoPartidos(single)" ng-if="single.tipo == 'Singles' && (filterTodos == 'todos' || filterTodos == 'singles')" ng-repeat="single in list.data| filter: partidosTodos">
+            <div class="match">
+                <div class="match_detail">
+                    <span class="match_date">{{single.id + '-' + formatFecha(single.fechai, 'dddd DD/MM, HH') + ' hs'}}</span>
+                    <span ng-class="{'match_place-confirm':single.confirmCancha, 'match_place-pending':!single.confirmCancha}" class="match_place">{{single.clubCancha.nombre}}</span>
+                    <span class="match_time">{{formatFromNow(single.fechai)}}</span>
+                </div>
+                <div class="match_players">
+                    <ul class="match-players" ng-if="single.jugadorpartido">
+                        <li class="match-players_item" ng-repeat="jugadorpartido in single.jugadorpartido">
+                            <a class="match-players_link">
+                                <img ng-class="{'match-players_img-grayscale':jugadorpartido.estado == 'invitado', 'match-players_img':jugadorpartido.estado == 'aceptado'}" err-src="assets/img/profile.png" ng-src="{{jugadorpartido.jugador.photo}}"  download-task="jugadorpartido.jugador.photo" widht="36" height="36">
+                            </a>
+                        </li>
+                        <li class="match-players_item" ng-repeat="item in getVacios(single)">
+                            <a class="match-players_link"><i class="match-players_icon ic-plus"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll distance="2%" on-infinite="getPartidosT()" 
+                         ng-if="filterPartidos.idType !== null? list.paginate.todos[filterPartidos.type][filterPartidos.idType].next : list.paginate.todos[filterPartidos.type].next">
+    </ion-infinite-scroll>
+    
+    <div style="height: 46px"></div>
+</ion-content>

@@ -24,7 +24,7 @@
                         <div class="input-label">
                             Lugar
                         </div>
-                        <select ng-model="partido.club" ng-options="club.nombre for club in clubs track by club.id" required>
+                        <select ng-model="partido.club" ng-options="club.nombre for club in clubs.list track by club.id" required>
                             <option value=""></option>
                         </select>
                     </label>

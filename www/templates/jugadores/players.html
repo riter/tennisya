@@ -13,28 +13,28 @@
     <ion-content class="has-subheader">
 
         <ion-list ng-if="data.showGrupos" class="players-list">
-            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in data.grupos.data | orderBy:'id':true" type="item-text-wrap" ng-click="nextGrupo(grupo)">
-                <img src="assets/img/group.png" download-task="grupo.image" ng-src="{{grupo.image}}">
+            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in orderNotifGrupo()" type="item-text-wrap" ng-click="nextGrupo(grupo)">
+                <img  err-src="assets/img/group.png" download-task="grupo.image" ng-src="{{grupo.image}}">
                 <h2>{{grupo.title}}</h2>
                 <p>{{grupo.ciudad}}, {{grupo.pais}}</p>
-                <span class="badge badge-balanced mi-badge">{{isNotifGrupo(grupo.id)?'.':''}}</span>
+                <span class="badge badge-balanced mi-badge">{{grupo.notif?'.':''}}</span>
                 <!--<p>Lawn Tenis, Nautilus</p>-->
                 <i class="icon ion-chevron-right"></i>
             </ion-item>
         </ion-list>
 
         <ion-list ng-if="!data.showGrupos" class="players-list">
-            <ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores.data | orderBy:'name' " type="item-text-wrap" ng-click="nextInfoJugador(jugador)">
-                <img src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
+            <ion-item class="item item-avatar item-icon-right" ng-repeat="jugador in data.jugadores.data" type="item-text-wrap" ng-click="nextInfoJugador(jugador)">
+                <img  err-src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
                 <h2>{{jugador.name}}</h2>
                 <p>{{jugador.estado}}</p>
                 <p>{{jugador.clubCancha.nombre}}</p>
                 <!--<p>Lawn Tenis, Nautilus</p>-->
-                <span class="badge badge-balanced mi-badge">{{isNotifJugador(jugador.id)?'.':''}}</span>
+<!--                <span class="badge badge-balanced mi-badge">{{isNotifJugador(jugador.id)?'.':''}}</span>-->
                 <i class="icon ion-chevron-right"></i>
             </ion-item>
         </ion-list>
 
-        <ion-infinite-scroll distance="40%" on-infinite="loadMoreData()" ng-if="!data.showGrupos && data.scrolling"></ion-infinite-scroll>
+        <ion-infinite-scroll distance="2%" on-infinite="loadMoreData()" ng-if="!data.showGrupos && data.scrolling"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

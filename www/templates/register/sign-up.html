@@ -18,7 +18,7 @@
                     <input class="login-fields_field" type="tel" placeholder="Celular" ng-model="user.celular">
                 </label>
                 <label class="item item-input background-transparent login-fields_label">
-                    <select class="login-fields_select" ng-model="user.clubCancha" ng-options="club.nombre for club in clubs track by club.id" required>
+                    <select class="login-fields_select" ng-model="user.clubCancha" ng-options="club.nombre for club in clubs.list track by club.id" required>
                         <option value="">Cancha de preferencia</option>
                     </select>
                 </label>

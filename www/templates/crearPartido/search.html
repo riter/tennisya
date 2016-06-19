@@ -11,10 +11,23 @@
             <ion-search class="search-wrapper-light" placeholder="Nombre del jugador" min-length="1" filter="data.filter" model="data.search" source="searchJugador(str)"></ion-search>
         </div>
 
-        <ion-list class="players-list">
+        <ion-list class="players-list" ng-if="!partido.grupo">
 
-            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-hide="isAdd(jugador)" ng-repeat="jugador in filterQuery(data.search,data.filter.value) | orderBy:'name'" ng-click="selected(jugador); $ionicGoBack()">
-                <img src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
+            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-hide="isAdd(jugador)" ng-repeat="jugador in filterQuery(data.search, data.filter.value)| orderBy:'name'" ng-click="selected(jugador);
+                    $ionicGoBack()">
+                <img  err-src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
+                <h2>{{jugador.name}}</h2>
+                <p>{{jugador.estado}}</p>
+                <p>{{jugador.clubCancha.nombre}}</p>
+            </ion-item>
+
+        </ion-list>
+        
+        <ion-list class="players-list" ng-if="partido.grupo">
+
+            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-hide="isAdd(jugador)" ng-repeat="jugador in filterJugadorGrupo(data.search.jugadorgrupo, data.filter.value)| orderBy:'name'" ng-click="selected(jugador);
+                    $ionicGoBack()">
+                <img  err-src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
                 <h2>{{jugador.name}}</h2>
                 <p>{{jugador.estado}}</p>
                 <p>{{jugador.clubCancha.nombre}}</p>

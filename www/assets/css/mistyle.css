@@ -1,3 +1,8 @@
+.item-divider-doble{
+    color: #444;
+    padding-top: 24px;
+    font-size: 13px;
+}
 /* inicio Input para fecha y hora newPartido*/
 .new-input-date{
     padding: 6px 16px 5px 16px;
@@ -230,14 +235,14 @@ label.item.valid-lr {
 
 /* fade in out*/
 .visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 2s linear;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
 }
 .hidden {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 2s, opacity 2s linear;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
 }
 
 .item-playerinfo img:first-child, .item-group img:first-child{
@@ -252,4 +257,33 @@ label.item.valid-lr {
     max-width: 40px;
     max-height: 40px;
 }
-    
+.item-new{
+    background: #ddd;
+}
+
+.ty-list .item.button-logout-2 {
+    text-align: center;
+    color: #ef473a;
+    font-size: 16px;
+    min-height: 47px;
+    padding: 10px;
+}
+
+.spinner.spinner-ios.spinner-tennis{
+    stroke: #fff;
+    fill: #fff;
+}
+
+.login-fields_select, .profile_select{
+    padding: 0;
+    width: 100%;
+}
+
+/* en info profile no reconoce css flex en -col-25*/
+.platform-android .ty-calendar_mainrow{
+    position: relative !important;
+    top: -26px !important;
+}
+.platform-android .ty-calendar_days .col-25, .platform-android .ty-calendar_mainrow .col-25{
+    width: 25%;
+}

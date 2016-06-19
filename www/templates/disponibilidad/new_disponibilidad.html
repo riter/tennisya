@@ -49,7 +49,7 @@
                         <div class="input-label">
                             Club/Cancha
                         </div>
-                        <select ng-model="disponibilidad.clubCancha" ng-options="club.id as club.nombre for club in clubs track by club.id" required>
+                        <select ng-model="disponibilidad.clubCancha" ng-options="club.id as club.nombre for club in clubs.list track by club.id" required>
                             <option value=""> </option>
                         </select>
                     </label>

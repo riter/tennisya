@@ -1,11 +1,13 @@
 /**
  * Created by Riter on 24/08/15.
  */
-//var api = 'http://localhost/tennisyaApp/tennisya_admin/web/app_dev.php/api/';
- var api = 'http://tennisya.apploadapps.com/web/api/';
-//var api = "192.168.1.5/web/api/";
 
-var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova','ngPhotoSwipe']);
+
+//var api = 'http://localhost/tennisyaApp/tennisya_admin/web/app_dev.php/api/';
+var api = 'http://tennisya.apploadapps.com/web/api/';
+//var api = "192.168.1.6:99/web/api/";
+
+var appTennisya = angular.module('tennisyaApp', ['ionic', 'ngCordova', 'ngPhotoSwipe']);
 var configNotifications = {
     badge: true,
     sound: true,
@@ -13,7 +15,13 @@ var configNotifications = {
     senderID: "648422481399"
 };
 
-appTennisya.run(function ($ionicPlatform, $ionicHistory, $rootScope) {
+appTennisya.constant('$ionicLoadingConfig', {
+    hideOnStateChange: true,
+    noBackdrop: true,
+    template: '<ion-spinner class="spinner-tennis"/>'
+});
+
+appTennisya.run(function ($ionicPlatform, $ionicHistory) {
     $ionicPlatform.ready(function () {
         try {
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -27,17 +35,13 @@ appTennisya.run(function ($ionicPlatform, $ionicHistory, $rootScope) {
         }
 
         $ionicPlatform.registerBackButtonAction(function (event) {
-            if ($ionicHistory.currentStateName().indexOf("tabs") >= 0 || $ionicHistory.currentStateName().indexOf("signin") >= 0) {
+            if ($ionicHistory.currentStateName().indexOf("tabs") >= 0 && ($ionicHistory.backTitle() === 'Iniciar sesión' || $ionicHistory.backTitle() === 'Registro')) {
                 ionic.Platform.exitApp();
             } else {
                 $ionicHistory.goBack();
             }
         }, 100);
 
-        $ionicPlatform.on('resume', function () {
-           $rootScope.loadNotificaciones();
-        });
-        
     });
 });
 appTennisya.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {

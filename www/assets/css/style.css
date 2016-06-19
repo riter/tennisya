@@ -231,7 +231,8 @@ button, input, select, textarea {
   padding: 6px 15px 5px 16px; }
 
 .item-divider {
-  min-height: 22px; }
+  min-height: 22px;
+  font-family: "roboto-regular";}
 
 .placeholder-icon:first-child {
   font-size: 24px; }

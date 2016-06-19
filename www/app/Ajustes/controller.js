@@ -5,27 +5,22 @@
  */
 
 appTennisya
-        .controller('AjustesCtrl', function ($scope, $state, $localstorage, $cordovaFacebook, $cordovaActionSheet, $localstorage, notoficacionService, grupoService, disponibilidadService) {
-    
+        .controller('AjustesCtrl', function ($cordovaSplashscreen, $ActionSheetGral, $scope, $state, $localstorage, $cordovaFacebook, $localstorage, notoficacionService, grupoService, disponibilidadService) {
+
             $scope.onCerrarSesion = function () {
-                var options = {
-                    addCancelButtonWithLabel: 'Cancelar',
-                    addDestructiveButtonWithLabel: 'Cerrar sesión',
-                    androidEnableCancelButton: true
-                };
-                $cordovaActionSheet.show(options)
-                        .then(function (btnIndex) {
-                            if (btnIndex == 1) {
-                                $localstorage.clear();
-                                setTimeout(function () {
-                                    grupoService.reset();
-                                    disponibilidadService.init();
-                                    notoficacionService.unregister();
-                                    logoutFacebook();
-                                    $state.go('signin');
-                                }, 300);
-                            }
-                        });
+
+                $ActionSheetGral.show('¿Seguro que quieres cerrar la sesión?', [], 'Cerrar sesión').then(function (response) {
+                    if (response === 'Cerrar sesión') {
+                        $cordovaSplashscreen.show();
+
+                        $localstorage.clear();
+                        grupoService.reset();
+                        disponibilidadService.init();
+                        notoficacionService.unregister();
+                        logoutFacebook();
+                        $state.go('signin');
+                    }
+                });
             };
             var logoutFacebook = function () {
                 try {
@@ -41,18 +36,14 @@ appTennisya
         })
         .controller('ProfileCtrl', function ($scope, $ionicHistory, $cordovaDialogs, $localstorage, userService, extrasService, cameraAction) {
             $scope.profile = $localstorage.getObject('user');
-
-            extrasService.getClub().then(function (response) {
-                $scope.clubs = response;
-            });
+            $scope.clubs = extrasService.getClubs();
 
             $scope.onGuardar = function (user) {
                 userService.updateJugador(user).then(function (response) {
                     $scope.profile = response;
                 }, function (error) {
-                    $cordovaDialogs.alert('Ha ocurrido un error al guardar. Por favor intetelo más tarde.', 'Perfil', 'Hecho');
+                    $cordovaDialogs.alert('Ha ocurrido un error al guardar. Por favor intetelo más tarde.', 'Perfil', 'Aceptar');
                 });
-                $ionicHistory.goBack();
             };
 
             $scope.openCamera = function () {

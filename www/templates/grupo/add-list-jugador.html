@@ -15,7 +15,7 @@
 
         <ion-list class="players-list" ng-hide="!new_group.focus">
             <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-if="!isAdd(jugador)" ng-repeat="jugador in filterQuery(new_group.search,new_group.filter.value) | orderBy:'name'" ng-click="addJugador(jugador)">
-                <img src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
+                <img  err-src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
                 <h2>{{jugador.name}}</h2>
                 <p>{{jugador.estado}}</p>
                 <p>{{jugador.clubCancha.nombre}}</p>
@@ -24,7 +24,7 @@
 
         <ion-list class="players-list" ng-hide="new_group.focus">
             <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="jugador in new_group.jugadores">
-                <img src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
+                <img  err-src="assets/img/profile.png" download-task="jugador.photo" ng-src="{{jugador.photo}}">
                 <h2>{{jugador.name}}</h2>
                 <p>{{jugador.estado}}</p>
                 <p>{{jugador.clubCancha.nombre}}</p>

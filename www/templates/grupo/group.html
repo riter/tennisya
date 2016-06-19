@@ -4,7 +4,7 @@
 
     <ion-nav-buttons side="right">
         <a ui-sref="tabs.info-groups({id:grupo.id})" class="button button-icon">
-            <img src="assets/img/group.png" download-task="grupo.image" ng-src="{{grupo.image}}" class="match-players_img" style="width: 32px; border-radius: 50%;" >
+            <img  err-src="assets/img/group.png" download-task="grupo.image" ng-src="{{grupo.image}}" class="match-players_img" style="width: 32px; border-radius: 50%;" >
         </a>
 
     </ion-nav-buttons>
@@ -14,7 +14,7 @@
         <ion-list class="players-list">
 
             <ion-item ng-show="!isYo(jugador.jugador)" item="item" class="item item-avatar item-icon-right item-remove-animate" ng-repeat="jugador in grupo.jugadorgrupo" type="item-text-wrap" ng-click="nextInfoJugador(jugador.jugador)">
-                <img src="assets/img/profile.png" download-task="jugador.jugador.photo" ng-src="{{jugador.jugador.photo}}">
+                <img  err-src="assets/img/profile.png" download-task="jugador.jugador.photo" ng-src="{{jugador.jugador.photo}}">
                 <h2>{{jugador.jugador.name}}</h2>
                 <p>{{jugador.jugador.estado}}</p>
                 <p>{{jugador.jugador.clubCancha.nombre}}</p>

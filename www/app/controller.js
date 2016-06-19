@@ -46,10 +46,18 @@ appTennisya
         .controller('searchPartidosCtrl', function () {
 
         })
-        .controller('TabsCtrl', function ($rootScope, $scope, $state, $localstorage, notoficacionService, extrasService, userService) {
+        .controller('TabsCtrl', function ($cordovaSplashscreen, $ionicPlatform, $ionicHistory, $rootScope, $scope, $state, $localstorage, notoficacionService, extrasService, userService, grupoService) {
+
+            setTimeout(function () {
+                $cordovaSplashscreen.hide();
+            }, 1000);
+
+            $scope.formatFromNow = function (date) {
+                return moment(date).fromNow();
+            };
 
             $scope.formatFecha = function (date, format) {
-                return date === null ? '' : moment(date).format(format);
+                return date === null ? '' : date !== '' ? moment(date).format(format) : moment().format(format);
             };
 
             $scope.nextInfoJugador = function (jugador) {
@@ -60,7 +68,7 @@ appTennisya
                 var result = [];
                 angular.forEach(items, function (value, key) {
                     if ($scope.userLogin.id !== value.id && (
-                            (value.name && value.name.toLowerCase().indexOf(query.toLowerCase()) > -1) || 
+                            (value.name && value.name.toLowerCase().indexOf(query.toLowerCase()) > -1) ||
                             (value.estado && value.estado.toLowerCase().indexOf(query.toLowerCase()) > -1) ||
                             (value.clubCancha && value.clubCancha.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1)
                             )) {
@@ -75,55 +83,86 @@ appTennisya
                 return $scope.userLogin.id == jugador.id;
             };
 
-            $scope.isNotifGrupo = function (idGrupo) {
-                var res = false;
-                angular.forEach($scope.notificaciones, function (value, key) {
-                    if (value.grupo === idGrupo)
-                        res = true;
-                });
-                return res;
-            };
-            $scope.isNotifJugador = function (idJugador) {
-                var res = false;
-                angular.forEach($scope.notificaciones, function (value, key) {
-                    if (value.partido !== null && value.grupo === null && value.noleidos[$scope.userLogin.id] !== undefined && value.noleidos[$scope.userLogin.id].indexOf(idJugador) > -1)
-                        res = true;
-                });
-                return res;
+            $scope.isNotifPartido = function (partido) {
+                return $scope.notificaciones.data.filter(function (notif) {
+                    return notif.partido === partido.id;
+                }).length > 0;
             };
 
-            $scope.isNotifPartido = function () {
-                var res = false;
-                if ($rootScope.filterPartidos && $rootScope.filterPartidos.type === 'jugador') {
-                    return $scope.isNotifJugador($rootScope.filterPartidos.idType);
-                } else if ($rootScope.filterPartidos && $rootScope.filterPartidos.type === 'grupo') {
-                    angular.forEach($scope.notificaciones, function (value, key) {
-                        if (value.partido !== null && value.grupo === $rootScope.filterPartidos.idType)
-                            res = true;
-                    });
-                }
-                return res;
+            $scope.isNotifGrupo = function (grupo) {
+                return $scope.notificaciones.data.filter(function (notif) {
+                    return notif.grupo === grupo.id;
+                }).length > 0;
             };
-            $scope.removeNotificacion = function (type) {
-                var filterType = type || $rootScope.filterPartidos.type;
+
+            $scope.isNotifPartidos = function () {
                 if ($rootScope.filterPartidos) {
-                    if ((filterType === 'newgrupo' && $scope.isNotifGrupo($rootScope.filterPartidos.idType)) || ($scope.isNotifPartido() && (filterType === 'jugador' || filterType === 'grupo'))) {
-                        notoficacionService.leido($rootScope.filterPartidos.idType, $scope.userLogin.id, filterType).then(function () {
-                            $scope.notificaciones = notoficacionService.data;
-                        });
+                    switch ($rootScope.filterPartidos.type) {
+                        case 'jugador' :
+                            break;
+                        case 'grupo' :
+                            return $scope.notificaciones.data.filter(function (notif) {
+                                return notif.partido !== null && notif.grupo === $rootScope.filterPartidos.idType;
+                            }).length > 0;
+                            break;
+                        case 'jugadores' :
+                            return $scope.notificaciones.data.filter(function (notif) {
+                                return notif.partido !== null;
+                            }).length > 0;
+                            break;
+                        case 'grupos' :
+                            var idsG = grupoService.getListIds();
+                            return $scope.notificaciones.data.filter(function (notif) {
+                                return notif.partido !== null && idsG.indexOf(notif.grupo) > -1;
+                            }).length > 0;
+                            break;
+                    }
+                }
+                return false;
+            };
+
+            $scope.removeNotificacion = function (type) {
+                if ($rootScope.filterPartidos) {
+                    var filterType = type || $rootScope.filterPartidos.type;
+                    var filterIdType = $rootScope.filterPartidos.idType;
+                    switch (filterType) {
+                        case 'newgrupo' :
+                            if ($scope.notificaciones.data.filter(function (notif) {
+                                return notif.partido === null && notif.grupo === filterIdType;
+                            }).length > 0) {
+                                notoficacionService.leido(filterIdType, $scope.userLogin.id, filterType);
+                            }
+                            break;
+                        case 'jugador' :
+                            break;
+                        case 'grupo' :
+                        case 'grupos' :
+                            if ($scope.isNotifPartidos()) {
+                                notoficacionService.leido(filterIdType, $scope.userLogin.id, filterType);
+                            }
+                            break;
+                        case 'jugadores' :
+                            break;
                     }
                 }
             };
 
+            $scope.notificaciones = notoficacionService.getList();
             $rootScope.loadNotificaciones = function () {
-                notoficacionService.loadList($scope.userLogin.id).then(function () {
-                    $scope.notificaciones = notoficacionService.data;
-                });
+                notoficacionService.loadList($scope.userLogin.id);
             };
 
-            notoficacionService.register();
             $scope.loadNotificaciones();
-            extrasService.loadClubs();
+            extrasService.getClubs();
+
+            $ionicPlatform.on('resume', function () {
+                $rootScope.loadNotificaciones();
+                $rootScope.$broadcast($ionicHistory.currentStateName(), {type: 'resume'});
+            });
+
+            document.addEventListener("deviceready", function () {
+                notoficacionService.register();
+            }, false);
         })
         ;
    

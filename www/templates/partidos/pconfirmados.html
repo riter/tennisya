@@ -1,0 +1,27 @@
+<ion-content>
+    <ion-list class="list-matches">
+        <ion-item ng-click="infoPartidos(confirmado)" ng-class="{'item-new': isNotifPartido(confirmado)}" ng-if="confirmado.confirmCancha == true && isCompleto(confirmado) && !hasIvitado(confirmado)" ng-repeat="confirmado in list.data| filter: partidosPersConf | orderBy:'fechai' ">
+            <div class="match">
+                <div class="match_detail">
+                    <span class="match_date">{{confirmado.id + '-' + formatFecha(confirmado.fechai, 'dddd DD/MM, HH') + ' hs'}}</span>
+                    <span class="match_place match_place-confirm">{{confirmado.clubCancha.nombre}}</span>
+                    <span class="match_time">{{formatFromNow(confirmado.fechai)}}</span>
+                </div>
+                <div class="match_players">
+                    <ul class="match-players">
+                        <li class="match-players_item" ng-repeat="jugadorpartido in confirmado.jugadorpartido">
+                            <a class="match-players_link">
+                                <img class="match-players_img" err-src="assets/img/profile.png" ng-src="{{jugadorpartido.jugador.photo}}"  download-task="jugadorpartido.jugador.photo" widht="36" height="36">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll distance="2%" on-infinite="getPartidosC()" 
+                         ng-if="filterPartidos.idType !== null? list.paginate.confirmados[filterPartidos.type][filterPartidos.idType].next : list.paginate.confirmados[filterPartidos.type].next">
+    </ion-infinite-scroll>
+    
+    <div style="height: 46px"></div>
+</ion-content>

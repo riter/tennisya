@@ -42,11 +42,10 @@ appTennisya
                 $scope.closeNewGrupo();
             };
         })
-        .controller('groupCtrl', function ($scope, $state, $stateParams, $rootScope, $localstorage, grupoService) {
+        .controller('groupCtrl', function ($scope, $state, $stateParams, $rootScope, grupoService) {
 
             $scope.$on('$ionicView.enter', function () {
                 $rootScope.filterPartidos = {type: 'grupo', idType: parseInt($stateParams.id), title: $scope.grupo.title};
-
                 $scope.removeNotificacion('newgrupo');
             });
 
@@ -66,7 +65,8 @@ appTennisya
                         safeSrc: $scope.grupo.image !== null ? $scope.grupo.image : 'assets/img/group.png',
                         thumb: $scope.grupo.image !== null ? $scope.grupo.image : 'assets/img/group.png',
                         size: '0x0',
-                        type: 'image'
+                        type: 'image',
+                        srcError: 'assets/img/group.png'
                     }];
             };
             $scope.fullScreen();
@@ -87,7 +87,7 @@ appTennisya
                     grupoService.updateTitle($scope.grupo.id, $scope.data.changeTitle).then(function () {
                         $scope.grupo.title = $scope.data.changeTitle;
                     }, function (err) {
-                        $cordovaDialogs.alert('Error al cambiar titulo del grupo.', 'Informacion', 'Hecho');
+                        $cordovaDialogs.alert('Error al cambiar titulo del grupo.', 'Informacion', 'Aceptar');
                     });
                 }
             };
@@ -101,7 +101,7 @@ appTennisya
                         $scope.grupo.image = response.image;
                         $scope.fullScreen();
                     }, function () {
-                        $cordovaDialogs.alert('Error al subir foto del grupo.', 'Informacion', 'Hecho');
+                        $cordovaDialogs.alert('Error al subir foto del grupo.', 'Informacion', 'Aceptar');
                         $scope.grupo.image = tmpImage;
                     });
 
@@ -134,19 +134,18 @@ appTennisya
                 });
                 return searchJugador.searchJugador(query, ids);
             };
-
-            $scope.isAdd = function (jugador) {
-                return $scope.grupo.jugadorgrupo.indexOf(jugador) > -1;
+            $scope.isAnadido = function (jugador) {
+                return $scope.grupo.jugadorgrupo.filter(function (jugadorgrupo) {
+                    return jugadorgrupo.jugador.id === jugador.id;
+                }).length > 0;
             };
-
             $scope.selectJugador = function (item) {
                 grupoService.updateJugador($scope.grupo.id, item).then(function (response) {
                     $scope.grupo.jugadorgrupo.push(response.data);
                 }, function (err) {
-                    $cordovaDialogs.alert('Error al adicionar un jugador', 'Informacion', 'Hecho');
+                    $cordovaDialogs.alert('Error al adicionar un jugador', 'Informacion', 'Aceptar');
                 });
                 $scope.modalAddJugador.remove();
             };
-
         })
         ;

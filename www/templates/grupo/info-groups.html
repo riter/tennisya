@@ -22,7 +22,7 @@
                 Poner foto al grupo
             </ion-item>
 
-            <div class="item item-divider">{{grupo.jugadorgrupo.length}} jugadores</div>
+            <div class="item item-divider item-divider-doble">{{grupo.jugadorgrupo.length}} JUGADORES</div>
 
             <ion-item  ng-show="isAdmin()" class="item balanced" ng-click="openAddJugador()">
                 Añadir jugador
@@ -37,6 +37,8 @@
 
                     <ion-delete-button style="color: #ef473a;" ng-if="!isYo(jugador.jugador)" class="ion-minus-circled ion-remove-list item-remove-animate assertive" ng-click="onDelete(jugador)"></ion-delete-button>
                 </ion-item>
+                
+                <ion-item item="item" ng-show="grupo.jugadorgrupo.length === 0"></ion-item>
             </ion-list>
 
             <div class="item item-divider"></div>
