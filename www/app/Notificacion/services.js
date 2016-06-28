@@ -4,7 +4,7 @@
 /*
  */
 
-appTennisya.factory('notoficacionService', function ($ionicHistory, $rootScope, $q, $http, $localstorage, $cordovaPush, $cordovaDevice) {
+appTennisya.factory('notoficacionService', function ($state, $ionicHistory, $rootScope, $q, $http, $localstorage, $cordovaPush, $cordovaDevice) {
     var notificationClass = {
         configNotifications: {
             badge: true,
@@ -62,7 +62,8 @@ appTennisya.factory('notoficacionService', function ($ionicHistory, $rootScope, 
                     }
                 });
                 this.receive();
-            } catch (e) {}
+            } catch (e) {
+            }
         },
         setTokenID: function (token) {
             if ($localstorage.exist('tokenNotificacion') && $localstorage.get('tokenNotificacion') === token)
@@ -87,18 +88,39 @@ appTennisya.factory('notoficacionService', function ($ionicHistory, $rootScope, 
                 } else {
 //                    alert(JSON.stringify(notification));
                     $rootScope.loadNotificaciones();
-                    if (notification.foreground || notification.foreground === '1') { // 0 si la app esta minimizada y  1 si esta activa
-//                        alert(notification.foreground);
-                        notification = ionic.Platform.isAndroid() ? notification.payload :  notification;
-                        
-                        if(!angular.isUndefined(notification.newG) || !angular.isUndefined(notification.updG))
+
+                    var foreground = notification.foreground === true || notification.foreground === '1';
+                    notification = ionic.Platform.isAndroid() ? notification.payload : notification;
+
+                    if (foreground) { // 0 si la app esta minimizada y  1 si esta activa
+                        if (!angular.isUndefined(notification.newG) || !angular.isUndefined(notification.updG))
                             $rootScope.$broadcast($ionicHistory.currentStateName(), {type: 'grupos'});
-                        if(!angular.isUndefined(notification.updP))
-                            $rootScope.$broadcast($ionicHistory.currentStateName(), {type: 'partido', partido:notification.updP});
+                        if (!angular.isUndefined(notification.updP))
+                            $rootScope.$broadcast($ionicHistory.currentStateName(), {type: 'partido', partido: notification.updP});
+                    } else {
+                        self.onClickNotif(notification);
                     }
                     if (typeof (self.callbackReceive) === 'function')
                         self.callbackReceive();
                 }
+            });
+        },
+        onClickNotif: function (notification) {
+            if (!angular.isUndefined(notification.newG)) {
+                this.goNotif('tabs.player', notification.newG);
+            }
+            if (!angular.isUndefined(notification.updG)) {
+                this.goNotif('tabs.player', notification.updG);
+            }
+            if (!angular.isUndefined(notification.updP)) {
+                this.goNotif('tabs.partidos', notification.updP);
+            }
+        },
+        goNotif: function (stateParent, id) {
+            $state.go(stateParent).then(function () {
+                setTimeout(function () {
+                    $rootScope.$broadcast($ionicHistory.currentStateName(), {type: 'clickNotification', idNotif: id});
+                }, 300);
             });
         }
     };

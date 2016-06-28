@@ -5,7 +5,7 @@
  */
 
 appTennisya
-        .controller('ListJugadoresCtrl', function ($ionicScrollDelegate, $ionicHistory, $scope, $state, $timeout, $ionicModal, $rootScope, userService, grupoService) {
+        .controller('ListJugadoresCtrl', function ($ionicScrollDelegate, $ionicHistory, $scope, $state, $ionicModal, $rootScope, userService, grupoService) {
             $scope.showGrupos = function () {
                 $scope.data.showGrupos = !$scope.data.showGrupos;
                 $ionicScrollDelegate.resize();
@@ -46,10 +46,6 @@ appTennisya
                 }
             });
 
-            $scope.nextGrupo = function (grupo) {
-                grupoService.setModel(grupo);
-                $state.go('tabs.group', {id: grupo.id});
-            };
             // create Grupos
             $scope.closeNewGrupo = function () {
                 $ionicHistory.nextViewOptions({disableAnimate: true});
@@ -76,6 +72,9 @@ appTennisya
                         break;
                     case 'grupos':
                         loadGrupos();
+                        break;
+                    case 'clickNotification':
+                        $state.go('tabs.group', {id: response.idNotif});
                         break;
                 }
             });

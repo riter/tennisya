@@ -24,7 +24,8 @@ appTennisya
 
                 $ionicModal.fromTemplateUrl('templates/crearPartido/navable-partido.html', {
                     animation: 'slide-in-up',
-                    scope: $scope
+                    scope: $scope,
+                    hardwareBackButtonClose: false
                 }).then(function (modal) {
                     $scope.modalNewPartido = modal;
                     $scope.modalNewPartido.show();

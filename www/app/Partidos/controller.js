@@ -129,8 +129,7 @@ appTennisya
             $scope.actionOptions = function (action, jugadorPartido, partido) {
                 switch (action) {
                     case 'Ver info.':
-                        partidoService.setModel(partido);
-                        $state.go('tabs.info-partido');
+                        $state.go('tabs.info-partido', {id: partido.id});
                         break;
                     case 'Aceptar':
                         partidoService.confirmPartido(partido.id, jugadorPartido.jugador.id, 'aceptado').then(function (response) {
@@ -169,11 +168,11 @@ appTennisya
                     if (angular.isUndefined($scope.list.paginate.jugados[type][idType]))
                         $scope.list.paginate.jugados[type][idType] = {page: 1, next: true, lastUpdate: null, idEnd: null};
                 }
-                
+
                 $ionicScrollDelegate.resize();
             });
             $scope.$on('$ionicView.beforeLeave', function () {
-                $scope.removeNotificacion();                
+                $scope.removeNotificacion();
             });
             $scope.$on($ionicHistory.currentStateName(), function (event, response) {
                 switch (response.type) {
@@ -183,26 +182,36 @@ appTennisya
                     case 'partido':
                         partidoService.getPartidoId(response.partido);
                         break;
+                    case 'clickNotification':
+                        $state.go('tabs.info-partido', {id: response.idNotif});
+                        break;
                 }
             });
-            
+
             $scope.tabSelect = null;
             $scope.onTabSelected = function (tab) {
                 $scope.tabSelect = tab;
                 partidoService.updateListPartidos(tab, $scope.userLogin.id, $rootScope.filterPartidos.type, $rootScope.filterPartidos.idType);
             };
         })
-        .controller('InfoPartidosCtrl', function ($scope, $ionicModal, partidoService, searchJugador) {
-            $scope.partido = partidoService.getModel();
-            $scope.partido.fechai = moment($scope.partido.fechai).toDate();
-            $scope.partido.fechaf = moment($scope.partido.fechaf).toDate();
+        .controller('InfoPartidosCtrl', function ($scope, $stateParams, $ionicModal, partidoService, searchJugador) {
+            var loadPartido = function () {
+                $scope.partido = partidoService.getModel(parseInt($stateParams.id));
+                if (angular.isUndefined($scope.partido)) {
+                    partidoService.getPartidoId(parseInt($stateParams.id)).then(loadPartido);
+                } else {
+                    $scope.partido.fechai = moment($scope.partido.fechai).toDate();
+                    $scope.partido.fechaf = moment($scope.partido.fechaf).toDate();
+                }
+            };
+            loadPartido();
 
             $scope.hasAnadir = function () {
                 var jp = $scope.partido.jugadorpartido.filter(function (jugadorpartido) {
                     return jugadorpartido.jugador.id === $scope.userLogin.id;
                 });
                 return $scope.partido.jugadorpartido.length % 2 !== 0 && jp.length > 0 && jp[0].estado == 'aceptado';
-            }
+            };
 
             $scope.openAddJugador = function () {
                 $ionicModal.fromTemplateUrl('templates/grupo/add-jugador.html', {

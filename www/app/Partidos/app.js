@@ -17,7 +17,7 @@ appTennisya.config(function($stateProvider) {
                 }
             })
             .state('tabs.info-partido', {
-                url: "/infos",
+                url: "/infos/:id",
                 views: {
                     'partidos-tab': {
                         templateUrl: "templates/partidos/info.html",

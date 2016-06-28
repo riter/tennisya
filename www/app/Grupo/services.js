@@ -47,14 +47,18 @@ appTennisya
                         }
                     });
                 },
-                setModel: function (grupo) {
-                    if (typeof (grupo.jugadorgrupo) === 'undefined')
-                        grupo.jugadorgrupo = [];
+                setModel: function (idGrupo) {
+                    this.select = this.model.data.filter(function (grupo) {
+                        return grupo.id === idGrupo;
+                    })[0];
 
-                    if (typeof (grupo.lastUpdate) === 'undefined')
-                        grupo.lastUpdate = '';
+                    if (this.select) {
+                        if (typeof (this.select.jugadorgrupo) === 'undefined')
+                            this.select.jugadorgrupo = [];
 
-                    this.select = grupo;
+                        if (typeof (this.select.lastUpdate) === 'undefined')
+                            this.select.lastUpdate = '';
+                    }
                 },
                 getModel: function () {
                     return this.select;
@@ -63,6 +67,14 @@ appTennisya
                     var deferred = $q.defer();
                     deferred.resolve(this.select);
                     return deferred.promise;
+                },
+                getGrupoId: function (idGrupo) {
+                    var self = this;
+                    self.cancelHttp.resolve([]);
+                    self.cancelHttp = $q.defer();
+                    return $http.get(api + 'group/obtener_group/' + idGrupo, {timeout: self.cancelHttp.promise}).then(function (response) {
+                        self.model.data.union([response.data], null, true);
+                    });
                 },
                 getJugadores: function () {
                     var self = this;

@@ -37,20 +37,19 @@ appTennisya
                         }
                     },
                     data: [],
-                    dataJugados: [],
+                    dataJugados: []
                 },
-                setModel: function (partido) {
-                    this.select = partido;
-                },
-                getModel: function () {
-                    return this.select;
+                getModel: function (idPartido) {
+                    return this.model.data.filter(function (partido) {
+                        return partido.id === idPartido;
+                    })[0];
                 },
                 getList: function () {
                     return this.model;
                 },
-                getPartidoId : function(idPartido){
+                getPartidoId: function (idPartido) {
                     var self = this;
-                    $http.get(api + 'partidos/obtener_partido/' + idPartido, {}).then(function(response){
+                    return $http.get(api + 'partidos/obtener_partido/' + idPartido, {}).then(function (response) {
                         self.model.data.union([response.data], null, true);
                     });
                 },
@@ -195,7 +194,7 @@ appTennisya
                     $ionicLoading.show();
                     return $http.get(api + 'partidos/confirm_partido/' + idPartido + '/' + idJugador, {params: {action: action}}).then(function (response) {
                         $ionicLoading.hide();
-                        
+
                         return response.data;
                     });
                 },
@@ -203,7 +202,7 @@ appTennisya
                     $ionicLoading.show();
                     return $http.get(api + 'partidos/entrar_partido/' + idPartido + '/' + idJugador, {params: {'jugadores[]': jugadores}}).then(function (response) {
                         $ionicLoading.hide();
-                        
+
                         return response.data;
                     });
                 },
@@ -211,7 +210,7 @@ appTennisya
                     $ionicLoading.show();
                     return $http.get(api + 'partidos/anadir_partido/' + idPartido + '/' + idInvitador + '/' + idJugador, {params: {}}).then(function (response) {
                         $ionicLoading.hide();
-                        
+
                         return response.data;
                     });
                 },

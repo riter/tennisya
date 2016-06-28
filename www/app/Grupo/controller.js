@@ -49,8 +49,21 @@ appTennisya
                 $scope.removeNotificacion('newgrupo');
             });
 
-            $scope.grupo = grupoService.getModel();
-            grupoService.getJugadores();
+            var loadGrupo = function () {
+                grupoService.setModel(parseInt($stateParams.id));
+                $scope.grupo = grupoService.getModel();
+
+                if (angular.isUndefined($scope.grupo)) {
+                    grupoService.getGrupoId(parseInt($stateParams.id)).then(loadGrupo);
+                }else{
+                    grupoService.getJugadores();
+                }
+            };
+            loadGrupo();
+
+//            grupoService.setModel(parseInt($stateParams.id));
+//            $scope.grupo = grupoService.getModel();
+//            grupoService.getJugadores();
 
             $scope.nextGrupo = function () {
                 $state.go('tabs.info-groups', {id: $scope.grupo.id});

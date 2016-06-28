@@ -16,7 +16,7 @@
         </ion-list>
 
         <ion-list class="players-list" ng-if="data.tipo == 'Grupo' ">
-            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="grupo in filterGrupo(data.search, data.filter.value) | orderBy:'title'" ng-click="nextGrupo(grupo)">
+            <ion-item class="item item-avatar item-icon-right" type="item-text-wrap" ng-repeat="grupo in filterGrupo(data.search, data.filter.value) | orderBy:'title'" ui-sref="tabs.group({id: grupo.id})">
                 <img  err-src="assets/img/group.png" download-task="grupo.image" ng-src="{{grupo.image}}">
                 <h2>{{grupo.title}}</h2>
                 <p>{{grupo.ciudad}}, {{grupo.pais}}</p>

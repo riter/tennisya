@@ -36,12 +36,6 @@ appTennisya
                 });
                 return result;
             };
-
-            $scope.nextGrupo = function (grupo) {
-                grupoService.setModel(grupo);
-                $state.go('tabs.group', {id: grupo.id});
-            };
-
         })
         .controller('searchPartidosCtrl', function () {
 
@@ -107,7 +101,7 @@ appTennisya
                             break;
                         case 'jugadores' :
                             return $scope.notificaciones.data.filter(function (notif) {
-                                return notif.partido !== null;
+                                return notif.partido !== null && notif.grupo === null;
                             }).length > 0;
                             break;
                         case 'grupos' :
@@ -135,13 +129,12 @@ appTennisya
                             break;
                         case 'jugador' :
                             break;
+                        case 'jugadores' :
                         case 'grupo' :
                         case 'grupos' :
                             if ($scope.isNotifPartidos()) {
                                 notoficacionService.leido(filterIdType, $scope.userLogin.id, filterType);
                             }
-                            break;
-                        case 'jugadores' :
                             break;
                     }
                 }

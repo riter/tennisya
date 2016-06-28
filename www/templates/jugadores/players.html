@@ -13,7 +13,7 @@
     <ion-content class="has-subheader">
 
         <ion-list ng-if="data.showGrupos" class="players-list">
-            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in orderNotifGrupo()" type="item-text-wrap" ng-click="nextGrupo(grupo)">
+            <ion-item  class="item item-avatar item-icon-right" ng-repeat="grupo in orderNotifGrupo()" type="item-text-wrap" ui-sref="tabs.group({id: grupo.id})">
                 <img  err-src="assets/img/group.png" download-task="grupo.image" ng-src="{{grupo.image}}">
                 <h2>{{grupo.title}}</h2>
                 <p>{{grupo.ciudad}}, {{grupo.pais}}</p>
